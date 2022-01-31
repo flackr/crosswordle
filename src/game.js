@@ -349,9 +349,11 @@ async function guess() {
           }).finished;
           animationPromises.push(a2);
           await a1;
-          setTile(t, '', 1);
+          if (!t.classList.contains('green'))
+            setTile(t, '', 1);
           await a2;
-          setTile(t, '', 0);
+          if (!t.classList.contains('green'))
+            setTile(t, '', 0);
           t.classList.remove('green');
           t.classList.remove('yellow');
           if (i == 0 && j == 0)
