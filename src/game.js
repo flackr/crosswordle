@@ -318,7 +318,7 @@ async function guess() {
 
   // Then do a reveal, and add to the clues row.
   let animationPromises = [];
-  let delay = 0;
+  let startDelay = 0;
   let result = document.createElement('div');
   summary += '\n';
   for (let i = 0; i < guesses.length; i++) {
@@ -326,22 +326,23 @@ async function guess() {
       let t = tile([i, j]);
       if (i != 1 || j != puzzle.offsets[1]) {
         async function animate() {
+          let fill = wrong == 0 ? 'forwards' : 'none';
           let a1 = t.animate([
             {transform: 'none'},
             {transform: 'rotateY(180deg)'}], {
               duration: 600,
-              delay,
-              fill: wrong ? 'none' : 'forwards'}).finished;
+              delay: startDelay,
+              fill}).finished;
           animationPromises.push(a1);
           if (wrong == 0) {
             return;
           }
           let a2 = t.animate([
             {transform: 'rotateY(180deg)'},
+            {transform: 'rotateY(180deg)', offset: 0.8},
             {transform: 'none'}], {
-            fill: 'backwards',
-            duration: 600,
-            delay: 2400,
+            duration: 3000,
+            delay: startDelay + 600,
           }).finished;
           animationPromises.push(a2);
           await a1;
@@ -354,7 +355,7 @@ async function guess() {
             updateSelection([i, j]);
         }
         animate();
-        delay += 150;
+        startDelay += 150;
       }
       let log = document.createElement('div');
       log.classList = 'tile';
