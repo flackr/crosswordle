@@ -1,1 +1,1 @@
-const PUZZLES = ['lucky charm', 'fair game', 'snow storm', 'test drive'];
+const PUZZLES = ['lucky charm', 'fair game', 'snow storm', 'test drive', 'apple tree', 'fruit flies', 'windy summit', 'alarm clock', 'dirty dishes', 'annual event', 'embrace friend', 'party planner', 'paper craft', 'bitter gruel', 'social club', 'candy heart', 'plane travel', 'board games'];
