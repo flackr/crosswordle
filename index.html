@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <title>Crosswordle</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="src/puzzles.js"></script>
+    <script src="src/game.js"></script>
+  </head>
+  <body>
+    <div class="error screen">
+      <div class="message"></div>
+    </div>
+    <div class="settings screen">
+      <div class="message">
+        <h1>Settings</h1>
+        <hr>
+        <p>Coming soon</p>
+        <div><input disabled type="checkbox"> Skip filled positions</div>
+        <div><input disabled type="checkbox"> Hard mode</div>
+        <p>Inspired by the popular <a href="https://www.powerlanguage.co.uk/wordle/">Wordle</a> game</p>
+        <p>Dictionary file from aspell6 package. See <a href="third_party/aspell6/Copyright">Copyright</a> for details.</p>
+        <button id="close-settings">Close</button>
+      </div>
+    </div>
+    <div class="victory screen">
+      <div class="message">
+        <h1>Victory</h1>
+        <hr>
+        <p>You got it in <span id="guesses"></span> guesses</p>
+        <p>Click <button id="share">Share</button> to copy a summary of your game.</p>
+        <button id="close-victory">Close</button>
+      </div>
+    </div>
+    <div class="main">
+      <div class="title">
+        <h1>Crosswordle</h1>
+      </div>
+      <div class="menu">
+        <button id="show-settings">⚙️</button>
+      </div>
+      <div class="game">
+        <div class="clues"></div>
+        <div class="grid"></div>
+      </div>
+      <div class="keyboard"></div>
+    </div>
+  </body>
+</html>

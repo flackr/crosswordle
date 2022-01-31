@@ -1,0 +1,163 @@
+html {
+  --large-size: calc(max(20px, ((min(100vw, 100vh - 20em) - 16px) / var(--size)) - 4px));
+  --small-size: calc(max(16px, ((min(100vw, 100vh - 20em) - 16px) / (2 * var(--size) + 1)) - 4px));
+}
+
+.title {
+  grid-area: title;
+}
+
+.keyboard {
+  display: grid;
+  grid-area: keyboard;
+  grid-template-areas:
+      'q q w w e e r r t t y y u u i i o o p p'
+      '. a a s s d d f f g g h h j j k k l l .'
+      'R R R z z x x c c v v b b n n m m B B B';
+  margin: 15px 0;
+}
+
+.menu {
+  text-align: right;
+  grid-area: menu;
+}
+.menu > button {
+  font-size: 2em;
+}
+
+html, body, .main {
+  height: 100%;
+}
+
+.screen {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.screen > .message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: white;
+  padding: 10px;
+  border: 2px solid #777;
+  transform: translate(-50%, -50%);
+}
+
+.error .message {
+  font-size: 2em;
+}
+
+.main {
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  align-items: start;
+  grid-template-areas:
+      'title    menu'
+      'game     game'
+      'keyboard keyboard';
+  grid-template-rows: min-content 1fr min-content;
+}
+
+.game {
+  grid-area: game;
+}
+
+.clues .tile,
+.clues .empty {
+  width: var(--small-size);
+  height: var(--small-size);
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.grid {
+  display: grid;
+  justify-self: center;
+}
+
+.grid > div {
+  width: var(--large-size);
+  height: var(--large-size);
+  margin: 2px;
+  perspective: 200px;
+  perspective-origin: center center;
+}
+
+.grid .tile {
+  border-radius: 3px;
+  transform-style: preserve-3d;
+}
+
+.tile {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 2px;
+  border: 1px solid black;
+}
+
+.tile > div {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.clues .tile > div {
+  font-size: calc(var(--small-size) - 2px);
+}
+
+.grid .tile > div {
+  font-size: calc(var(--large-size) - 4px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+}
+
+.grid .tile > div:nth-child(1) {
+  transform: rotateY(180deg);
+}
+
+.tile > div:nth-child(1) {
+  background: #777;
+}
+
+.tile.yellow > div:nth-child(1) {
+  background: yellow;
+}
+
+.tile.green > div:nth-child(1) {
+  background: #0f0;
+}
+
+.key {
+  line-height: 300%;
+  text-align: center;
+  margin: 0.5ch;
+  border-radius: 3px;
+  background: #ccc;
+  cursor: pointer;
+}
+
+.key.black {
+  background: #555;
+}
+
+.key.yellow {
+  background: #ff0;
+}
+
+.key.green {
+  background: #0f0;
+}
+
+.selected {
+  outline: 4px groove #88f;
+}

@@ -1,0 +1,1 @@
+const PUZZLES = ['lucky charm', 'fair game', 'snow storm', 'test drive'];
