@@ -381,19 +381,20 @@ async function guess() {
       summary += ' ';
     }
   }
-  // TODO: Add animation.
+  await Promise.all(animationPromises);
   if (wrong) {
+    // TODO: Add letter animations.
     document.querySelector('.clues').appendChild(result);
+    result.animate({opacity: [0, 1]}, 200);
+    document.querySelector('.keyboard').scrollIntoView();
   } else {
     // Show victory screen after clues are revealed.
-    await Promise.all(animationPromises);
     document.getElementById('guesses').textContent = (summary.split('\n').length - 1);
     document.getElementById('share').onclick = function() {
       navigator.clipboard.writeText(`${summary}\n${window.location.href}`);
     }
     document.querySelector('.victory').style.display = 'block';
   }
-  document.querySelector('.keyboard').scrollIntoView();
 }
 
 async function showError(text) {
