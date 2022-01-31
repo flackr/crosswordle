@@ -125,6 +125,11 @@ html, body, .main {
   transform: rotateY(180deg);
 }
 
+.grid .tile > div:nth-child(2) {
+  /* Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1201471 */
+  transform: translateZ(0);
+}
+
 .tile > div:nth-child(1) {
   background: #777;
 }
