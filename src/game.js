@@ -42,6 +42,9 @@ function initKeyboard() {
   addKey('R', 'Enter', 'Enter');
   addKey('B', 'Erase', 'Backspace');
   document.addEventListener('keydown', (evt) => {
+    // Don't handle modified keys.
+    if (evt.ctrlKey || evt.metaKey || evt.altKey)
+      return;
     if (type(evt.key))
       evt.preventDefault();
   });
