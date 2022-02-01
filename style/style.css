@@ -134,11 +134,11 @@ html, body, .main {
 }
 
 .clues .tile > div {
-  font-size: calc(var(--small-size) - 2px);
+  font-size: calc(var(--small-size) - 6px);
 }
 
 .grid .tile > div {
-  font-size: calc(var(--large-size) - 4px);
+  font-size: calc(var(--large-size) - 12px);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   position: absolute;
