@@ -23,6 +23,7 @@ html {
 
 .title {
   grid-area: title;
+  justify-self: center;
 }
 
 .keyboard {
@@ -36,11 +37,13 @@ html {
 }
 
 .menu {
-  text-align: right;
-  grid-area: menu;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .menu > button {
   font-size: 2em;
+  cursor: pointer;
 }
 
 html, body, .main {
@@ -82,14 +85,15 @@ html, body, .main {
   grid-template-rows: min-content 1fr min-content;
   align-items: start;
   grid-template-areas:
-      'title    menu'
-      'game     game'
-      'keyboard keyboard';
+      'title'
+      'game'
+      'keyboard';
   grid-template-rows: min-content 1fr min-content;
 }
 
 .game {
   grid-area: game;
+  justify-self: center;
 }
 
 .clues .tile,
@@ -116,6 +120,7 @@ html, body, .main {
 .grid .tile {
   border-radius: 3px;
   transform-style: preserve-3d;
+  cursor: pointer;
 }
 
 .tile {
