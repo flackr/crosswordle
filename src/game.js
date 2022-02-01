@@ -196,7 +196,21 @@ function setTile(tile, text, index) {
 }
 
 function type(code) {
-  if (code == 'Enter') {
+  if (code == 'ArrowRight' || code == 'ArrowLeft') {
+    let start = selected[0] == 0 ? selected[1] : puzzle.offsets[0];
+    if (code == 'ArrowLeft' && start > 0)
+      updateSelection([0, start - 1]);
+    else if (code == 'ArrowRight' && start < puzzle.words[0].length - 1)
+      updateSelection([0, start + 1]);
+    return true
+  } else if (code == 'ArrowUp' || code == 'ArrowDown') {
+      let start = selected[0] == 1 ? selected[1] : puzzle.offsets[1];
+      if (code == 'ArrowUp' && start > 0)
+        updateSelection([1, start - 1]);
+      else if (code == 'ArrowDown' && start < puzzle.words[1].length - 1)
+        updateSelection([1, start + 1]);
+      return true
+  } else if (code == 'Enter') {
     tryGuess();
     return true;
   } else if (code == 'Backspace') {
