@@ -45,6 +45,11 @@ html {
 
 html, body, .main {
   height: 100%;
+  margin: 0;
+}
+
+.title, .game {
+  padding: 8px;
 }
 
 .screen {
