@@ -93,11 +93,12 @@ function init() {
   let args = parse(window.location.search.substr(1));
   let title = '';
   let words;
+  let day;
   if (args.puzzle) {
     title = 'Custom Crosswordle';
     words = decode(args.puzzle).split('+');
   } else {
-    let day = Math.floor((Date.now() - (new Date(2022,0,30,0,0,0,0))) / (60 * 60 * 24 * 1000));
+    day = Math.floor((Date.now() - (new Date(2022,0,30,0,0,0,0))) / (60 * 60 * 24 * 1000));
     if (PUZZLES.length > day) {
       title = `Crosswordle ${day}`;
       words = PUZZLES[day].split(' ');
@@ -124,6 +125,7 @@ function init() {
       let current = score(i, j);
       if (best === null || current < best.score) {
         best = {
+          day,
           title,
           score: current,
           words,
@@ -165,6 +167,19 @@ function init() {
   }
   updateSelection([0, 0]);
   document.documentElement.style.setProperty('--size', Math.max(words[0].length, words[1].length));
+
+  // Restore progress
+  let progress = localStorage.getItem('crosswordle-daily');
+  if (!progress)
+    return;
+  let parsed = JSON.parse(progress);
+  if (parsed.day != puzzle.day)
+    return;
+  gameGuesses = parsed.guesses;
+  for (let guess of gameGuesses) {
+    setGuess(guess.toUpperCase());
+    addGuess(guess, false);
+  }
 }
 
 // Returns the tile for a given word, index
@@ -272,16 +287,8 @@ async function tryGuess() {
   }
 }
 
+let gameGuesses = [];
 async function guess() {
-  let answerLetters = {};
-  for (let i = 0; i < puzzle.words.length; i++) {
-    for (let j = 0; j < puzzle.words[i].length; j++) {
-      if (i == 1 && j == puzzle.offsets[1])
-        continue;
-      let c = puzzle.words[i][j];
-      answerLetters[c] = (answerLetters[c] || 0) + 1;
-    }
-  }
   let guesses = [];
   for (let i = 0; i < puzzle.words.length; i++) {
     guesses.push('');
@@ -297,6 +304,35 @@ async function guess() {
   for (let i = 0; i < guesses.length; i++) {
     if (!dict[guesses[i]]) {
       throw new UserError('Invalid word ' + guesses[i]);
+    }
+  }
+  let str = guesses.join(' ');
+  gameGuesses.push(str);
+  if (puzzle.day !== undefined) {
+    localStorage.setItem('crosswordle-daily', JSON.stringify({
+        day: puzzle.day, guesses: gameGuesses}));
+  }
+  addGuess(str, true);
+}
+
+function setGuess(guess) {
+  let guesses = guess.split(' ');
+  for (let i = 0; i < guesses.length; i++) {
+    for (let j = 0; j < guesses[i].length; j++) {
+      setTile(tile([i, j]), guesses[i][j]);
+    }
+  }
+}
+
+async function addGuess(guess, interactive) {
+  let guesses = guess.split(' ');
+  let answerLetters = {};
+  for (let i = 0; i < puzzle.words.length; i++) {
+    for (let j = 0; j < puzzle.words[i].length; j++) {
+      if (i == 1 && j == puzzle.offsets[1])
+        continue;
+      let c = puzzle.words[i][j];
+      answerLetters[c] = (answerLetters[c] || 0) + 1;
     }
   }
 
@@ -341,20 +377,24 @@ async function guess() {
   for (let i = 0; i < guesses.length; i++) {
     for (let j = 0; j < guesses[i].length; j++) {
       let t = tile([i, j]);
-      if (i != 1 || j != puzzle.offsets[1]) {
-        async function animate() {
-          let fill = wrong == 0 ? 'forwards' : 'none';
-          let a1 = t.animate([
+      async function animate() {
+        let fill = wrong == 0 ? 'forwards' : 'none';
+        let a1;
+        if (interactive || wrong == 0) {
+          a1 = t.animate([
             {transform: 'none'},
             {transform: 'rotateY(180deg)'}], {
               duration: 600,
               delay: startDelay,
               fill}).finished;
           animationPromises.push(a1);
-          if (wrong == 0) {
-            return;
-          }
-          let a2 = t.animate([
+        }
+        if (wrong == 0) {
+          return;
+        }
+        let a2;
+        if (interactive) {
+          a2 = t.animate([
             {transform: 'rotateY(180deg)'},
             {transform: 'rotateY(180deg)', offset: 0.8},
             {transform: 'none'}], {
@@ -363,18 +403,18 @@ async function guess() {
           }).finished;
           animationPromises.push(a2);
           await a1;
-          if (!t.classList.contains('green'))
-            setTile(t, '', 1);
-          await a2;
-          if (!t.classList.contains('green'))
-            setTile(t, '', 0);
-          t.classList.remove('green');
-          t.classList.remove('yellow');
-          if (i == 0 && j == 0)
-            updateSelection([i, j]);
         }
-        animate();
-        startDelay += 150;
+        if (!t.classList.contains('green'))
+          setTile(t, '', 1);
+        if (interactive) {
+          await a2;
+        }
+        if (!t.classList.contains('green'))
+          setTile(t, '', 0);
+        t.classList.remove('green');
+        t.classList.remove('yellow');
+        if (i == 0 && j == 0)
+          updateSelection([i, j]);
       }
       let log = document.createElement('div');
       log.classList = 'tile';
@@ -392,6 +432,10 @@ async function guess() {
       log.appendChild(letter);
       // TODO: Animate tiles to log area.
       result.appendChild(log);
+      if (i != 1 || j != puzzle.offsets[1]) {
+        animate();
+        startDelay += 150;
+      }
     }
     if (i < guesses.length - 1) {
       let space = document.createElement('div');
@@ -400,11 +444,15 @@ async function guess() {
       summary += ' ';
     }
   }
-  await Promise.all(animationPromises);
+  if (animationPromises.length > 0) {
+    await Promise.all(animationPromises);
+  }
   if (wrong) {
     // TODO: Add letter animations.
     document.querySelector('.clues').appendChild(result);
-    result.animate({opacity: [0, 1]}, 200);
+    if (interactive) {
+      result.animate({opacity: [0, 1]}, 200);
+    }
     document.querySelector('.keyboard').scrollIntoView();
   } else {
     // Show victory screen after clues are revealed.
