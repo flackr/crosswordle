@@ -76,7 +76,7 @@ html, body, .main {
   transform: translate(-50%, -50%);
 }
 
-.error .message {
+.modal .message {
   font-size: 2em;
 }
 

@@ -280,7 +280,7 @@ async function tryGuess() {
     await guess();
   } catch (err) {
     if (err instanceof UserError) {
-      showError(err.message);
+      showMessage(err.message);
     } else {
       throw err;
     }
@@ -459,13 +459,14 @@ async function addGuess(guess, interactive) {
     document.getElementById('guesses').textContent = (summary.split('\n').length - 1);
     document.getElementById('share').onclick = function() {
       navigator.clipboard.writeText(`${summary}\n${window.location.href}`);
+      showMessage('Copied results to clipboard!');
     }
     document.querySelector('.victory').style.display = 'block';
   }
 }
 
-async function showError(text) {
-  let div = document.querySelector('.error');
+async function showMessage(text) {
+  let div = document.querySelector('.modal');
   div.querySelector('.message').textContent = text;
   div.style.display = 'block';
   await div.animate([
