@@ -42,6 +42,8 @@ function initKeyboard() {
   addKey('R', 'Enter', 'Enter');
   addKey('B', 'Erase', 'Backspace');
   document.addEventListener('keydown', (evt) => {
+    if (evt.target != document.body)
+      return;
     // Don't handle modified keys.
     if (evt.ctrlKey || evt.metaKey || evt.altKey)
       return;
@@ -88,6 +90,33 @@ function init() {
   });
   document.getElementById('close-victory').addEventListener('click', () => {
     document.querySelector('.victory').style.display = '';
+  });
+  document.getElementById('create').addEventListener('click', async () => {
+    let errors = '';
+    let puzzle = document.getElementById('custom-crosswordle').value.toLowerCase().replace(' ', '+');
+    let words = puzzle.split('+');
+    if (words.length != 2) {
+      errors += 'Must enter exactly two words separated by a space.\n';
+    }
+    let dict = await dictionary;
+    for (let i = 0; i < words.length; i++) {
+      if (!dict[words[i]]) {
+        errors += `${words[i]} is not a recognized word.\n`;
+      }
+    }
+    let errorEl = document.getElementById('custom-error');
+    errorEl.textContent = errors;
+    if (errors) {
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
+
+    let link = document.getElementById('custom-link');
+    let href = `${window.location.origin}${window.location.pathname}?puzzle=${encode(puzzle)}`;
+    link.textContent = href;
+    link.href = href;
+    link.style.display = 'block';
   });
   initKeyboard();
   let args = parse(window.location.search.substr(1));

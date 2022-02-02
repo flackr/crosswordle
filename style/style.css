@@ -76,6 +76,10 @@ html, body, .main {
   transform: translate(-50%, -50%);
 }
 
+#custom-link, #custom-error {
+  display: none;
+}
+
 .modal .message {
   font-size: 2em;
 }
