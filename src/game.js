@@ -377,6 +377,34 @@ async function addGuess(guess, interactive) {
   for (let i = 0; i < guesses.length; i++) {
     for (let j = 0; j < guesses[i].length; j++) {
       let t = tile([i, j]);
+      let log = document.createElement('div');
+      log.classList = 'tile';
+      if (t.classList.contains('green')) {
+        summary += '🟩';
+        log.classList.add('green');
+      } else if (t.classList.contains('yellow')) {
+        summary += '🟨';
+        log.classList.add('yellow');
+      } else {
+        summary += '⬜';
+      }
+      let letter = document.createElement('div');
+      letter.textContent = guesses[i][j].toUpperCase();
+      log.appendChild(letter);
+      // TODO: Animate tiles to log area.
+      result.appendChild(log);
+    }
+    if (i < guesses.length - 1) {
+      let space = document.createElement('div');
+      space.classList = 'empty';
+      result.appendChild(space);
+      summary += ' ';
+    }
+  }
+  // Animate the tiles and then clear their contents if not green.
+  for (let i = 0; i < guesses.length; i++) {
+    for (let j = 0; j < guesses[i].length; j++) {
+      let t = tile([i, j]);
       async function animate() {
         let fill = wrong == 0 ? 'forwards' : 'none';
         let a1;
@@ -416,32 +444,10 @@ async function addGuess(guess, interactive) {
         if (i == 0 && j == 0)
           updateSelection([i, j]);
       }
-      let log = document.createElement('div');
-      log.classList = 'tile';
-      if (t.classList.contains('green')) {
-        summary += '🟩';
-        log.classList.add('green');
-      } else if (t.classList.contains('yellow')) {
-        summary += '🟨';
-        log.classList.add('yellow');
-      } else {
-        summary += '⬜';
-      }
-      let letter = document.createElement('div');
-      letter.textContent = guesses[i][j].toUpperCase();
-      log.appendChild(letter);
-      // TODO: Animate tiles to log area.
-      result.appendChild(log);
       if (i != 1 || j != puzzle.offsets[1]) {
         animate();
         startDelay += 150;
       }
-    }
-    if (i < guesses.length - 1) {
-      let space = document.createElement('div');
-      space.classList = 'empty';
-      result.appendChild(space);
-      summary += ' ';
     }
   }
   if (animationPromises.length > 0) {
