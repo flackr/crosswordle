@@ -18,35 +18,115 @@
     </script>
   </head>
   <body>
+    <div class="help screen">
+      <div class="message">
+        <button class="close" id="close-help">❌</button>
+        <div>
+          <h1>Crosswordle</h1>
+          <p>
+            The goal is to guess the two crossing words in as few guesses as possible.
+            Each guess must be composed of valid words. After each guess you'll get a
+            clue, e.g.
+          </p>
+          <div class="flipped grid">
+            <div style="grid-area: 2 / 1">
+              <div class="green tile"><div>C</div></div>
+            </div>
+            <div style="grid-area: 2 / 2">
+              <div class="tile"><div>R</div></div>
+            </div>
+            <div style="grid-area: 2 / 3">
+              <div class="yellow tile"><div>O</div></div>
+            </div>
+            <div style="grid-area: 2 / 4">
+              <div class="yellow tile"><div>S</div></div>
+            </div>
+            <div style="grid-area: 2 / 5">
+              <div class="tile"><div>S</div></div>
+            </div>
+            <div style="grid-area: 1 / 3">
+              <div class="tile"><div>W</div></div>
+            </div>
+            <div style="grid-area: 3 / 3">
+              <div class="tile"><div>R</div></div>
+            </div>
+            <div style="grid-area: 4 / 3">
+              <div class="yellow tile"><div>D</div></div>
+            </div>
+          </div>
+          <p>
+            For compactness, this will be summarized as:
+          </p>
+          <div class="clues">
+            <div>
+              <div class="green tile"><div>C</div></div>
+              <div class="tile"><div>R</div></div>
+              <div class="yellow tile"><div>O</div></div>
+              <div class="yellow tile"><div>S</div></div>
+              <div class="tile"><div>S</div></div>
+              <div class="empty"></div>
+              <div class="tile"><div>W</div></div>
+              <div class="yellow tile"><div>O</div></div>
+              <div class="tile"><div>R</div></div>
+              <div class="yellow tile"><div>D</div></div>
+            </div>
+          </div>
+          <p>
+            Green indicates the letter is in the correct location. Yellow indicates a
+            correct letter in the wrong location. Each yellow tile corresponds to one
+            of that letter. For example, in this case the answer has only one S so
+            only the first S turned yellow.
+          </p>
+          <p>
+            From the above clue, you can infer:
+          </p>
+          <ul>
+            <li>There is a C at the start of the horizontal word.</li>
+            <li>There is an O in at least one of the words. Note that there was only one O in your guess, even though it is displayed twice in the summary.</li>
+            <li>There is exactly one S in one of the words.</li>
+            <li>There is no W or R in the answer.</li>
+            <li>There is a D in at least one of the words.</li>
+          </ul>
+          <p>
+            Hint: The two words are related.
+          </p>
+        </div>
+      </div>
+    </div>
     <div class="settings screen">
       <div class="message">
-        <h1>Settings</h1>
-        <hr>
-        <p>Coming soon</p>
-        <div><input disabled type="checkbox"> Skip filled positions</div>
-        <div><input disabled type="checkbox"> Hard mode</div>
-        <p>Create your own crosswordle:</p>
-        <input id="custom-crosswordle" placeholder="crossing words"><button id="create">Create</button><br>
-        <p id="custom-error"></p>
-        <a id="custom-link"></a>
+        <button class="close" id="close-settings">❌</button>
+        <div>
+          <h1>Settings</h1>
+          <hr>
+          <p>Coming soon</p>
+          <div><input disabled type="checkbox"> Skip filled positions</div>
+          <div><input disabled type="checkbox"> Hard mode</div>
+          <p>Create your own crosswordle:</p>
+          <input id="custom-crosswordle" placeholder="crossing words"><button id="create">Create</button><br>
+          <p id="custom-error"></p>
+          <a id="custom-link"></a>
 
-        <p>Inspired by the popular <a href="https://www.powerlanguage.co.uk/wordle/">Wordle</a> game.
-          Dictionary file from aspell6 package. See <a href="third_party/aspell6/Copyright">Copyright</a> for details.</p>
-        <button id="close-settings">Close</button>
+          <p>Inspired by the popular <a href="https://www.powerlanguage.co.uk/wordle/">Wordle</a> game.
+            Dictionary file from aspell6 package. See <a href="third_party/aspell6/Copyright">Copyright</a> for details.</p>
+        </div>
       </div>
     </div>
     <div class="victory screen">
       <div class="message">
-        <h1>Victory</h1>
-        <hr>
-        <p>You got it in <span id="guesses"></span> guesses</p>
-        <p>Click <button id="share">Share</button> to copy a summary of your game.</p>
-        <button id="close-victory">Close</button>
-      </div>
+        <button class="close" id="close-victory">❌</button>
+        <div>
+          <h1>Victory</h1>
+          <hr>
+          <p>You got it in <span id="guesses"></span> guesses</p>
+          <p>Click <button id="share">Share</button> to copy a summary of your game.</p>
+        </div>
+        </div>
     </div>
     <div class="main">
       <div class="title">
         <div class="menu">
+          <button id="show-help">❓</button>
           <button id="show-settings">⚙️</button>
         </div>
         <h1>Crosswordle</h1>

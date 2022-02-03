@@ -93,6 +93,17 @@ function init() {
   document.getElementById('close-victory').addEventListener('click', () => {
     document.querySelector('.victory').style.display = '';
   });
+  document.getElementById('show-help').addEventListener('click', () => {
+    document.querySelector('.help').style.display = 'block';
+  });
+  document.getElementById('close-help').addEventListener('click', () => {
+    document.querySelector('.help').style.display = '';
+  });
+  let seenHelp = localStorage.getItem('crosswordle-help');
+  if (seenHelp === null) {
+    document.querySelector('.help').style.display = 'block';
+    localStorage.setItem('crosswordle-help', '1');
+  }
   document.getElementById('create').addEventListener('click', async () => {
     let errors = '';
     let puzzle = document.getElementById('custom-crosswordle').value.toLowerCase().replace(' ', '+');
@@ -169,7 +180,7 @@ function init() {
     throw new Error('No common letter between words');
   }
   puzzle = best;
-  let grid = document.querySelector('.grid');
+  let grid = document.querySelector('.main .grid');
   grid.style.gridTemplateColumns = columns;
   let addCell = function(word, char, x, y) {
     let container = document.createElement('div');
@@ -486,7 +497,7 @@ async function addGuess(guess, interactive) {
   }
   if (wrong) {
     // TODO: Add letter animations.
-    document.querySelector('.clues').appendChild(result);
+    document.querySelector('.main .clues').appendChild(result);
     if (interactive) {
       result.animate({opacity: [0, 1]}, 200);
     }

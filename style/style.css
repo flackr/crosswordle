@@ -10,6 +10,19 @@ html {
   color-scheme: dark light;
 }
 
+.help {
+  --large-size: 35px;
+  --small-size: 30px;
+}
+
+.help .grid {
+  grid-auto-columns: min-content;
+}
+
+.help .message {
+  width: 75%;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     --background: black;
@@ -73,12 +86,27 @@ html, body, .main {
 
 .screen > .message {
   position: absolute;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7);
   top: 50%;
   left: 50%;
   background: var(--background);
-  padding: 10px;
   border: 2px solid #777;
   transform: translate(-50%, -50%);
+}
+
+.message > div {
+  overflow: auto;
+  max-height: 80vh;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 24px;
 }
 
 #custom-link, #custom-error {
@@ -176,6 +204,10 @@ html, body, .main {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   position: absolute;
+}
+
+.grid.flipped .tile > div:nth-child(1) {
+  transform: none;
 }
 
 .grid .tile > div:nth-child(1) {
