@@ -24,7 +24,9 @@ function initKeyboard() {
   let keyboard = document.querySelector('.keyboard');
   let addKey = function(gridArea, text, code) {
     let key = document.createElement('div');
-    key.className = 'key';
+    key.classList.add('key');
+    if (text.length > 1)
+      key.classList.add('small');
     key.setAttribute('code', code);
     key.innerHTML = text;
     key.style.gridArea = gridArea;

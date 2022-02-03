@@ -26,14 +26,19 @@ html {
   justify-self: center;
 }
 
+.keyboard-holder {
+  position: relative;
+  grid-area: keyboard;
+}
+
 .keyboard {
   display: grid;
-  grid-area: keyboard;
+  max-width: 700px;
   grid-template-areas:
       'q q w w e e r r t t y y u u i i o o p p'
       '. a a s s d d f f g g h h j j k k l l .'
       'R R R z z x x c c v v b b n n m m B B B';
-  margin: 15px 0;
+  margin: 15px auto;
 }
 
 .menu {
@@ -201,6 +206,12 @@ html, body, .main {
   border-radius: 3px;
   background: var(--possible);
   cursor: pointer;
+}
+
+/* Decrease the text size on Enter and Erase keys to allow for uniform size keys. */
+.key.small {
+  font-size: small;
+  line-height: 380%;
 }
 
 .key.black {
