@@ -51,7 +51,7 @@ html, body, .main {
   margin: 0;
 }
 
-.title, .game {
+.title, .clues, .grid {
   padding: 8px;
 }
 
@@ -90,14 +90,34 @@ html, body, .main {
   align-items: start;
   grid-template-areas:
       'title'
-      'game'
+      'clues'
+      'grid'
       'keyboard';
   grid-template-rows: min-content 1fr min-content;
 }
 
-.game {
-  grid-area: game;
+/* On wide screen devices, put the clues to the right of the grid. */
+@media only screen and (min-width: 768px) {
+  .main {
+    grid-template-areas:
+        'title    title'
+        'grid     clues'
+        'keyboard keyboard';
+  }
+  html {
+    --large-size: calc(max(20px, ((min(100vw / 2, 100vh - 20em) - 16px) / var(--size)) - 4px));
+    --small-size: calc(max(16px, ((min(100vw / 2, 100vh) - 16px) / (2 * var(--size) + 1)) - 4px));
+  }
+}
+
+.clues {
   justify-self: center;
+  grid-area: clues;
+}
+
+.grid {
+  justify-self: center;
+  grid-area: grid;
 }
 
 .clues .tile,
