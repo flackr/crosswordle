@@ -39,6 +39,13 @@ html {
   justify-self: center;
 }
 
+@media only screen and (max-width: 600px) {
+  .title {
+    /* Left align the title to avoid the menu buttons. */
+    justify-self: left;
+  }
+}
+
 .keyboard-holder {
   position: relative;
   grid-area: keyboard;
@@ -61,7 +68,12 @@ html {
 }
 .menu > button {
   font-size: 2em;
+  padding: 3px;
   cursor: pointer;
+  /* The default button style on iOS consumes too much space. */
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 3px;
 }
 
 html, body, .main {
