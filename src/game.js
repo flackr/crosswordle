@@ -99,6 +99,18 @@ function init() {
   document.getElementById('close-help').addEventListener('click', () => {
     document.querySelector('.help').style.display = '';
   });
+  let hardModeCheckbox = document.getElementById('hard-mode');
+  hardModeCheckbox.addEventListener('change', () => {
+    if (hardModeCheckbox.checked && gameGuesses.length > 0) {
+      showMessage('Hard mode will take effect on your next game. It cannot be turned on mid-game.');
+    }
+    settings.hardMode = hardModeCheckbox.checked;
+    localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
+    if (!hardModeCheckbox.checked) {
+      // Hard mode can be turned off mid-game.
+      hardMode = false;
+    }
+  });
   let seenHelp = localStorage.getItem('crosswordle-help');
   if (seenHelp === null) {
     document.querySelector('.help').style.display = 'block';
@@ -149,7 +161,6 @@ function init() {
     }
   }
   document.title = document.querySelector('.title h1').textContent = title;
-  summary = title;
 
   // Find most central overlap between the two words.
   let best = null;
@@ -210,13 +221,23 @@ function init() {
   updateSelection([0, 0]);
   document.documentElement.style.setProperty('--size', Math.max(words[0].length, words[1].length));
 
+  // Restore settings
+  let storedSettings = localStorage.getItem('crosswordle-settings');
+  if (storedSettings) {
+    settings = JSON.parse(storedSettings);
+    if (settings.hardMode) {
+      document.getElementById('hard-mode').checked = true;
+    }
+  }
+
   // Restore progress
   let progress = localStorage.getItem('crosswordle-daily');
   if (!progress)
     return;
   let parsed = JSON.parse(progress);
-  if (parsed.day != puzzle.day)
+  if (puzzle.day !== undefined && parsed.day != puzzle.day)
     return;
+  hardMode = parsed.hardMode || false;
   gameGuesses = parsed.guesses;
   for (let guess of gameGuesses) {
     setGuess(guess.toUpperCase());
@@ -329,17 +350,38 @@ async function tryGuess() {
   }
 }
 
+const WORD_DESC = ['Horizontal', 'Vertical'];
+let hardMode = false;
+let settings = {};
 let gameGuesses = [];
+let clues = {
+  green: [],
+  // 'a': {min: N, max: true/false, not: Set([indices])}
+  letters: {},
+};
+for (let i = 0; i < alphabet.length; ++i) {
+  clues.letters[alphabet[i]] = {min: 0, max: false, not: new Set()};
+}
+
 async function guess() {
   let guesses = [];
+  let letters = {};
+  if (gameGuesses.length == 0) {
+    hardMode = settings.hardMode;
+  }
   for (let i = 0; i < puzzle.words.length; i++) {
     guesses.push('');
     for (let j = 0; j < puzzle.words[i].length; j++) {
-      let c = tile([i, j]).children[0].textContent;
+      let c = tile([i, j]).children[0].textContent.toLowerCase();
       if (c == '') {
         throw new UserError('Incomplete word');
       }
-      guesses[i] += c.toLowerCase();
+      if (hardMode && clues.green[i] && clues.green[i][j] && clues.green[i][j] != c) {
+        throw new UserError(`${WORD_DESC[i]} word letter ${j + 1} must be ${clues.green[i][j].toUpperCase()}`);
+      }
+      letters[c] = letters[c] || 0;
+      letters[c]++;
+      guesses[i] += c;
     }
   }
   let dict = await dictionary;
@@ -348,11 +390,20 @@ async function guess() {
       throw new UserError('Invalid word ' + guesses[i]);
     }
   }
+  if (hardMode) {
+    for (let c in clues.letters) {
+      let clue = clues.letters[c];
+      let inGuess = letters[c] || 0;
+      if (clue.min > inGuess) {
+        throw new UserError(`You must have ${clue.min} ${c.toUpperCase()}'s.`);
+      }
+    }
+  }
   let str = guesses.join(' ');
   gameGuesses.push(str);
   if (puzzle.day !== undefined) {
     localStorage.setItem('crosswordle-daily', JSON.stringify({
-        day: puzzle.day, guesses: gameGuesses}));
+        day: puzzle.day, guesses: gameGuesses, hardMode}));
   }
   addGuess(str, true);
 }
@@ -380,11 +431,19 @@ async function addGuess(guess, interactive) {
 
   // Mark green first.
   let wrong = 0;
+  let letters = {};
+  for (let i = 0; i < alphabet.length; ++i) {
+    letters[alphabet[i]] = {min: 0, max: false};
+  }
   for (let i = 0; i < guesses.length; i++) {
+    if (clues.green.length <= i)
+      clues.green.push([]);
     for (let j = 0; j < guesses[i].length; j++) {
       if (i == 1 && j == puzzle.offsets[1])
         continue;
       if (guesses[i][j] == puzzle.words[i][j]) {
+        clues.green[i][j] = guesses[i][j];
+        letters[guesses[i][j]].min++;
         document.querySelector(`.key[code=${guesses[i][j]}]`).classList.add('green');
         tile([i, j]).classList.add('green');
         answerLetters[guesses[i][j]]--;
@@ -394,21 +453,34 @@ async function addGuess(guess, interactive) {
     }
   }
 
+  let count = 0;
   // Then mark yellow
   for (let i = 0; i < guesses.length; i++) {
     for (let j = 0; j < guesses[i].length; j++) {
+      ++count;
       if (i == 1 && j == puzzle.offsets[1])
         continue;
       if (guesses[i][j] != puzzle.words[i][j]) {
+        clues.letters[guesses[i][j]].not.add(count - 1);
         if (answerLetters[guesses[i][j]]) {
           document.querySelector(`.key[code=${guesses[i][j]}]`).classList.add('yellow');
           tile([i, j]).classList.add('yellow');
+          letters[guesses[i][j]].min++;
           answerLetters[guesses[i][j]]--;
         } else if (!(guesses[i][j] in answerLetters)) {
+          letters[guesses[i][j]].max = true;
           document.querySelector(`.key[code=${guesses[i][j]}]`).classList.add('black');
         }
       }
     }
+  }
+
+  // Merge new information with existing.
+  for (let i = 0; i < alphabet.length; ++i) {
+    let c = alphabet[i];
+    clues.letters[c].min = Math.max(clues.letters[c].min, letters[c].min);
+    if (letters[c].max)
+      clues.letters[c].max = true;
   }
 
   // Then do a reveal, and add to the clues row.
@@ -504,9 +576,11 @@ async function addGuess(guess, interactive) {
     document.querySelector('.keyboard').scrollIntoView();
   } else {
     // Show victory screen after clues are revealed.
-    document.getElementById('guesses').textContent = (summary.split('\n').length - 1);
+    let guesses = gameGuesses.length;
+    let indicator = hardMode ? '*' : '';
+    document.getElementById('guesses').textContent = guesses;
     document.getElementById('share').onclick = function() {
-      navigator.clipboard.writeText(`${summary}\n${window.location.href}`);
+      navigator.clipboard.writeText(`${puzzle.title} ${guesses}/∞${indicator}${summary}\n${window.location.href}`);
       showMessage('Copied results to clipboard!');
     }
     document.querySelector('.victory').style.display = 'block';
