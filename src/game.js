@@ -111,6 +111,11 @@ function init() {
       hardMode = false;
     }
   });
+  let skipFilledCheckbox = document.getElementById('skip-filled');
+  skipFilledCheckbox.addEventListener('change', () => {
+    settings.skipFilled = skipFilledCheckbox.checked;
+    localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
+  });
   let seenHelp = localStorage.getItem('crosswordle-help');
   if (seenHelp === null) {
     document.querySelector('.help').style.display = 'block';
@@ -225,9 +230,10 @@ function init() {
   let storedSettings = localStorage.getItem('crosswordle-settings');
   if (storedSettings) {
     settings = JSON.parse(storedSettings);
-    if (settings.hardMode) {
+    if (settings.hardMode)
       document.getElementById('hard-mode').checked = true;
-    }
+    if (settings.skipFilled)
+      document.getElementById('skip-filled').checked = true;
   }
 
   // Restore progress
@@ -235,7 +241,7 @@ function init() {
   if (!progress)
     return;
   let parsed = JSON.parse(progress);
-  if (puzzle.day !== undefined && parsed.day != puzzle.day)
+  if (puzzle.day === undefined || parsed.day != puzzle.day)
     return;
   hardMode = parsed.hardMode || false;
   gameGuesses = parsed.guesses;
@@ -304,7 +310,10 @@ function type(code) {
     return true;
   } else if (code.length == 1) {
     setTile(tile(selected), code.toUpperCase());
-    if (selected[1] < puzzle.words[selected[0]].length) {
+    let advance = 1;
+    while (selected[1] < puzzle.words[selected[0]].length && (
+               advance-- > 0 ||
+               settings.skipFilled && tile(selected).children[0].textContent != '')) {
       if (selected[0] == 0 && selected[1] == puzzle.words[selected[0]].length - 1) {
         updateSelection([1, 0]);
       } else {
