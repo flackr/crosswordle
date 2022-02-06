@@ -116,6 +116,12 @@ function init() {
     settings.skipFilled = skipFilledCheckbox.checked;
     localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
   });
+  let dynamicKeybordCheckbox = document.getElementById('dynamic-keyboard');
+  dynamicKeybordCheckbox.addEventListener('change', () => {
+    settings.dynamicKeyboard = dynamicKeybordCheckbox.checked;
+    localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
+    updateKeyboard(true);
+  });
   let seenHelp = localStorage.getItem('crosswordle-help');
   if (seenHelp === null) {
     document.querySelector('.help').style.display = 'block';
@@ -234,6 +240,8 @@ function init() {
       document.getElementById('hard-mode').checked = true;
     if (settings.skipFilled)
       document.getElementById('skip-filled').checked = true;
+    if (settings.dynamicKeyboard)
+      document.getElementById('dynamic-keyboard').checked = true;
   }
 
   // Restore progress
@@ -307,6 +315,7 @@ function type(code) {
       updateSelection([0, puzzle.words[0].length - 1]);
     }
     setTile(tile(selected), '');
+    updateKeyboard(false);
     return true;
   } else if (code.length == 1) {
     setTile(tile(selected), code.toUpperCase());
@@ -320,6 +329,7 @@ function type(code) {
         updateSelection([selected[0], selected[1] + 1]);
       }
     }
+    updateKeyboard(false);
     return true;
   }
   return false;
@@ -337,7 +347,6 @@ function click(elem) {
       break;
     }
   }
-  console.log(this);
 }
 
 class UserError extends Error {
@@ -372,9 +381,60 @@ for (let i = 0; i < alphabet.length; ++i) {
   clues.letters[alphabet[i]] = {min: 0, max: false, not: new Set()};
 }
 
+function letterCount() {
+  let letters = {};
+  for (let i = 0; i < puzzle.words.length; ++i) {
+    for (let j = 0; j < puzzle.words[i].length; ++j) {
+      let c = tile([i, j]).children[0].textContent.toLowerCase();
+      if (c == '') {
+        continue;
+      }
+      letters[c] = letters[c] || 0;
+      letters[c]++;
+    }
+  }
+  return letters;
+}
+
+function updateKeyboard(full) {
+  if (!full && !settings.dynamicKeyboard)
+    return;
+  let greenLetters = {};
+  let letters = letterCount();
+  for (let i = 0; i < puzzle.words.length; ++i) {
+    for (let j = 0; j < puzzle.words[i].length; ++j) {
+      if (clues.green[i] && clues.green[i][j]) {
+        if (!settings.dynamicKeyboard || tile([i, j]).children[0].textContent.toLowerCase() != clues.green[i][j]) {
+          greenLetters[clues.green[i][j]] = true;
+        }
+      }
+    }
+  }
+  for (let i = 0; i < alphabet.length; ++i) {
+    let c = alphabet[i];
+    let key = document.querySelector(`.key[code=${c}]`);
+    if (greenLetters[c]) {
+      key.classList.add('green');
+    } else {
+      key.classList.remove('green');
+    }
+    if ((!settings.dynamicKeyboard && clues.letters[c].min > 0) ||
+        clues.letters[c].min > (letters[c] || 0)) {
+      key.classList.add('yellow');
+    } else {
+      key.classList.remove('yellow');
+    }
+    if ((!settings.dynamicKeyboard && clues.letters[c].max && clues.letters[c].min == 0) ||
+        (settings.dynamicKeyboard && clues.letters[c].max && clues.letters[c].min <= (letters[c] || 0))) {
+      key.classList.add('black');
+    } else {
+      key.classList.remove('black');
+    }
+  }
+}
+
 async function guess() {
   let guesses = [];
-  let letters = {};
   if (gameGuesses.length == 0) {
     hardMode = settings.hardMode;
   }
@@ -388,8 +448,6 @@ async function guess() {
       if (hardMode && clues.green[i] && clues.green[i][j] && clues.green[i][j] != c) {
         throw new UserError(`${WORD_DESC[i]} word letter ${j + 1} must be ${clues.green[i][j].toUpperCase()}`);
       }
-      letters[c] = letters[c] || 0;
-      letters[c]++;
       guesses[i] += c;
     }
   }
@@ -400,6 +458,7 @@ async function guess() {
     }
   }
   if (hardMode) {
+    let letters = letterCount();
     for (let c in clues.letters) {
       let clue = clues.letters[c];
       let inGuess = letters[c] || 0;
@@ -453,7 +512,6 @@ async function addGuess(guess, interactive) {
       if (guesses[i][j] == puzzle.words[i][j]) {
         clues.green[i][j] = guesses[i][j];
         letters[guesses[i][j]].min++;
-        document.querySelector(`.key[code=${guesses[i][j]}]`).classList.add('green');
         tile([i, j]).classList.add('green');
         answerLetters[guesses[i][j]]--;
       } else {
@@ -472,13 +530,11 @@ async function addGuess(guess, interactive) {
       if (guesses[i][j] != puzzle.words[i][j]) {
         clues.letters[guesses[i][j]].not.add(count - 1);
         if (answerLetters[guesses[i][j]]) {
-          document.querySelector(`.key[code=${guesses[i][j]}]`).classList.add('yellow');
           tile([i, j]).classList.add('yellow');
           letters[guesses[i][j]].min++;
           answerLetters[guesses[i][j]]--;
-        } else if (!(guesses[i][j] in answerLetters)) {
+        } else {
           letters[guesses[i][j]].max = true;
-          document.querySelector(`.key[code=${guesses[i][j]}]`).classList.add('black');
         }
       }
     }
@@ -576,6 +632,7 @@ async function addGuess(guess, interactive) {
   if (animationPromises.length > 0) {
     await Promise.all(animationPromises);
   }
+  updateKeyboard(true);
   if (wrong) {
     // TODO: Add letter animations.
     document.querySelector('.main .clues').appendChild(result);
