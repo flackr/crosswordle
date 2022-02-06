@@ -240,9 +240,9 @@ function init() {
       document.getElementById('hard-mode').checked = true;
     if (settings.skipFilled)
       document.getElementById('skip-filled').checked = true;
-    if (settings.dynamicKeyboard)
-      document.getElementById('dynamic-keyboard').checked = true;
   }
+  if (settings.dynamicKeyboard || settings.dynamicKeyboard === undefined)
+    document.getElementById('dynamic-keyboard').checked = true;
 
   // Restore progress
   let progress = localStorage.getItem('crosswordle-daily');
@@ -397,14 +397,15 @@ function letterCount() {
 }
 
 function updateKeyboard(full) {
-  if (!full && !settings.dynamicKeyboard)
+  let useDynamicKeyboard = settings.dynamicKeyboard || settings.dynamicKeyboard === undefined;
+  if (!full && !useDynamicKeyboard)
     return;
   let greenLetters = {};
   let letters = letterCount();
   for (let i = 0; i < puzzle.words.length; ++i) {
     for (let j = 0; j < puzzle.words[i].length; ++j) {
       if (clues.green[i] && clues.green[i][j]) {
-        if (!settings.dynamicKeyboard || tile([i, j]).children[0].textContent.toLowerCase() != clues.green[i][j]) {
+        if (!useDynamicKeyboard || tile([i, j]).children[0].textContent.toLowerCase() != clues.green[i][j]) {
           greenLetters[clues.green[i][j]] = true;
         }
       }
@@ -418,14 +419,14 @@ function updateKeyboard(full) {
     } else {
       key.classList.remove('green');
     }
-    if ((!settings.dynamicKeyboard && clues.letters[c].min > 0) ||
+    if ((!useDynamicKeyboard && clues.letters[c].min > 0) ||
         clues.letters[c].min > (letters[c] || 0)) {
       key.classList.add('yellow');
     } else {
       key.classList.remove('yellow');
     }
-    if ((!settings.dynamicKeyboard && clues.letters[c].max && clues.letters[c].min == 0) ||
-        (settings.dynamicKeyboard && clues.letters[c].max && clues.letters[c].min <= (letters[c] || 0))) {
+    if ((!useDynamicKeyboard && clues.letters[c].max && clues.letters[c].min == 0) ||
+        (useDynamicKeyboard && clues.letters[c].max && clues.letters[c].min <= (letters[c] || 0))) {
       key.classList.add('black');
     } else {
       key.classList.remove('black');
