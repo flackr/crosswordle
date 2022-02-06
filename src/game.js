@@ -13,9 +13,9 @@ const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 let dictionary = async function() {
   let result = await fetch('third_party/aspell6-en/en-common.txt');
   let words = await result.text();
-  let dict = {};
+  let dict = new Set();
   words.split(/\r?\n/).forEach(word => {
-    dict[word] = true;
+    dict.add(word);
   });
   return dict;
 }();
@@ -136,7 +136,7 @@ function init() {
     }
     let dict = await dictionary;
     for (let i = 0; i < words.length; i++) {
-      if (!dict[words[i]]) {
+      if (!dict.has(words[i])) {
         errors += `${words[i]} is not a recognized word.\n`;
       }
     }
@@ -454,7 +454,7 @@ async function guess() {
   }
   let dict = await dictionary;
   for (let i = 0; i < guesses.length; i++) {
-    if (!dict[guesses[i]]) {
+    if (!dict.has(guesses[i])) {
       throw new UserError('Invalid word ' + guesses[i]);
     }
   }
