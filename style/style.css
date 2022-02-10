@@ -46,12 +46,9 @@ html {
   }
 }
 
-.keyboard-holder {
-  position: relative;
-  grid-area: keyboard;
-}
-
 .keyboard {
+  grid-area: keyboard;
+  width: 100%;
   display: grid;
   max-width: 700px;
   grid-template-areas:
