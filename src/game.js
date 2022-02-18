@@ -10,15 +10,29 @@ function parse(str) {
 }
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-let dictionary = async function() {
-  let result = await fetch('third_party/aspell6-en/en-common.txt');
-  let words = await result.text();
-  let dict = new Set();
-  words.split(/\r?\n/).forEach(word => {
-    dict.add(word);
-  });
-  return dict;
-}();
+let dictionary = new Set();
+let dictionaryLengths = [];
+const MAX_LENGTH = 10;
+
+function loadWordLength(length) {
+  let fetchWords = async function(length) {
+    if (length > MAX_LENGTH)
+      return;
+    let result = await fetch(`third_party/aspell6-en/en-common-${length}.txt`);
+    let words = await result.text();
+    words.split(/\r?\n/).forEach(word => {
+      dictionary.add(word);
+    });
+  };
+  if (!dictionaryLengths[length])
+    dictionaryLengths[length] = fetchWords(length);
+  return dictionaryLengths[length];
+}
+
+async function isWord(word) {
+  await loadWordLength(word.length);
+  return dictionary.has(word);
+}
 
 function initKeyboard() {
   let keyboard = document.querySelector('.keyboard');
@@ -134,9 +148,9 @@ function init() {
     if (words.length != 2) {
       errors += 'Must enter exactly two words separated by a space.\n';
     }
-    let dict = await dictionary;
     for (let i = 0; i < words.length; i++) {
-      if (!dict.has(words[i])) {
+      let valid = await isWord(words[i]);
+      if (!valid) {
         errors += `${words[i]} is not a recognized word.\n`;
       }
     }
@@ -230,6 +244,9 @@ function init() {
     addCell(1, i, best.offsets[0], i);
   }
   updateSelection([0, 0]);
+  for (let i = 0; i < words.length; ++i) {
+    loadWordLength(words[i].length);
+  }
   document.documentElement.style.setProperty('--size', Math.max(words[0].length, words[1].length));
 
   // Restore settings
@@ -452,9 +469,9 @@ async function guess() {
       guesses[i] += c;
     }
   }
-  let dict = await dictionary;
   for (let i = 0; i < guesses.length; i++) {
-    if (!dict.has(guesses[i])) {
+    let valid = await isWord(guesses[i]);
+    if (!valid) {
       throw new UserError('Invalid word ' + guesses[i]);
     }
   }
