@@ -7,6 +7,8 @@ html {
   --possible: #ccc;
   --yellow: yellow;
   --green: #0f0;
+  --red-fg: #900;
+  --green-fg: #060;
   color-scheme: dark light;
 }
 
@@ -31,6 +33,8 @@ html {
     --possible: #888;
     --yellow: #880;
     --green: green;
+    --red-fg: #f77;
+    --green-fg: #7f7;
   }
 }
 
@@ -238,6 +242,14 @@ html, body, .main {
 
 .tile.green > div:nth-child(1) {
   background: var(--green);
+}
+
+.tile.error > div:nth-child(2) {
+  color: var(--red-fg);
+}
+
+.tile.green-hint > div:nth-child(2) {
+  color: var(--green-fg);
 }
 
 .key {

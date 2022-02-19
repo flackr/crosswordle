@@ -134,7 +134,7 @@ function init() {
   dynamicKeybordCheckbox.addEventListener('change', () => {
     settings.dynamicKeyboard = dynamicKeybordCheckbox.checked;
     localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
-    updateKeyboard(true);
+    updateHints(true);
   });
   let seenHelp = localStorage.getItem('crosswordle-help');
   if (seenHelp === null) {
@@ -337,7 +337,7 @@ function type(code) {
       updateSelection([0, puzzle.words[0].length - 1]);
     }
     setTile(tile(selected), '');
-    updateKeyboard(false);
+    updateHints(false);
     return true;
   } else if (!finished && code.length == 1) {
     setTile(tile(selected), code.toUpperCase());
@@ -351,7 +351,7 @@ function type(code) {
         updateSelection([selected[0], selected[1] + 1]);
       }
     }
-    updateKeyboard(false);
+    updateHints(false);
     return true;
   }
   return false;
@@ -427,21 +427,59 @@ function letterCount() {
   return letters;
 }
 
-function updateKeyboard(full) {
+async function updateHints(full) {
   let useDynamicKeyboard = settings.dynamicKeyboard || settings.dynamicKeyboard === undefined;
   if (!full && !useDynamicKeyboard)
     return;
   let greenLetters = {};
   let letters = letterCount();
+  let count = 0;
+  let guesses = [];
   for (let i = 0; i < puzzle.words.length; ++i) {
+    guesses.push('');
     for (let j = 0; j < puzzle.words[i].length; ++j) {
+      let index = count++;
+      let t = tile([i, j]);
+      let c = t.children[0].textContent.toLowerCase();
       if (clues.green[i] && clues.green[i][j]) {
-        if (!useDynamicKeyboard || tile([i, j]).children[0].textContent.toLowerCase() != clues.green[i][j]) {
+        if (!useDynamicKeyboard || c != clues.green[i][j]) {
           greenLetters[clues.green[i][j]] = true;
+        }
+        if (useDynamicKeyboard && c == clues.green[i][j]) {
+          t.classList.add('green-hint');
+        } else {
+          t.classList.remove('green-hint');
+        }
+      }
+      // If the chosen letter can't go in this position or there are too many
+      // in the guess, highlight them.
+      if (useDynamicKeyboard && c && clues.letters[c] && (
+              clues.letters[c].not.has(index) ||
+              (clues.letters[c].max && clues.letters[c].min < letters[c]))) {
+        t.classList.add('error');
+      } else {
+        t.classList.remove('error');
+      }
+      if (c) {
+        guesses[i] += c;
+      }
+    }
+  }
+
+  // If either word is invalid, highlight the entire word.
+  if (useDynamicKeyboard) {
+    for (let i = 0; i < puzzle.words.length; ++i) {
+      if (guesses[i].length != puzzle.words[i].length)
+        continue;
+      let valid = await isWord(guesses[i]);
+      if (!valid) {
+        for (let j = 0; j < puzzle.words[i].length; ++j) {
+          tile([i, j]).classList.add('error');
         }
       }
     }
   }
+
   for (let i = 0; i < alphabet.length; ++i) {
     let c = alphabet[i];
     let key = document.querySelector(`.key[code=${c}]`);
@@ -664,7 +702,7 @@ async function addGuess(guess, interactive) {
   if (animationPromises.length > 0) {
     await Promise.all(animationPromises);
   }
-  updateKeyboard(true);
+  updateHints(true);
   if (wrong) {
     // TODO: Add letter animations.
     document.querySelector('.main .clues').appendChild(result);
