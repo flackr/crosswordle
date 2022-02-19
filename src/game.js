@@ -304,6 +304,7 @@ function setTile(tile, text, index) {
   }
 }
 
+let finished = false;
 function type(code) {
   if (code == 'ArrowRight' || code == 'ArrowLeft') {
     let start = selected[0] == 0 ? selected[1] : puzzle.offsets[0];
@@ -320,9 +321,13 @@ function type(code) {
         updateSelection([1, start + 1]);
       return true
   } else if (code == 'Enter') {
-    tryGuess();
+    if (finished) {
+      showVictory();
+    } else {
+      tryGuess();
+    }
     return true;
-  } else if (code == 'Backspace') {
+  } else if (!finished && code == 'Backspace') {
     let cur = tile(selected);
     if (cur && cur.children[0].textContent != '') {
       // Erase selected cell if non-empty
@@ -334,7 +339,7 @@ function type(code) {
     setTile(tile(selected), '');
     updateKeyboard(false);
     return true;
-  } else if (code.length == 1) {
+  } else if (!finished && code.length == 1) {
     setTile(tile(selected), code.toUpperCase());
     let advance = 1;
     while (selected[1] < puzzle.words[selected[0]].length && (
@@ -674,8 +679,13 @@ async function addGuess(guess, interactive) {
       navigator.clipboard.writeText(`${puzzle.title} ${guesses}/∞${indicator}${summary}\n${window.location.href}`);
       showMessage('Copied results to clipboard!');
     }
-    document.querySelector('.victory').style.display = 'block';
+    finished = true;
+    showVictory();
   }
+}
+
+function showVictory() {
+  document.querySelector('.victory').style.display = 'block';
 }
 
 async function showMessage(text) {
