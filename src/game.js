@@ -373,7 +373,12 @@ class UserError extends Error {
   }
 }
 
+let guessInProgress = false;
 async function tryGuess() {
+  // Prevent guessing while a previous guess is being processed.
+  if (guessInProgress)
+    return;
+  guessInProgress = true;
   try {
     await guess();
   } catch (err) {
@@ -382,6 +387,8 @@ async function tryGuess() {
     } else {
       throw err;
     }
+  } finally {
+    guessInProgress = false;
   }
 }
 
@@ -491,7 +498,7 @@ async function guess() {
     localStorage.setItem('crosswordle-daily', JSON.stringify({
         day: puzzle.day, guesses: gameGuesses, hardMode}));
   }
-  addGuess(str, true);
+  await addGuess(str, true);
 }
 
 function setGuess(guess) {
