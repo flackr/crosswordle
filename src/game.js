@@ -684,4 +684,4 @@ async function showMessage(text) {
   div.style.display = '';
 }
 
-document.addEventListener('DOMContentLoaded', init)
+init();
