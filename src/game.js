@@ -178,9 +178,9 @@ function init() {
     words = decode(args.puzzle).split('+');
   } else {
     day = Math.floor((Date.now() - (new Date(2022,0,30,0,0,0,0))) / (60 * 60 * 24 * 1000));
-    if (PUZZLES.length > day) {
+    if (ENCODED.length > day) {
       title = `Crosswordle ${day}`;
-      words = PUZZLES[day].split(' ');
+      words = decode(ENCODED[day]).split(' ');
     } else {
       throw Error('No more puzzles available.');
     }
