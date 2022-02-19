@@ -414,6 +414,8 @@ function letterCount() {
   let letters = {};
   for (let i = 0; i < puzzle.words.length; ++i) {
     for (let j = 0; j < puzzle.words[i].length; ++j) {
+      if (i == 1 && j == puzzle.offsets[1])
+        continue;
       let c = tile([i, j]).children[0].textContent.toLowerCase();
       if (c == '') {
         continue;
