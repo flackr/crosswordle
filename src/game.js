@@ -441,6 +441,11 @@ async function updateHints(full) {
       let index = count++;
       let t = tile([i, j]);
       let c = t.children[0].textContent.toLowerCase();
+      if (c) {
+        guesses[i] += c;
+      }
+      if (i == 1 && j == puzzle.offsets[1])
+        continue;
       if (clues.green[i] && clues.green[i][j]) {
         if (!useDynamicKeyboard || c != clues.green[i][j]) {
           greenLetters[clues.green[i][j]] = true;
@@ -459,9 +464,6 @@ async function updateHints(full) {
         t.classList.add('error');
       } else {
         t.classList.remove('error');
-      }
-      if (c) {
-        guesses[i] += c;
       }
     }
   }
