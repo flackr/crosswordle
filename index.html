@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0;url=https://crosswordle.serializer.ca/" />
+  </head>
+  <body>
+    <h1>Crosswordle has moved</h1>
+
+    <p>Crosswordle has moved to a server better able to support the traffic. Continue to: <a href="https://crosswordle.serializer.ca/">https://crosswordle.serializer.ca/</a></p>
+  </body>
+  <script>
+    let search = window.location.search;
+    if (search) {
+      let metaRefresh = document.querySelector('meta');
+      let aTag = document.querySelector('a');
+      metaRefresh.setAttribute('content', metaRefresh.getAttribute('content') + window.location.search);
+      aTag.setAttribute('href', aTag.getAttribute('href') + window.location.search);
+    }
+  </script>
+</html>
