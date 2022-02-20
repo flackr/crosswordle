@@ -1,12 +1,20 @@
 "use strict";
-function parse(str) {
-  let args = str.split('&');
-  let argMap = {};
-  for (let arg of args) {
-    let split = arg.split('=');
-    argMap[split[0]] = split[1];
+
+// Insert translated element strings
+let elems = document.querySelectorAll('[data-str]');
+for (let elem of elems) {
+  elem.innerHTML = STRINGS[elem.getAttribute('data-str')];
+}
+// Insert values into slotted positions in named string.
+function templateStr(langStr, values) {
+  let str = langStr.split('{}');
+  let result = '';
+  for (let i = 0; i < str.length; ++i) {
+    result += str[i];
+    if (i < str.length - 1)
+      result += values[i];
   }
-  return argMap;
+  return result;
 }
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz';
@@ -18,7 +26,7 @@ function loadWordLength(length) {
   let fetchWords = async function(length) {
     if (length > MAX_LENGTH)
       return;
-    let result = await fetch(`third_party/aspell6-en/en-common-${length}.txt`);
+    let result = await fetch(`third_party/aspell6/${LANG}/words-${length}.txt`);
     let words = await result.text();
     words.split(/\r?\n/).forEach(word => {
       dictionary.add(word);
@@ -55,8 +63,8 @@ function initKeyboard() {
     let upper = alphabet[i].toUpperCase();
     addKey(lower, upper, lower);
   }
-  addKey('R', 'Enter', 'Enter');
-  addKey('B', 'Erase', 'Backspace');
+  addKey('R', STRINGS['enter'], 'Enter');
+  addKey('B', STRINGS['erase'], 'Backspace');
   document.addEventListener('keydown', (evt) => {
     if (evt.target != document.body)
       return;
@@ -98,6 +106,24 @@ function decode(text) {
 let puzzle = null;
 let summary = '';
 function init() {
+  let languageEl = document.getElementById('language');
+  let currentLang = ARGS.l || '';
+  for (let i = 0; i < languageEl.options.length; ++i) {
+    if (languageEl.options[i].getAttribute('value') == currentLang) {
+      languageEl.selectedIndex = i;
+      break;
+    }
+  }
+  languageEl.addEventListener('change', () => {
+    let search = '';
+    let selectedLang = languageEl.value;
+    // TODO: Should other arguments be preserved?
+    if (selectedLang) {
+      window.location.search = `?l=${selectedLang}`;
+    } else {
+      window.location.href = window.location.href.split('?')[0];
+    }
+  });
   document.getElementById('close-settings').addEventListener('click', () => {
     document.querySelector('.settings').style.display = '';
   });
@@ -116,7 +142,7 @@ function init() {
   let hardModeCheckbox = document.getElementById('hard-mode');
   hardModeCheckbox.addEventListener('change', () => {
     if (hardModeCheckbox.checked && gameGuesses.length > 0) {
-      showMessage('Hard mode will take effect on your next game. It cannot be turned on mid-game.');
+      showMessage(STRINGS['hard-mode-next-game']);
     }
     settings.hardMode = hardModeCheckbox.checked;
     localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
@@ -146,12 +172,12 @@ function init() {
     let puzzle = document.getElementById('custom-crosswordle').value.toLowerCase().replace(' ', '+');
     let words = puzzle.split('+');
     if (words.length != 2) {
-      errors += 'Must enter exactly two words separated by a space.\n';
+      errors += STRINGS['two-words-required'] + '\n';
     }
     for (let i = 0; i < words.length; i++) {
       let valid = await isWord(words[i]);
       if (!valid) {
-        errors += `${words[i]} is not a recognized word.\n`;
+        errors += `${templateStr(STRINGS['unrecognized-word'], [words[i]])}\n`;
       }
     }
     let errorEl = document.getElementById('custom-error');
@@ -163,23 +189,23 @@ function init() {
     errorEl.style.display = 'none';
 
     let link = document.getElementById('custom-link');
-    let href = `${window.location.origin}${window.location.pathname}?puzzle=${encode(puzzle)}`;
+    let href = `${window.location.origin}${window.location.pathname}?l=${LANG}&puzzle=${encode(puzzle)}`;
     link.textContent = href;
     link.href = href;
     link.style.display = 'block';
   });
   initKeyboard();
-  let args = parse(window.location.search.substr(1));
+  let args = ARGS;
   let title = '';
   let words;
   let day;
   if (args.puzzle) {
-    title = 'Custom Crosswordle';
+    title = STRINGS['custom-crosswordle'];
     words = decode(args.puzzle).split('+');
   } else {
-    day = Math.floor((Date.now() - (new Date(2022,0,30,0,0,0,0))) / (60 * 60 * 24 * 1000));
+    day = Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000));
     if (ENCODED.length > day) {
-      title = `Crosswordle ${day}`;
+      title = `Crosswordle ${day} (${LANG})`;
       words = decode(ENCODED[day]).split(' ');
     } else {
       throw Error('No more puzzles available.');
@@ -267,6 +293,8 @@ function init() {
     return;
   let parsed = JSON.parse(progress);
   if (puzzle.day === undefined || parsed.day != puzzle.day)
+    return;
+  if (parsed.lang != LANG)
     return;
   hardMode = parsed.hardMode || false;
   gameGuesses = parsed.guesses;
@@ -515,10 +543,12 @@ async function guess() {
     for (let j = 0; j < puzzle.words[i].length; j++) {
       let c = tile([i, j]).children[0].textContent.toLowerCase();
       if (c == '') {
-        throw new UserError('Incomplete word');
+        throw new UserError(STRINGS['incomplete']);
       }
       if (hardMode && clues.green[i] && clues.green[i][j] && clues.green[i][j] != c) {
-        throw new UserError(`${WORD_DESC[i]} word letter ${j + 1} must be ${clues.green[i][j].toUpperCase()}`);
+        throw new UserError(templateStr(
+            STRINGS[i == 0 ? 'horizontal-word-letter-must-be' : 'vertical-word-letter-must-be'],
+            [j + 1, clues.green[i][j].toUpperCase()]));
       }
       guesses[i] += c;
     }
@@ -526,7 +556,7 @@ async function guess() {
   for (let i = 0; i < guesses.length; i++) {
     let valid = await isWord(guesses[i]);
     if (!valid) {
-      throw new UserError('Invalid word ' + guesses[i]);
+      throw new UserError(templateStr(STRINGS['unrecognized-word'], [guesses[i]]));
     }
   }
   if (hardMode) {
@@ -535,7 +565,7 @@ async function guess() {
       let clue = clues.letters[c];
       let inGuess = letters[c] || 0;
       if (clue.min > inGuess) {
-        throw new UserError(`You must have ${clue.min} ${c.toUpperCase()}'s.`);
+        throw new UserError(templateStr(STRINGS['min-letters'], [clue.min, c.toUpperCase()]));
       }
     }
   }
@@ -543,7 +573,7 @@ async function guess() {
   gameGuesses.push(str);
   if (puzzle.day !== undefined) {
     localStorage.setItem('crosswordle-daily', JSON.stringify({
-        day: puzzle.day, guesses: gameGuesses, hardMode}));
+        day: puzzle.day, lang: LANG, guesses: gameGuesses, hardMode}));
   }
   await addGuess(str, true);
 }
@@ -719,7 +749,7 @@ async function addGuess(guess, interactive) {
     document.getElementById('guesses').textContent = guesses;
     document.getElementById('share').onclick = function() {
       navigator.clipboard.writeText(`${puzzle.title} ${guesses}/∞${indicator}${summary}\n${window.location.href}`);
-      showMessage('Copied results to clipboard!');
+      showMessage(STRINGS['copied-clipboard']);
     }
     finished = true;
     showVictory();

@@ -6,8 +6,31 @@
     <title>Crosswordle</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="shortcut icon" href="favicon.ico">
-    <script defer src="src/puzzles.js"></script>
-    <script defer src="src/game.js"></script>
+    <script>
+function parse(str) {
+  let args = str.split('&');
+  let argMap = {};
+  for (let arg of args) {
+    let split = arg.split('=');
+    argMap[split[0]] = split[1];
+  }
+  return argMap;
+}
+const ARGS = parse(window.location.search.substr(1));
+// Custom puzzles from before other languages were supported are english. Newer custom
+// puzzles include the language in the URL.
+const AUTO_LANG = (!ARGS.puzzle && navigator.language.startsWith('fr')) ? 'fr' : 'en';
+const LANG = ARGS.l || AUTO_LANG;
+let scripts = [];
+scripts.push(`src/lang/${LANG}.js`);
+scripts.push('src/game.js');
+for (let src of scripts) {
+  let scriptTag = document.createElement('script');
+  scriptTag.setAttribute('src', src);
+  scriptTag.setAttribute('defer', '');
+  document.head.appendChild(scriptTag);
+}
+    </script>
   </head>
   <body>
     <div class="help screen">
@@ -15,11 +38,7 @@
         <button class="close" id="close-help">❌</button>
         <div>
           <h1>Crosswordle</h1>
-          <p>
-            The goal is to guess the two crossing words in as few guesses as possible.
-            Each guess must be composed of valid words. After each guess you'll get a
-            clue, e.g.
-          </p>
+          <p data-str="help1"></p>
           <div class="flipped grid">
             <div style="grid-area: 2 / 1">
               <div class="green tile"><div>C</div></div>
@@ -46,9 +65,7 @@
               <div class="yellow tile"><div>D</div></div>
             </div>
           </div>
-          <p>
-            For compactness, this will be summarized as:
-          </p>
+          <p data-str="help2"></p>
           <div class="clues">
             <div>
               <div class="green tile"><div>C</div></div>
@@ -63,25 +80,16 @@
               <div class="yellow tile"><div>D</div></div>
             </div>
           </div>
-          <p>
-            Green indicates the letter is in the correct location. Yellow indicates a
-            correct letter in the wrong location. Each yellow tile corresponds to one
-            of that letter. For example, in this case the answer has only one S so
-            only the first S turned yellow.
-          </p>
-          <p>
-            From the above clue, you can infer:
-          </p>
+          <p data-str="help3"></p>
+          <p data-str="help4"></p>
           <ul>
-            <li>There is a C at the start of the horizontal word.</li>
-            <li>There is an O in at least one of the words. Note that there was only one O in your guess, even though it is displayed twice in the summary.</li>
-            <li>There is exactly one S in one of the words.</li>
-            <li>There is no W or R in the answer.</li>
-            <li>There is a D in at least one of the words.</li>
+            <li data-str="help-clue1"></li>
+            <li data-str="help-clue2"></li>
+            <li data-str="help-clue3"></li>
+            <li data-str="help-clue4"></li>
+            <li data-str="help-clue5"></li>
           </ul>
-          <p>
-            Hint: The two words are related.
-          </p>
+          <p data-str="help5"></p>
         </div>
       </div>
     </div>
@@ -89,18 +97,23 @@
       <div class="message">
         <button class="close" id="close-settings">❌</button>
         <div>
-          <h1>Settings</h1>
+          <h1 data-str="settings"></h1>
           <hr>
-          <div><input id="skip-filled" type="checkbox"> Skip filled positions</div>
-          <div><input id="dynamic-keyboard" type="checkbox"> Keyboard clues for remaining letters</div>
-          <div><input id="hard-mode" type="checkbox"> Hard mode</div>
-          <p>Create your own crosswordle:</p>
+          <p><span data-str="language"></span>
+          <select id="language">
+            <option data-str="automatic" value=""></option>
+            <option data-str="english" value="en"></option>
+            <option data-str="french" value="fr"></option>
+          </select></p>
+          <div><input id="skip-filled" type="checkbox"> <span data-str="skip-filled"></span></div>
+          <div><input id="dynamic-keyboard" type="checkbox"> <span data-str="clue-remaining"></span></div>
+          <div><input id="hard-mode" type="checkbox"> <span data-str="hard-mode"></span></div>
+          <p data-str="create-custom"></p>
           <input id="custom-crosswordle" placeholder="crossing words"><button id="create">Create</button><br>
           <p id="custom-error"></p>
           <a id="custom-link"></a>
 
-          <p>Inspired by the popular <a href="https://www.powerlanguage.co.uk/wordle/">Wordle</a> game.
-            Dictionary file from aspell6 package. See <a href="third_party/aspell6-en/Copyright">Copyright</a> for details.</p>
+          <p data-str="credit"></p>
         </div>
       </div>
     </div>
@@ -108,10 +121,10 @@
       <div class="message">
         <button class="close" id="close-victory">❌</button>
         <div>
-          <h1>Victory</h1>
+          <h1 data-str="victory"></h1>
           <hr>
-          <p>You got it in <span id="guesses"></span> guesses</p>
-          <p>Click <button id="share">Share</button> to copy a summary of your game.</p>
+          <p data-str="victory-message"></p>
+          <p data-str="click-share"></p>
         </div>
         </div>
     </div>
