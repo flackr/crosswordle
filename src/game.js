@@ -1,10 +1,23 @@
 "use strict";
 
-// Insert translated element strings
-let elems = document.querySelectorAll('[data-str]');
-for (let elem of elems) {
-  elem.innerHTML = STRINGS[elem.getAttribute('data-str')];
+function parse(str) {
+  let args = str.split('&');
+  let argMap = {};
+  for (let arg of args) {
+    let split = arg.split('=');
+    argMap[split[0]] = split[1];
+  }
+  return argMap;
 }
+const ARGS = parse(window.location.search.substr(1));
+// Custom puzzles from before other languages were supported are english. Newer custom
+// puzzles include the language in the URL.
+const AUTO_LANG = (!ARGS.puzzle && navigator.language.startsWith('fr')) ? 'fr' : 'en';
+const LANG = ARGS.l || AUTO_LANG;
+
+let ENCODED = [];
+let STRINGS = [];
+
 // Insert values into slotted positions in named string.
 function templateStr(langStr, values) {
   let str = langStr.split('{}');
@@ -103,9 +116,20 @@ function decode(text) {
   return result;
 }
 
+let FIRST_PUZZLE = null;
 let puzzle = null;
 let summary = '';
-function init() {
+async function init() {
+  let data = await (await fetch(`src/lang/${LANG}.json`)).json();
+  STRINGS = data.strings;
+  ENCODED = data.puzzles;
+  FIRST_PUZZLE = new Date(data.first_date[0], data.first_date[1], data.first_date[2], 0, 0, 0, 0);
+  // Insert translated element strings
+  let elems = document.querySelectorAll('[data-str]');
+  for (let elem of elems) {
+    elem.innerHTML = STRINGS[elem.getAttribute('data-str')];
+  }
+
   let languageEl = document.getElementById('language');
   let currentLang = ARGS.l || '';
   for (let i = 0; i < languageEl.options.length; ++i) {

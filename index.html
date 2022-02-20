@@ -6,31 +6,7 @@
     <title>Crosswordle</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="shortcut icon" href="favicon.ico">
-    <script>
-function parse(str) {
-  let args = str.split('&');
-  let argMap = {};
-  for (let arg of args) {
-    let split = arg.split('=');
-    argMap[split[0]] = split[1];
-  }
-  return argMap;
-}
-const ARGS = parse(window.location.search.substr(1));
-// Custom puzzles from before other languages were supported are english. Newer custom
-// puzzles include the language in the URL.
-const AUTO_LANG = (!ARGS.puzzle && navigator.language.startsWith('fr')) ? 'fr' : 'en';
-const LANG = ARGS.l || AUTO_LANG;
-let scripts = [];
-scripts.push(`src/lang/${LANG}.js`);
-scripts.push('src/game.js');
-for (let src of scripts) {
-  let scriptTag = document.createElement('script');
-  scriptTag.setAttribute('src', src);
-  scriptTag.setAttribute('defer', '');
-  document.head.appendChild(scriptTag);
-}
-    </script>
+    <script defer src="src/game.js"></script>
   </head>
   <body>
     <div class="help screen">
