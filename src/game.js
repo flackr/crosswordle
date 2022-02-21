@@ -84,7 +84,7 @@ function initKeyboard() {
     // Don't handle modified keys.
     if (evt.ctrlKey || evt.metaKey || evt.altKey)
       return;
-    if (type(evt.key))
+    if (type(evt.key.normalize("NFD").replace(/[\u0300-\u036f]/g, "")))
       evt.preventDefault();
   });
 }
