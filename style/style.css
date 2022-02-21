@@ -12,6 +12,13 @@ html {
   color-scheme: dark light;
 }
 
+html.high-contrast {
+  --yellow: #0bf;
+  --green: #f80;
+  --red-fg: #509;
+  --green-fg: #940;
+}
+
 .help {
   --large-size: 35px;
   --small-size: 30px;
@@ -35,6 +42,13 @@ html {
     --green: green;
     --red-fg: #f77;
     --green-fg: #7f7;
+  }
+
+  html.high-contrast {
+    --yellow: #07b;
+    --green: #940;
+    --red-fg: #a6f;
+    --green-fg: #f80;
   }
 }
 

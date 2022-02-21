@@ -175,6 +175,12 @@ async function init() {
       hardMode = false;
     }
   });
+  let highContrastCheckbox = document.getElementById('high-contrast');
+  highContrastCheckbox.addEventListener('change', () => {
+    settings.highContrast = highContrastCheckbox.checked;
+    localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
+    updateHighContrast();
+  });
   let skipFilledCheckbox = document.getElementById('skip-filled');
   skipFilledCheckbox.addEventListener('change', () => {
     settings.skipFilled = skipFilledCheckbox.checked;
@@ -307,6 +313,10 @@ async function init() {
       document.getElementById('hard-mode').checked = true;
     if (settings.skipFilled)
       document.getElementById('skip-filled').checked = true;
+    if (settings.highContrast) {
+      document.getElementById('high-contrast').checked = true;
+      updateHighContrast();
+    }
   }
   if (settings.dynamicKeyboard || settings.dynamicKeyboard === undefined)
     document.getElementById('dynamic-keyboard').checked = true;
@@ -325,6 +335,14 @@ async function init() {
   for (let guess of gameGuesses) {
     setGuess(guess.toUpperCase());
     addGuess(guess, false);
+  }
+}
+
+function updateHighContrast() {
+  if (settings.highContrast) {
+    document.documentElement.classList.add('high-contrast');
+  } else {
+    document.documentElement.classList.remove('high-contrast');
   }
 }
 
