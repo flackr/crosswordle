@@ -17,7 +17,7 @@
     "hard-mode": "Mode difficile",
     "hard-mode-next-game": "Le mode difficile prendra effet lors de votre prochaine partie. Il ne peut pas être activé en cours de partie.",
     "create-custom": "Créez vos propres Crosswordle:",
-    "credit": "Créé par Robert Flack, source disponible sur <a href=\"https://github.com/flackr/crosswordle\">github</a>. Inspiré du célèbre jeu <a href=\"https://www.powerlanguage.co.uk/wordle/\">Wordle</a>. Fichier de dictionnaire du package aspell6. Voir <a href=\"third_party/aspell6/Copyright\">Copyright</a> pour plus de détails.",
+    "credit": "Créé par Robert Flack, source disponible sur <a href=\"https://github.com/flackr/crosswordle\">github</a>. Inspiré du célèbre jeu <a href=\"https://www.powerlanguage.co.uk/wordle/\">Wordle</a>. Fichier de dictionnaire du package aspell6. Voir <a href=\"https://github.com/flackr/crosswordle/blob/main/third_party/aspell6/Copyright\">Copyright</a> pour plus de détails.",
     "victory": "Victoire!",
     "victory-message": "Vous avez trouvé la solution en <span id=\"guesses\"></span> essais",
     "click-share": "Cliquez sur <button id=\"share\">partager</button> pour copier un résumé de votre partie",
