@@ -197,9 +197,10 @@ async function init() {
     document.querySelector('.help').style.display = 'block';
     localStorage.setItem('crosswordle-help', '1');
   }
+  document.getElementById('custom-crosswordle').setAttribute('placeholder', STRINGS['custom-crosswordle-example']);
   document.getElementById('create').addEventListener('click', async () => {
     let errors = '';
-    let puzzle = document.getElementById('custom-crosswordle').value.toLowerCase().replace(' ', '+');
+    let puzzle = document.getElementById('custom-crosswordle').value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(' ', '+');
     let words = puzzle.split('+');
     if (words.length != 2) {
       errors += STRINGS['two-words-required'] + '\n';
@@ -379,7 +380,7 @@ async function postScore(puzzle, score) {
   }
   if (count < 5)
     return;
-  let html = '<table>';
+  let html = `<p>${STRINGS['daily-scores']}</p><table>`;
   for (let i = 1; i <= maxIndex; ++i) {
     let score = i == OVERFLOW ? overflow : (json.scores[i] || 0);
     html += `<tr><td>${i}${i<OVERFLOW?'':'+'}</td><td><div class="bar" style="width: ${Math.round(score / maxValue * 100)}%"></div></td></tr>`;
