@@ -12,7 +12,11 @@ function parse(str) {
 const ARGS = parse(window.location.search.substr(1));
 // Custom puzzles from before other languages were supported are english. Newer custom
 // puzzles include the language in the URL.
-const AUTO_LANG = (!ARGS.puzzle && navigator.language.startsWith('fr')) ? 'fr' : 'en';
+let AUTO_LANG = 'en';
+if (!ARGS.puzzle) {
+  if (navigator.language.startsWith('fr')) AUTO_LANG = 'fr';
+  else if (navigator.language.startsWith('es')) AUTO_LANG = 'es';
+}
 const LANG = ARGS.l || AUTO_LANG;
 
 let ENCODED = [];
