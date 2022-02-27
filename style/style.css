@@ -296,3 +296,17 @@ html, body, .main {
 .selected {
   outline: 4px groove #88f;
 }
+
+#stats table {
+  width: 100%;
+}
+
+#stats table td:nth-child(2) {
+  position: relative;
+  width: 100%;
+}
+
+.bar {
+  background: var(--green-fg);
+  height: 10px;
+}

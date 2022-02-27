@@ -346,6 +346,47 @@ function updateHighContrast() {
   }
 }
 
+const OVERFLOW = 10;
+async function postScore(puzzle, score) {
+  let stats = document.getElementById('stats');
+  stats.innerHTML = "";
+  let response = await fetch(`https://serializer.ca/stats/crosswordle-${puzzle}`, {
+    method: score ? 'POST' : 'GET',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'omit',
+    headers: score ? {
+      'Content-Type': 'application/json',
+    } : undefined,
+    body: score ? JSON.stringify({score}) : undefined
+  });
+  let json = await response.json();
+  let maxIndex = 1;
+  let count = 0;
+  for (let i in json.scores) {
+    if (i > OVERFLOW) {
+      json.scores[OVERFLOW] += json.scores[i];
+      maxIndex = OVERFLOW;
+    } else {
+      maxIndex = Math.max(i, maxIndex);
+    }
+    count += json.scores[i];
+  }
+  let maxValue = 1;
+  for (let i = 1; i < OVERFLOW; ++i) {
+    maxValue = Math.max(maxValue, json.scores[i] || 0);
+  }
+  if (count < 5)
+    return;
+  let html = '<table>';
+  for (let i = 1; i <= maxIndex; ++i) {
+    let score = json.scores[i] || 0;
+    html += `<tr><td>${i}</td><td><div class="bar" style="width: ${score / maxValue * 100}%"></div></td></tr>`;
+  }
+  html += '</table';
+  stats.innerHTML = html;
+}
+
 // Returns the tile for a given word, index
 function tile(selection) {
   if (!selection)
@@ -772,6 +813,11 @@ async function addGuess(guess, interactive) {
         startDelay += 150;
       }
     }
+  }
+  if (!wrong && puzzle.day) {
+    // Post and fetch histogram data early to have it visible before
+    // animations finish.
+    postScore(`${LANG}-${puzzle.day}`, interactive ? gameGuesses.length : undefined);
   }
   if (animationPromises.length > 0) {
     await Promise.all(animationPromises);
