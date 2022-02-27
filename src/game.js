@@ -363,16 +363,17 @@ async function postScore(puzzle, score) {
   let json = await response.json();
   let maxIndex = 1;
   let count = 0;
+  let overflow = 0;
   for (let i in json.scores) {
-    if (i > OVERFLOW) {
-      json.scores[OVERFLOW] += json.scores[i];
+    if (parseInt(i) >= OVERFLOW) {
+      overflow += json.scores[i];
       maxIndex = OVERFLOW;
     } else {
-      maxIndex = Math.max(i, maxIndex);
+      maxIndex = Math.max(parseInt(i), maxIndex);
     }
     count += json.scores[i];
   }
-  let maxValue = 1;
+  let maxValue = Math.max(1, overflow);
   for (let i = 1; i < OVERFLOW; ++i) {
     maxValue = Math.max(maxValue, json.scores[i] || 0);
   }
@@ -380,8 +381,8 @@ async function postScore(puzzle, score) {
     return;
   let html = '<table>';
   for (let i = 1; i <= maxIndex; ++i) {
-    let score = json.scores[i] || 0;
-    html += `<tr><td>${i}</td><td><div class="bar" style="width: ${score / maxValue * 100}%"></div></td></tr>`;
+    let score = i == OVERFLOW ? overflow : (json.scores[i] || 0);
+    html += `<tr><td>${i}${i<OVERFLOW?'':'+'}</td><td><div class="bar" style="width: ${Math.round(score / maxValue * 100)}%"></div></td></tr>`;
   }
   html += '</table';
   stats.innerHTML = html;
