@@ -26,6 +26,7 @@
     "vertical-word-letter-must-be": "Vertical word letter {} must be {}",
     "unrecognized-word": "Word not in dictionary: {}",
     "two-words-required": "Must enter exactly two words separated by a space.",
+    "common-letter-required": "The two words must share a common letter.",
     "min-letters": "You must have {} {}'s.",
     "daily-scores": "Today's scores:",
     "custom-crosswordle": "Custom Crosswordle",

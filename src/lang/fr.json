@@ -26,6 +26,7 @@
     "vertical-word-letter-must-be": "la lettre {} du mot vertical doit être {}",
     "unrecognized-word": "Mot absent du dictionnaire: {}",
     "two-words-required": "Vous devez entrer exactement deux mots séparés par un espace.",
+    "common-letter-required": "Les deux mots doivent avoir une lettre commune.",
     "min-letters": "Vous devez avoir {} {}.",
     "daily-scores": "Les résultats d'aujourd'hui:",
     "custom-crosswordle": "Crosswordle personnalisée",

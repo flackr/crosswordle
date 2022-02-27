@@ -116,6 +116,14 @@ function decode(text) {
   return result;
 }
 
+function hasCommonLetter(word1, word2) {
+  for (let i = 0; i < word1.length; i++) {
+    if (word2.indexOf(word1[i]) != -1)
+      return true;
+  }
+  return false;
+}
+
 let FIRST_PUZZLE = null;
 let puzzle = null;
 let summary = '';
@@ -198,6 +206,8 @@ async function init() {
     let words = puzzle.split('+');
     if (words.length != 2) {
       errors += STRINGS['two-words-required'] + '\n';
+    } else if (!hasCommonLetter(words[0], words[1])) {
+      errors += STRINGS['common-letter-required'] + '\n';
     }
     for (let i = 0; i < words.length; i++) {
       let valid = await isWord(words[i]);
