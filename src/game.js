@@ -745,6 +745,9 @@ async function addGuess(guess, interactive) {
       let t = tile([i, j]);
       let log = document.createElement('div');
       log.classList = 'tile';
+      if (j == puzzle.offsets[i]) {
+        log.classList.add('crossing');
+      }
       if (t.classList.contains('green')) {
         summary += '🟩';
         log.classList.add('green');
