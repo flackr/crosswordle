@@ -186,12 +186,6 @@ async function init() {
     settings.skipFilled = skipFilledCheckbox.checked;
     localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
   });
-  let dynamicKeybordCheckbox = document.getElementById('dynamic-keyboard');
-  dynamicKeybordCheckbox.addEventListener('change', () => {
-    settings.dynamicKeyboard = dynamicKeybordCheckbox.checked;
-    localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
-    updateHints(true);
-  });
   let seenHelp = localStorage.getItem('crosswordle-help');
   if (seenHelp === null) {
     document.querySelector('.help').style.display = 'block';
@@ -318,9 +312,14 @@ async function init() {
       document.getElementById('high-contrast').checked = true;
       updateHighContrast();
     }
+    /*
+    // TODO: Remove obsolete settings.
+    if ('dynamicKeyboard' in settings) {
+      delete settings['dynamicKeyboard'];
+      localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
+    }
+    */
   }
-  if (settings.dynamicKeyboard || settings.dynamicKeyboard === undefined)
-    document.getElementById('dynamic-keyboard').checked = true;
 
   // Restore progress
   let progress = localStorage.getItem('crosswordle-daily');
@@ -450,7 +449,7 @@ function type(code) {
       updateSelection([0, puzzle.words[0].length - 1]);
     }
     setTile(tile(selected), '');
-    updateHints(false);
+    updateHints();
     return true;
   } else if (!finished && code.length == 1) {
     setTile(tile(selected), code.toUpperCase());
@@ -464,7 +463,7 @@ function type(code) {
         updateSelection([selected[0], selected[1] + 1]);
       }
     }
-    updateHints(false);
+    updateHints();
     return true;
   }
   return false;
@@ -540,10 +539,7 @@ function letterCount() {
   return letters;
 }
 
-async function updateHints(full) {
-  let useDynamicKeyboard = settings.dynamicKeyboard || settings.dynamicKeyboard === undefined;
-  if (!full && !useDynamicKeyboard)
-    return;
+async function updateHints() {
   let greenLetters = {};
   let letters = letterCount();
   let count = 0;
@@ -560,10 +556,10 @@ async function updateHints(full) {
       if (i == 1 && j == puzzle.offsets[1])
         continue;
       if (clues.green[i] && clues.green[i][j]) {
-        if (!useDynamicKeyboard || c != clues.green[i][j]) {
+        if (c != clues.green[i][j]) {
           greenLetters[clues.green[i][j]] = true;
         }
-        if (useDynamicKeyboard && c == clues.green[i][j]) {
+        if (c == clues.green[i][j]) {
           t.classList.add('green-hint');
         } else {
           t.classList.remove('green-hint');
@@ -571,7 +567,7 @@ async function updateHints(full) {
       }
       // If the chosen letter can't go in this position or there are too many
       // in the guess, highlight them.
-      if (useDynamicKeyboard && c && clues.letters[c] && (
+      if (c && clues.letters[c] && (
               clues.letters[c].not.has(index) ||
               (clues.letters[c].max && clues.letters[c].min < letters[c]))) {
         t.classList.add('error');
@@ -582,15 +578,13 @@ async function updateHints(full) {
   }
 
   // If either word is invalid, highlight the entire word.
-  if (useDynamicKeyboard) {
-    for (let i = 0; i < puzzle.words.length; ++i) {
-      if (guesses[i].length != puzzle.words[i].length)
-        continue;
-      let valid = await isWord(guesses[i]);
-      if (!valid) {
-        for (let j = 0; j < puzzle.words[i].length; ++j) {
-          tile([i, j]).classList.add('error');
-        }
+  for (let i = 0; i < puzzle.words.length; ++i) {
+    if (guesses[i].length != puzzle.words[i].length)
+      continue;
+    let valid = await isWord(guesses[i]);
+    if (!valid) {
+      for (let j = 0; j < puzzle.words[i].length; ++j) {
+        tile([i, j]).classList.add('error');
       }
     }
   }
@@ -603,14 +597,12 @@ async function updateHints(full) {
     } else {
       key.classList.remove('green');
     }
-    if ((!useDynamicKeyboard && clues.letters[c].min > 0) ||
-        clues.letters[c].min > (letters[c] || 0)) {
+    if (clues.letters[c].min > (letters[c] || 0)) {
       key.classList.add('yellow');
     } else {
       key.classList.remove('yellow');
     }
-    if ((!useDynamicKeyboard && clues.letters[c].max && clues.letters[c].min == 0) ||
-        (useDynamicKeyboard && clues.letters[c].max && clues.letters[c].min <= (letters[c] || 0))) {
+    if (clues.letters[c].max && clues.letters[c].min <= (letters[c] || 0)) {
       key.classList.add('black');
     } else {
       key.classList.remove('black');
@@ -827,7 +819,7 @@ async function addGuess(guess, interactive) {
   if (animationPromises.length > 0) {
     await Promise.all(animationPromises);
   }
-  updateHints(true);
+  updateHints();
   if (wrong) {
     // TODO: Add letter animations.
     document.querySelector('.main .clues').appendChild(result);
