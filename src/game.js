@@ -825,7 +825,7 @@ async function addGuess(guess, interactive) {
       }
     }
   }
-  if (!wrong && puzzle.day) {
+  if (!wrong && puzzle.day !== undefined) {
     // Post and fetch histogram data early to have it visible before
     // animations finish.
     postScore(`${LANG}-${puzzle.day}`, interactive ? gameGuesses.length : undefined);
