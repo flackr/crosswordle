@@ -45,9 +45,11 @@ auk
 aux
 ave
 avg
+avo
 awe
 awl
 awn
+axe
 aye
 baa
 bad
@@ -202,6 +204,7 @@ emu
 enc
 end
 ens
+eon
 era
 ere
 erg
@@ -450,6 +453,7 @@ mks
 mob
 mod
 moi
+mom
 moo
 mop
 mos
@@ -470,6 +474,7 @@ nag
 nah
 nap
 nay
+nee
 neg
 net
 new
@@ -508,6 +513,7 @@ ohs
 oik
 oil
 old
+ole
 oms
 one
 ooh
@@ -733,6 +739,7 @@ ups
 urn
 use
 usu
+ute
 vac
 val
 van
@@ -810,6 +817,7 @@ yrs
 yuk
 yum
 yup
+zac
 zap
 zed
 zen

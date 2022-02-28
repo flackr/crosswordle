@@ -16,7 +16,7 @@
     "hard-mode": "Hard mode",
     "hard-mode-next-game": "Hard mode will take effect on your next game. It cannot be turned on mid-game.",
     "create-custom": "Create your own crosswordle:",
-    "credit": "Created by Robert Flack, source available at <a href=\"https://github.com/flackr/crosswordle\">github</a>. Inspired by the popular <a href=\"https://www.powerlanguage.co.uk/wordle/\">Wordle</a> game. Dictionary file from aspell6 package. See <a href=\"https://github.com/flackr/crosswordle/blob/main/third_party/aspell6/Copyright\">Copyright</a> for details.",
+    "credit": "Created by Robert Flack, source available at <a href=\"https://github.com/flackr/crosswordle\">github</a>. Inspired by the popular <a href=\"https://www.powerlanguage.co.uk/wordle/\">Wordle</a> game. Dictionary file from aspell6 package. See <a href=\"https://github.com/flackr/crosswordle/blob/main/third_party/aspell6/en/Copyright\">Copyright</a> for details.",
     "victory": "Victory!",
     "victory-message": "You got it in <span id=\"guesses\"></span> guesses",
     "click-share": "Click <button id=\"share\">Share</button> to copy a summary of your game.",

@@ -1,3 +1,4 @@
+abbe
 abbr
 abed
 abet
@@ -18,7 +19,9 @@ acyl
 adds
 advt
 adze
+aeon
 afar
+afto
 agar
 aged
 ages
@@ -46,6 +49,7 @@ also
 alto
 alts
 alum
+ambo
 amen
 amid
 ammo
@@ -74,9 +78,11 @@ arid
 arks
 arms
 army
+arse
 arts
 arty
 arum
+arvo
 asap
 ashy
 asks
@@ -94,6 +100,7 @@ auto
 avdp
 aver
 avid
+avos
 avow
 away
 awed
@@ -120,6 +127,7 @@ bait
 bake
 bald
 bale
+balk
 ball
 balm
 band
@@ -233,6 +241,7 @@ bone
 bong
 bonk
 bony
+bonz
 boob
 book
 boom
@@ -305,10 +314,12 @@ byre
 byte
 cabs
 cads
+cafe
 caff
 cage
 cake
 calf
+calk
 call
 calm
 came
@@ -323,6 +334,7 @@ caps
 capt
 card
 care
+cark
 carp
 cars
 cart
@@ -435,12 +447,14 @@ corp
 corr
 cosh
 cost
+cosy
 cote
 cots
 coup
 cove
 cowl
 cows
+cozy
 crab
 crag
 cram
@@ -450,6 +464,7 @@ cray
 cred
 crew
 crib
+croc
 crop
 crow
 crud
@@ -477,6 +492,7 @@ cute
 cuts
 cyan
 cyst
+czar
 dabs
 dace
 dado
@@ -527,6 +543,7 @@ deny
 dept
 derv
 desk
+devo
 dewy
 dhow
 dial
@@ -653,6 +670,7 @@ echo
 ecol
 econ
 ecru
+ecus
 eddy
 edge
 edgy
@@ -665,6 +683,7 @@ eggs
 egos
 eked
 ekes
+elan
 elem
 elev
 elks
@@ -680,12 +699,15 @@ encl
 ency
 ends
 envy
+eons
+epee
 epic
 eras
 ergo
 ergs
 errs
 erst
+esky
 espy
 etas
 etch
@@ -747,6 +769,7 @@ fern
 fess
 fest
 feta
+fete
 feud
 fiat
 fibs
@@ -797,6 +820,7 @@ foam
 fobs
 foes
 fogs
+fogy
 foil
 fold
 folk
@@ -886,6 +910,7 @@ germ
 gets
 ghat
 ghee
+gibe
 gift
 gigs
 gild
@@ -944,8 +969,10 @@ grab
 grad
 gram
 gran
+gray
 grep
 grew
+grey
 grid
 grim
 grin
@@ -969,11 +996,13 @@ gust
 guts
 guvs
 guys
+gybe
 gyms
 gyps
 gyro
 gyve
 hack
+haem
 haft
 hags
 hail
@@ -1022,6 +1051,7 @@ held
 hell
 helm
 help
+heme
 hemp
 hems
 hens
@@ -1073,6 +1103,7 @@ hons
 hood
 hoof
 hook
+hoon
 hoop
 hoot
 hope
@@ -1213,6 +1244,7 @@ keno
 kens
 kepi
 kept
+kerb
 keys
 khan
 kick
@@ -1432,7 +1464,9 @@ mask
 mass
 mast
 mate
+math
 mats
+matt
 maul
 maws
 maxi
@@ -1455,6 +1489,7 @@ meme
 memo
 mend
 menu
+meow
 mere
 mesa
 mesh
@@ -1502,8 +1537,11 @@ mock
 mode
 mods
 moil
+mold
 mole
 moll
+molt
+moms
 monk
 mono
 mood
@@ -1531,6 +1569,7 @@ muff
 mugs
 mule
 mull
+mums
 mung
 murk
 muse
@@ -1540,6 +1579,7 @@ muss
 must
 mute
 mutt
+myna
 myth
 naan
 nabs
@@ -1548,6 +1588,7 @@ nags
 naif
 nail
 name
+nana
 nape
 naps
 narc
@@ -1585,6 +1626,7 @@ nods
 noel
 noes
 none
+nong
 nook
 noon
 nope
@@ -1615,6 +1657,7 @@ obit
 oboe
 odds
 odes
+odor
 offs
 ogle
 ogre
@@ -1623,6 +1666,7 @@ oiks
 oils
 oily
 oink
+okay
 okra
 oleo
 oles
@@ -1633,6 +1677,7 @@ ones
 only
 onto
 onus
+onya
 onyx
 oohs
 oops
@@ -1726,6 +1771,7 @@ peps
 perk
 perm
 pert
+perv
 peso
 pest
 pets
@@ -1766,6 +1812,7 @@ pleb
 plod
 plop
 plot
+plow
 ploy
 plug
 plum
@@ -1814,6 +1861,7 @@ pray
 pref
 prep
 pres
+prev
 prey
 prig
 prim
@@ -1909,6 +1957,7 @@ reef
 reek
 reel
 refs
+rego
 rehi
 rein
 rely
@@ -1967,11 +2016,13 @@ room
 root
 rope
 ropy
+rort
 rose
 rosy
 rota
 rote
 rots
+roue
 rout
 roux
 rove
@@ -2008,6 +2059,7 @@ sags
 said
 sail
 sake
+saki
 sale
 salt
 same
@@ -2167,6 +2219,7 @@ sols
 some
 song
 sons
+sook
 soon
 soot
 soph
@@ -2397,6 +2450,7 @@ trow
 troy
 true
 trug
+tsar
 ttys
 tuba
 tube
@@ -2425,6 +2479,7 @@ twos
 tyke
 type
 typo
+tyre
 tyro
 ugly
 ulna
@@ -2442,6 +2497,7 @@ urns
 used
 user
 uses
+utes
 vacs
 vain
 vale
@@ -2558,7 +2614,9 @@ whew
 whey
 whim
 whip
+whir
 whit
+whiz
 whoa
 whom
 whop
@@ -2606,6 +2664,7 @@ wont
 wood
 woof
 wool
+woop
 woos
 wops
 word
@@ -2672,6 +2731,8 @@ yuks
 yule
 yups
 yurt
+zack
+zacs
 zany
 zaps
 zeal
