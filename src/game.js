@@ -5,7 +5,7 @@ function parse(str) {
   let argMap = {};
   for (let arg of args) {
     let split = arg.split('=');
-    argMap[split[0]] = split[1];
+    argMap[split[0]] = decodeURIComponent(split[1]);
   }
   return argMap;
 }
@@ -240,7 +240,7 @@ async function init() {
   let day;
   if (args.puzzle) {
     title = STRINGS['custom-crosswordle'];
-    words = decode(args.puzzle).split('+');
+    words = decode(args.puzzle).split(/[+ ]/);
   } else {
     day = Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000));
     if (ENCODED.length > day) {
