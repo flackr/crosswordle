@@ -277,6 +277,8 @@ html, body, .main {
   border-radius: 3px;
   background: var(--possible);
   cursor: pointer;
+  /* Ensure that all letter keys are given the same contribution to the grid size. */
+  min-width: 1em;
 }
 
 /* Decrease the text size on Enter and Erase keys to allow for uniform size keys. */
