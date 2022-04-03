@@ -243,6 +243,9 @@ async function init() {
     words = decode(args.puzzle).split(/[+ ]/);
   } else {
     day = Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000));
+    if (args.day !== undefined) {
+      day = Math.max(0, Math.min(day, parseInt(args.day)));
+    }
     if (ENCODED.length > day) {
       title = `Crosswordle ${day} (${LANG})`;
       words = decode(ENCODED[day]).split(' ');
