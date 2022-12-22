@@ -56,7 +56,7 @@ function loadWordLength(length) {
 
 async function isWord(word) {
   await loadWordLength(word.length);
-  return dictionary.has(word);
+  return dictionary.has(word) || puzzle.words.indexOf(word) != -1;
 }
 
 function initKeyboard() {
