@@ -18,6 +18,7 @@ if (!ARGS.puzzle) {
   else if (navigator.language.startsWith('es')) AUTO_LANG = 'es';
 }
 const LANG = ARGS.l || AUTO_LANG;
+const FEATURE_VERSION = 2;
 
 let ENCODED = [];
 let STRINGS = [];
@@ -175,6 +176,9 @@ async function init() {
   document.getElementById('close-help').addEventListener('click', () => {
     document.querySelector('.help').style.display = '';
   });
+  document.getElementById('close-news').addEventListener('click', () => {
+    document.querySelector('.news').style.display = '';
+  });
   let hardModeCheckbox = document.getElementById('hard-mode');
   hardModeCheckbox.addEventListener('change', () => {
     if (hardModeCheckbox.checked && gameGuesses.length > 0) {
@@ -199,9 +203,20 @@ async function init() {
     localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
   });
   let seenHelp = localStorage.getItem('crosswordle-help');
+  if (seenHelp)
+    seenHelp = parseInt(seenHelp);
   if (seenHelp === null) {
     document.querySelector('.help').style.display = 'block';
-    localStorage.setItem('crosswordle-help', '1');
+    localStorage.setItem('crosswordle-help', FEATURE_VERSION);
+  } else if (seenHelp < FEATURE_VERSION) {
+    let features = document.querySelectorAll('.news .feature[version]');
+    for (let i = 0; i < features.length; i++) {
+      if (parseInt(features[i].getAttribute('version')) <= seenHelp) {
+        features[i].style.display = 'none';
+      }
+    }
+    document.querySelector('.news').style.display = 'block';
+    localStorage.setItem('crosswordle-help', FEATURE_VERSION);
   }
   document.getElementById('custom-crosswordle').setAttribute('placeholder', STRINGS['custom-crosswordle-example']);
   document.getElementById('create').addEventListener('click', async () => {
@@ -683,13 +698,15 @@ function setGuess(guess) {
 
 async function addGuess(guess, interactive) {
   let guesses = guess.split(' ');
-  let answerLetters = {};
+  let answerLetters = [{}, {}];
+  let clued = [[], []];
   for (let i = 0; i < puzzle.words.length; i++) {
     for (let j = 0; j < puzzle.words[i].length; j++) {
       if (i == 1 && j == puzzle.offsets[1])
         continue;
       let c = puzzle.words[i][j];
-      answerLetters[c] = (answerLetters[c] || 0) + 1;
+      answerLetters[i][c] = (answerLetters[i][c] || 0) + 1;
+      clued[i][j] = false;
     }
   }
 
@@ -709,7 +726,8 @@ async function addGuess(guess, interactive) {
         clues.green[i][j] = guesses[i][j];
         letters[guesses[i][j]].min++;
         tile([i, j]).classList.add('green');
-        answerLetters[guesses[i][j]]--;
+        clued[i][j] = true;
+        answerLetters[i][guesses[i][j]]--;
       } else {
         wrong++;
       }
@@ -721,14 +739,34 @@ async function addGuess(guess, interactive) {
   for (let i = 0; i < guesses.length; i++) {
     for (let j = 0; j < guesses[i].length; j++) {
       ++count;
+      if (!clued[i][j]) {
+        clues.letters[guesses[i][j]].not.add(count - 1);
+        if (answerLetters[i][guesses[i][j]]) {
+          tile([i, j]).classList.add('yellow');
+          clued[i][j] = true;
+          if (i == 1 && j == puzzle.offsets[1]) {
+            // Mark letter in other word as clued.
+            clued[0][puzzle.offsets[0]] = true;
+          }
+
+          letters[guesses[i][j]].min++;
+          answerLetters[i][guesses[i][j]]--;
+        }
+      }
+    }
+  }
+
+  // Then mark orange
+  for (let i = 0; i < guesses.length; i++) {
+    for (let j = 0; j < guesses[i].length; j++) {
       if (i == 1 && j == puzzle.offsets[1])
         continue;
-      if (guesses[i][j] != puzzle.words[i][j]) {
-        clues.letters[guesses[i][j]].not.add(count - 1);
-        if (answerLetters[guesses[i][j]]) {
-          tile([i, j]).classList.add('yellow');
+      if (!clued[i][j]) {
+        if (answerLetters[1 - i][guesses[i][j]]) {
+          tile([i, j]).classList.add(i == 0 ? 'orange-vert' : 'orange-horiz');
+          clued[i][j] = true;
           letters[guesses[i][j]].min++;
-          answerLetters[guesses[i][j]]--;
+          answerLetters[1 - i][guesses[i][j]]--;
         } else {
           letters[guesses[i][j]].max = true;
         }
@@ -763,6 +801,12 @@ async function addGuess(guess, interactive) {
       } else if (t.classList.contains('yellow')) {
         summary += '🟨';
         log.classList.add('yellow');
+      } else if (t.classList.contains('orange-horiz')) {
+        summary += '🟧';
+        log.classList.add('orange-horiz');
+      } else if (t.classList.contains('orange-vert')) {
+        summary += '🟧';
+        log.classList.add('orange-vert');
       } else {
         summary += '⬜';
       }
@@ -819,6 +863,8 @@ async function addGuess(guess, interactive) {
           setTile(t, '', 0);
         t.classList.remove('green');
         t.classList.remove('yellow');
+        t.classList.remove('orange-horiz');
+        t.classList.remove('orange-vert');
         if (i == 0 && j == 0)
           updateSelection([i, j]);
       }

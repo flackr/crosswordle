@@ -10,6 +10,19 @@
     <script defer src="src/index.js"></script>
   </head>
   <body>
+    <div class="news screen">
+      <div class="message">
+        <button class="close" id="close-news">❌</button>
+        <div>
+          <h1>New features</h1>
+          <ul>
+            <li class="feature" version="2">
+              Yellow clues are now striped in the direction of the other word if they're not in the current word. See the help screen for more information.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="help screen">
       <div class="message">
         <button class="close" id="close-help">❌</button>
@@ -39,7 +52,7 @@
               <div class="tile"><div>R</div></div>
             </div>
             <div style="grid-area: 4 / 3">
-              <div class="yellow tile"><div>D</div></div>
+              <div class="orange-horiz tile"><div>D</div></div>
             </div>
           </div>
           <p data-str="help2"></p>
@@ -54,7 +67,7 @@
               <div class="tile"><div>W</div></div>
               <div class="yellow crossing tile"><div>O</div></div>
               <div class="tile"><div>R</div></div>
-              <div class="yellow tile"><div>D</div></div>
+              <div class="orange-horiz tile"><div>D</div></div>
             </div>
           </div>
           <p data-str="help3"></p>
