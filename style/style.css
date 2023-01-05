@@ -232,7 +232,7 @@ html, body, .main {
 }
 
 .clues .tile > div {
-  font-size: calc(var(--small-size) - 6px);
+  font-size: calc(var(--small-size) - 8px);
 }
 
 .grid .tile > div {
