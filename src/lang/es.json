@@ -15,6 +15,8 @@
     "skip-filled": "Saltar posiciones ocupadas",
     "hard-mode": "Modo difícil",
     "hard-mode-next-game": "El modo difícil tendrá efecto en tu próximo juego. No se puede activar a mitad del juego.",
+    "orange-clues": "Pistas amarillas específicas de palabras",
+    "orange-clues-next-game": "Las pistas amarillas específicas de palabras no se pueden cambiar a mitad del juego. Entrarán en vigor el próximo juego.",
     "create-custom": "Crea tu propio crucigrama:",
     "credit": "Creado por Robert Flack, fuente disponible en <a href=\"https://github.com/flackr/crosswordle\">github</a>. Inspirado en el popular juego <a href=\"https://www.powerlanguage.co.uk/wordle/\">Wordle</a>. Archivo de diccionario del paquete aspell6. Ver <a href=\"https://github.com/flackr/crosswordle/blob/main/third_party/aspell6/es/Copyright\">derechos de autor</a> para más detalles.",
     "victory": "La victoria!",

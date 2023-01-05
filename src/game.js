@@ -18,7 +18,7 @@ if (!ARGS.puzzle) {
   else if (navigator.language.startsWith('es')) AUTO_LANG = 'es';
 }
 const LANG = ARGS.l || AUTO_LANG;
-const FEATURE_VERSION = 2;
+const FEATURE_VERSION = 3;
 
 let ENCODED = [];
 let STRINGS = [];
@@ -191,6 +191,14 @@ async function init() {
       hardMode = false;
     }
   });
+  let orangeCluesCheckbox = document.getElementById('orange-clues');
+  orangeCluesCheckbox.addEventListener('change', () => {
+    if (gameGuesses.length > 0) {
+      showMessage(STRINGS['orange-clues-next-game']);
+    }
+    settings.orangeClues = orangeCluesCheckbox.checked;
+    localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
+  });
   let highContrastCheckbox = document.getElementById('high-contrast');
   highContrastCheckbox.addEventListener('change', () => {
     settings.highContrast = highContrastCheckbox.checked;
@@ -338,6 +346,8 @@ async function init() {
     settings = JSON.parse(storedSettings);
     if (settings.hardMode)
       document.getElementById('hard-mode').checked = true;
+    if (settings.orangeClues)
+      document.getElementById('orange-clues').checked = true;
     if (settings.skipFilled)
       document.getElementById('skip-filled').checked = true;
     if (settings.highContrast) {
@@ -543,6 +553,7 @@ async function tryGuess() {
 
 const WORD_DESC = ['Horizontal', 'Vertical'];
 let hardMode = false;
+let orangeClues = false;
 let settings = {};
 let gameGuesses = [];
 let clues = {
@@ -646,6 +657,7 @@ async function guess() {
   let guesses = [];
   if (gameGuesses.length == 0) {
     hardMode = settings.hardMode;
+    orangeClues = settings.orangeClues;
   }
   for (let i = 0; i < puzzle.words.length; i++) {
     guesses.push('');
@@ -763,7 +775,8 @@ async function addGuess(guess, interactive) {
         continue;
       if (!clued[i][j]) {
         if (answerLetters[1 - i][guesses[i][j]]) {
-          tile([i, j]).classList.add(i == 0 ? 'orange-vert' : 'orange-horiz');
+          const clueClass = orangeClues ? (i == 0 ? 'orange-vert' : 'orange-horiz') : 'yellow';
+          tile([i, j]).classList.add(clueClass);
           clued[i][j] = true;
           letters[guesses[i][j]].min++;
           answerLetters[1 - i][guesses[i][j]]--;

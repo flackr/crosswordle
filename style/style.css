@@ -264,11 +264,11 @@ html, body, .main {
 }
 
 .tile.orange-horiz > div:nth-child(1) {
-  background: repeating-linear-gradient(to bottom, var(--yellow) 0px, var(--yellow) 5px, var(--black) 5px, var(--black) 8px);
+  background: repeating-linear-gradient(to bottom, var(--yellow) 0px, var(--yellow) 5px, var(--black) 5px, var(--black) 9px);
 }
 
 .tile.orange-vert > div:nth-child(1) {
-  background: repeating-linear-gradient(to right, var(--yellow) 0px, var(--yellow) 5px, var(--black) 5px, var(--black) 8px);
+  background: repeating-linear-gradient(to right, var(--yellow) 0px, var(--yellow) 5px, var(--black) 5px, var(--black) 9px);
 }
 
 .tile.green > div:nth-child(1) {

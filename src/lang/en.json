@@ -2,7 +2,7 @@
   "strings": {
     "help1": "The goal is to guess the two crossing words in as few guesses as possible. Each guess must be composed of valid words. After each guess you'll get a clue, e.g.",
     "help2": "For compactness, this will be summarized as:",
-    "help3": "Green indicates the letter is in the correct location. Yellow indicates a correct letter in the wrong location. Solid yellow indicates the letter is in the same word, and striped yellow indicates it's in the other word. Each yellow tile corresponds to one of that letter. For example, in this case the answer has only one S so only the first S turned yellow.",
+    "help3": "Green indicates the letter is in the correct location. Yellow indicates a correct letter in the wrong location. If word-specific clues are enabled, solid yellow indicates the letter is in the same word and striped yellow indicates it's in the other word. Each yellow tile corresponds to one of that letter. For example, in this case the answer has only one S so only the first S turned yellow.",
     "help4": "From the above clue, you can infer:",
     "help5": "Hint: The two words are related.",
     "help-clue1": "There is a C at the start of the horizontal word.",
@@ -15,6 +15,8 @@
     "skip-filled": "Skip filled positions",
     "hard-mode": "Hard mode",
     "hard-mode-next-game": "Hard mode will take effect on your next game. It cannot be turned on mid-game.",
+    "orange-clues": "Word-specific yellow clues",
+    "orange-clues-next-game": "Word-specific yellow clues cannot be changed mid-game. They will take effect next game.",
     "create-custom": "Create your own crosswordle:",
     "credit": "Created by Robert Flack, source available at <a href=\"https://github.com/flackr/crosswordle\">github</a>. Inspired by the popular <a href=\"https://www.powerlanguage.co.uk/wordle/\">Wordle</a> game. Dictionary file from aspell6 package. See <a href=\"https://github.com/flackr/crosswordle/blob/main/third_party/aspell6/en/Copyright\">Copyright</a> for details.",
     "victory": "Victory!",
