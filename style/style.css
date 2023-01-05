@@ -15,7 +15,7 @@ html {
 }
 
 html.high-contrast {
-  --orange: #04f;
+  --orange: #D81B60;
   --yellow: #0bf;
   --green: #f80;
   --red-fg: #509;
@@ -41,7 +41,7 @@ html.high-contrast {
     --foreground: white;
     --black: #333;
     --possible: #888;
-    --orange: #940;
+    --orange: #b60;
     --yellow: #880;
     --green: green;
     --red-fg: #f77;
@@ -49,7 +49,7 @@ html.high-contrast {
   }
 
   html.high-contrast {
-    --orange: #01f;
+    --orange: #D81B60;
     --yellow: #07b;
     --green: #940;
     --red-fg: #a6f;
@@ -264,11 +264,11 @@ html, body, .main {
 }
 
 .tile.orange-horiz > div:nth-child(1) {
-  background: repeating-linear-gradient(to bottom, var(--black) 0%, var(--black) 20%, var(--yellow) 20%, var(--yellow) 40%);
+  background: var(--orange);
 }
 
 .tile.orange-vert > div:nth-child(1) {
-  background: repeating-linear-gradient(to right, var(--black) 0%, var(--black) 20%, var(--yellow) 20%, var(--yellow) 40%);
+  background: var(--orange);
 }
 
 .tile.green > div:nth-child(1) {

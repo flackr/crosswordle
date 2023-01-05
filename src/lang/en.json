@@ -2,7 +2,7 @@
   "strings": {
     "help1": "The goal is to guess the two crossing words in as few guesses as possible. Each guess must be composed of valid words. After each guess you'll get a clue, e.g.",
     "help2": "For compactness, this will be summarized as:",
-    "help3": "Green indicates the letter is in the correct location. Yellow indicates a correct letter in the wrong location. If word-specific clues are enabled, solid yellow indicates the letter is in the same word and striped yellow indicates it's in the other word. Each yellow tile corresponds to one of that letter. For example, in this case the answer has only one S so only the first S turned yellow.",
+    "help3": "Green indicates the letter is in the correct location. Yellow indicates a correct letter in the wrong location. If word-specific clues are enabled, orange indicates the letter is in the other word. Each clued tile corresponds to one of that letter. For example, in this case the answer has only one S so only the first S turned yellow.",
     "help4": "From the above clue, you can infer:",
     "help5": "Hint: The two words are related.",
     "help-clue1": "There is a C at the start of the horizontal word.",

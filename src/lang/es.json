@@ -2,7 +2,7 @@
   "strings": {
     "help1": "El objetivo es adivinar las dos palabras que se cruzan en el menor número posible de conjeturas. Cada conjetura debe estar compuesta de palabras válidas. Después de cada suposición obtendrás una pista, por ejemplo:",
     "help2": "Esto se resumirá como:",
-    "help3": "Verde indica que la letra está en la ubicación correcta. El amarillo indica una letra correcta en la ubicación incorrecta. El amarillo sólido indica que la letra está en la misma palabra y el amarillo rayado indica que está en la otra palabra. Cada ficha amarilla corresponde a una de esa letra. Por ejemplo, en este caso la respuesta tiene solo una S, por lo que solo la primera S se volvió amarilla.",
+    "help3": "Verde indica que la letra está en la ubicación correcta. El amarillo indica una letra correcta en la ubicación incorrecta. Si las pistas específicas de palabras están habilitadas, el naranja indica que la letra está en la otra palabra. Cada ficha amarilla corresponde a una de esa letra. Por ejemplo, en este caso la respuesta tiene solo una S, por lo que solo la primera S se volvió amarilla.",
     "help4": "De la pista anterior, puedes inferir:",
     "help5": "Pista: Las dos palabras están relacionadas.",
     "help-clue1": "Hay una C al comienzo de la palabra horizontal.",
@@ -15,7 +15,7 @@
     "skip-filled": "Saltar posiciones ocupadas",
     "hard-mode": "Modo difícil",
     "hard-mode-next-game": "El modo difícil tendrá efecto en tu próximo juego. No se puede activar a mitad del juego.",
-    "orange-clues": "Pistas amarillas específicas de palabras",
+    "orange-clues": "Habilitar pistas amarillas / naranjas específicas de palabras",
     "orange-clues-next-game": "Las pistas amarillas específicas de palabras no se pueden cambiar a mitad del juego. Entrarán en vigor el próximo juego.",
     "create-custom": "Crea tu propio crucigrama:",
     "credit": "Creado por Robert Flack, fuente disponible en <a href=\"https://github.com/flackr/crosswordle\">github</a>. Inspirado en el popular juego <a href=\"https://www.powerlanguage.co.uk/wordle/\">Wordle</a>. Archivo de diccionario del paquete aspell6. Ver <a href=\"https://github.com/flackr/crosswordle/blob/main/third_party/aspell6/es/Copyright\">derechos de autor</a> para más detalles.",
