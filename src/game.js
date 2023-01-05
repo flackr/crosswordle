@@ -373,6 +373,7 @@ async function init() {
   if (parsed.lang != LANG)
     return;
   hardMode = parsed.hardMode || false;
+  orangeClues = parsed.orangeClues || false;
   gameGuesses = parsed.guesses;
   for (let guess of gameGuesses) {
     setGuess(guess.toUpperCase());
@@ -694,7 +695,7 @@ async function guess() {
   gameGuesses.push(str);
   if (puzzle.day !== undefined) {
     localStorage.setItem('crosswordle-daily', JSON.stringify({
-        day: puzzle.day, lang: LANG, guesses: gameGuesses, hardMode}));
+        day: puzzle.day, lang: LANG, guesses: gameGuesses, hardMode, orangeClues}));
   }
   await addGuess(str, true);
 }
