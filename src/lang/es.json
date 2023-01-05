@@ -7,7 +7,7 @@
     "help5": "Pista: Las dos palabras están relacionadas.",
     "help-clue1": "Hay una C al comienzo de la palabra horizontal.",
     "help-clue2": "Hay una O en al menos una de las palabras. Tenga en cuenta que solo había una O en su suposición, aunque se muestra dos veces en el resumen.",
-    "help-clue3": "Hay exactamente una S, y está en la segunda palabra.",
+    "help-clue3": "Hay exactamente una S, y está en la primera palabra.",
     "help-clue4": "No hay W o R en la respuesta.",
     "help-clue5": "Hay una D en la primera palabra.",
     "settings": "Ajustes",

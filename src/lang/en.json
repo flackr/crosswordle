@@ -7,7 +7,7 @@
     "help5": "Hint: The two words are related.",
     "help-clue1": "There is a C at the start of the horizontal word.",
     "help-clue2": "There is an O in at least one of the words. Note that there was only one O in your guess, even though it is displayed twice in the summary.",
-    "help-clue3": "There is exactly one S, and it is in the second word.",
+    "help-clue3": "There is exactly one S, and it is in the first word.",
     "help-clue4": "There is no W or R in the answer.",
     "help-clue5": "There is a D in the first word.",
     "settings": "Settings",
