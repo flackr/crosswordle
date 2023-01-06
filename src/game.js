@@ -907,7 +907,11 @@ async function addGuess(guess, interactive) {
   } else {
     // Show victory screen after clues are revealed.
     let guesses = gameGuesses.length;
-    let indicator = hardMode ? '*' : '';
+    let indicator = '';
+    if (hardMode)
+      indicator += '*';
+    if (orangeClues)
+      indicator += '🔸';
     document.getElementById('guesses').textContent = guesses;
     document.getElementById('share').onclick = function() {
       navigator.clipboard.writeText(`${puzzle.title} ${guesses}/∞${indicator}${summary}\n${window.location.href}`);
