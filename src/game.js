@@ -393,7 +393,10 @@ const OVERFLOW = 10;
 async function postScore(puzzle, score) {
   let stats = document.getElementById('stats');
   stats.innerHTML = "";
-  let response = await fetch(`https://serializer.ca/stats/crosswordle-${puzzle}`, {
+  let variant = '';
+  if (orangeClues)
+    variant = '-orange';
+  let response = await fetch(`https://serializer.ca/stats/crosswordle-${puzzle}${variant}`, {
     method: score ? 'POST' : 'GET',
     mode: 'cors',
     cache: 'no-cache',
