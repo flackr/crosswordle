@@ -715,14 +715,31 @@ function setGuess(guess) {
 async function addGuess(guess, interactive) {
   let guesses = guess.split(' ');
   let answerLetters = [{}, {}];
+  let both = puzzle.words[0][puzzle.offsets[0]];
   let clued = [[], []];
   for (let i = 0; i < puzzle.words.length; i++) {
     for (let j = 0; j < puzzle.words[i].length; j++) {
-      if (i == 1 && j == puzzle.offsets[1])
-        continue;
       let c = puzzle.words[i][j];
       answerLetters[i][c] = (answerLetters[i][c] || 0) + 1;
       clued[i][j] = false;
+    }
+  }
+
+  let decrement = (word, letter, isShared = false) => {
+    answerLetters[word][letter]--;
+    // Use of the shared letter last unless matching green.
+    if (isShared || answerLetters[word][letter] == 0 && letter == both) {
+      both = null;
+      answerLetters[1 - word][letter]--;
+    }
+  }
+
+  let markClued = (word, pos) => {
+    clued[word][pos] = true;
+    const other = 1 - word;
+    if (pos == puzzle.offsets[word]) {
+      // Mark letter in other word as clued.
+      clued[other][puzzle.offsets[other]] = true;
     }
   }
 
@@ -736,14 +753,14 @@ async function addGuess(guess, interactive) {
     if (clues.green.length <= i)
       clues.green.push([]);
     for (let j = 0; j < guesses[i].length; j++) {
-      if (i == 1 && j == puzzle.offsets[1])
+      if (clued[i][j])
         continue;
       if (guesses[i][j] == puzzle.words[i][j]) {
         clues.green[i][j] = guesses[i][j];
         letters[guesses[i][j]].min++;
         tile([i, j]).classList.add('green');
-        clued[i][j] = true;
-        answerLetters[i][guesses[i][j]]--;
+        markClued(i, j);
+        decrement(i, guesses[i][j], j == puzzle.offsets[i]);
       } else {
         wrong++;
       }
@@ -755,22 +772,15 @@ async function addGuess(guess, interactive) {
   for (let i = 0; i < guesses.length; i++) {
     for (let j = 0; j < guesses[i].length; j++) {
       ++count;
-      if (!clued[i][j]) {
-        clues.letters[guesses[i][j]].not.add(count - 1);
-        if (answerLetters[i][guesses[i][j]]) {
-          tile([i, j]).classList.add('yellow');
-          clued[i][j] = true;
-          if (i == 0 && j == puzzle.offsets[0]) {
-            // Mark letter in other word as clued.
-            clued[1][puzzle.offsets[1]] = true;
-          }
-          if (i == 1 && j == puzzle.offsets[1]) {
-            // Mark letter in other word as clued.
-            clued[0][puzzle.offsets[0]] = true;
-          }
-          letters[guesses[i][j]].min++;
-          answerLetters[i][guesses[i][j]]--;
-        }
+      if (clued[i][j])
+        continue;
+
+      clues.letters[guesses[i][j]].not.add(count - 1);
+      if (answerLetters[i][guesses[i][j]]) {
+        tile([i, j]).classList.add('yellow');
+        markClued(i, j);
+        letters[guesses[i][j]].min++;
+        decrement(i, guesses[i][j]);
       }
     }
   }
@@ -778,18 +788,16 @@ async function addGuess(guess, interactive) {
   // Then mark orange
   for (let i = 0; i < guesses.length; i++) {
     for (let j = 0; j < guesses[i].length; j++) {
-      if (i == 1 && j == puzzle.offsets[1])
+      if (clued[i][j])
         continue;
-      if (!clued[i][j]) {
-        if (answerLetters[1 - i][guesses[i][j]]) {
-          const clueClass = orangeClues ? (i == 0 ? 'orange-vert' : 'orange-horiz') : 'yellow';
-          tile([i, j]).classList.add(clueClass);
-          clued[i][j] = true;
-          letters[guesses[i][j]].min++;
-          answerLetters[1 - i][guesses[i][j]]--;
-        } else {
-          letters[guesses[i][j]].max = true;
-        }
+      if (answerLetters[1 - i][guesses[i][j]]) {
+        const clueClass = orangeClues ? (i == 0 ? 'orange-vert' : 'orange-horiz') : 'yellow';
+        tile([i, j]).classList.add(clueClass);
+        markClued(i, j);
+        letters[guesses[i][j]].min++;
+        decrement(1 - i, guesses[i][j]);
+      } else {
+        letters[guesses[i][j]].max = true;
       }
     }
   }
