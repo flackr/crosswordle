@@ -760,11 +760,14 @@ async function addGuess(guess, interactive) {
         if (answerLetters[i][guesses[i][j]]) {
           tile([i, j]).classList.add('yellow');
           clued[i][j] = true;
+          if (i == 0 && j == puzzle.offsets[0]) {
+            // Mark letter in other word as clued.
+            clued[1][puzzle.offsets[1]] = true;
+          }
           if (i == 1 && j == puzzle.offsets[1]) {
             // Mark letter in other word as clued.
             clued[0][puzzle.offsets[0]] = true;
           }
-
           letters[guesses[i][j]].min++;
           answerLetters[i][guesses[i][j]]--;
         }
