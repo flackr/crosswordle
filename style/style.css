@@ -331,3 +331,8 @@ html, body, .main {
   background: var(--green-fg);
   height: 10px;
 }
+
+[result=won] .lost,
+[result=lost] .won {
+  display: none;
+}

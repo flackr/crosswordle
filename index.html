@@ -16,6 +16,9 @@
         <div>
           <h1>New features</h1>
           <ul>
+            <li class="feature" version="4">
+              Gives you the answer after 10 failed guesses.
+            </li>
             <li class="feature" version="3">
               A new setting allows orange clues if a matched letter is not in the current word. See the help screen for more information.
             </li>
@@ -113,9 +116,11 @@
       <div class="message">
         <button class="close" id="close-victory">❌</button>
         <div>
-          <h1 data-str="victory"></h1>
+          <h1 class="won" data-str="victory"></h1>
+          <h1 class="lost" data-str="defeat"></h1>
           <hr>
-          <p data-str="victory-message"></p>
+          <p class="won" data-str="victory-message"></p>
+          <p class="lost" data-str="defeat-message"></p>
           <p data-str="click-share"></p>
           <div id="stats"></div>
         </div>

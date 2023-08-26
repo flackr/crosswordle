@@ -18,7 +18,8 @@ if (!ARGS.puzzle) {
   else if (navigator.language.startsWith('es')) AUTO_LANG = 'es';
 }
 const LANG = ARGS.l || AUTO_LANG;
-const FEATURE_VERSION = 3;
+const FEATURE_VERSION = 4;
+const MAX_GUESSES = 10;
 
 let ENCODED = [];
 let STRINGS = [];
@@ -902,16 +903,17 @@ async function addGuess(guess, interactive) {
       }
     }
   }
-  if (!wrong && puzzle.day !== undefined) {
+  if (puzzle.day !== undefined && (!wrong || gameGuesses.length >= MAX_GUESSES)) {
     // Post and fetch histogram data early to have it visible before
     // animations finish.
-    postScore(`${LANG}-${puzzle.day}`, interactive ? gameGuesses.length : undefined);
+    const score = !wrong ? gameGuesses.length : 100;
+    postScore(`${LANG}-${puzzle.day}`, interactive ? score : undefined);
   }
   if (animationPromises.length > 0) {
     await Promise.all(animationPromises);
   }
   updateHints();
-  if (wrong) {
+  if (wrong && gameGuesses.length < MAX_GUESSES) {
     // TODO: Add letter animations.
     document.querySelector('.main .clues').appendChild(result);
     if (interactive) {
@@ -927,11 +929,13 @@ async function addGuess(guess, interactive) {
     if (orangeClues)
       indicator += '🔸';
     document.getElementById('guesses').textContent = guesses;
+    document.getElementById('answer').textContent = puzzle.words.join(' ');
     document.getElementById('share').onclick = function() {
-      navigator.clipboard.writeText(`${puzzle.title} ${guesses}/∞${indicator}${summary}\n${window.location.href}`);
+      navigator.clipboard.writeText(`${puzzle.title} ${guesses}/${MAX_GUESSES}${indicator}${summary}\n${window.location.href}`);
       showMessage(STRINGS['copied-clipboard']);
     }
     finished = true;
+    document.querySelector('.victory').setAttribute('result', wrong ? 'lost' : 'won');
     showVictory();
   }
 }
