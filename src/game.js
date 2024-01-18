@@ -39,7 +39,7 @@ function templateStr(langStr, values) {
 const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 let dictionary = new Set();
 let dictionaryLengths = [];
-const MAX_LENGTH = 10;
+const MAX_LENGTH = 12;
 
 function loadWordLength(length) {
   let fetchWords = async function(length) {
