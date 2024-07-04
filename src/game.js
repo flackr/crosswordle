@@ -9,6 +9,20 @@ function parse(str) {
   }
   return argMap;
 }
+
+// A simple 16-bit PRNG.
+// Using only 16-bit numbers avoids numerical precision limits with plain Javascript numbers.
+function prng16(seed) {
+  const m = 0x10000; // 2^16
+  const a = 20021;
+  const c = 1;
+  let state = seed;
+  return function() {
+      state = (a * state + c) % m;
+      return state;
+  };
+}
+
 const ARGS = parse(window.location.search.substr(1));
 // Custom puzzles from before other languages were supported are english. Newer custom
 // puzzles include the language in the URL.
@@ -270,12 +284,12 @@ async function init() {
     if (args.day !== undefined) {
       day = Math.max(0, Math.min(day, parseInt(args.day)));
     }
-    if (ENCODED.length > day) {
-      title = `Crosswordle ${day} (${LANG})`;
-      words = decode(ENCODED[day]).split(' ');
-    } else {
-      throw Error('No more puzzles available.');
+    // Select a seeded random puzzle if there are no more available.
+    if (ENCODED.length <= day) {
+      day = prng16(day)() % ENCODED.length;
     }
+    title = `Crosswordle ${day} (${LANG})`;
+    words = decode(ENCODED[day]).split(' ');
   }
   document.title = document.querySelector('.title h1').textContent = title;
 
