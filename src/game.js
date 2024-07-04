@@ -1,5 +1,8 @@
 "use strict";
 
+const FEATURE_VERSION = 5;
+const MAX_GUESSES = 10;
+
 function parse(str) {
   let args = str.split('&');
   let argMap = {};
@@ -32,8 +35,6 @@ if (!ARGS.puzzle) {
   else if (navigator.language.startsWith('es')) AUTO_LANG = 'es';
 }
 const LANG = ARGS.l || AUTO_LANG;
-const FEATURE_VERSION = 4;
-const MAX_GUESSES = 10;
 
 let ENCODED = [];
 let STRINGS = [];
@@ -196,22 +197,10 @@ async function init() {
   });
   let hardModeCheckbox = document.getElementById('hard-mode');
   hardModeCheckbox.addEventListener('change', () => {
-    if (hardModeCheckbox.checked && gameGuesses.length > 0) {
+    if (gameGuesses.length > 0) {
       showMessage(STRINGS['hard-mode-next-game']);
     }
     settings.hardMode = hardModeCheckbox.checked;
-    localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
-    if (!hardModeCheckbox.checked) {
-      // Hard mode can be turned off mid-game.
-      hardMode = false;
-    }
-  });
-  let orangeCluesCheckbox = document.getElementById('orange-clues');
-  orangeCluesCheckbox.addEventListener('change', () => {
-    if (gameGuesses.length > 0) {
-      showMessage(STRINGS['orange-clues-next-game']);
-    }
-    settings.orangeClues = orangeCluesCheckbox.checked;
     localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
   });
   let highContrastCheckbox = document.getElementById('high-contrast');
@@ -361,8 +350,6 @@ async function init() {
     settings = JSON.parse(storedSettings);
     if (settings.hardMode)
       document.getElementById('hard-mode').checked = true;
-    if (settings.orangeClues)
-      document.getElementById('orange-clues').checked = true;
     if (settings.skipFilled)
       document.getElementById('skip-filled').checked = true;
     if (settings.highContrast) {
@@ -675,8 +662,7 @@ async function updateHints() {
 async function guess() {
   let guesses = [];
   if (gameGuesses.length == 0) {
-    hardMode = settings.hardMode;
-    orangeClues = settings.orangeClues;
+    orangeClues = !settings.hardMode;
   }
   for (let i = 0; i < puzzle.words.length; i++) {
     guesses.push('');
@@ -685,11 +671,6 @@ async function guess() {
       if (c == '') {
         throw new UserError(STRINGS['incomplete']);
       }
-      if (hardMode && clues.green[i] && clues.green[i][j] && clues.green[i][j] != c) {
-        throw new UserError(templateStr(
-            STRINGS[i == 0 ? 'horizontal-word-letter-must-be' : 'vertical-word-letter-must-be'],
-            [j + 1, clues.green[i][j].toUpperCase()]));
-      }
       guesses[i] += c;
     }
   }
@@ -697,16 +678,6 @@ async function guess() {
     let valid = await isWord(guesses[i]);
     if (!valid) {
       throw new UserError(templateStr(STRINGS['unrecognized-word'], [guesses[i]]));
-    }
-  }
-  if (hardMode) {
-    let letters = letterCount();
-    for (let c in clues.letters) {
-      let clue = clues.letters[c];
-      let inGuess = letters[c] || 0;
-      if (clue.min > inGuess) {
-        throw new UserError(templateStr(STRINGS['min-letters'], [clue.min, c.toUpperCase()]));
-      }
     }
   }
   let str = guesses.join(' ');
@@ -938,8 +909,6 @@ async function addGuess(guess, interactive) {
     // Show victory screen after clues are revealed.
     let guesses = gameGuesses.length;
     let indicator = '';
-    if (hardMode)
-      indicator += '*';
     if (orangeClues)
       indicator += '🔸';
     document.getElementById('guesses').textContent = guesses;
