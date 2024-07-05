@@ -921,7 +921,20 @@ async function addGuess(guess, interactive) {
     document.getElementById('share').onclick = function() {
       navigator.clipboard.writeText(`${puzzle.title} ${guesses}/${MAX_GUESSES}${indicator}${summary}\n${window.location.href}`);
       showMessage(STRINGS['copied-clipboard']);
-    }
+    };
+    document.getElementById('random').onclick = function() {
+      if (ENCODED.length < 2)
+        return;
+      let url = window.location.href.split('?')[0] + '?';
+      let selected;
+      do {
+        selected = Math.floor(Math.random() * ENCODED.length);
+      } while (selected === puzzle.day);
+      if (ARGS.l)
+        url += `l=${ARGS.l}&`;
+      url += `day=${selected}`;
+      window.location = url;
+    };
     finished = true;
     document.querySelector('.victory').setAttribute('result', wrong ? 'lost' : 'won');
     showVictory();

@@ -22,6 +22,7 @@
     "victory-message": "Lo conseguiste en <span id=\"guesses\"></span> intentos",
     "defeat-message": "La respuesta fue <span id=\"answer\"></span>",
     "click-share": "Haz clic en <button id=\"share\">Compartir</button> para copiar un resumen de tu juego.",
+    "play-random": "¿Quieren más? <button id=\"random\">Juega un rompecabezas aleatorio</button>",
     "copied-clipboard": "Resultados copiados al portapapeles!",
     "incomplete": "Palabra incompleta",
     "unrecognized-word": "Palabra que no está en el diccionario: {}",

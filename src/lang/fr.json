@@ -22,6 +22,7 @@
     "victory-message": "Vous avez trouvé la solution en <span id=\"guesses\"></span> essais",
     "defeat-message": "La réponse était <span id=\"answer\"></span>",
     "click-share": "Cliquez sur <button id=\"share\">partager</button> pour copier un résumé de votre partie",
+    "play-random": "Vouloir plus? <button id=\"random\">Jouez à un puzzle aléatoire</button>",
     "copied-clipboard": "Résultats copiés dans le presse-papier!",
     "incomplete": "Mot incomplet",
     "unrecognized-word": "Mot absent du dictionnaire: {}",

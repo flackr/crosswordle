@@ -22,6 +22,7 @@
     "victory-message": "You got it in <span id=\"guesses\"></span> guesses",
     "defeat-message": "The answer was <span id=\"answer\"></span>",
     "click-share": "Click <button id=\"share\">Share</button> to copy a summary of your game.",
+    "play-random": "Want more? <button id=\"random\">Play a random puzzle</button>",
     "copied-clipboard": "Copied results to clipboard!",
     "incomplete": "Incomplete word",
     "unrecognized-word": "Word not in dictionary: {}",
