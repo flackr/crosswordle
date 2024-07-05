@@ -261,16 +261,16 @@ html, body, .main {
   background: var(--black);
 }
 
-.tile.yellow > div:nth-child(1) {
-  background: var(--yellow);
-}
-
 .tile.orange-horiz > div:nth-child(1) {
   background: var(--orange);
 }
 
 .tile.orange-vert > div:nth-child(1) {
   background: var(--orange);
+}
+
+.tile.yellow > div:nth-child(1) {
+  background: var(--yellow);
 }
 
 .tile.green > div:nth-child(1) {

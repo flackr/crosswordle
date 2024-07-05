@@ -1,6 +1,6 @@
 "use strict";
 
-const FEATURE_VERSION = 5;
+const FEATURE_VERSION = 6;
 const MAX_GUESSES = 10;
 
 function parse(str) {
@@ -722,10 +722,28 @@ async function addGuess(guess, interactive) {
 
   let markClued = (word, pos) => {
     clued[word][pos] = true;
-    const other = 1 - word;
-    if (pos == puzzle.offsets[word]) {
-      // Mark letter in other word as clued.
-      clued[other][puzzle.offsets[other]] = true;
+  }
+
+  let result = document.createElement('div');
+  let resultTiles = [];
+  for (let i = 0; i < guesses.length; i++) {
+    resultTiles.push([]);
+    for (let j = 0; j < guesses[i].length; j++) {
+      let log = document.createElement('div');
+      resultTiles[i][j] = log;
+      log.classList = 'tile';
+      if (j == puzzle.offsets[i]) {
+        log.classList.add('crossing');
+      }
+      let letter = document.createElement('div');
+      letter.textContent = guesses[i][j].toUpperCase();
+      log.appendChild(letter);
+      result.appendChild(log);
+    }
+    if (i < guesses.length - 1) {
+      let space = document.createElement('div');
+      space.classList = 'empty';
+      result.appendChild(space);
     }
   }
 
@@ -743,8 +761,11 @@ async function addGuess(guess, interactive) {
         continue;
       if (guesses[i][j] == puzzle.words[i][j]) {
         clues.green[i][j] = guesses[i][j];
-        letters[guesses[i][j]].min++;
-        tile([i, j]).classList.add('green');
+        if (!tile([i, j]).classList.contains('green')) {
+          letters[guesses[i][j]].min++;
+          tile([i, j]).classList.add('green');
+        }
+        resultTiles[i][j].classList.add('green');
         markClued(i, j);
         decrement(i, guesses[i][j], j == puzzle.offsets[i]);
       } else {
@@ -764,6 +785,7 @@ async function addGuess(guess, interactive) {
       clues.letters[guesses[i][j]].not.add(count - 1);
       if (answerLetters[i][guesses[i][j]]) {
         tile([i, j]).classList.add('yellow');
+        resultTiles[i][j].classList.add('yellow');
         markClued(i, j);
         letters[guesses[i][j]].min++;
         decrement(i, guesses[i][j]);
@@ -779,6 +801,7 @@ async function addGuess(guess, interactive) {
       if (answerLetters[1 - i][guesses[i][j]]) {
         const clueClass = orangeClues ? (i == 0 ? 'orange-vert' : 'orange-horiz') : 'yellow';
         tile([i, j]).classList.add(clueClass);
+        resultTiles[i][j].classList.add(clueClass);
         markClued(i, j);
         letters[guesses[i][j]].min++;
         decrement(1 - i, guesses[i][j]);
@@ -799,41 +822,23 @@ async function addGuess(guess, interactive) {
   // Then do a reveal, and add to the clues row.
   let animationPromises = [];
   let startDelay = 0;
-  let result = document.createElement('div');
   summary += '\n';
   for (let i = 0; i < guesses.length; i++) {
     for (let j = 0; j < guesses[i].length; j++) {
-      let t = tile([i, j]);
-      let log = document.createElement('div');
-      log.classList = 'tile';
-      if (j == puzzle.offsets[i]) {
-        log.classList.add('crossing');
-      }
+      let t = resultTiles[i][j];
       if (t.classList.contains('green')) {
         summary += '🟩';
-        log.classList.add('green');
       } else if (t.classList.contains('yellow')) {
         summary += '🟨';
-        log.classList.add('yellow');
       } else if (t.classList.contains('orange-horiz')) {
         summary += '🟧';
-        log.classList.add('orange-horiz');
       } else if (t.classList.contains('orange-vert')) {
         summary += '🟧';
-        log.classList.add('orange-vert');
       } else {
         summary += '⬜';
       }
-      let letter = document.createElement('div');
-      letter.textContent = guesses[i][j].toUpperCase();
-      log.appendChild(letter);
-      // TODO: Animate tiles to log area.
-      result.appendChild(log);
     }
     if (i < guesses.length - 1) {
-      let space = document.createElement('div');
-      space.classList = 'empty';
-      result.appendChild(space);
       summary += ' ';
     }
   }
