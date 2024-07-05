@@ -923,12 +923,13 @@ async function addGuess(guess, interactive) {
       showMessage(STRINGS['copied-clipboard']);
     };
     document.getElementById('random').onclick = function() {
-      if (ENCODED.length < 2)
+      const puzzles = Math.min(ENCODED.length, Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000)));
+      if (puzzles < 2)
         return;
       let url = window.location.href.split('?')[0] + '?';
       let selected;
       do {
-        selected = Math.floor(Math.random() * ENCODED.length);
+        selected = Math.floor(Math.random() * puzzles);
       } while (selected === puzzle.day);
       if (ARGS.l)
         url += `l=${ARGS.l}&`;
