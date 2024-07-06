@@ -711,13 +711,8 @@ async function addGuess(guess, interactive) {
     }
   }
 
-  let decrement = (word, letter, isShared = false) => {
+  let decrement = (word, letter) => {
     answerLetters[word][letter]--;
-    // Use of the shared letter last unless matching green.
-    if (isShared || answerLetters[word][letter] == 0 && letter == both) {
-      both = null;
-      answerLetters[1 - word][letter]--;
-    }
   }
 
   let markClued = (word, pos) => {
@@ -767,7 +762,7 @@ async function addGuess(guess, interactive) {
         }
         resultTiles[i][j].classList.add('green');
         markClued(i, j);
-        decrement(i, guesses[i][j], j == puzzle.offsets[i]);
+        decrement(i, guesses[i][j]);
       } else {
         wrong++;
       }
