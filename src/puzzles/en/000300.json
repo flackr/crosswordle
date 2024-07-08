@@ -1,0 +1,404 @@
+{
+  "puzzles": [
+    {
+      "date": "2022-11-26",
+      "puzzle": "rocket science"
+    },
+    {
+      "date": "2022-11-27",
+      "puzzle": "vacuum space"
+    },
+    {
+      "date": "2022-11-28",
+      "puzzle": "wind chill"
+    },
+    {
+      "date": "2022-11-29",
+      "puzzle": "first snow"
+    },
+    {
+      "date": "2022-11-30",
+      "puzzle": "train ride"
+    },
+    {
+      "date": "2022-12-01",
+      "puzzle": "advent calendar"
+    },
+    {
+      "date": "2022-12-02",
+      "puzzle": "burnt toast"
+    },
+    {
+      "date": "2022-12-03",
+      "puzzle": "warm cocoa"
+    },
+    {
+      "date": "2022-12-04",
+      "puzzle": "remote control"
+    },
+    {
+      "date": "2022-12-05",
+      "puzzle": "live wire"
+    },
+    {
+      "date": "2022-12-06",
+      "puzzle": "ghost ship"
+    },
+    {
+      "date": "2022-12-07",
+      "puzzle": "blue dress"
+    },
+    {
+      "date": "2022-12-08",
+      "puzzle": "paper bag"
+    },
+    {
+      "date": "2022-12-09",
+      "puzzle": "packing peanuts"
+    },
+    {
+      "date": "2022-12-10",
+      "puzzle": "digital watch"
+    },
+    {
+      "date": "2022-12-11",
+      "puzzle": "wireless charger"
+    },
+    {
+      "date": "2022-12-12",
+      "puzzle": "glass jar"
+    },
+    {
+      "date": "2022-12-13",
+      "puzzle": "dirty laundry"
+    },
+    {
+      "date": "2022-12-14",
+      "puzzle": "goal post"
+    },
+    {
+      "date": "2022-12-15",
+      "puzzle": "table tennis"
+    },
+    {
+      "date": "2022-12-16",
+      "puzzle": "soda pop"
+    },
+    {
+      "date": "2022-12-17",
+      "puzzle": "world tour"
+    },
+    {
+      "date": "2022-12-18",
+      "puzzle": "spark plug"
+    },
+    {
+      "date": "2022-12-19",
+      "puzzle": "video game"
+    },
+    {
+      "date": "2022-12-20",
+      "puzzle": "travel guide"
+    },
+    {
+      "date": "2022-12-21",
+      "puzzle": "holiday spirit"
+    },
+    {
+      "date": "2022-12-22",
+      "puzzle": "secret santa"
+    },
+    {
+      "date": "2022-12-23",
+      "puzzle": "last minute"
+    },
+    {
+      "date": "2022-12-24",
+      "puzzle": "sleigh ride"
+    },
+    {
+      "date": "2022-12-25",
+      "puzzle": "pear tree"
+    },
+    {
+      "date": "2022-12-26",
+      "puzzle": "turtle dove"
+    },
+    {
+      "date": "2022-12-27",
+      "puzzle": "french hen"
+    },
+    {
+      "date": "2022-12-28",
+      "puzzle": "black bird"
+    },
+    {
+      "date": "2022-12-29",
+      "puzzle": "gold ring"
+    },
+    {
+      "date": "2022-12-30",
+      "puzzle": "swan bank"
+    },
+    {
+      "date": "2022-12-31",
+      "puzzle": "milk maid"
+    },
+    {
+      "date": "2023-01-01",
+      "puzzle": "tap dancer"
+    },
+    {
+      "date": "2023-01-02",
+      "puzzle": "feudal lords"
+    },
+    {
+      "date": "2023-01-03",
+      "puzzle": "tin whistle"
+    },
+    {
+      "date": "2023-01-04",
+      "puzzle": "drum rhythm"
+    },
+    {
+      "date": "2023-01-05",
+      "puzzle": "nail file"
+    },
+    {
+      "date": "2023-01-06",
+      "puzzle": "final sale"
+    },
+    {
+      "date": "2023-01-07",
+      "puzzle": "apple pie"
+    },
+    {
+      "date": "2023-01-08",
+      "puzzle": "welcome mat"
+    },
+    {
+      "date": "2023-01-09",
+      "puzzle": "hair salon"
+    },
+    {
+      "date": "2023-01-10",
+      "puzzle": "snow plow"
+    },
+    {
+      "date": "2023-01-11",
+      "puzzle": "bank account"
+    },
+    {
+      "date": "2023-01-12",
+      "puzzle": "moot point"
+    },
+    {
+      "date": "2023-01-13",
+      "puzzle": "library card"
+    },
+    {
+      "date": "2023-01-14",
+      "puzzle": "toaster oven"
+    },
+    {
+      "date": "2023-01-15",
+      "puzzle": "tow truck"
+    },
+    {
+      "date": "2023-01-16",
+      "puzzle": "art gallery"
+    },
+    {
+      "date": "2023-01-17",
+      "puzzle": "orange juice"
+    },
+    {
+      "date": "2023-01-18",
+      "puzzle": "jungle gym"
+    },
+    {
+      "date": "2023-01-19",
+      "puzzle": "stop sign"
+    },
+    {
+      "date": "2023-01-20",
+      "puzzle": "snow tires"
+    },
+    {
+      "date": "2023-01-21",
+      "puzzle": "radio waves"
+    },
+    {
+      "date": "2023-01-22",
+      "puzzle": "treasure map"
+    },
+    {
+      "date": "2023-01-23",
+      "puzzle": "tree branch"
+    },
+    {
+      "date": "2023-01-24",
+      "puzzle": "taxi cab"
+    },
+    {
+      "date": "2023-01-25",
+      "puzzle": "space station"
+    },
+    {
+      "date": "2023-01-26",
+      "puzzle": "washing machine"
+    },
+    {
+      "date": "2023-01-27",
+      "puzzle": "herbal tea"
+    },
+    {
+      "date": "2023-01-28",
+      "puzzle": "garbage chute"
+    },
+    {
+      "date": "2023-01-29",
+      "puzzle": "garden shed"
+    },
+    {
+      "date": "2023-01-30",
+      "puzzle": "one year"
+    },
+    {
+      "date": "2023-01-31",
+      "puzzle": "black coffee"
+    },
+    {
+      "date": "2023-02-01",
+      "puzzle": "power outage"
+    },
+    {
+      "date": "2023-02-02",
+      "puzzle": "visible shadow"
+    },
+    {
+      "date": "2023-02-03",
+      "puzzle": "life insurance"
+    },
+    {
+      "date": "2023-02-04",
+      "puzzle": "dish soap"
+    },
+    {
+      "date": "2023-02-05",
+      "puzzle": "paper towel"
+    },
+    {
+      "date": "2023-02-06",
+      "puzzle": "finish line"
+    },
+    {
+      "date": "2023-02-07",
+      "puzzle": "under arrest"
+    },
+    {
+      "date": "2023-02-08",
+      "puzzle": "private property"
+    },
+    {
+      "date": "2023-02-09",
+      "puzzle": "body lotion"
+    },
+    {
+      "date": "2023-02-10",
+      "puzzle": "bubble bath"
+    },
+    {
+      "date": "2023-02-11",
+      "puzzle": "crystal ball"
+    },
+    {
+      "date": "2023-02-12",
+      "puzzle": "french horn"
+    },
+    {
+      "date": "2023-02-13",
+      "puzzle": "cold cellar"
+    },
+    {
+      "date": "2023-02-14",
+      "puzzle": "chocolate box"
+    },
+    {
+      "date": "2023-02-15",
+      "puzzle": "queen bee"
+    },
+    {
+      "date": "2023-02-16",
+      "puzzle": "northern lights"
+    },
+    {
+      "date": "2023-02-17",
+      "puzzle": "sold out"
+    },
+    {
+      "date": "2023-02-18",
+      "puzzle": "rental car"
+    },
+    {
+      "date": "2023-02-19",
+      "puzzle": "ballot box"
+    },
+    {
+      "date": "2023-02-20",
+      "puzzle": "welcome home"
+    },
+    {
+      "date": "2023-02-21",
+      "puzzle": "picket fence"
+    },
+    {
+      "date": "2023-02-22",
+      "puzzle": "time machine"
+    },
+    {
+      "date": "2023-02-23",
+      "puzzle": "door knob"
+    },
+    {
+      "date": "2023-02-24",
+      "puzzle": "power outlet"
+    },
+    {
+      "date": "2023-02-25",
+      "puzzle": "all aboard"
+    },
+    {
+      "date": "2023-02-26",
+      "puzzle": "face mask"
+    },
+    {
+      "date": "2023-02-27",
+      "puzzle": "water bottle"
+    },
+    {
+      "date": "2023-02-28",
+      "puzzle": "cruise ship"
+    },
+    {
+      "date": "2023-03-01",
+      "puzzle": "passport stamp"
+    },
+    {
+      "date": "2023-03-02",
+      "puzzle": "airplane hangar"
+    },
+    {
+      "date": "2023-03-03",
+      "puzzle": "postage stamp"
+    },
+    {
+      "date": "2023-03-04",
+      "puzzle": "north pole"
+    },
+    {
+      "date": "2023-03-05",
+      "puzzle": "strawberry jam"
+    }
+  ]
+}

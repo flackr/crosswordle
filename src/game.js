@@ -36,7 +36,8 @@ if (!ARGS.puzzle) {
 }
 const LANG = ARGS.l || AUTO_LANG;
 
-let ENCODED = [];
+let PUZZLE_COUNT;
+let PUZZLE;
 let STRINGS = [];
 
 // Insert values into slotted positions in named string.
@@ -69,6 +70,13 @@ function loadWordLength(length) {
   if (!dictionaryLengths[length])
     dictionaryLengths[length] = fetchWords(length);
   return dictionaryLengths[length];
+}
+
+const CHUNK_SIZE = 100;
+async function loadPuzzle(index) {
+  const chunk = Math.floor(index / CHUNK_SIZE);
+  const chunkIndex = index % CHUNK_SIZE;
+  return (await (await fetch(`./src/puzzles/${LANG}/${(chunk * CHUNK_SIZE).toString().padStart(6, '0')}.json`)).json()).puzzles[chunkIndex];
 }
 
 async function isWord(word) {
@@ -149,10 +157,11 @@ let FIRST_PUZZLE = null;
 let puzzle = null;
 let summary = '';
 async function init() {
-  let data = await (await fetch(`src/lang/${LANG}.json`)).json();
+  let data = await (await fetch(`./src/lang/${LANG}.json`)).json();
   STRINGS = data.strings;
-  ENCODED = data.puzzles;
-  FIRST_PUZZLE = new Date(data.first_date[0], data.first_date[1], data.first_date[2], 0, 0, 0, 0);
+  PUZZLE_COUNT = data.puzzle_count;
+  const dateParts = data.base_date.split('-').map(s => parseInt(s));
+  FIRST_PUZZLE = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], 0, 0, 0, 0);
   // Insert translated element strings
   let elems = document.querySelectorAll('[data-str]');
   for (let elem of elems) {
@@ -267,19 +276,20 @@ async function init() {
   let day;
   if (args.puzzle) {
     title = STRINGS['custom-crosswordle'];
-    words = decode(args.puzzle).split(/[+ ]/);
+    PUZZLE = {puzzle: decode(args.puzzle)};
   } else {
     day = Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000));
     if (args.day !== undefined) {
       day = Math.max(0, Math.min(day, parseInt(args.day)));
     }
     // Select a seeded random puzzle if there are no more available.
-    if (ENCODED.length <= day) {
-      day = prng16(day)() % ENCODED.length;
+    if (PUZZLE_COUNT <= day) {
+      day = prng16(day)() % PUZZLE_COUNT;
     }
     title = `Crosswordle ${day} (${LANG})`;
-    words = decode(ENCODED[day]).split(' ');
+    PUZZLE = await loadPuzzle(day);
   }
+  words = PUZZLE.puzzle.split(/[+ ]/);
   document.title = document.querySelector('.title h1').textContent = title;
 
   // Find most central overlap between the two words.
@@ -918,7 +928,7 @@ async function addGuess(guess, interactive) {
       showMessage(STRINGS['copied-clipboard']);
     };
     document.getElementById('random').onclick = function() {
-      const puzzles = Math.min(ENCODED.length, Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000)));
+      const puzzles = Math.min(PUZZLE_COUNT, Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000)));
       if (puzzles < 2)
         return;
       let url = window.location.href.split('?')[0] + '?';

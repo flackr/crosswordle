@@ -1,0 +1,404 @@
+{
+  "puzzles": [
+    {
+      "date": "2022-01-30",
+      "puzzle": "lucky charm"
+    },
+    {
+      "date": "2022-01-31",
+      "puzzle": "fair game"
+    },
+    {
+      "date": "2022-02-01",
+      "puzzle": "snow storm"
+    },
+    {
+      "date": "2022-02-02",
+      "puzzle": "test drive"
+    },
+    {
+      "date": "2022-02-03",
+      "puzzle": "apple tree"
+    },
+    {
+      "date": "2022-02-04",
+      "puzzle": "fruit flies"
+    },
+    {
+      "date": "2022-02-05",
+      "puzzle": "windy summit"
+    },
+    {
+      "date": "2022-02-06",
+      "puzzle": "alarm clock"
+    },
+    {
+      "date": "2022-02-07",
+      "puzzle": "dirty dishes"
+    },
+    {
+      "date": "2022-02-08",
+      "puzzle": "annual event"
+    },
+    {
+      "date": "2022-02-09",
+      "puzzle": "soda can"
+    },
+    {
+      "date": "2022-02-10",
+      "puzzle": "party planner"
+    },
+    {
+      "date": "2022-02-11",
+      "puzzle": "paper craft"
+    },
+    {
+      "date": "2022-02-12",
+      "puzzle": "bitter gruel"
+    },
+    {
+      "date": "2022-02-13",
+      "puzzle": "social club"
+    },
+    {
+      "date": "2022-02-14",
+      "puzzle": "candy heart"
+    },
+    {
+      "date": "2022-02-15",
+      "puzzle": "plane travel"
+    },
+    {
+      "date": "2022-02-16",
+      "puzzle": "board games"
+    },
+    {
+      "date": "2022-02-17",
+      "puzzle": "wild ride"
+    },
+    {
+      "date": "2022-02-18",
+      "puzzle": "dinner table"
+    },
+    {
+      "date": "2022-02-19",
+      "puzzle": "park ranger"
+    },
+    {
+      "date": "2022-02-20",
+      "puzzle": "beach blanket"
+    },
+    {
+      "date": "2022-02-21",
+      "puzzle": "movie poster"
+    },
+    {
+      "date": "2022-02-22",
+      "puzzle": "phone screen"
+    },
+    {
+      "date": "2022-02-23",
+      "puzzle": "solar eclipse"
+    },
+    {
+      "date": "2022-02-24",
+      "puzzle": "coffee brew"
+    },
+    {
+      "date": "2022-02-25",
+      "puzzle": "tea kettle"
+    },
+    {
+      "date": "2022-02-26",
+      "puzzle": "window blinds"
+    },
+    {
+      "date": "2022-02-27",
+      "puzzle": "maple syrup"
+    },
+    {
+      "date": "2022-02-28",
+      "puzzle": "peanut butter"
+    },
+    {
+      "date": "2022-03-01",
+      "puzzle": "common sense"
+    },
+    {
+      "date": "2022-03-02",
+      "puzzle": "pawn shop"
+    },
+    {
+      "date": "2022-03-03",
+      "puzzle": "double speak"
+    },
+    {
+      "date": "2022-03-04",
+      "puzzle": "story teller"
+    },
+    {
+      "date": "2022-03-05",
+      "puzzle": "ghost writer"
+    },
+    {
+      "date": "2022-03-06",
+      "puzzle": "growth rate"
+    },
+    {
+      "date": "2022-03-07",
+      "puzzle": "sales tax"
+    },
+    {
+      "date": "2022-03-08",
+      "puzzle": "ice cream"
+    },
+    {
+      "date": "2022-03-09",
+      "puzzle": "law review"
+    },
+    {
+      "date": "2022-03-10",
+      "puzzle": "real life"
+    },
+    {
+      "date": "2022-03-11",
+      "puzzle": "rural areas"
+    },
+    {
+      "date": "2022-03-12",
+      "puzzle": "tax credit"
+    },
+    {
+      "date": "2022-03-13",
+      "puzzle": "real estate"
+    },
+    {
+      "date": "2022-03-14",
+      "puzzle": "grand lodge"
+    },
+    {
+      "date": "2022-03-15",
+      "puzzle": "focal point"
+    },
+    {
+      "date": "2022-03-16",
+      "puzzle": "high energy"
+    },
+    {
+      "date": "2022-03-17",
+      "puzzle": "noble lord"
+    },
+    {
+      "date": "2022-03-18",
+      "puzzle": "sea level"
+    },
+    {
+      "date": "2022-03-19",
+      "puzzle": "fresh water"
+    },
+    {
+      "date": "2022-03-20",
+      "puzzle": "social work"
+    },
+    {
+      "date": "2022-03-21",
+      "puzzle": "health care"
+    },
+    {
+      "date": "2022-03-22",
+      "puzzle": "total cost"
+    },
+    {
+      "date": "2022-03-23",
+      "puzzle": "hot water"
+    },
+    {
+      "date": "2022-03-24",
+      "puzzle": "shoe laces"
+    },
+    {
+      "date": "2022-03-25",
+      "puzzle": "air force"
+    },
+    {
+      "date": "2022-03-26",
+      "puzzle": "net income"
+    },
+    {
+      "date": "2022-03-27",
+      "puzzle": "free press"
+    },
+    {
+      "date": "2022-03-28",
+      "puzzle": "water level"
+    },
+    {
+      "date": "2022-03-29",
+      "puzzle": "half hour"
+    },
+    {
+      "date": "2022-03-30",
+      "puzzle": "ground water"
+    },
+    {
+      "date": "2022-03-31",
+      "puzzle": "social class"
+    },
+    {
+      "date": "2022-04-01",
+      "puzzle": "wicked witch"
+    },
+    {
+      "date": "2022-04-02",
+      "puzzle": "due course"
+    },
+    {
+      "date": "2022-04-03",
+      "puzzle": "police force"
+    },
+    {
+      "date": "2022-04-04",
+      "puzzle": "time spent"
+    },
+    {
+      "date": "2022-04-05",
+      "puzzle": "iron ore"
+    },
+    {
+      "date": "2022-04-06",
+      "puzzle": "web site"
+    },
+    {
+      "date": "2022-04-07",
+      "puzzle": "order number"
+    },
+    {
+      "date": "2022-04-08",
+      "puzzle": "garlic bread"
+    },
+    {
+      "date": "2022-04-09",
+      "puzzle": "patent office"
+    },
+    {
+      "date": "2022-04-10",
+      "puzzle": "human beings"
+    },
+    {
+      "date": "2022-04-11",
+      "puzzle": "status quo"
+    },
+    {
+      "date": "2022-04-12",
+      "puzzle": "high school"
+    },
+    {
+      "date": "2022-04-13",
+      "puzzle": "life cycle"
+    },
+    {
+      "date": "2022-04-14",
+      "puzzle": "first date"
+    },
+    {
+      "date": "2022-04-15",
+      "puzzle": "wage rates"
+    },
+    {
+      "date": "2022-04-16",
+      "puzzle": "great lakes"
+    },
+    {
+      "date": "2022-04-17",
+      "puzzle": "little bit"
+    },
+    {
+      "date": "2022-04-18",
+      "puzzle": "picnic lunch"
+    },
+    {
+      "date": "2022-04-19",
+      "puzzle": "credit card"
+    },
+    {
+      "date": "2022-04-20",
+      "puzzle": "power plant"
+    },
+    {
+      "date": "2022-04-21",
+      "puzzle": "social work"
+    },
+    {
+      "date": "2022-04-22",
+      "puzzle": "maple leaf"
+    },
+    {
+      "date": "2022-04-23",
+      "puzzle": "tax court"
+    },
+    {
+      "date": "2022-04-24",
+      "puzzle": "law school"
+    },
+    {
+      "date": "2022-04-25",
+      "puzzle": "civil rights"
+    },
+    {
+      "date": "2022-04-26",
+      "puzzle": "public sector"
+    },
+    {
+      "date": "2022-04-27",
+      "puzzle": "immune system"
+    },
+    {
+      "date": "2022-04-28",
+      "puzzle": "human race"
+    },
+    {
+      "date": "2022-04-29",
+      "puzzle": "time limit"
+    },
+    {
+      "date": "2022-04-30",
+      "puzzle": "public school"
+    },
+    {
+      "date": "2022-05-01",
+      "puzzle": "active duty"
+    },
+    {
+      "date": "2022-05-02",
+      "puzzle": "salt water"
+    },
+    {
+      "date": "2022-05-03",
+      "puzzle": "family life"
+    },
+    {
+      "date": "2022-05-04",
+      "puzzle": "amount due"
+    },
+    {
+      "date": "2022-05-05",
+      "puzzle": "salsa dance"
+    },
+    {
+      "date": "2022-05-06",
+      "puzzle": "post office"
+    },
+    {
+      "date": "2022-05-07",
+      "puzzle": "white paper"
+    },
+    {
+      "date": "2022-05-08",
+      "puzzle": "milk cookies"
+    },
+    {
+      "date": "2022-05-09",
+      "puzzle": "summer months"
+    }
+  ]
+}

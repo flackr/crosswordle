@@ -1,0 +1,396 @@
+{
+  "puzzles": [
+    {
+      "date": "2022-02-27",
+      "puzzle": "bellas artes"
+    },
+    {
+      "date": "2022-02-28",
+      "puzzle": "aire libre"
+    },
+    {
+      "date": "2022-03-01",
+      "puzzle": "reino unido"
+    },
+    {
+      "date": "2022-03-02",
+      "puzzle": "vida humana"
+    },
+    {
+      "date": "2022-03-03",
+      "puzzle": "cuerpo humano"
+    },
+    {
+      "date": "2022-03-04",
+      "puzzle": "ciudad real"
+    },
+    {
+      "date": "2022-03-05",
+      "puzzle": "ganado vacuno"
+    },
+    {
+      "date": "2022-03-06",
+      "puzzle": "amplia gama"
+    },
+    {
+      "date": "2022-03-07",
+      "puzzle": "pecado mortal"
+    },
+    {
+      "date": "2022-03-08",
+      "puzzle": "amor corazon"
+    },
+    {
+      "date": "2022-03-09",
+      "puzzle": "deporte futbol"
+    },
+    {
+      "date": "2022-03-10",
+      "puzzle": "aula estudiar"
+    },
+    {
+      "date": "2022-03-11",
+      "puzzle": "galleta azucar"
+    },
+    {
+      "date": "2022-03-12",
+      "puzzle": "salud mental"
+    },
+    {
+      "date": "2022-03-13",
+      "puzzle": "puerta llave"
+    },
+    {
+      "date": "2022-03-14",
+      "puzzle": "ciudad natal"
+    },
+    {
+      "date": "2022-03-15",
+      "puzzle": "nivel local"
+    },
+    {
+      "date": "2022-03-16",
+      "puzzle": "perro hueso"
+    },
+    {
+      "date": "2022-03-17",
+      "puzzle": "buenos amigos"
+    },
+    {
+      "date": "2022-03-18",
+      "puzzle": "simple vista"
+    },
+    {
+      "date": "2022-03-19",
+      "puzzle": "pan harina"
+    },
+    {
+      "date": "2022-03-20",
+      "puzzle": "baile musica"
+    },
+    {
+      "date": "2022-03-21",
+      "puzzle": "caballo granja"
+    },
+    {
+      "date": "2022-03-22",
+      "puzzle": "arbol bosque"
+    },
+    {
+      "date": "2022-03-23",
+      "puzzle": "seres vivos"
+    },
+    {
+      "date": "2022-03-24",
+      "puzzle": "voz ronca"
+    },
+    {
+      "date": "2022-03-25",
+      "puzzle": "ganado lanar"
+    },
+    {
+      "date": "2022-03-26",
+      "puzzle": "papel blanco"
+    },
+    {
+      "date": "2022-03-27",
+      "puzzle": "volante coche"
+    },
+    {
+      "date": "2022-03-28",
+      "puzzle": "origen animal"
+    },
+    {
+      "date": "2022-03-29",
+      "puzzle": "vida real"
+    },
+    {
+      "date": "2022-03-30",
+      "puzzle": "luna llena"
+    },
+    {
+      "date": "2022-03-31",
+      "puzzle": "agua salada"
+    },
+    {
+      "date": "2022-04-01",
+      "puzzle": "buenos deseos"
+    },
+    {
+      "date": "2022-04-02",
+      "puzzle": "hojas secas"
+    },
+    {
+      "date": "2022-04-03",
+      "puzzle": "camino real"
+    },
+    {
+      "date": "2022-04-04",
+      "puzzle": "tierra natal"
+    },
+    {
+      "date": "2022-04-05",
+      "puzzle": "agua dulce"
+    },
+    {
+      "date": "2022-04-06",
+      "puzzle": "tiempo real"
+    },
+    {
+      "date": "2022-04-07",
+      "puzzle": "arco iris"
+    },
+    {
+      "date": "2022-04-08",
+      "puzzle": "libro escritor"
+    },
+    {
+      "date": "2022-04-09",
+      "puzzle": "perder tiempo"
+    },
+    {
+      "date": "2022-04-10",
+      "puzzle": "sopa pollo"
+    },
+    {
+      "date": "2022-04-11",
+      "puzzle": "cielo azul"
+    },
+    {
+      "date": "2022-04-12",
+      "puzzle": "rienda suelta"
+    },
+    {
+      "date": "2022-04-13",
+      "puzzle": "alma humana"
+    },
+    {
+      "date": "2022-04-14",
+      "puzzle": "aire fresco"
+    },
+    {
+      "date": "2022-04-15",
+      "puzzle": "cachorro oso"
+    },
+    {
+      "date": "2022-04-16",
+      "puzzle": "grave error"
+    },
+    {
+      "date": "2022-04-17",
+      "puzzle": "mente humana"
+    },
+    {
+      "date": "2022-04-18",
+      "puzzle": "tiempo libre"
+    },
+    {
+      "date": "2022-04-19",
+      "puzzle": "vida activa"
+    },
+    {
+      "date": "2022-04-20",
+      "puzzle": "vino blanco"
+    },
+    {
+      "date": "2022-04-21",
+      "puzzle": "luz solar"
+    },
+    {
+      "date": "2022-04-22",
+      "puzzle": "vida diaria"
+    },
+    {
+      "date": "2022-04-23",
+      "puzzle": "grano fino"
+    },
+    {
+      "date": "2022-04-24",
+      "puzzle": "aire puro"
+    },
+    {
+      "date": "2022-04-25",
+      "puzzle": "zona rural"
+    },
+    {
+      "date": "2022-04-26",
+      "puzzle": "etapa final"
+    },
+    {
+      "date": "2022-04-27",
+      "puzzle": "agente fiscal"
+    },
+    {
+      "date": "2022-04-28",
+      "puzzle": "idea exacta"
+    },
+    {
+      "date": "2022-04-29",
+      "puzzle": "noche oscura"
+    },
+    {
+      "date": "2022-04-30",
+      "puzzle": "pesada carga"
+    },
+    {
+      "date": "2022-05-01",
+      "puzzle": "grave riesgo"
+    },
+    {
+      "date": "2022-05-02",
+      "puzzle": "libre acceso"
+    },
+    {
+      "date": "2022-05-03",
+      "puzzle": "centro urbano"
+    },
+    {
+      "date": "2022-05-04",
+      "puzzle": "zona urbana"
+    },
+    {
+      "date": "2022-05-05",
+      "puzzle": "vasto campo"
+    },
+    {
+      "date": "2022-05-06",
+      "puzzle": "oro fino"
+    },
+    {
+      "date": "2022-05-07",
+      "puzzle": "haga cargo"
+    },
+    {
+      "date": "2022-05-08",
+      "puzzle": "viejos amigos"
+    },
+    {
+      "date": "2022-05-09",
+      "puzzle": "boca llena"
+    },
+    {
+      "date": "2022-05-10",
+      "puzzle": "vino tinto"
+    },
+    {
+      "date": "2022-05-11",
+      "puzzle": "tierna edad"
+    },
+    {
+      "date": "2022-05-12",
+      "puzzle": "agua fresca"
+    },
+    {
+      "date": "2022-05-13",
+      "puzzle": "carne viva"
+    },
+    {
+      "date": "2022-05-14",
+      "puzzle": "vida futura"
+    },
+    {
+      "date": "2022-05-15",
+      "puzzle": "corona real"
+    },
+    {
+      "date": "2022-05-16",
+      "puzzle": "libre juego"
+    },
+    {
+      "date": "2022-05-17",
+      "puzzle": "agua pura"
+    },
+    {
+      "date": "2022-05-18",
+      "puzzle": "vida rural"
+    },
+    {
+      "date": "2022-05-19",
+      "puzzle": "grave crisis"
+    },
+    {
+      "date": "2022-05-20",
+      "puzzle": "bella vista"
+    },
+    {
+      "date": "2022-05-21",
+      "puzzle": "reino animal"
+    },
+    {
+      "date": "2022-05-22",
+      "puzzle": "idea clara"
+    },
+    {
+      "date": "2022-05-23",
+      "puzzle": "premio nobel"
+    },
+    {
+      "date": "2022-05-24",
+      "puzzle": "agua fria"
+    },
+    {
+      "date": "2022-05-25",
+      "puzzle": "campo visual"
+    },
+    {
+      "date": "2022-05-26",
+      "puzzle": "ganado bovino"
+    },
+    {
+      "date": "2022-05-27",
+      "puzzle": "agua tibia"
+    },
+    {
+      "date": "2022-05-28",
+      "puzzle": "prensa diaria"
+    },
+    {
+      "date": "2022-05-29",
+      "puzzle": "pueblo natal"
+    },
+    {
+      "date": "2022-05-30",
+      "puzzle": "real casa"
+    },
+    {
+      "date": "2022-05-31",
+      "puzzle": "reyes magos"
+    },
+    {
+      "date": "2022-06-01",
+      "puzzle": "amplio margen"
+    },
+    {
+      "date": "2022-06-02",
+      "puzzle": "ciclo vital"
+    },
+    {
+      "date": "2022-06-03",
+      "puzzle": "apoyo moral"
+    },
+    {
+      "date": "2022-06-04",
+      "puzzle": "casa real"
+    }
+  ]
+}

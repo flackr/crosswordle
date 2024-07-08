@@ -1,0 +1,404 @@
+{
+  "puzzles": [
+    {
+      "date": "2023-09-22",
+      "puzzle": "tulip bulb"
+    },
+    {
+      "date": "2023-09-23",
+      "puzzle": "cable modem"
+    },
+    {
+      "date": "2023-09-24",
+      "puzzle": "chicken coop"
+    },
+    {
+      "date": "2023-09-25",
+      "puzzle": "wasp nest"
+    },
+    {
+      "date": "2023-09-26",
+      "puzzle": "evil queen"
+    },
+    {
+      "date": "2023-09-27",
+      "puzzle": "poison apple"
+    },
+    {
+      "date": "2023-09-28",
+      "puzzle": "extended leave"
+    },
+    {
+      "date": "2023-09-29",
+      "puzzle": "soccer net"
+    },
+    {
+      "date": "2023-09-30",
+      "puzzle": "hop scotch"
+    },
+    {
+      "date": "2023-10-01",
+      "puzzle": "medium rare"
+    },
+    {
+      "date": "2023-10-02",
+      "puzzle": "ski lift"
+    },
+    {
+      "date": "2023-10-03",
+      "puzzle": "wooden puppet"
+    },
+    {
+      "date": "2023-10-04",
+      "puzzle": "water pressure"
+    },
+    {
+      "date": "2023-10-05",
+      "puzzle": "bed bugs"
+    },
+    {
+      "date": "2023-10-06",
+      "puzzle": "poker face"
+    },
+    {
+      "date": "2023-10-07",
+      "puzzle": "weed wacker"
+    },
+    {
+      "date": "2023-10-08",
+      "puzzle": "baggage claim"
+    },
+    {
+      "date": "2023-10-09",
+      "puzzle": "step stool"
+    },
+    {
+      "date": "2023-10-10",
+      "puzzle": "sea otter"
+    },
+    {
+      "date": "2023-10-11",
+      "puzzle": "growing old"
+    },
+    {
+      "date": "2023-10-12",
+      "puzzle": "shaving cream"
+    },
+    {
+      "date": "2023-10-13",
+      "puzzle": "praying mantis"
+    },
+    {
+      "date": "2023-10-14",
+      "puzzle": "folding chair"
+    },
+    {
+      "date": "2023-10-15",
+      "puzzle": "wireless router"
+    },
+    {
+      "date": "2023-10-16",
+      "puzzle": "water cooler"
+    },
+    {
+      "date": "2023-10-17",
+      "puzzle": "sensitive skin"
+    },
+    {
+      "date": "2023-10-18",
+      "puzzle": "glass slipper"
+    },
+    {
+      "date": "2023-10-19",
+      "puzzle": "wrestling mat"
+    },
+    {
+      "date": "2023-10-20",
+      "puzzle": "four square"
+    },
+    {
+      "date": "2023-10-21",
+      "puzzle": "space program"
+    },
+    {
+      "date": "2023-10-22",
+      "puzzle": "nail clippers"
+    },
+    {
+      "date": "2023-10-23",
+      "puzzle": "early retirement"
+    },
+    {
+      "date": "2023-10-24",
+      "puzzle": "late slip"
+    },
+    {
+      "date": "2023-10-25",
+      "puzzle": "water filter"
+    },
+    {
+      "date": "2023-10-26",
+      "puzzle": "pig pen"
+    },
+    {
+      "date": "2023-10-27",
+      "puzzle": "store room"
+    },
+    {
+      "date": "2023-10-28",
+      "puzzle": "hazel eyes"
+    },
+    {
+      "date": "2023-10-29",
+      "puzzle": "luggage tag"
+    },
+    {
+      "date": "2023-10-30",
+      "puzzle": "train ticket"
+    },
+    {
+      "date": "2023-10-31",
+      "puzzle": "muffin cups"
+    },
+    {
+      "date": "2023-11-01",
+      "puzzle": "air fryer"
+    },
+    {
+      "date": "2023-11-02",
+      "puzzle": "mascara wand"
+    },
+    {
+      "date": "2023-11-03",
+      "puzzle": "ethical dilemma"
+    },
+    {
+      "date": "2023-11-04",
+      "puzzle": "airport terminal"
+    },
+    {
+      "date": "2023-11-05",
+      "puzzle": "greasy hair"
+    },
+    {
+      "date": "2023-11-06",
+      "puzzle": "parchment paper"
+    },
+    {
+      "date": "2023-11-07",
+      "puzzle": "bug bite"
+    },
+    {
+      "date": "2023-11-08",
+      "puzzle": "guidance councillor"
+    },
+    {
+      "date": "2023-11-09",
+      "puzzle": "belly button"
+    },
+    {
+      "date": "2023-11-10",
+      "puzzle": "cat nap"
+    },
+    {
+      "date": "2023-11-11",
+      "puzzle": "war memorial"
+    },
+    {
+      "date": "2023-11-12",
+      "puzzle": "secure shell"
+    },
+    {
+      "date": "2023-11-13",
+      "puzzle": "model citizen"
+    },
+    {
+      "date": "2023-11-14",
+      "puzzle": "fishing spot"
+    },
+    {
+      "date": "2023-11-15",
+      "puzzle": "academic degree"
+    },
+    {
+      "date": "2023-11-16",
+      "puzzle": "marathon runner"
+    },
+    {
+      "date": "2023-11-17",
+      "puzzle": "boat anchor"
+    },
+    {
+      "date": "2023-11-18",
+      "puzzle": "yacht club"
+    },
+    {
+      "date": "2023-11-19",
+      "puzzle": "golf ball"
+    },
+    {
+      "date": "2023-11-20",
+      "puzzle": "science textbook"
+    },
+    {
+      "date": "2023-11-21",
+      "puzzle": "health card"
+    },
+    {
+      "date": "2023-11-22",
+      "puzzle": "bicycle kick"
+    },
+    {
+      "date": "2023-11-23",
+      "puzzle": "applied arts"
+    },
+    {
+      "date": "2023-11-24",
+      "puzzle": "passion project"
+    },
+    {
+      "date": "2023-11-25",
+      "puzzle": "air drop"
+    },
+    {
+      "date": "2023-11-26",
+      "puzzle": "battery usage"
+    },
+    {
+      "date": "2023-11-27",
+      "puzzle": "news reporter"
+    },
+    {
+      "date": "2023-11-28",
+      "puzzle": "team game"
+    },
+    {
+      "date": "2023-11-29",
+      "puzzle": "locked door"
+    },
+    {
+      "date": "2023-11-30",
+      "puzzle": "sideline referee"
+    },
+    {
+      "date": "2023-12-01",
+      "puzzle": "sea breeze"
+    },
+    {
+      "date": "2023-12-02",
+      "puzzle": "space mission"
+    },
+    {
+      "date": "2023-12-03",
+      "puzzle": "screen protector"
+    },
+    {
+      "date": "2023-12-04",
+      "puzzle": "mirror image"
+    },
+    {
+      "date": "2023-12-05",
+      "puzzle": "aircraft carrier"
+    },
+    {
+      "date": "2023-12-06",
+      "puzzle": "tattoo parlor"
+    },
+    {
+      "date": "2023-12-07",
+      "puzzle": "slow cooker"
+    },
+    {
+      "date": "2023-12-08",
+      "puzzle": "mystery puzzle"
+    },
+    {
+      "date": "2023-12-09",
+      "puzzle": "course timetable"
+    },
+    {
+      "date": "2023-12-10",
+      "puzzle": "lone wolf"
+    },
+    {
+      "date": "2023-12-11",
+      "puzzle": "braided hair"
+    },
+    {
+      "date": "2023-12-12",
+      "puzzle": "nose piercing"
+    },
+    {
+      "date": "2023-12-13",
+      "puzzle": "recently deleted"
+    },
+    {
+      "date": "2023-12-14",
+      "puzzle": "casserole dish"
+    },
+    {
+      "date": "2023-12-15",
+      "puzzle": "crop top"
+    },
+    {
+      "date": "2023-12-16",
+      "puzzle": "console command"
+    },
+    {
+      "date": "2023-12-17",
+      "puzzle": "getaway car"
+    },
+    {
+      "date": "2023-12-18",
+      "puzzle": "password protected"
+    },
+    {
+      "date": "2023-12-19",
+      "puzzle": "course module"
+    },
+    {
+      "date": "2023-12-20",
+      "puzzle": "eye witness"
+    },
+    {
+      "date": "2023-12-21",
+      "puzzle": "guilty party"
+    },
+    {
+      "date": "2023-12-22",
+      "puzzle": "rubber sole"
+    },
+    {
+      "date": "2023-12-23",
+      "puzzle": "vanilla extract"
+    },
+    {
+      "date": "2023-12-24",
+      "puzzle": "wish list"
+    },
+    {
+      "date": "2023-12-25",
+      "puzzle": "nine reindeer"
+    },
+    {
+      "date": "2023-12-26",
+      "puzzle": "discount price"
+    },
+    {
+      "date": "2023-12-27",
+      "puzzle": "tree removal"
+    },
+    {
+      "date": "2023-12-28",
+      "puzzle": "display image"
+    },
+    {
+      "date": "2023-12-29",
+      "puzzle": "garbage collection"
+    },
+    {
+      "date": "2023-12-30",
+      "puzzle": "garage door"
+    }
+  ]
+}

@@ -1,0 +1,404 @@
+{
+  "puzzles": [
+    {
+      "date": "2023-06-14",
+      "puzzle": "electric guitar"
+    },
+    {
+      "date": "2023-06-15",
+      "puzzle": "silent night"
+    },
+    {
+      "date": "2023-06-16",
+      "puzzle": "special delivery"
+    },
+    {
+      "date": "2023-06-17",
+      "puzzle": "skim milk"
+    },
+    {
+      "date": "2023-06-18",
+      "puzzle": "great dad"
+    },
+    {
+      "date": "2023-06-19",
+      "puzzle": "climate change"
+    },
+    {
+      "date": "2023-06-20",
+      "puzzle": "pocket watch"
+    },
+    {
+      "date": "2023-06-21",
+      "puzzle": "coffee shop"
+    },
+    {
+      "date": "2023-06-22",
+      "puzzle": "scenic route"
+    },
+    {
+      "date": "2023-06-23",
+      "puzzle": "tour bus"
+    },
+    {
+      "date": "2023-06-24",
+      "puzzle": "good deal"
+    },
+    {
+      "date": "2023-06-25",
+      "puzzle": "medicine cabinet"
+    },
+    {
+      "date": "2023-06-26",
+      "puzzle": "tissue paper"
+    },
+    {
+      "date": "2023-06-27",
+      "puzzle": "job promotion"
+    },
+    {
+      "date": "2023-06-28",
+      "puzzle": "display case"
+    },
+    {
+      "date": "2023-06-29",
+      "puzzle": "control panel"
+    },
+    {
+      "date": "2023-06-30",
+      "puzzle": "traffic jam"
+    },
+    {
+      "date": "2023-07-01",
+      "puzzle": "true north"
+    },
+    {
+      "date": "2023-07-02",
+      "puzzle": "wedding gown"
+    },
+    {
+      "date": "2023-07-03",
+      "puzzle": "grocery coupon"
+    },
+    {
+      "date": "2023-07-04",
+      "puzzle": "conveyor belt"
+    },
+    {
+      "date": "2023-07-05",
+      "puzzle": "air pressure"
+    },
+    {
+      "date": "2023-07-06",
+      "puzzle": "balance beam"
+    },
+    {
+      "date": "2023-07-07",
+      "puzzle": "casino jackpot"
+    },
+    {
+      "date": "2023-07-08",
+      "puzzle": "table salt"
+    },
+    {
+      "date": "2023-07-09",
+      "puzzle": "dominant gene"
+    },
+    {
+      "date": "2023-07-10",
+      "puzzle": "love story"
+    },
+    {
+      "date": "2023-07-11",
+      "puzzle": "national park"
+    },
+    {
+      "date": "2023-07-12",
+      "puzzle": "math equation"
+    },
+    {
+      "date": "2023-07-13",
+      "puzzle": "fashion show"
+    },
+    {
+      "date": "2023-07-14",
+      "puzzle": "summer heat"
+    },
+    {
+      "date": "2023-07-15",
+      "puzzle": "ballet slipper"
+    },
+    {
+      "date": "2023-07-16",
+      "puzzle": "rising tide"
+    },
+    {
+      "date": "2023-07-17",
+      "puzzle": "full house"
+    },
+    {
+      "date": "2023-07-18",
+      "puzzle": "coral reef"
+    },
+    {
+      "date": "2023-07-19",
+      "puzzle": "pacific ocean"
+    },
+    {
+      "date": "2023-07-20",
+      "puzzle": "direct flight"
+    },
+    {
+      "date": "2023-07-21",
+      "puzzle": "warm weather"
+    },
+    {
+      "date": "2023-07-22",
+      "puzzle": "jury duty"
+    },
+    {
+      "date": "2023-07-23",
+      "puzzle": "fire brigade"
+    },
+    {
+      "date": "2023-07-24",
+      "puzzle": "wrong number"
+    },
+    {
+      "date": "2023-07-25",
+      "puzzle": "electric current"
+    },
+    {
+      "date": "2023-07-26",
+      "puzzle": "bean bag"
+    },
+    {
+      "date": "2023-07-27",
+      "puzzle": "secret service"
+    },
+    {
+      "date": "2023-07-28",
+      "puzzle": "animal cell"
+    },
+    {
+      "date": "2023-07-29",
+      "puzzle": "hearing aid"
+    },
+    {
+      "date": "2023-07-30",
+      "puzzle": "storm shelter"
+    },
+    {
+      "date": "2023-07-31",
+      "puzzle": "yoga mat"
+    },
+    {
+      "date": "2023-08-01",
+      "puzzle": "plastic bag"
+    },
+    {
+      "date": "2023-08-02",
+      "puzzle": "express post"
+    },
+    {
+      "date": "2023-08-03",
+      "puzzle": "paper airplane"
+    },
+    {
+      "date": "2023-08-04",
+      "puzzle": "digital camera"
+    },
+    {
+      "date": "2023-08-05",
+      "puzzle": "bald eagle"
+    },
+    {
+      "date": "2023-08-06",
+      "puzzle": "legal contract"
+    },
+    {
+      "date": "2023-08-07",
+      "puzzle": "nation heritage"
+    },
+    {
+      "date": "2023-08-08",
+      "puzzle": "case closed"
+    },
+    {
+      "date": "2023-08-09",
+      "puzzle": "customs agent"
+    },
+    {
+      "date": "2023-08-10",
+      "puzzle": "sign language"
+    },
+    {
+      "date": "2023-08-11",
+      "puzzle": "shared drive"
+    },
+    {
+      "date": "2023-08-12",
+      "puzzle": "nest egg"
+    },
+    {
+      "date": "2023-08-13",
+      "puzzle": "text message"
+    },
+    {
+      "date": "2023-08-14",
+      "puzzle": "bubble gum"
+    },
+    {
+      "date": "2023-08-15",
+      "puzzle": "weather vane"
+    },
+    {
+      "date": "2023-08-16",
+      "puzzle": "alphabet soup"
+    },
+    {
+      "date": "2023-08-17",
+      "puzzle": "flower pot"
+    },
+    {
+      "date": "2023-08-18",
+      "puzzle": "duct tape"
+    },
+    {
+      "date": "2023-08-19",
+      "puzzle": "humid air"
+    },
+    {
+      "date": "2023-08-20",
+      "puzzle": "clogged toilet"
+    },
+    {
+      "date": "2023-08-21",
+      "puzzle": "happy camper"
+    },
+    {
+      "date": "2023-08-22",
+      "puzzle": "high five"
+    },
+    {
+      "date": "2023-08-23",
+      "puzzle": "toilet plunger"
+    },
+    {
+      "date": "2023-08-24",
+      "puzzle": "soup spoon"
+    },
+    {
+      "date": "2023-08-25",
+      "puzzle": "ninja star"
+    },
+    {
+      "date": "2023-08-26",
+      "puzzle": "tea bag"
+    },
+    {
+      "date": "2023-08-27",
+      "puzzle": "parallel parking"
+    },
+    {
+      "date": "2023-08-28",
+      "puzzle": "yield sign"
+    },
+    {
+      "date": "2023-08-29",
+      "puzzle": "summer party"
+    },
+    {
+      "date": "2023-08-30",
+      "puzzle": "potato peel"
+    },
+    {
+      "date": "2023-08-31",
+      "puzzle": "look out"
+    },
+    {
+      "date": "2023-09-01",
+      "puzzle": "match day"
+    },
+    {
+      "date": "2023-09-02",
+      "puzzle": "software update"
+    },
+    {
+      "date": "2023-09-03",
+      "puzzle": "giant feast"
+    },
+    {
+      "date": "2023-09-04",
+      "puzzle": "mute button"
+    },
+    {
+      "date": "2023-09-05",
+      "puzzle": "late fees"
+    },
+    {
+      "date": "2023-09-06",
+      "puzzle": "safety vest"
+    },
+    {
+      "date": "2023-09-07",
+      "puzzle": "wheel well"
+    },
+    {
+      "date": "2023-09-08",
+      "puzzle": "bank statement"
+    },
+    {
+      "date": "2023-09-09",
+      "puzzle": "trash can"
+    },
+    {
+      "date": "2023-09-10",
+      "puzzle": "lemon juice"
+    },
+    {
+      "date": "2023-09-11",
+      "puzzle": "secret crush"
+    },
+    {
+      "date": "2023-09-12",
+      "puzzle": "loading zone"
+    },
+    {
+      "date": "2023-09-13",
+      "puzzle": "broken promise"
+    },
+    {
+      "date": "2023-09-14",
+      "puzzle": "shoe size"
+    },
+    {
+      "date": "2023-09-15",
+      "puzzle": "twin sister"
+    },
+    {
+      "date": "2023-09-16",
+      "puzzle": "customer service"
+    },
+    {
+      "date": "2023-09-17",
+      "puzzle": "sale price"
+    },
+    {
+      "date": "2023-09-18",
+      "puzzle": "fillet mignon"
+    },
+    {
+      "date": "2023-09-19",
+      "puzzle": "car jack"
+    },
+    {
+      "date": "2023-09-20",
+      "puzzle": "tropical storm"
+    },
+    {
+      "date": "2023-09-21",
+      "puzzle": "online order"
+    }
+  ]
+}

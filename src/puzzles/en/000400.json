@@ -1,0 +1,404 @@
+{
+  "puzzles": [
+    {
+      "date": "2023-03-06",
+      "puzzle": "mind reader"
+    },
+    {
+      "date": "2023-03-07",
+      "puzzle": "fire escape"
+    },
+    {
+      "date": "2023-03-08",
+      "puzzle": "tea party"
+    },
+    {
+      "date": "2023-03-09",
+      "puzzle": "chicken leg"
+    },
+    {
+      "date": "2023-03-10",
+      "puzzle": "computer mouse"
+    },
+    {
+      "date": "2023-03-11",
+      "puzzle": "secret recipe"
+    },
+    {
+      "date": "2023-03-12",
+      "puzzle": "spring forward"
+    },
+    {
+      "date": "2023-03-13",
+      "puzzle": "magic wand"
+    },
+    {
+      "date": "2023-03-14",
+      "puzzle": "office chair"
+    },
+    {
+      "date": "2023-03-15",
+      "puzzle": "band leader"
+    },
+    {
+      "date": "2023-03-16",
+      "puzzle": "hotel lobby"
+    },
+    {
+      "date": "2023-03-17",
+      "puzzle": "green clover"
+    },
+    {
+      "date": "2023-03-18",
+      "puzzle": "field goal"
+    },
+    {
+      "date": "2023-03-19",
+      "puzzle": "team captain"
+    },
+    {
+      "date": "2023-03-20",
+      "puzzle": "cookie dough"
+    },
+    {
+      "date": "2023-03-21",
+      "puzzle": "croquet mallet"
+    },
+    {
+      "date": "2023-03-22",
+      "puzzle": "grocery store"
+    },
+    {
+      "date": "2023-03-23",
+      "puzzle": "bowling pin"
+    },
+    {
+      "date": "2023-03-24",
+      "puzzle": "apple cider"
+    },
+    {
+      "date": "2023-03-25",
+      "puzzle": "dollar bill"
+    },
+    {
+      "date": "2023-03-26",
+      "puzzle": "aloe vera"
+    },
+    {
+      "date": "2023-03-27",
+      "puzzle": "soy sauce"
+    },
+    {
+      "date": "2023-03-28",
+      "puzzle": "swim meet"
+    },
+    {
+      "date": "2023-03-29",
+      "puzzle": "golf course"
+    },
+    {
+      "date": "2023-03-30",
+      "puzzle": "match point"
+    },
+    {
+      "date": "2023-03-31",
+      "puzzle": "electric car"
+    },
+    {
+      "date": "2023-04-01",
+      "puzzle": "desert cactus"
+    },
+    {
+      "date": "2023-04-02",
+      "puzzle": "extra time"
+    },
+    {
+      "date": "2023-04-03",
+      "puzzle": "home plate"
+    },
+    {
+      "date": "2023-04-04",
+      "puzzle": "hockey stick"
+    },
+    {
+      "date": "2023-04-05",
+      "puzzle": "relay race"
+    },
+    {
+      "date": "2023-04-06",
+      "puzzle": "bus stop"
+    },
+    {
+      "date": "2023-04-07",
+      "puzzle": "noble cause"
+    },
+    {
+      "date": "2023-04-08",
+      "puzzle": "white vinegar"
+    },
+    {
+      "date": "2023-04-09",
+      "puzzle": "hidden eggs"
+    },
+    {
+      "date": "2023-04-10",
+      "puzzle": "evil eye"
+    },
+    {
+      "date": "2023-04-11",
+      "puzzle": "candy corn"
+    },
+    {
+      "date": "2023-04-12",
+      "puzzle": "parking garage"
+    },
+    {
+      "date": "2023-04-13",
+      "puzzle": "sirloin steak"
+    },
+    {
+      "date": "2023-04-14",
+      "puzzle": "gas station"
+    },
+    {
+      "date": "2023-04-15",
+      "puzzle": "small talk"
+    },
+    {
+      "date": "2023-04-16",
+      "puzzle": "wool coat"
+    },
+    {
+      "date": "2023-04-17",
+      "puzzle": "summer camp"
+    },
+    {
+      "date": "2023-04-18",
+      "puzzle": "ancient history"
+    },
+    {
+      "date": "2023-04-19",
+      "puzzle": "baby rattle"
+    },
+    {
+      "date": "2023-04-20",
+      "puzzle": "toilet bowl"
+    },
+    {
+      "date": "2023-04-21",
+      "puzzle": "monkey wrench"
+    },
+    {
+      "date": "2023-04-22",
+      "puzzle": "helping hand"
+    },
+    {
+      "date": "2023-04-23",
+      "puzzle": "easy peasy"
+    },
+    {
+      "date": "2023-04-24",
+      "puzzle": "toilet paper"
+    },
+    {
+      "date": "2023-04-25",
+      "puzzle": "periodic table"
+    },
+    {
+      "date": "2023-04-26",
+      "puzzle": "cereal bowl"
+    },
+    {
+      "date": "2023-04-27",
+      "puzzle": "rye bread"
+    },
+    {
+      "date": "2023-04-28",
+      "puzzle": "slow down"
+    },
+    {
+      "date": "2023-04-29",
+      "puzzle": "bar graph"
+    },
+    {
+      "date": "2023-04-30",
+      "puzzle": "canola oil"
+    },
+    {
+      "date": "2023-05-01",
+      "puzzle": "horse race"
+    },
+    {
+      "date": "2023-05-02",
+      "puzzle": "measuring cup"
+    },
+    {
+      "date": "2023-05-03",
+      "puzzle": "clam chowder"
+    },
+    {
+      "date": "2023-05-04",
+      "puzzle": "breaking news"
+    },
+    {
+      "date": "2023-05-05",
+      "puzzle": "clarinet reed"
+    },
+    {
+      "date": "2023-05-06",
+      "puzzle": "stormy weather"
+    },
+    {
+      "date": "2023-05-07",
+      "puzzle": "fork knife"
+    },
+    {
+      "date": "2023-05-08",
+      "puzzle": "prime minister"
+    },
+    {
+      "date": "2023-05-09",
+      "puzzle": "green beans"
+    },
+    {
+      "date": "2023-05-10",
+      "puzzle": "blizzard warning"
+    },
+    {
+      "date": "2023-05-11",
+      "puzzle": "ocean liner"
+    },
+    {
+      "date": "2023-05-12",
+      "puzzle": "sweet dreams"
+    },
+    {
+      "date": "2023-05-13",
+      "puzzle": "vanilla bean"
+    },
+    {
+      "date": "2023-05-14",
+      "puzzle": "bed breakfast"
+    },
+    {
+      "date": "2023-05-15",
+      "puzzle": "black olive"
+    },
+    {
+      "date": "2023-05-16",
+      "puzzle": "solar panel"
+    },
+    {
+      "date": "2023-05-17",
+      "puzzle": "creamy coleslaw"
+    },
+    {
+      "date": "2023-05-18",
+      "puzzle": "spring roll"
+    },
+    {
+      "date": "2023-05-19",
+      "puzzle": "orange slice"
+    },
+    {
+      "date": "2023-05-20",
+      "puzzle": "extra credit"
+    },
+    {
+      "date": "2023-05-21",
+      "puzzle": "lemon peel"
+    },
+    {
+      "date": "2023-05-22",
+      "puzzle": "royal family"
+    },
+    {
+      "date": "2023-05-23",
+      "puzzle": "skating rink"
+    },
+    {
+      "date": "2023-05-24",
+      "puzzle": "crescent moon"
+    },
+    {
+      "date": "2023-05-25",
+      "puzzle": "cream cheese"
+    },
+    {
+      "date": "2023-05-26",
+      "puzzle": "interest rate"
+    },
+    {
+      "date": "2023-05-27",
+      "puzzle": "almond milk"
+    },
+    {
+      "date": "2023-05-28",
+      "puzzle": "sugar cookies"
+    },
+    {
+      "date": "2023-05-29",
+      "puzzle": "asteroid belt"
+    },
+    {
+      "date": "2023-05-30",
+      "puzzle": "helium balloon"
+    },
+    {
+      "date": "2023-05-31",
+      "puzzle": "guardian angel"
+    },
+    {
+      "date": "2023-06-01",
+      "puzzle": "side dish"
+    },
+    {
+      "date": "2023-06-02",
+      "puzzle": "cottage cheese"
+    },
+    {
+      "date": "2023-06-03",
+      "puzzle": "fried rice"
+    },
+    {
+      "date": "2023-06-04",
+      "puzzle": "window sill"
+    },
+    {
+      "date": "2023-06-05",
+      "puzzle": "border patrol"
+    },
+    {
+      "date": "2023-06-06",
+      "puzzle": "bank machine"
+    },
+    {
+      "date": "2023-06-07",
+      "puzzle": "extra large"
+    },
+    {
+      "date": "2023-06-08",
+      "puzzle": "shower curtain"
+    },
+    {
+      "date": "2023-06-09",
+      "puzzle": "animal farm"
+    },
+    {
+      "date": "2023-06-10",
+      "puzzle": "gluten free"
+    },
+    {
+      "date": "2023-06-11",
+      "puzzle": "locked room"
+    },
+    {
+      "date": "2023-06-12",
+      "puzzle": "crown jewels"
+    },
+    {
+      "date": "2023-06-13",
+      "puzzle": "exchange rate"
+    }
+  ]
+}

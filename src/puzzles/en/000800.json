@@ -1,0 +1,404 @@
+{
+  "puzzles": [
+    {
+      "date": "2024-04-09",
+      "puzzle": "sourdough bread"
+    },
+    {
+      "date": "2024-04-10",
+      "puzzle": "baby carriage"
+    },
+    {
+      "date": "2024-04-11",
+      "puzzle": "tectonic plate"
+    },
+    {
+      "date": "2024-04-12",
+      "puzzle": "warm front"
+    },
+    {
+      "date": "2024-04-13",
+      "puzzle": "vacation day"
+    },
+    {
+      "date": "2024-04-14",
+      "puzzle": "bell curve"
+    },
+    {
+      "date": "2024-04-15",
+      "puzzle": "scattered showers"
+    },
+    {
+      "date": "2024-04-16",
+      "puzzle": "blowing snow"
+    },
+    {
+      "date": "2024-04-17",
+      "puzzle": "home screen"
+    },
+    {
+      "date": "2024-04-18",
+      "puzzle": "oatmeal raisin"
+    },
+    {
+      "date": "2024-04-19",
+      "puzzle": "jet stream"
+    },
+    {
+      "date": "2024-04-20",
+      "puzzle": "pot pie"
+    },
+    {
+      "date": "2024-04-21",
+      "puzzle": "ballet flats"
+    },
+    {
+      "date": "2024-04-22",
+      "puzzle": "drinking water"
+    },
+    {
+      "date": "2024-04-23",
+      "puzzle": "chemical reaction"
+    },
+    {
+      "date": "2024-04-24",
+      "puzzle": "cell membrane"
+    },
+    {
+      "date": "2024-04-25",
+      "puzzle": "obtuse angle"
+    },
+    {
+      "date": "2024-04-26",
+      "puzzle": "mushroom soup"
+    },
+    {
+      "date": "2024-04-27",
+      "puzzle": "magnetic field"
+    },
+    {
+      "date": "2024-04-28",
+      "puzzle": "cozy mystery"
+    },
+    {
+      "date": "2024-04-29",
+      "puzzle": "tea biscuit"
+    },
+    {
+      "date": "2024-04-30",
+      "puzzle": "code conduct"
+    },
+    {
+      "date": "2024-05-01",
+      "puzzle": "open house"
+    },
+    {
+      "date": "2024-05-02",
+      "puzzle": "vitamin pills"
+    },
+    {
+      "date": "2024-05-03",
+      "puzzle": "wicker basket"
+    },
+    {
+      "date": "2024-05-04",
+      "puzzle": "road salt"
+    },
+    {
+      "date": "2024-05-05",
+      "puzzle": "dim sum"
+    },
+    {
+      "date": "2024-05-06",
+      "puzzle": "drip edge"
+    },
+    {
+      "date": "2024-05-07",
+      "puzzle": "warm blanket"
+    },
+    {
+      "date": "2024-05-08",
+      "puzzle": "loose leaf"
+    },
+    {
+      "date": "2024-05-09",
+      "puzzle": "lamp shade"
+    },
+    {
+      "date": "2024-05-10",
+      "puzzle": "hand lotion"
+    },
+    {
+      "date": "2024-05-11",
+      "puzzle": "carbon copy"
+    },
+    {
+      "date": "2024-05-12",
+      "puzzle": "loving guardian"
+    },
+    {
+      "date": "2024-05-13",
+      "puzzle": "grain silo"
+    },
+    {
+      "date": "2024-05-14",
+      "puzzle": "buffer overflow"
+    },
+    {
+      "date": "2024-05-15",
+      "puzzle": "screen door"
+    },
+    {
+      "date": "2024-05-16",
+      "puzzle": "sun burn"
+    },
+    {
+      "date": "2024-05-17",
+      "puzzle": "time trial"
+    },
+    {
+      "date": "2024-05-18",
+      "puzzle": "fishing wharf"
+    },
+    {
+      "date": "2024-05-19",
+      "puzzle": "flower blossoms"
+    },
+    {
+      "date": "2024-05-20",
+      "puzzle": "sunny day"
+    },
+    {
+      "date": "2024-05-21",
+      "puzzle": "birthday cake"
+    },
+    {
+      "date": "2024-05-22",
+      "puzzle": "french revolution"
+    },
+    {
+      "date": "2024-05-23",
+      "puzzle": "french braid"
+    },
+    {
+      "date": "2024-05-24",
+      "puzzle": "french fries"
+    },
+    {
+      "date": "2024-05-25",
+      "puzzle": "french doors"
+    },
+    {
+      "date": "2024-05-26",
+      "puzzle": "french vanilla"
+    },
+    {
+      "date": "2024-05-27",
+      "puzzle": "french press"
+    },
+    {
+      "date": "2024-05-28",
+      "puzzle": "french manicure"
+    },
+    {
+      "date": "2024-05-29",
+      "puzzle": "french dressing"
+    },
+    {
+      "date": "2024-05-30",
+      "puzzle": "french bread"
+    },
+    {
+      "date": "2024-05-31",
+      "puzzle": "french onion"
+    },
+    {
+      "date": "2024-06-01",
+      "puzzle": "french baguette"
+    },
+    {
+      "date": "2024-06-02",
+      "puzzle": "french macaron"
+    },
+    {
+      "date": "2024-06-03",
+      "puzzle": "french language"
+    },
+    {
+      "date": "2024-06-04",
+      "puzzle": "bon voyage"
+    },
+    {
+      "date": "2024-06-05",
+      "puzzle": "haute couture"
+    },
+    {
+      "date": "2024-06-06",
+      "puzzle": "creme brulee"
+    },
+    {
+      "date": "2024-06-07",
+      "puzzle": "faux pas"
+    },
+    {
+      "date": "2024-06-08",
+      "puzzle": "savoir faire"
+    },
+    {
+      "date": "2024-06-09",
+      "puzzle": "femme fatale"
+    },
+    {
+      "date": "2024-06-10",
+      "puzzle": "film noir"
+    },
+    {
+      "date": "2024-06-11",
+      "puzzle": "ballet dancer"
+    },
+    {
+      "date": "2024-06-12",
+      "puzzle": "cinema ticket"
+    },
+    {
+      "date": "2024-06-13",
+      "puzzle": "brunette hair"
+    },
+    {
+      "date": "2024-06-14",
+      "puzzle": "sidewalk cafe"
+    },
+    {
+      "date": "2024-06-15",
+      "puzzle": "rose bouquet"
+    },
+    {
+      "date": "2024-06-16",
+      "puzzle": "concierge desk"
+    },
+    {
+      "date": "2024-06-17",
+      "puzzle": "business bureau"
+    },
+    {
+      "date": "2024-06-18",
+      "puzzle": "chic outfit"
+    },
+    {
+      "date": "2024-06-19",
+      "puzzle": "private chauffeur"
+    },
+    {
+      "date": "2024-06-20",
+      "puzzle": "film critique"
+    },
+    {
+      "date": "2024-06-21",
+      "puzzle": "carte blanche"
+    },
+    {
+      "date": "2024-06-22",
+      "puzzle": "travel souvenir"
+    },
+    {
+      "date": "2024-06-23",
+      "puzzle": "handsome beau"
+    },
+    {
+      "date": "2024-06-24",
+      "puzzle": "head chef"
+    },
+    {
+      "date": "2024-06-25",
+      "puzzle": "video montage"
+    },
+    {
+      "date": "2024-06-26",
+      "puzzle": "evening soiree"
+    },
+    {
+      "date": "2024-06-27",
+      "puzzle": "floral motif"
+    },
+    {
+      "date": "2024-06-28",
+      "puzzle": "gourmet lunch"
+    },
+    {
+      "date": "2024-06-29",
+      "puzzle": "debut performance"
+    },
+    {
+      "date": "2024-06-30",
+      "puzzle": "shoe boutique"
+    },
+    {
+      "date": "2024-07-01",
+      "puzzle": "dinner buffet"
+    },
+    {
+      "date": "2024-07-02",
+      "puzzle": "french food"
+    },
+    {
+      "date": "2024-07-03",
+      "puzzle": "butter croissant"
+    },
+    {
+      "date": "2024-07-04",
+      "puzzle": "cheese fondue"
+    },
+    {
+      "date": "2024-07-05",
+      "puzzle": "puff pastry"
+    },
+    {
+      "date": "2024-07-06",
+      "puzzle": "steak tartare"
+    },
+    {
+      "date": "2024-07-07",
+      "puzzle": "chocolate souffle"
+    },
+    {
+      "date": "2024-07-08",
+      "puzzle": "quiche lorraine"
+    },
+    {
+      "date": "2024-07-09",
+      "puzzle": "brioche bun"
+    },
+    {
+      "date": "2024-07-10",
+      "puzzle": "brie cheese"
+    },
+    {
+      "date": "2024-07-11",
+      "puzzle": "savory crepes"
+    },
+    {
+      "date": "2024-07-12",
+      "puzzle": "steak frites"
+    },
+    {
+      "date": "2024-07-13",
+      "puzzle": "cheese omelet"
+    },
+    {
+      "date": "2024-07-14",
+      "puzzle": "torch relay"
+    },
+    {
+      "date": "2024-07-15",
+      "puzzle": "louvre museum"
+    },
+    {
+      "date": "2024-07-16",
+      "puzzle": "the catacombs"
+    },
+    {
+      "date": "2024-07-17",
+      "puzzle": "seine river"
+    }
+  ]
+}
