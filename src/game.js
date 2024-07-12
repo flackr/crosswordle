@@ -721,8 +721,13 @@ async function addGuess(guess, interactive) {
     }
   }
 
-  let decrement = (word, letter) => {
+  let decrement = (word, letter, index = -1) => {
     answerLetters[word][letter]--;
+    // If the crossing letter is used, remove from the other word.
+    if ((answerLetters[word][letter] == 0 || index === puzzle.offsets[word]) && letter === both) {
+      both = null;
+      answerLetters[1 - word][letter]--;
+    }
   }
 
   let markClued = (word, pos) => {
@@ -769,10 +774,10 @@ async function addGuess(guess, interactive) {
         if (!tile([i, j]).classList.contains('green')) {
           letters[guesses[i][j]].min++;
           tile([i, j]).classList.add('green');
+          decrement(i, guesses[i][j], j);
         }
         resultTiles[i][j].classList.add('green');
         markClued(i, j);
-        decrement(i, guesses[i][j]);
       } else {
         wrong++;
       }
