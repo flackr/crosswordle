@@ -12,7 +12,7 @@
   <body>
     <div class="news screen">
       <div class="message">
-        <button class="close" id="close-news">❌</button>
+        <button class="ui close" id="close-news">❌</button>
         <div>
           <h1>New features</h1>
           <ul>
@@ -31,7 +31,7 @@
     </div>
     <div class="help screen">
       <div class="message">
-        <button class="close" id="close-help">❌</button>
+        <button class="ui close" id="close-help">❌</button>
         <div>
           <h1>Crosswordle</h1>
           <p data-str="help1"></p>
@@ -91,7 +91,7 @@
     </div>
     <div class="settings screen">
       <div class="message">
-        <button class="close" id="close-settings">❌</button>
+        <button class="ui close" id="close-settings">❌</button>
         <div>
           <h1 data-str="settings"></h1>
           <hr>
@@ -116,29 +116,33 @@
     </div>
     <div class="victory screen">
       <div class="message">
-        <button class="close" id="close-victory">❌</button>
+        <button class="ui close" id="close-victory">❌</button>
         <div>
           <h1 class="won" data-str="victory"></h1>
           <h1 class="lost" data-str="defeat"></h1>
           <hr>
+          <p class="info"></p>
           <p class="won" data-str="victory-message"></p>
           <p class="lost" data-str="defeat-message"></p>
-          <p data-str="click-share"></p>
-          <p data-str="play-random"></p>
           <div id="stats"></div>
+          <div class="center">
+            <button id="share" data-str="click-share"></button>
+            <button id="random" data-str="play-random"></button>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
     <div class="main">
       <div class="title">
         <div class="menu">
-          <button id="show-help">❓</button>
-          <button id="show-settings">⚙️</button>
+          <button class="ui" id="show-help">❓</button>
+          <button class="ui" id="show-settings">⚙️</button>
         </div>
         <h1>Crosswordle</h1>
       </div>
       <div class="clues"></div>
       <div class="grid"></div>
+      <div class="hint"></div>
       <div class="keyboard"></div>
     </div>
     <div class="modal screen">

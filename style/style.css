@@ -157,6 +157,7 @@ html, body, .main {
       'title'
       'clues'
       'grid'
+      'hint'
       'keyboard';
   grid-template-rows: min-content 1fr min-content;
 }
@@ -167,6 +168,7 @@ html, body, .main {
     grid-template-areas:
         'title    title'
         'grid     clues'
+        'hint     hint'
         'keyboard keyboard';
   }
   html {
@@ -180,9 +182,16 @@ html, body, .main {
   grid-area: clues;
 }
 
-.grid {
-  justify-self: center;
+.hint {
+  grid-area: hint;
+  text-align: center;
+  padding: 0 8px;
+}
+
+.grid-container {
   grid-area: grid;
+  justify-self: center;
+  justify-content: center;
 }
 
 .clues .tile,
@@ -335,4 +344,14 @@ html, body, .main {
 [result=won] .lost,
 [result=lost] .won {
   display: none;
+}
+
+.center {
+  text-align: center;
+}
+
+button:not(.ui) {
+  margin: 4px 10px;
+  font-size: 1.2em;
+  border: 1px solid buttontext;
 }

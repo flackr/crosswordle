@@ -276,7 +276,7 @@ async function init() {
   let day;
   if (args.puzzle) {
     title = STRINGS['custom-crosswordle'];
-    PUZZLE = {puzzle: decode(args.puzzle)};
+    PUZZLE = {puzzle: decode(args.puzzle), hint: decodeURIComponent(args.hint)};
   } else {
     day = Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000));
     if (args.day !== undefined) {
@@ -289,6 +289,8 @@ async function init() {
     title = `Crosswordle ${day} (${LANG})`;
     PUZZLE = await loadPuzzle(day);
   }
+  document.querySelector('.hint').textContent = PUZZLE.hint || '';
+  document.querySelector('.info').textContent = PUZZLE.info || '';
   words = PUZZLE.puzzle.split(/[+ ]/);
   document.title = document.querySelector('.title h1').textContent = title;
 
