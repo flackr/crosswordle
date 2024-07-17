@@ -2,19 +2,23 @@
   "puzzles": [
     {
       "date": "2024-07-18",
-      "puzzle": "cannes festival"
+      "puzzle": "cannes festival",
+      "hint": "Event"
     },
     {
       "date": "2024-07-19",
-      "puzzle": "eiffel tower"
+      "puzzle": "eiffel tower",
+      "hint": "Monument"
     },
     {
       "date": "2024-07-20",
-      "puzzle": "paris olympics"
+      "puzzle": "paris olympics",
+      "hint": "Event"
     },
     {
       "date": "2024-07-21",
-      "puzzle": "olympic rings"
+      "puzzle": "olympic rings",
+      "hint": "Logo"
     },
     {
       "date": "2024-07-22",
