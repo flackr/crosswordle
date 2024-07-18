@@ -289,7 +289,12 @@ async function init() {
     title = `Crosswordle ${day} (${LANG})`;
     PUZZLE = await loadPuzzle(day);
   }
-  document.querySelector('.hint').textContent = PUZZLE.hint || '';
+  document.querySelector('#hint').textContent = PUZZLE.hint || '';
+  if (PUZZLE.hint) {
+    document.querySelector('.hint').classList.remove('hidden');
+  } else {
+    document.querySelector('.hint').classList.add('hidden');
+  }
   document.querySelector('.info').textContent = PUZZLE.info || '';
   words = PUZZLE.puzzle.split(/[+ ]/);
   document.title = document.querySelector('.title h1').textContent = title;

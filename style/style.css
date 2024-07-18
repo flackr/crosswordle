@@ -355,3 +355,7 @@ button:not(.ui) {
   font-size: 1.2em;
   border: 1px solid buttontext;
 }
+
+.hidden {
+  display: none;
+}
