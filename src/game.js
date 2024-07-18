@@ -153,6 +153,15 @@ function hasCommonLetter(word1, word2) {
   return false;
 }
 
+function setComponent(container, target, text, visible) {
+  if (visible) {
+    document.querySelector(container).classList.remove('hidden');
+  } else {
+    document.querySelector(container).classList.add('hidden');
+  }
+  document.querySelector(target).textContent = text;
+}
+
 let FIRST_PUZZLE = null;
 let puzzle = null;
 let summary = '';
@@ -276,7 +285,7 @@ async function init() {
   let day;
   if (args.puzzle) {
     title = STRINGS['custom-crosswordle'];
-    PUZZLE = {puzzle: decode(args.puzzle), hint: decodeURIComponent(args.hint)};
+    PUZZLE = {puzzle: decode(args.puzzle), hint: args.hint ? decodeURIComponent(args.hint) : ''};
   } else {
     day = Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000));
     if (args.day !== undefined) {
@@ -289,12 +298,15 @@ async function init() {
     title = `Crosswordle ${day} (${LANG})`;
     PUZZLE = await loadPuzzle(day);
   }
-  document.querySelector('#hint').textContent = PUZZLE.hint || '';
-  if (PUZZLE.hint) {
-    document.querySelector('.hint').classList.remove('hidden');
-  } else {
-    document.querySelector('.hint').classList.add('hidden');
+  let dateText = '';
+  if (PUZZLE.date) {
+    const dateParts = PUZZLE.date.split('-').map(s => parseInt(s));
+    const date = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], 0, 0, 0, 0);
+    dateText = date.toDateString();
   }
+  setComponent('.date', '#date', dateText, !!dateText);
+  setComponent('.hint', '#hint', PUZZLE.hint, !!PUZZLE.hint);
+  setComponent('.author', '#author', PUZZLE.author, !!PUZZLE.author);
   document.querySelector('.info').textContent = PUZZLE.info || '';
   words = PUZZLE.puzzle.split(/[+ ]/);
   document.title = document.querySelector('.title h1').textContent = title;
@@ -355,6 +367,23 @@ async function init() {
       continue;
     addCell(1, i, best.offsets[0], i);
   }
+
+  // Create empty spacers to reserve space for clues.
+  let resultSpacer = document.createElement('div');
+  resultSpacer.classList = 'spacer';
+  for (let i = 0; i < words.length; ++i) {
+    let resultSpace;
+    for (let j = 0; j < words[i].length; ++j) {
+      resultSpace = document.createElement('div');
+      resultSpace.classList = 'spacer tile';
+      resultSpacer.appendChild(resultSpace);
+    }
+    resultSpace = document.createElement('div');
+    resultSpace.classList = 'spacer empty';
+    resultSpacer.appendChild(resultSpace);
+  }
+  document.querySelector('.main .clues').appendChild(resultSpacer);
+
   updateSelection([0, 0]);
   for (let i = 0; i < words.length; ++i) {
     loadWordLength(words[i].length);
