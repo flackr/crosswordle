@@ -115,18 +115,26 @@ if (args === undefined || args.help) {
   if (chunk.puzzles.length != chunk_index) {
     console.error(`Expected ${chunk_index} puzzles in chunk ${index}, found ${chunk.puzzles.length}!`);
   }
-  
-  let lines = [];
+
+  let toadd = [];
   const rl = readline.createInterface({input: process.stdin, crlfDelay: Infinity});
   for await (const line of rl) {
-    const words = line.split(' ');
+    const fields = line.split('\t');
+
+    const data = {date: '', puzzle: fields[0]};
+    if (fields[1])
+      data.hint = fields[1];
+    if (fields[2])
+      data.info = fields[2];
+    const words = data.puzzle.split(' ');
+
     let errors = 0;
     if (words.length != 2) {
-      console.error(`Expected 2 words: ${line}`);
+      console.error(`Expected 2 words: ${data.puzzle}`);
       continue;
     }
     if (!hasCommonLetter(words[0], words[1])) {
-      console.error(`No common letter: ${line}`);
+      console.error(`No common letter: ${data.puzzle}`);
       ++errors;
     }
     if (dict.size > 0 && !dict.has(words[0])) {
@@ -137,23 +145,23 @@ if (args === undefined || args.help) {
       ++errors;
       console.error(`Word not in dictionary: ${words[1]}`);
     }
-    if (previousPuzzles.has(line)) {
+    if (previousPuzzles.has(data.puzzle)) {
       ++errors;
-      console.error(`Duplicate puzzle: ${line}`);
+      console.error(`Duplicate puzzle: ${data.puzzle}`);
     }
     if (errors)
       continue;
-    
-    lines.push(line);
+
+    if (!args['allow-duplicate']) {
+      previousPuzzles.add(data.puzzle);
+    }
+    toadd.push(data);
   }
   if (args.shuffle) {
-    lines = shuffle(lines);
+    toadd = shuffle(toadd);
   }
-  for (const line of lines) {
-    let puzzle = {
-      date: (new Date(baseDate[0], baseDate[1] - 1, baseDate[2] + index)).toISOString().substring(0,10),
-      puzzle: line
-    };
+  for (const puzzle of toadd) {
+    puzzle.date  = (new Date(baseDate[0], baseDate[1] - 1, baseDate[2] + index)).toISOString().substring(0,10);
     console.log(puzzle);
     chunk.puzzles.push(puzzle);
     ++index;
@@ -162,10 +170,10 @@ if (args === undefined || args.help) {
     let nextChunks = Math.floor(index / CHUNK_SIZE);
     if (nextChunks != chunks) {
       writeChunk(chunks, chunk);
+      chunk = loadChunk(nextChunks);
       chunks = nextChunks;
-      chunk = loadChunk(chunks);
     }
   }
   writeChunk(chunks, chunk);
-  fs.writeFileSync(dataFile, JSON.stringify(data, undefined, 2));  
+  fs.writeFileSync(dataFile, JSON.stringify(data, undefined, 2));
 }
