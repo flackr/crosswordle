@@ -262,6 +262,20 @@ html, body, .main {
   --base-size: var(--small-size);
 }
 
+@keyframes grow {
+  0% { height: 0; }
+}
+
+.clues > div {
+  animation: grow 300ms;
+  height: calc(var(--small-size) + 16px);
+  overflow: clip;
+}
+
+.clues > div.spacer {
+  height: 0;
+}
+
 .clues .spacer {
   height: 0;
   border: none;
