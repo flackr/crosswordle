@@ -162,6 +162,24 @@ function setComponent(container, target, text, visible) {
   document.querySelector(target).textContent = text;
 }
 
+function animateChange(elems, callback, options) {
+  if (options === 0 || options.duration === 0) {
+    callback();
+    return;
+  }
+  let before = elems.map(elem => elem.getBoundingClientRect());
+  callback();
+  let fromTransforms = elems.map((elem, idx) => {
+    const cur = elem.getBoundingClientRect();
+    return `translate(${before[idx].left - cur.left}px, ${before[idx].top - cur.top}px)`;
+  });
+  for (let i = 0; i < elems.length; ++i) {
+    elems[i].animate([
+      {transform: fromTransforms[i], offset: 0}
+    ], options);
+  }
+}
+
 let FIRST_PUZZLE = null;
 let puzzle = null;
 let summary = '';
@@ -958,10 +976,14 @@ async function addGuess(guess, interactive) {
   updateHints();
   if (wrong && gameGuesses.length < MAX_GUESSES) {
     // TODO: Add letter animations.
-    document.querySelector('.main .clues').appendChild(result);
-    if (interactive) {
-      result.animate({opacity: [0, 1]}, 200);
-    }
+    const animationOptions = {
+      duration: interactive ? 300 : 0,
+      easing: 'ease'
+    };
+    animateChange([document.querySelector('.main .grid')], () => {
+      document.querySelector('.main .clues').appendChild(result);
+    }, animationOptions);
+    result.animate([{opacity: 0, transform: 'translateY(-100%)', offset: 0}], animationOptions);
     document.querySelector('.keyboard').scrollIntoView();
   } else {
     // Show victory screen after clues are revealed.
