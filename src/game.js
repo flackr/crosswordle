@@ -305,7 +305,6 @@ async function init() {
     dateText = date.toDateString();
   }
   setComponent('.date', '#date', dateText, !!dateText);
-  setComponent('.hint', '#hint', PUZZLE.hint, !!PUZZLE.hint);
   setComponent('.author', '#author', PUZZLE.author, !!PUZZLE.author);
   document.querySelector('.info').textContent = PUZZLE.info || '';
   words = PUZZLE.puzzle.split(/[+ ]/);
@@ -411,10 +410,17 @@ async function init() {
     */
   }
 
+  // Note, setting this before hardMode is set means that the user can see the hint,
+  // and then switch to hard mode. However, we don't want to lock the user into
+  // easy mode if they just haven't set the hard mode setting yet.
+  // TODO: Consider delaying showing the hint until the user interacts with the puzzle.
+  setComponent('.hint', '#hint', PUZZLE.hint, !settings.hardMode && !!PUZZLE.hint);
+
   // Restore progress
   let progress = localStorage.getItem('crosswordle-daily');
-  if (!progress)
+  if (!progress) {
     return;
+  }
   let parsed = JSON.parse(progress);
   if (puzzle.day === undefined || parsed.day != puzzle.day)
     return;
@@ -422,6 +428,7 @@ async function init() {
     return;
   hardMode = parsed.hardMode || false;
   orangeClues = parsed.orangeClues || false;
+  setComponent('.hint', '#hint', PUZZLE.hint, !hardMode && !!PUZZLE.hint);
   gameGuesses = parsed.guesses;
   for (let guess of gameGuesses) {
     setGuess(guess.toUpperCase());
