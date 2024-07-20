@@ -1,6 +1,6 @@
 "use strict";
 
-const FEATURE_VERSION = 6;
+const FEATURE_VERSION = 7;
 const MAX_GUESSES = 10;
 
 function parse(str) {

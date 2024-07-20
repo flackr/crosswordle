@@ -10,25 +10,6 @@
     <script defer src="src/index.js"></script>
   </head>
   <body>
-    <div class="news screen">
-      <div class="message">
-        <button class="ui close" id="close-news">❌</button>
-        <div>
-          <h1>New features</h1>
-          <ul>
-            <li class="feature" version="6">
-              The middle letter is now treated as a separate clue in each word.
-            </li>
-            <li class="feature" version="5">
-              Orange clues if a matched letter is not in the current word are on by default. See the help screen for more information. Turn on hard mode to disable.
-            </li>
-            <li class="feature" version="4">
-              Gives you the answer after 10 failed guesses.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
     <div class="help screen">
       <div class="message">
         <button class="ui close" id="close-help">❌</button>
@@ -86,6 +67,28 @@
             <li data-str="help-clue5"></li>
           </ul>
           <p data-str="help5"></p>
+        </div>
+      </div>
+    </div>
+    <div class="news screen">
+      <div class="message">
+        <button class="ui close" id="close-news">❌</button>
+        <div>
+          <h1>New features</h1>
+          <ul>
+            <li class="feature" version="7">
+              The keyboard will show word-specific clues based on the currently selected word.
+            </li>
+            <li class="feature" version="6">
+              The middle letter is now treated as a separate clue in each word.
+            </li>
+            <li class="feature" version="5">
+              Orange clues if a matched letter is not in the current word are on by default. See the help screen for more information. Turn on hard mode to disable.
+            </li>
+            <li class="feature" version="4">
+              Gives you the answer after 10 failed guesses.
+            </li>
+          </ul>
         </div>
       </div>
     </div>
