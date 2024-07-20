@@ -336,6 +336,10 @@ html, body, .main {
   background: var(--black);
 }
 
+.key.orange {
+  background: var(--orange);
+}
+
 .key.yellow {
   background: var(--yellow);
 }

@@ -521,6 +521,7 @@ function updateSelection(newSelection) {
   selected = newSelection;
   let newTile = tile(selected);
   if (newTile) newTile.classList.add('selected');
+  updateHints();
 }
 
 function setTile(tile, text, index) {
@@ -639,21 +640,22 @@ let clues = {
   letters: {},
 };
 for (let i = 0; i < alphabet.length; ++i) {
-  clues.letters[alphabet[i]] = {min: 0, max: false, not: new Set()};
+  clues.letters[alphabet[i]] = {min: [0, 0], max: [false, false], not: new Set()};
 }
 
 function letterCount() {
   let letters = {};
+  for (let i = 0; i < alphabet.length; ++i) {
+    letters[alphabet[i]] = [0, 0];
+  }
+
   for (let i = 0; i < puzzle.words.length; ++i) {
     for (let j = 0; j < puzzle.words[i].length; ++j) {
-      if (i == 1 && j == puzzle.offsets[1])
-        continue;
       let c = tile([i, j]).children[0].textContent.toLowerCase();
-      if (c == '') {
+      if (c == '' || alphabet.indexOf(c) == -1) {
         continue;
       }
-      letters[c] = letters[c] || 0;
-      letters[c]++;
+      letters[c][i]++;
     }
   }
   return letters;
@@ -670,11 +672,6 @@ async function updateHints() {
       let index = count++;
       let t = tile([i, j]);
       let c = t.children[0].textContent.toLowerCase();
-      if (c) {
-        guesses[i] += c;
-      }
-      if (i == 1 && j == puzzle.offsets[1])
-        continue;
       if (clues.green[i] && clues.green[i][j]) {
         if (c != clues.green[i][j]) {
           greenLetters[clues.green[i][j]] = true;
@@ -685,15 +682,74 @@ async function updateHints() {
           t.classList.remove('green-hint');
         }
       }
+      if (!c || alphabet.indexOf(c) == -1)
+        continue;
+      guesses[i] += c;
+      if (i == 1 && j == puzzle.offsets[1])
+        continue;
       // If the chosen letter can't go in this position or there are too many
       // in the guess, highlight them.
-      if (c && clues.letters[c] && (
-              clues.letters[c].not.has(index) ||
-              (clues.letters[c].max && clues.letters[c].min < letters[c]))) {
+      let maxLetters = Infinity;
+      let letterCount = 0;
+      if (orangeClues) {
+        letterCount = letters[c][i];
+        if (clues.letters[c]?.max[i])
+          maxLetters = clues.letters[c].min[i];
+      } else {
+        letterCount = letters[c][0] + letters[c][1];
+        if (clues.letters[c]?.max[0] && clues.letters[c]?.max[1])
+          maxLetters = clues.letters[c].min[0] + clues.letters[c].min[1];
+      }
+      if (c && (clues.letters[c]?.not.has(index) ||
+                letterCount > maxLetters)) {
         t.classList.add('error');
       } else {
         t.classList.remove('error');
       }
+    }
+  }
+
+  const curWord = selected[0];
+  for (let i = 0; i < alphabet.length; ++i) {
+    let c = alphabet[i];
+    let key = document.querySelector(`.key[code=${c}]`);
+    if (greenLetters[c]) {
+      key.classList.add('green');
+    } else {
+      key.classList.remove('green');
+    }
+
+    let minLetters = 0;
+    let maxLetters = Infinity;
+    let letterCount = 0;
+    let totalLetters = letters[c][0] + letters[c][1];
+    let totalNeeded = clues.letters[c].min[0] + clues.letters[c].min[1];
+    if (orangeClues) {
+      letterCount = letters[c][curWord];
+      minLetters = clues.letters[c].min[curWord];
+      if (clues.letters[c]?.max[curWord])
+        maxLetters = clues.letters[c].min[curWord];
+    } else {
+      letterCount = letters[c][0] + letters[c][1];
+      minLetters = clues.letters[c].min[0] + clues.letters[c].min[1];
+      if (clues.letters[c]?.max[0] && clues.letters[c]?.max[1])
+        maxLetters = clues.letters[c].min[0] + clues.letters[c].min[1];
+    }
+
+    if (minLetters > letterCount) {
+      key.classList.add('yellow');
+      key.classList.remove('orange');
+    } else if (orangeClues && totalNeeded > totalLetters) {
+      key.classList.remove('yellow');
+      key.classList.add('orange');
+    } else {
+      key.classList.remove('yellow');
+      key.classList.remove('orange');
+    }
+    if (letterCount >= maxLetters) {
+      key.classList.add('black');
+    } else {
+      key.classList.remove('black');
     }
   }
 
@@ -706,26 +762,6 @@ async function updateHints() {
       for (let j = 0; j < puzzle.words[i].length; ++j) {
         tile([i, j]).classList.add('error');
       }
-    }
-  }
-
-  for (let i = 0; i < alphabet.length; ++i) {
-    let c = alphabet[i];
-    let key = document.querySelector(`.key[code=${c}]`);
-    if (greenLetters[c]) {
-      key.classList.add('green');
-    } else {
-      key.classList.remove('green');
-    }
-    if (clues.letters[c].min > (letters[c] || 0)) {
-      key.classList.add('yellow');
-    } else {
-      key.classList.remove('yellow');
-    }
-    if (clues.letters[c].max && clues.letters[c].min <= (letters[c] || 0)) {
-      key.classList.add('black');
-    } else {
-      key.classList.remove('black');
     }
   }
 }
@@ -822,7 +858,7 @@ async function addGuess(guess, interactive) {
   let wrong = 0;
   let letters = {};
   for (let i = 0; i < alphabet.length; ++i) {
-    letters[alphabet[i]] = {min: 0, max: false};
+    letters[alphabet[i]] = {min: [0, 0], max: [false, false]};
   }
   for (let i = 0; i < guesses.length; i++) {
     if (clues.green.length <= i)
@@ -833,10 +869,10 @@ async function addGuess(guess, interactive) {
       if (guesses[i][j] == puzzle.words[i][j]) {
         clues.green[i][j] = guesses[i][j];
         if (!tile([i, j]).classList.contains('green')) {
-          letters[guesses[i][j]].min++;
           tile([i, j]).classList.add('green');
           decrement(i, guesses[i][j], j);
         }
+        letters[guesses[i][j]].min[i]++;
         resultTiles[i][j].classList.add('green');
         markClued(i, j);
       } else {
@@ -858,7 +894,7 @@ async function addGuess(guess, interactive) {
         tile([i, j]).classList.add('yellow');
         resultTiles[i][j].classList.add('yellow');
         markClued(i, j);
-        letters[guesses[i][j]].min++;
+        letters[guesses[i][j]].min[i]++;
         decrement(i, guesses[i][j]);
       }
     }
@@ -874,10 +910,11 @@ async function addGuess(guess, interactive) {
         tile([i, j]).classList.add(clueClass);
         resultTiles[i][j].classList.add(clueClass);
         markClued(i, j);
-        letters[guesses[i][j]].min++;
+        letters[guesses[i][j]].min[1 - i]++;
+        letters[guesses[i][j]].max[i] = true;
         decrement(1 - i, guesses[i][j]);
       } else {
-        letters[guesses[i][j]].max = true;
+        letters[guesses[i][j]].max[0] = letters[guesses[i][j]].max[1] = true;
       }
     }
   }
@@ -885,9 +922,11 @@ async function addGuess(guess, interactive) {
   // Merge new information with existing.
   for (let i = 0; i < alphabet.length; ++i) {
     let c = alphabet[i];
-    clues.letters[c].min = Math.max(clues.letters[c].min, letters[c].min);
-    if (letters[c].max)
-      clues.letters[c].max = true;
+    for (let j = 0; j < puzzle.words.length; ++j) {
+      clues.letters[c].min[j] = Math.max(clues.letters[c].min[j], letters[c].min[j]);
+      if (letters[c].max[j])
+        clues.letters[c].max[j] = true;
+    }
   }
 
   // Then do a reveal, and add to the clues row.
