@@ -1113,8 +1113,9 @@ async function addGuess(guess, interactive) {
     // Post and fetch histogram data early to have it visible before
     // animations finish.
     const score = !wrong ? gameGuesses.length : 100;
+    const prevScore = getScore(puzzle.day);
     setScore(puzzle.day, Math.min(10, score));
-    postScore(`${LANG}-${puzzle.day}`, interactive ? score : undefined);
+    postScore(`${LANG}-${puzzle.day}`, prevScore === undefined && interactive ? score : undefined);
   }
   if (animationPromises.length > 0) {
     await Promise.all(animationPromises);
