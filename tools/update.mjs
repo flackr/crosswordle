@@ -32,6 +32,7 @@ const HELP = [
   ['--shuffle', 'Shuffle words', false],
   ['--allow-misspell', 'Allow misspelled words', false],
   ['--allow-duplicate', 'Allow repeated words', false],
+  ['--dry-run', `Run without modifying files`, false]
 ];
 const HELP_MAP = {};
 for (let entry of HELP) {
@@ -109,7 +110,8 @@ if (args === undefined || args.help) {
     return JSON.parse(fs.readFileSync(filename(idx)));
   }
   let writeChunk = (idx, data) => {
-    fs.writeFileSync(filename(idx), JSON.stringify(data, undefined, 2));
+    if (!args['dry-run'])
+      fs.writeFileSync(filename(idx), JSON.stringify(data, undefined, 2));
   }
   let chunk = loadChunk(chunks);
   if (chunk.puzzles.length != chunk_index) {
@@ -160,9 +162,10 @@ if (args === undefined || args.help) {
   if (args.shuffle) {
     toadd = shuffle(toadd);
   }
+  let lastDate = null;
   for (const puzzle of toadd) {
-    puzzle.date  = (new Date(baseDate[0], baseDate[1] - 1, baseDate[2] + index)).toISOString().substring(0,10);
-    console.log(puzzle);
+    puzzle.date = (new Date(baseDate[0], baseDate[1] - 1, baseDate[2] + index)).toISOString().substring(0,10);
+    lastDate = puzzle.date;
     chunk.puzzles.push(puzzle);
     ++index;
     ++chunk_index;
@@ -174,6 +177,8 @@ if (args === undefined || args.help) {
       chunks = nextChunks;
     }
   }
+  console.log(`Added ${toadd.length} puzzles ending ${lastDate}`);
   writeChunk(chunks, chunk);
-  fs.writeFileSync(dataFile, JSON.stringify(data, undefined, 2));
+  if (!args['dry-run'])
+    fs.writeFileSync(dataFile, JSON.stringify(data, undefined, 2));
 }

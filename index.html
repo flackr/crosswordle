@@ -10,7 +10,7 @@
     <script defer src="src/index.js"></script>
   </head>
   <body>
-    <div class="help screen">
+    <div class="help screen hidden">
       <div class="message">
         <button class="ui close" id="close-help">❌</button>
         <div>
@@ -70,12 +70,15 @@
         </div>
       </div>
     </div>
-    <div class="news screen">
+    <div class="news screen hidden">
       <div class="message">
         <button class="ui close" id="close-news">❌</button>
         <div>
           <h1>New features</h1>
           <ul>
+            <li class="feature" version="8">
+              Added archive view to go back and play historical puzzles. Tracks completed puzzles to let you know which ones you have solved.
+            </li>
             <li class="feature" version="7">
               The keyboard will show word-specific clues based on the currently selected word.
             </li>
@@ -92,7 +95,7 @@
         </div>
       </div>
     </div>
-    <div class="settings screen">
+    <div class="settings screen hidden">
       <div class="message">
         <button class="ui close" id="close-settings">❌</button>
         <div>
@@ -110,14 +113,23 @@
           <div><input id="hard-mode" type="checkbox"> <span data-str="hard-mode"></span></div>
           <p data-str="create-custom"></p>
           <input id="custom-crosswordle"><button id="create">Create</button><br>
-          <p id="custom-error"></p>
-          <a id="custom-link"></a>
+          <p class="hidden" id="custom-error"></p>
+          <a class="hidden" id="custom-link"></a>
 
           <p data-str="credit"></p>
         </div>
       </div>
     </div>
-    <div class="victory screen">
+    <div class="archive screen hidden">
+      <div class="message">
+        <button class="ui close" id="close-archive">❌</button>
+        <div>
+          <h1 data-str="archive"></h1>
+          <div class="months"></div>
+        </div>
+      </div>
+    </div>
+    <div class="victory screen hidden">
       <div class="message">
         <button class="ui close" id="close-victory">❌</button>
         <div>
@@ -138,8 +150,12 @@
     <div class="main">
       <div class="title">
         <div class="menu">
-          <button class="ui" id="show-help">❓</button>
-          <button class="ui" id="show-settings">⚙️</button>
+          <div class="contents hidden">
+            <button class="ui" id="show-help">❓</button>
+            <button class="ui" id="show-archive">🗓️</button>
+            <button class="ui" id="show-settings">⚙️</button>
+          </div>
+          <button class="ui" id="expand-button">&lt;</button>
         </div>
         <h1>Crosswordle</h1>
         <h3 class="date hidden" id="date"></h3>
@@ -150,7 +166,7 @@
       <div class="author hidden"><span data-str="by"></span> <span id="author"></span></div>
       <div class="keyboard"></div>
     </div>
-    <div class="modal screen">
+    <div class="modal screen hidden">
       <div class="message"></div>
     </div>
   </body>

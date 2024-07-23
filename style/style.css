@@ -85,12 +85,17 @@ html.high-contrast {
   margin: 15px auto;
 }
 
+#templates {
+  display: none;
+}
+
 .menu {
   position: absolute;
   right: 0;
   top: 0;
 }
-.menu > button {
+
+.menu button {
   font-size: 2em;
   padding: 3px;
   cursor: pointer;
@@ -110,7 +115,7 @@ html, body, .main {
 }
 
 .screen {
-  display: none;
+  display: flex;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -118,21 +123,22 @@ html, body, .main {
   right: 0;
   background: rgba(0, 0, 0, 0.4);
   z-index: 1;
+  justify-content: center;
+  align-items: center;
 }
 
 .screen > .message {
   position: absolute;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7);
-  top: 50%;
-  left: 50%;
   background: var(--background);
   border: 2px solid #777;
-  transform: translate(-50%, -50%);
 }
 
 .message > div {
+  overscroll-behavior: contain;
   overflow: auto;
-  max-height: 80vh;
+  max-width: 90vw;
+  max-height: 90vh;
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
@@ -143,10 +149,6 @@ html, body, .main {
   top: 0;
   right: 0;
   font-size: 24px;
-}
-
-#custom-link, #custom-error {
-  display: none;
 }
 
 .modal .message {
@@ -166,8 +168,29 @@ html, body, .main {
   grid-template-rows: min-content min-content 1fr min-content;
 }
 
+@keyframes slide-in-left {
+  0% { transform: translateX(30%); opacity: 0;}
+}
+
+.menu .contents {
+  position: absolute;
+  right: 0;
+  white-space: nowrap;
+  animation: slide-in-left 200ms;
+}
+
 /* On wide screen devices, put the clues to the right of the grid. */
 @media only screen and (min-width: 768px) {
+
+  #expand-button {
+    display: none;
+  }
+
+  .menu .contents {
+    display: block;
+    animation: none;
+  }
+
   .main {
     grid-template-areas:
         'title    title'
@@ -383,4 +406,30 @@ button:not(.ui) {
 
 .hidden {
   display: none;
+}
+
+.months {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.month {
+  border: 1px solid;
+  display: grid;
+  margin: 8px;
+}
+
+.month .header {
+  padding: 2px;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.month > a {
+  text-align: center;
+}
+
+.complete {
+  font-weight: bold;
+  color: var(--green-fg);
 }

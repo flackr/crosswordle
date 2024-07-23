@@ -1,6 +1,6 @@
 "use strict";
 
-const FEATURE_VERSION = 7;
+const FEATURE_VERSION = 8;
 const MAX_GUESSES = 10;
 
 function parse(str) {
@@ -39,6 +39,25 @@ const LANG = ARGS.l || AUTO_LANG;
 let PUZZLE_COUNT;
 let PUZZLE;
 let STRINGS = [];
+
+const scoreChars = '1234567890';
+const scoreChar = {};
+for (let i = 0; i < scoreChars.length; ++i) {
+  scoreChar[scoreChars[i]] = i + 1;
+}
+function setScore(day, score) {
+  while (SOLVED.length <= day) {
+    SOLVED = SOLVED + ' ';
+  }
+  SOLVED = SOLVED.slice(0, day) + scoreChars[score - 1] + SOLVED.slice(day + 1);
+  localStorage.setItem(`crosswordle-scores-${LANG}`, SOLVED);
+}
+function getScore(day) {
+  if (SOLVED.length <= day)
+    return undefined;
+  return scoreChar[SOLVED[day]];
+}
+let SOLVED = '';
 
 // Insert values into slotted positions in named string.
 function templateStr(langStr, values) {
@@ -180,7 +199,9 @@ function animateChange(elems, callback, options) {
   }
 }
 
+let START_MONTH = null;
 let FIRST_PUZZLE = null;
+let LAST_PUZZLE = null;
 let puzzle = null;
 let summary = '';
 async function init() {
@@ -189,6 +210,8 @@ async function init() {
   PUZZLE_COUNT = data.puzzle_count;
   const dateParts = data.base_date.split('-').map(s => parseInt(s));
   FIRST_PUZZLE = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], 0, 0, 0, 0);
+  START_MONTH = new Date(dateParts[0], dateParts[1] - 1, 1, 0, 0, 0, 0);
+  LAST_PUZZLE = new Date(dateParts[0], dateParts[1] - 1, dateParts[2] + data.puzzle_count, 0, 0, 0, 0)
   // Insert translated element strings
   let elems = document.querySelectorAll('[data-str]');
   for (let elem of elems) {
@@ -213,23 +236,104 @@ async function init() {
       window.location.href = window.location.href.split('?')[0];
     }
   });
-  document.getElementById('close-settings').addEventListener('click', () => {
-    document.querySelector('.settings').style.display = '';
-  });
   document.getElementById('show-settings').addEventListener('click', () => {
-    document.querySelector('.settings').style.display = 'block';
+    document.querySelector('.settings').classList.remove('hidden');
+  });
+  document.getElementById('close-settings').addEventListener('click', () => {
+    document.querySelector('.settings').classList.add('hidden');
   });
   document.getElementById('close-victory').addEventListener('click', () => {
-    document.querySelector('.victory').style.display = '';
+    document.querySelector('.victory').classList.add('hidden');
+  });
+  let menuListener = (evt) => {
+    document.querySelector('.menu .contents').classList.add('hidden');
+    document.body.removeEventListener('click', menuListener, {capture: true});
+  };
+  document.getElementById('expand-button').addEventListener('click', () => {
+    document.querySelector('.menu .contents').classList.remove('hidden');
+    document.body.addEventListener('click', menuListener, {capture: true});
+  });
+  let archive = null;
+  document.getElementById('show-archive').addEventListener('click', () => {
+    document.querySelector('.archive').classList.remove('hidden');
+    if (archive)
+      return;
+    archive = (function(container) {
+      const weekDays = [];
+      var d = new Date();
+      while(d.getDay() > 0) {
+          d.setDate(d.getDate() + 1);
+      }
+      while(weekDays.length < 7) {
+          weekDays.push(d.toLocaleDateString(window.navigator.language, {weekday: 'short'}).match(/\w+/)[0]);
+          d.setDate(d.getDate() + 1);
+      }
+      d = new Date();
+      let cur = START_MONTH;
+      let index = -FIRST_PUZZLE.getDate();
+      let curMonth = -1;
+      let count = 0;
+      while (cur.getTime() < LAST_PUZZLE.getTime() && cur.getTime() < d.getTime()) {
+        if (cur.getMonth() != curMonth) {
+          curMonth = cur.getMonth();
+          const month = document.createElement('div');
+          container.appendChild(month);
+          const title = document.createElement('div');
+          title.className = 'title';
+          title.style.gridArea = '1 / 1 / 1 / 7';
+          title.textContent = cur.toLocaleDateString('en-us', { year: 'numeric', month: 'short' });
+          month.appendChild(title);
+          month.className = 'month';
+          let col = 1;
+          let row = 2;
+          for (const day of weekDays) {
+            const headerDay = document.createElement('div');
+            headerDay.className = 'header';
+            headerDay.textContent = day;
+            headerDay.style.gridArea = `${row} / ${col++}`;
+            month.appendChild(headerDay);
+          }
+          let day = cur;
+          while (day.getMonth() == curMonth) {
+            const dayDiv = document.createElement('a');
+            const newCol = day.getDay() + 1;
+            if (newCol < col)
+              ++row;
+            col = newCol;
+            dayDiv.style.gridArea = `${row} / ${col}`;
+            dayDiv.textContent = day.getDate();
+            if (++index >= 0 && day.getTime() <= d.getTime() && day.getTime() <= LAST_PUZZLE.getTime()) {
+              const score = getScore(index);
+              if (score !== undefined) {
+                dayDiv.classList.add('complete');
+              }
+              let url = '?'
+              if (ARGS.l)
+                url += `l=${ARGS.l}&`;
+              dayDiv.setAttribute('href', url + `day=${index}`);
+            }
+            month.appendChild(dayDiv);
+            day.setDate(day.getDate() + 1);
+          }
+          cur = day;
+        }
+      }
+
+      // Exposed functions
+      return {};
+    })(document.querySelector('.archive > .message .months'));
+  });
+  document.getElementById('close-archive').addEventListener('click', () => {
+    document.querySelector('.archive').classList.add('hidden');
   });
   document.getElementById('show-help').addEventListener('click', () => {
-    document.querySelector('.help').style.display = 'block';
+    document.querySelector('.help').classList.remove('hidden');
   });
   document.getElementById('close-help').addEventListener('click', () => {
-    document.querySelector('.help').style.display = '';
+    document.querySelector('.help').classList.add('hidden');
   });
   document.getElementById('close-news').addEventListener('click', () => {
-    document.querySelector('.news').style.display = '';
+    document.querySelector('.news').classList.add('hidden');
   });
   let hardModeCheckbox = document.getElementById('hard-mode');
   hardModeCheckbox.addEventListener('change', () => {
@@ -254,7 +358,7 @@ async function init() {
   if (seenHelp)
     seenHelp = parseInt(seenHelp);
   if (seenHelp === null) {
-    document.querySelector('.help').style.display = 'block';
+    document.querySelector('.help').classList.remove('hidden');
     localStorage.setItem('crosswordle-help', FEATURE_VERSION);
   } else if (seenHelp < FEATURE_VERSION) {
     let features = document.querySelectorAll('.news .feature[version]');
@@ -263,7 +367,7 @@ async function init() {
         features[i].style.display = 'none';
       }
     }
-    document.querySelector('.news').style.display = 'block';
+    document.querySelector('.news').classList.remove('hidden');
     localStorage.setItem('crosswordle-help', FEATURE_VERSION);
   }
   document.getElementById('custom-crosswordle').setAttribute('placeholder', STRINGS['custom-crosswordle-example']);
@@ -285,7 +389,7 @@ async function init() {
     let errorEl = document.getElementById('custom-error');
     errorEl.textContent = errors;
     if (errors) {
-      errorEl.style.display = 'block';
+      errorEl.classList.remove('hidden');
       return;
     }
     errorEl.style.display = 'none';
@@ -294,7 +398,7 @@ async function init() {
     let href = `${window.location.origin}${window.location.pathname}?l=${LANG}&puzzle=${encode(puzzle)}`;
     link.textContent = href;
     link.href = href;
-    link.style.display = 'block';
+    link.classList.remove('hidden');
   });
   initKeyboard();
   let args = ARGS;
@@ -427,6 +531,8 @@ async function init() {
     }
     */
   }
+
+  SOLVED = localStorage.getItem(`crosswordle-scores-${LANG}`) || '';
 
   // Note, setting this before hardMode is set means that the user can see the hint,
   // and then switch to hard mode. However, we don't want to lock the user into
@@ -1007,6 +1113,7 @@ async function addGuess(guess, interactive) {
     // Post and fetch histogram data early to have it visible before
     // animations finish.
     const score = !wrong ? gameGuesses.length : 100;
+    setScore(puzzle.day, Math.min(10, score));
     postScore(`${LANG}-${puzzle.day}`, interactive ? score : undefined);
   }
   if (animationPromises.length > 0) {
@@ -1057,20 +1164,20 @@ async function addGuess(guess, interactive) {
 }
 
 function showVictory() {
-  document.querySelector('.victory').style.display = 'block';
+  document.querySelector('.victory').classList.remove('hidden');
 }
 
 async function showMessage(text) {
   let div = document.querySelector('.modal');
   div.querySelector('.message').textContent = text;
-  div.style.display = 'block';
+  div.classList.remove('hidden');
   await div.animate([
       {opacity: 0},
       {opacity: 1, offset: 0.1},
       {opacity: 1, offset: 0.9},
       {opacity: 0}], {
       duration: 2000}).finished;
-  div.style.display = '';
+  div.classList.add('hidden');
 }
 
 init();
