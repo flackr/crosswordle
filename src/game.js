@@ -1148,11 +1148,18 @@ async function addGuess(guess, interactive) {
       const puzzles = Math.min(PUZZLE_COUNT, Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000)));
       if (puzzles < 2)
         return;
+      const complete = [];
+      const incomplete = [];
+      for (let i = 0; i < puzzles; ++i) {
+        if (getScore(i) === undefined) {
+          incomplete.push(i);
+        } else {
+          complete.push(i);
+        }
+      }
+      const selectFrom = incomplete.length > 0 ? incomplete : complete;
       let url = window.location.href.split('?')[0] + '?';
-      let selected;
-      do {
-        selected = Math.floor(Math.random() * puzzles);
-      } while (selected === puzzle.day);
+      let selected = selectFrom[Math.floor(Math.random() * selectFrom.length)];
       if (ARGS.l)
         url += `l=${ARGS.l}&`;
       url += `day=${selected}`;
