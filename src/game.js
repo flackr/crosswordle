@@ -370,6 +370,30 @@ async function init() {
     document.querySelector('.news').classList.remove('hidden');
     localStorage.setItem('crosswordle-help', FEATURE_VERSION);
   }
+  let playRandom = function() {
+    const puzzles = Math.min(PUZZLE_COUNT, Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000)));
+    if (puzzles < 2)
+      return;
+    const complete = [];
+    const incomplete = [];
+    for (let i = 0; i < puzzles; ++i) {
+      if (getScore(i) === undefined) {
+        incomplete.push(i);
+      } else {
+        complete.push(i);
+      }
+    }
+    const selectFrom = incomplete.length > 0 ? incomplete : complete;
+    let url = window.location.href.split('?')[0] + '?';
+    let selected = selectFrom[Math.floor(Math.random() * selectFrom.length)];
+    if (ARGS.l)
+      url += `l=${ARGS.l}&`;
+    url += `day=${selected}`;
+    window.location = url;
+  };
+  for (const randomBtn of document.querySelectorAll('.random')) {
+    randomBtn.addEventListener('click', playRandom);
+  }
   document.getElementById('custom-crosswordle').setAttribute('placeholder', STRINGS['custom-crosswordle-example']);
   document.getElementById('create').addEventListener('click', async () => {
     let errors = '';
@@ -1143,27 +1167,6 @@ async function addGuess(guess, interactive) {
     document.getElementById('share').onclick = function() {
       navigator.clipboard.writeText(`${puzzle.title} ${guesses}/${MAX_GUESSES}${indicator}${summary}\n${window.location.href}`);
       showMessage(STRINGS['copied-clipboard']);
-    };
-    document.getElementById('random').onclick = function() {
-      const puzzles = Math.min(PUZZLE_COUNT, Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000)));
-      if (puzzles < 2)
-        return;
-      const complete = [];
-      const incomplete = [];
-      for (let i = 0; i < puzzles; ++i) {
-        if (getScore(i) === undefined) {
-          incomplete.push(i);
-        } else {
-          complete.push(i);
-        }
-      }
-      const selectFrom = incomplete.length > 0 ? incomplete : complete;
-      let url = window.location.href.split('?')[0] + '?';
-      let selected = selectFrom[Math.floor(Math.random() * selectFrom.length)];
-      if (ARGS.l)
-        url += `l=${ARGS.l}&`;
-      url += `day=${selected}`;
-      window.location = url;
     };
     finished = true;
     document.querySelector('.victory').setAttribute('result', wrong ? 'lost' : 'won');
