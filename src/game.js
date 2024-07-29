@@ -33,6 +33,7 @@ let AUTO_LANG = 'en';
 if (!ARGS.puzzle) {
   if (navigator.language.startsWith('fr')) AUTO_LANG = 'fr';
   else if (navigator.language.startsWith('es')) AUTO_LANG = 'es';
+  else if (navigator.language.startsWith('nl')) AUTO_LANG = 'nl';
 }
 const LANG = ARGS.l || AUTO_LANG;
 
