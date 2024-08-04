@@ -452,7 +452,7 @@ async function init() {
   }
   setComponent('.date', '#date', dateText, !!dateText);
   setComponent('.author', '#author', PUZZLE.author, !!PUZZLE.author);
-  document.querySelector('.info').textContent = PUZZLE.info || '';
+  document.querySelector('.info').innerHTML = PUZZLE.info || '';
   words = PUZZLE.puzzle.split(/[+ ]/);
   document.title = document.querySelector('.title h1').textContent = title;
 

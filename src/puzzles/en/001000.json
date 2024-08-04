@@ -1,0 +1,410 @@
+{
+  "puzzles": [
+    {
+      "date": "2024-10-26",
+      "puzzle": "black raven"
+    },
+    {
+      "date": "2024-10-27",
+      "puzzle": "spooky goblin"
+    },
+    {
+      "date": "2024-10-28",
+      "puzzle": "orange pumpkin"
+    },
+    {
+      "date": "2024-10-29",
+      "puzzle": "sugary candy"
+    },
+    {
+      "date": "2024-10-30",
+      "puzzle": "haunting ghosts"
+    },
+    {
+      "date": "2024-10-31",
+      "puzzle": "costume party"
+    },
+    {
+      "date": "2024-11-01",
+      "puzzle": "festival lights"
+    },
+    {
+      "date": "2024-11-02",
+      "puzzle": "buttered toast"
+    },
+    {
+      "date": "2024-11-03",
+      "puzzle": "childhood memory"
+    },
+    {
+      "date": "2024-11-04",
+      "puzzle": "lap cat"
+    },
+    {
+      "date": "2024-11-05",
+      "puzzle": "show dog"
+    },
+    {
+      "date": "2024-11-06",
+      "puzzle": "ski trip"
+    },
+    {
+      "date": "2024-11-07",
+      "puzzle": "corn roast"
+    },
+    {
+      "date": "2024-11-08",
+      "puzzle": "blustery day"
+    },
+    {
+      "date": "2024-11-09",
+      "puzzle": "getting colder"
+    },
+    {
+      "date": "2024-11-10",
+      "puzzle": "self help"
+    },
+    {
+      "date": "2024-11-11",
+      "puzzle": "remember them",
+      "info": "<a href=\"https://en.wikipedia.org/wiki/For_the_Fallen\">For the Fallen</a> is a poem by Laurence Binyon often recited on this day."
+    },
+    {
+      "date": "2024-11-12",
+      "puzzle": "woolen gloves"
+    },
+    {
+      "date": "2024-11-13",
+      "puzzle": "bike chain"
+    },
+    {
+      "date": "2024-11-14",
+      "puzzle": "midnight rain"
+    },
+    {
+      "date": "2024-11-15",
+      "puzzle": "begin again"
+    },
+    {
+      "date": "2024-11-16",
+      "puzzle": "eyes open"
+    },
+    {
+      "date": "2024-11-17",
+      "puzzle": "late arrival"
+    },
+    {
+      "date": "2024-11-18",
+      "puzzle": "short story"
+    },
+    {
+      "date": "2024-11-19",
+      "puzzle": "forest biome"
+    },
+    {
+      "date": "2024-11-20",
+      "puzzle": "spotted cat"
+    },
+    {
+      "date": "2024-11-21",
+      "puzzle": "hits different"
+    },
+    {
+      "date": "2024-11-22",
+      "puzzle": "holy ground"
+    },
+    {
+      "date": "2024-11-23",
+      "puzzle": "our song"
+    },
+    {
+      "date": "2024-11-24",
+      "puzzle": "castle turret"
+    },
+    {
+      "date": "2024-11-25",
+      "puzzle": "red card"
+    },
+    {
+      "date": "2024-11-26",
+      "puzzle": "stay happy"
+    },
+    {
+      "date": "2024-11-27",
+      "puzzle": "mount rushmore",
+      "hint": "Set in stone"
+    },
+    {
+      "date": "2024-11-28",
+      "puzzle": "turkey pardon"
+    },
+    {
+      "date": "2024-11-29",
+      "puzzle": "snowy morning"
+    },
+    {
+      "date": "2024-11-30",
+      "puzzle": "wide receiver"
+    },
+    {
+      "date": "2024-12-01",
+      "puzzle": "snow shovel"
+    },
+    {
+      "date": "2024-12-02",
+      "puzzle": "honey badger"
+    },
+    {
+      "date": "2024-12-03",
+      "puzzle": "version history"
+    },
+    {
+      "date": "2024-12-04",
+      "puzzle": "clickbait title"
+    },
+    {
+      "date": "2024-12-05",
+      "puzzle": "ghost kitchen"
+    },
+    {
+      "date": "2024-12-06",
+      "puzzle": "acrostic poem"
+    },
+    {
+      "date": "2024-12-07",
+      "puzzle": "school assembly"
+    },
+    {
+      "date": "2024-12-08",
+      "puzzle": "hazard lights"
+    },
+    {
+      "date": "2024-12-09",
+      "puzzle": "white rose"
+    },
+    {
+      "date": "2024-12-10",
+      "puzzle": "express train"
+    },
+    {
+      "date": "2024-12-11",
+      "puzzle": "atomic mass"
+    },
+    {
+      "date": "2024-12-12",
+      "puzzle": "down payment"
+    },
+    {
+      "date": "2024-12-13",
+      "puzzle": "best buddies"
+    },
+    {
+      "date": "2024-12-14",
+      "puzzle": "flu virus"
+    },
+    {
+      "date": "2024-12-15",
+      "puzzle": "bah humbug",
+      "hint": "Among the spirits"
+    },
+    {
+      "date": "2024-12-16",
+      "puzzle": "icebox cookies"
+    },
+    {
+      "date": "2024-12-17",
+      "puzzle": "misfit toys"
+    },
+    {
+      "date": "2024-12-18",
+      "puzzle": "wet bandits",
+      "hint": "Somewhere in my memory"
+    },
+    {
+      "date": "2024-12-19",
+      "puzzle": "santas workshop"
+    },
+    {
+      "date": "2024-12-20",
+      "puzzle": "sugarplum fairy"
+    },
+    {
+      "date": "2024-12-21",
+      "puzzle": "merry elves"
+    },
+    {
+      "date": "2024-12-22",
+      "puzzle": "nativity scene"
+    },
+    {
+      "date": "2024-12-23",
+      "puzzle": "holly jolly"
+    },
+    {
+      "date": "2024-12-24",
+      "puzzle": "wonderful life",
+      "hint": "Every time a bell rings"
+    },
+    {
+      "date": "2024-12-25",
+      "puzzle": "welcome christmas",
+      "hint": "Bring your cheer"
+    },
+    {
+      "date": "2024-12-26",
+      "puzzle": "sales receipt"
+    },
+    {
+      "date": "2024-12-27",
+      "puzzle": "book nook"
+    },
+    {
+      "date": "2024-12-28",
+      "puzzle": "clothes hamper"
+    },
+    {
+      "date": "2024-12-29",
+      "puzzle": "wooden spoon"
+    },
+    {
+      "date": "2024-12-30",
+      "puzzle": "just breathe"
+    },
+    {
+      "date": "2024-12-31",
+      "puzzle": "midnight countdown"
+    },
+    {
+      "date": "2025-01-01",
+      "puzzle": "new beginning"
+    },
+    {
+      "date": "2025-01-02",
+      "puzzle": "hello thursday"
+    },
+    {
+      "date": "2025-01-03",
+      "puzzle": "purple orchid"
+    },
+    {
+      "date": "2025-01-04",
+      "puzzle": "baby name"
+    },
+    {
+      "date": "2025-01-05",
+      "puzzle": "active voice"
+    },
+    {
+      "date": "2025-01-06",
+      "puzzle": "academic journal"
+    },
+    {
+      "date": "2025-01-07",
+      "puzzle": "wild pig"
+    },
+    {
+      "date": "2025-01-08",
+      "puzzle": "boston terrier"
+    },
+    {
+      "date": "2025-01-09",
+      "puzzle": "cloud computing"
+    },
+    {
+      "date": "2025-01-10",
+      "puzzle": "street crossing"
+    },
+    {
+      "date": "2025-01-11",
+      "puzzle": "critical literacy"
+    },
+    {
+      "date": "2025-01-12",
+      "puzzle": "accent lighting"
+    },
+    {
+      "date": "2025-01-13",
+      "puzzle": "top dog"
+    },
+    {
+      "date": "2025-01-14",
+      "puzzle": "persian cat"
+    },
+    {
+      "date": "2025-01-15",
+      "puzzle": "rice milk"
+    },
+    {
+      "date": "2025-01-16",
+      "puzzle": "healthy teeth"
+    },
+    {
+      "date": "2025-01-17",
+      "puzzle": "bucket hat"
+    },
+    {
+      "date": "2025-01-18",
+      "puzzle": "online video"
+    },
+    {
+      "date": "2025-01-19",
+      "puzzle": "walnut tree"
+    },
+    {
+      "date": "2025-01-20",
+      "puzzle": "cajun spice"
+    },
+    {
+      "date": "2025-01-21",
+      "puzzle": "cabin cruiser"
+    },
+    {
+      "date": "2025-01-22",
+      "puzzle": "potato bread"
+    },
+    {
+      "date": "2025-01-23",
+      "puzzle": "getting better"
+    },
+    {
+      "date": "2025-01-24",
+      "puzzle": "beluga whale"
+    },
+    {
+      "date": "2025-01-25",
+      "puzzle": "bank rate"
+    },
+    {
+      "date": "2025-01-26",
+      "puzzle": "sunflower oil"
+    },
+    {
+      "date": "2025-01-27",
+      "puzzle": "geometry set"
+    },
+    {
+      "date": "2025-01-28",
+      "puzzle": "banana cake"
+    },
+    {
+      "date": "2025-01-29",
+      "puzzle": "red envelope"
+    },
+    {
+      "date": "2025-01-30",
+      "puzzle": "three years"
+    },
+    {
+      "date": "2025-01-31",
+      "puzzle": "tomato plant"
+    },
+    {
+      "date": "2025-02-01",
+      "puzzle": "house mouse"
+    },
+    {
+      "date": "2025-02-02",
+      "puzzle": "garden ant"
+    }
+  ]
+}
