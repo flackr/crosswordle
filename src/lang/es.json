@@ -13,6 +13,8 @@
     "hint": "Pista",
     "by": "Por",
     "archive": "Archivo",
+    "prev-year": "Año anterior",
+    "next-year": "El próximo año",
     "settings": "Ajustes",
     "high-contrast": "Colores de alto contraste",
     "skip-filled": "Saltar posiciones ocupadas",
@@ -42,6 +44,7 @@
     "french": "Francés",
     "spanish": "Española"
   },
+  "base_index": 0,
   "base_date": "2022-02-27",
   "puzzle_count": 98
 }

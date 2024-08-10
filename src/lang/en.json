@@ -13,6 +13,8 @@
     "hint": "Hint",
     "by": "By",
     "archive": "Archive",
+    "prev-year": "Previous year",
+    "next-year": "Next year",
     "settings": "Settings",
     "high-contrast": "High contrast colours",
     "skip-filled": "Skip filled positions",
@@ -42,6 +44,7 @@
     "french": "French",
     "spanish": "Spanish"
   },
+  "base_index": 0,
   "base_date": "2022-01-30",
   "puzzle_count": 2017
 }

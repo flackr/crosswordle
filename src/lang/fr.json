@@ -13,6 +13,8 @@
     "hint": "Indice",
     "by": "Par",
     "archive": "Archive",
+    "prev-year": "Année précédente",
+    "next-year": "L'année prochaine",
     "settings": "Paramètres",
     "high-contrast": "Couleurs à contraste élevé",
     "skip-filled": "Ignorer les carreaux déjà remplis",
@@ -42,6 +44,7 @@
     "french": "Français",
     "spanish": "Espagnole"
   },
-  "base_date": "2022-02-20",
-  "puzzle_count": 130
+  "base_index": 130,
+  "base_date": "2024-08-11",
+  "puzzle_count": 158
 }
