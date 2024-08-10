@@ -41,6 +41,7 @@ if (!ARGS.puzzle) {
 }
 const LANG = ARGS.l || AUTO_LANG;
 
+let AVAILABLE_COUNT;
 let PUZZLE_COUNT;
 let PUZZLE;
 let STRINGS = [];
@@ -208,6 +209,7 @@ function animateChange(elems, callback, options) {
 
 let BASE_DATE = null;
 let BASE_INDEX = 0;
+let TODAY_INDEX;
 let FIRST_PUZZLE = null;
 let LAST_PUZZLE = null;
 let puzzle = null;
@@ -216,11 +218,12 @@ async function init() {
   let data = await (await fetch(`./src/lang/${LANG}.json`)).json();
   STRINGS = data.strings;
   PUZZLE_COUNT = data.puzzle_count;
-  const dateParts = data.base_date.split('-').map(s => parseInt(s));
   BASE_DATE = data.base_date;
   BASE_INDEX = data.base_index || 0;
   FIRST_PUZZLE = parseDate(BASE_DATE, -BASE_INDEX);
   LAST_PUZZLE = parseDate(BASE_DATE, PUZZLE_COUNT - BASE_INDEX);
+  TODAY_INDEX = Math.floor((Date.now() - FIRST_PUZZLE) / MILLISECONDS_PER_DAY);
+  AVAILABLE_COUNT = TODAY_INDEX < BASE_INDEX ? BASE_INDEX : Math.min(TODAY_INDEX + 1, PUZZLE_COUNT);
   // Insert translated element strings
   let elems = document.querySelectorAll('[data-str]');
   for (let elem of elems) {
@@ -318,7 +321,7 @@ async function init() {
     localStorage.setItem('crosswordle-help', FEATURE_VERSION);
   }
   let playRandom = function() {
-    const puzzles = Math.min(PUZZLE_COUNT, Math.floor((Date.now() - FIRST_PUZZLE) / MILLISECONDS_PER_DAY));
+    const puzzles = Math.min(AVAILABLE_COUNT);
     if (puzzles < 2)
       return;
     const complete = [];
@@ -380,13 +383,13 @@ async function init() {
     title = STRINGS['custom-crosswordle'];
     PUZZLE = {puzzle: decode(args.puzzle), hint: args.hint ? decodeURIComponent(args.hint) : ''};
   } else {
-    day = Math.floor((Date.now() - FIRST_PUZZLE) / MILLISECONDS_PER_DAY);
+    day = TODAY_INDEX;
     if (args.day !== undefined) {
       day = Math.max(0, Math.min(day, parseInt(args.day)));
     }
     // Select a seeded random puzzle if there are no more available yet.
     if (PUZZLE_COUNT <= day || day < BASE_INDEX) {
-      day = prng16(day)() % (day < BASE_INDEX ? BASE_INDEX : PUZZLE_COUNT);
+      day = prng16(day)() % AVAILABLE_COUNT;
     }
     title = `Crosswordle ${day} (${LANG})`;
     PUZZLE = await loadPuzzle(day);
@@ -550,11 +553,13 @@ async function updateArchive(index, indexDate) {
   const prevButton = document.querySelector('.archive .prev-year');
   let iDate = null;
   if (index === undefined) {
-    if (puzzle.day !== undefined)
+    if (puzzle.day !== undefined) {
       index = puzzle.day;
-    else
-      index = Math.min(PUZZLE_COUNT - 1, Math.floor((Date.now() - FIRST_PUZZLE) / MILLISECONDS_PER_DAY));
-    iDate = parseDate(BASE_DATE, index - BASE_INDEX);
+      iDate = parseDate(PUZZLE.date);
+    } else {
+      index = AVAILABLE_COUNT - 1;
+      iDate = parseDate((await loadPuzzle(index)).date);
+    }
   } else {
     iDate = parseDate(indexDate);
   }
@@ -564,7 +569,7 @@ async function updateArchive(index, indexDate) {
   const neededBefore = Math.ceil((iDate - firstDate) / MILLISECONDS_PER_DAY);
   const neededAfter = Math.ceil((lastDate - iDate) / MILLISECONDS_PER_DAY);
   let prevYearIndex = Math.max(0, index - neededBefore);
-  const maxIndex = Math.min(PUZZLE_COUNT, Math.floor((Date.now() - FIRST_PUZZLE) / MILLISECONDS_PER_DAY));
+  const maxIndex = AVAILABLE_COUNT - 1;
   let nextYearIndex = Math.min(maxIndex, index + neededAfter);
   const start = Math.floor(prevYearIndex / CHUNK_SIZE) * CHUNK_SIZE;
   const fetches = [];
