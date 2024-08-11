@@ -1,4 +1,5 @@
 ace
+acm
 age
 agi
 aie
@@ -22,6 +23,7 @@ are
 ars
 art
 aux
+ave
 avr
 axa
 axe
@@ -54,6 +56,7 @@ bot
 box
 boy
 bru
+bsd
 bue
 bus
 but
@@ -63,6 +66,8 @@ cal
 cap
 car
 cas
+ccd
+cdn
 cep
 ces
 cet
@@ -77,6 +82,7 @@ coq
 cor
 cou
 cpt
+cpu
 cri
 cru
 cul
@@ -107,6 +113,7 @@ dus
 dut
 eau
 ecu
+edf
 ego
 elu
 eme
@@ -132,6 +139,7 @@ fee
 fer
 feu
 fez
+fft
 fia
 fic
 fie
@@ -147,6 +155,7 @@ fol
 for
 fou
 fox
+fsf
 ftp
 fui
 fur
@@ -162,13 +171,16 @@ gel
 gin
 gis
 git
+gks
 glu
+gnu
 goi
 goy
 gre
 gue
 gui
 gus
+guy
 gym
 hai
 han
@@ -188,9 +200,11 @@ ide
 ifs
 ile
 ils
+inc
 ion
 ira
 ire
+iso
 ive
 jan
 jar
@@ -198,6 +212,7 @@ jas
 jet
 jeu
 job
+jpl
 jus
 kan
 kif
@@ -211,6 +226,7 @@ lai
 las
 lat
 lbs
+led
 lei
 les
 let
@@ -226,6 +242,7 @@ lob
 lof
 loi
 lot
+ltd
 lue
 lui
 lus
@@ -250,6 +267,7 @@ min
 mir
 mis
 mit
+mme
 moi
 mol
 mon
@@ -260,12 +278,15 @@ mue
 mur
 mus
 mut
+ncd
+nec
 nee
 nef
 neo
 nes
 net
 nez
+nfs
 nia
 nib
 nid
@@ -306,6 +327,7 @@ pan
 par
 pas
 pat
+pcl
 pep
 peu
 phi
@@ -349,10 +371,13 @@ rie
 ris
 rit
 riz
+rms
 rob
 roc
 roi
 rot
+roy
+rpc
 rua
 rue
 rus
@@ -366,6 +391,7 @@ sen
 sep
 ses
 set
+sgi
 sic
 sil
 sir
@@ -382,17 +408,20 @@ sua
 suc
 sud
 sue
+sun
 sur
 sus
 sut
 tac
 tan
 tas
+tcp
 tee
 tek
 tel
 ter
 tes
+tex
 the
 tic
 tif
@@ -409,6 +438,9 @@ tue
 tuf
 tus
 tut
+tva
+twm
+ucb
 une
 uni
 uns
@@ -421,6 +453,7 @@ var
 vas
 ver
 vet
+vhs
 via
 vie
 vif
@@ -428,6 +461,7 @@ vil
 vin
 vis
 vit
+vme
 vol
 vos
 vue

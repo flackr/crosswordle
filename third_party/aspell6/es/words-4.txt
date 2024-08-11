@@ -78,6 +78,7 @@ ames
 amia
 amin
 amir
+amon
 amor
 amos
 anal
@@ -91,6 +92,7 @@ anis
 anon
 anos
 ansa
+ansi
 ante
 anuo
 aoja
@@ -310,6 +312,7 @@ cafe
 caga
 cago
 caia
+cain
 caja
 cala
 cale
@@ -382,6 +385,7 @@ cina
 cinc
 cine
 cino
+cisc
 cita
 cite
 cito
@@ -565,6 +569,7 @@ efes
 efod
 egos
 eira
+eisa
 ejes
 eles
 elfo
@@ -612,6 +617,7 @@ faro
 fase
 faso
 fato
+fddi
 feas
 feos
 feto
@@ -817,6 +823,7 @@ idem
 ideo
 idos
 idus
+ieee
 iglu
 ijar
 ilea
@@ -836,6 +843,7 @@ iros
 irse
 irte
 isba
+isbn
 isla
 itas
 item
@@ -874,6 +882,7 @@ jefa
 jefe
 jeme
 jera
+jese
 jeta
 jete
 jeto
@@ -894,10 +903,12 @@ jope
 jopo
 jora
 josa
+jose
 jota
 jote
 joya
 joyo
+juan
 juba
 jubo
 judo
@@ -910,6 +921,7 @@ jure
 juro
 jusi
 juta
+kbit
 kili
 kilo
 kivi
@@ -1089,10 +1101,12 @@ maya
 mayo
 maza
 mazo
+mbit
 mead
 mean
 mear
 meas
+meca
 mece
 meci
 meco
@@ -1142,12 +1156,14 @@ miga
 migo
 mijo
 mima
+mimd
 mime
 mimo
 mina
 mine
 mino
 mios
+mips
 mira
 mire
 miro
@@ -1227,6 +1243,7 @@ muso
 muta
 mute
 muto
+mvme
 naba
 nabi
 nabo
@@ -1405,6 +1422,7 @@ oyen
 oyes
 pace
 paci
+paco
 paga
 pago
 pais
@@ -1463,6 +1481,7 @@ pepe
 pepu
 pera
 pero
+peru
 pesa
 pese
 peso
@@ -1530,6 +1549,7 @@ poyo
 poza
 pozo
 proa
+prom
 pros
 puad
 puan
@@ -1601,6 +1621,7 @@ rase
 raso
 rata
 rato
+raul
 raya
 raye
 rayo
@@ -1656,6 +1677,7 @@ ring
 rino
 rios
 risa
+risc
 riso
 rita
 rito
@@ -1759,6 +1781,7 @@ sauz
 saxo
 saya
 sayo
+scsi
 sean
 seas
 sebe
@@ -2023,6 +2046,7 @@ unid
 unio
 unir
 unis
+unix
 unja
 unjo
 unos

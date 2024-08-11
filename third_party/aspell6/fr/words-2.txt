@@ -42,6 +42,7 @@ hg
 hi
 hl
 ho
+hz
 id
 if
 il
@@ -49,6 +50,7 @@ in
 je
 kg
 km
+kv
 la
 lb
 le
@@ -62,6 +64,7 @@ ml
 mm
 ms
 mu
+mw
 na
 ne
 ni

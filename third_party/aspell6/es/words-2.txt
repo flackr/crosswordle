@@ -21,6 +21,7 @@ fu
 ge
 ha
 he
+hz
 id
 ir
 ja
@@ -29,12 +30,16 @@ ji
 jo
 ka
 km
+kv
+kw
 la
 le
 lo
+ma
 me
 mi
 mm
+mv
 na
 ni
 no
@@ -44,6 +49,7 @@ oh
 oi
 os
 pe
+ph
 pi
 ro
 se

@@ -2346,6 +2346,7 @@ alcista
 alcobas
 alcohol
 alcolla
+alcoran
 alcorce
 alcorci
 alcores
@@ -2532,12 +2533,14 @@ alfiler
 alfiles
 alfoces
 alfonsi
+alfonso
 alforce
 alforin
 alforja
 alforre
 alforza
 alforzo
+alfredo
 algaida
 algaido
 algalia
@@ -3129,6 +3132,7 @@ amerara
 amerare
 amerase
 amereis
+america
 americe
 amerita
 amerite
@@ -3457,6 +3461,7 @@ andolas
 andonas
 andones
 andorga
+andorra
 andosca
 andosco
 andrajo
@@ -3740,6 +3745,8 @@ antojas
 antojen
 antojes
 antojos
+antonia
+antonio
 antosta
 antozoo
 anuales
@@ -4449,6 +4456,7 @@ aquieta
 aquiete
 aquieto
 aquilea
+aquiles
 aquilon
 arabais
 arabias
@@ -4733,6 +4741,7 @@ arpadas
 arpados
 arpamos
 arpando
+arpanet
 arparan
 arparas
 arparen
@@ -5922,6 +5931,7 @@ ausento
 austera
 austero
 austral
+austria
 austros
 autillo
 autismo
@@ -7138,6 +7148,7 @@ belenes
 belenos
 belesas
 belezos
+belgica
 belicas
 belicos
 belitre
@@ -7710,6 +7721,7 @@ borroso
 boscaje
 boscosa
 boscoso
+bosforo
 bosnias
 bosnios
 bosques
@@ -9018,6 +9030,7 @@ carisma
 carleta
 carlina
 carlita
+carlota
 carmesi
 carnada
 carnaje
@@ -10157,6 +10170,7 @@ ciarias
 ciaseis
 ciatica
 ciatico
+cibeles
 cicatea
 cicatee
 cicateo
@@ -10640,6 +10654,7 @@ cocleas
 cocotal
 cocotes
 codaste
+codasyl
 codazos
 codeaba
 codeada
@@ -11321,6 +11336,7 @@ coquiza
 coquizo
 corajes
 corales
+coranes
 corazas
 corazon
 corbata
@@ -11359,6 +11375,7 @@ coreeis
 coregas
 coregos
 corimbo
+corinto
 corista
 corizas
 cornada
@@ -12268,6 +12285,7 @@ dadoras
 dadores
 dadsela
 dadselo
+daimiel
 dalmata
 damasco
 damelas
@@ -14623,6 +14641,7 @@ edrases
 edraste
 edredon
 edremos
+eduardo
 educaba
 educada
 educado
@@ -17645,6 +17664,7 @@ etileno
 etilica
 etilico
 etiopes
+etiopia
 etnicas
 etnicos
 etologa
@@ -17654,9 +17674,13 @@ etrusca
 etrusco
 eufonia
 euforia
+eugenia
+eugenio
+eulalia
 eunucos
 europea
 europeo
+eusebio
 evacuad
 evacuan
 evacuar
@@ -18258,6 +18282,7 @@ fallero
 fallese
 fallida
 fallido
+falopio
 falsead
 falsean
 falsear
@@ -18878,6 +18903,7 @@ flameen
 flamees
 flamula
 flancos
+flandes
 flaquea
 flaquee
 flaqueo
@@ -19126,6 +19152,7 @@ forrele
 forrelo
 forreme
 forrese
+fortran
 fortuna
 forzaba
 forzada
@@ -19178,6 +19205,7 @@ fraileo
 frailes
 francas
 frances
+francia
 francos
 franela
 franjad
@@ -19571,6 +19599,7 @@ gabarro
 gabelas
 gablete
 gabones
+gabriel
 gacelas
 gaceles
 gacetas
@@ -20140,6 +20169,7 @@ gocenlo
 gocenme
 gocenos
 gocense
+gocteto
 godesca
 godesco
 gofraba
@@ -20694,6 +20724,7 @@ gustara
 gustare
 gustase
 gustate
+gustavo
 gustazo
 gusteis
 gustela
@@ -21989,6 +22020,7 @@ idoneos
 idumeas
 idumeos
 iglesia
+ignacio
 ignaras
 ignaros
 ignavas
@@ -22786,6 +22818,9 @@ irrumpe
 irrumpi
 irrumpo
 irunesa
+isidoro
+isidras
+isidros
 islario
 islenas
 islenos
@@ -23150,6 +23185,7 @@ jesuita
 jesusea
 jesusee
 jesuseo
+jesuses
 jetaban
 jetabas
 jetadas
@@ -23233,6 +23269,7 @@ jitasen
 jitases
 jitaste
 jitemos
+joaquin
 jocosas
 jocosos
 jocunda
@@ -23522,6 +23559,7 @@ keniata
 ketchup
 kimonos
 kioscos
+kocteto
 kuwaiti
 labaros
 labiada
@@ -24826,6 +24864,7 @@ lixivia
 lixivie
 lixivio
 llabana
+lladras
 llagaba
 llagada
 llagado
@@ -25072,6 +25111,7 @@ lomudas
 lomudos
 lonchas
 londiga
+londres
 lonetas
 longeva
 longevo
@@ -25089,6 +25129,7 @@ loquero
 loquios
 lorchas
 lorenes
+lorenzo
 lorigas
 lorigon
 losaban
@@ -27300,6 +27341,7 @@ mocitas
 mocitos
 mocosas
 mocosos
+mocteto
 modales
 modelad
 modelan
@@ -28526,6 +28568,7 @@ neonato
 neorama
 nepente
 nepotes
+neptuno
 nereida
 neritas
 nerones
@@ -28586,6 +28629,7 @@ nevosos
 newtons
 nicenas
 nicenos
+nicolas
 nidadas
 nidales
 nidrias
@@ -29008,6 +29052,7 @@ obyecto
 ocarina
 ocasion
 occisos
+oceania
 oceanos
 ocelada
 ocelado
@@ -32089,6 +32134,7 @@ pololee
 pololeo
 pololos
 polones
+polonia
 polonio
 polquen
 polques
@@ -35860,6 +35906,7 @@ ribetee
 ribeteo
 ribetes
 ricacho
+ricardo
 ricelas
 riceles
 ricelos
@@ -36153,6 +36200,7 @@ robenlo
 robenme
 robenos
 robense
+roberto
 robezos
 robines
 robinia
@@ -36715,6 +36763,7 @@ ruaseis
 rubeola
 rubetas
 rubican
+rubicon
 rubidio
 rubiera
 rubilla
@@ -37169,6 +37218,7 @@ sajenle
 sajenlo
 sajonas
 sajones
+sajonia
 salaban
 salabas
 salaces
@@ -37550,6 +37600,7 @@ saturar
 saturas
 saturen
 satures
+saturno
 sauceda
 saucera
 saudade
@@ -38449,6 +38500,7 @@ solaras
 solaren
 solares
 solaria
+solaris
 solaron
 solasen
 solases
@@ -40657,6 +40709,7 @@ tocinos
 toconas
 tocones
 tocorno
+tocteto
 todavia
 tofanas
 togadas
@@ -41791,6 +41844,7 @@ turnese
 turnias
 turnios
 turones
+turquia
 turraba
 turrada
 turrado
@@ -41856,6 +41910,7 @@ ubicuos
 ubiquen
 ubiques
 ubreras
+ucrania
 ucronia
 ufanaba
 ufanada
@@ -42744,6 +42799,7 @@ vendido
 vendran
 vendras
 vendria
+venecia
 venenos
 venerad
 veneran
@@ -43011,6 +43067,7 @@ vibrase
 vibreis
 vicaria
 vicario
+vicente
 viciaba
 viciada
 viciado
@@ -43300,6 +43357,7 @@ vivirlo
 vivismo
 vivista
 viviste
+vizcaya
 vocablo
 vocales
 voceaba
@@ -43479,6 +43537,7 @@ vuelven
 vuelves
 vuestra
 vuestro
+vulgata
 vulnera
 vulnere
 vulnero
@@ -43550,6 +43609,7 @@ yodadas
 yodados
 yoduros
 yogures
+yolanda
 yolillo
 yonquis
 yubarta
