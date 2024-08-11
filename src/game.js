@@ -389,7 +389,7 @@ async function init() {
     }
     // Select a seeded random puzzle if there are no more available yet.
     if (PUZZLE_COUNT <= day || day < BASE_INDEX) {
-      day = prng16(day)() % AVAILABLE_COUNT;
+      day = prng16(Math.abs(Math.floor((Date.now() - parseDate("2022-01-01")) / MILLISECONDS_PER_DAY)))() % AVAILABLE_COUNT;
     }
     title = `Crosswordle ${day} (${LANG})`;
     PUZZLE = await loadPuzzle(day);
