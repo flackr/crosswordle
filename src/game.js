@@ -398,7 +398,7 @@ async function init() {
   if (PUZZLE.date) {
     const dateParts = PUZZLE.date.split('-').map(s => parseInt(s));
     const date = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], 0, 0, 0, 0);
-    dateText = date.toDateString();
+    dateText = date.toLocaleDateString(LANG);
   }
   setComponent('.date', '#date', dateText, !!dateText);
   setComponent('.author', '#author', PUZZLE.author, !!PUZZLE.author);
@@ -611,7 +611,7 @@ async function updateArchive(index, indexDate) {
       d.setDate(d.getDate() + 1);
   }
   while(weekDays.length < 7) {
-      weekDays.push(d.toLocaleDateString(window.navigator.language, {weekday: 'short'}).match(/\w+/)[0]);
+      weekDays.push(d.toLocaleDateString(LANG, {weekday: 'short'}).match(/\w+/)[0]);
       d.setDate(d.getDate() + 1);
   }
   d = new Date();
@@ -627,7 +627,7 @@ async function updateArchive(index, indexDate) {
       const title = document.createElement('div');
       title.className = 'title';
       title.style.gridArea = '1 / 1 / 1 / 7';
-      title.textContent = cur.toLocaleDateString('en-us', { year: 'numeric', month: 'short' });
+      title.textContent = cur.toLocaleDateString(LANG, { year: 'numeric', month: 'short' });
       month.appendChild(title);
       month.className = 'month';
       let col = 1;
