@@ -398,7 +398,10 @@ async function init() {
   if (PUZZLE.date) {
     const dateParts = PUZZLE.date.split('-').map(s => parseInt(s));
     const date = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], 0, 0, 0, 0);
-    dateText = date.toLocaleDateString(LANG);
+    dateText = date.toLocaleDateString(LANG, {
+        year: "numeric",
+        month: "long",
+        day: "numeric"});
   }
   setComponent('.date', '#date', dateText, !!dateText);
   setComponent('.author', '#author', PUZZLE.author, !!PUZZLE.author);
