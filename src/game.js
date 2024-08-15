@@ -248,6 +248,10 @@ async function init() {
       window.location.href = window.location.href.split('?')[0];
     }
   });
+  document.getElementById('reveal-hint').addEventListener('click', () => {
+    revealHint();
+    document.getElementById('reveal-hint').blur();
+  });
   document.getElementById('show-settings').addEventListener('click', () => {
     document.querySelector('.settings').classList.remove('hidden');
   });
@@ -511,11 +515,7 @@ async function init() {
 
   SOLVED = localStorage.getItem(`crosswordle-scores-${LANG}`) || '';
 
-  // Note, setting this before hardMode is set means that the user can see the hint,
-  // and then switch to hard mode. However, we don't want to lock the user into
-  // easy mode if they just haven't set the hard mode setting yet.
-  // TODO: Consider delaying showing the hint until the user interacts with the puzzle.
-  setComponent('.hint', '#hint', PUZZLE.hint, !settings.hardMode && !!PUZZLE.hint);
+  setComponent('.hint', '#hint', PUZZLE.hint, !!PUZZLE.hint);
 
   // Restore progress
   let progress = localStorage.getItem('crosswordle-daily');
@@ -529,12 +529,26 @@ async function init() {
     return;
   hardMode = parsed.hardMode || false;
   orangeClues = parsed.orangeClues || false;
-  setComponent('.hint', '#hint', PUZZLE.hint, !hardMode && !!PUZZLE.hint);
+  usedHint = parsed.usedHint || false;
+  if (usedHint) {
+    revealHint();
+  }
+  // TODO: Reveal hint if it was already revealed */
   gameGuesses = parsed.guesses;
   for (let guess of gameGuesses) {
     setGuess(guess.toUpperCase());
     addGuess(guess, false);
   }
+}
+
+function revealHint() {
+  document.querySelector('.hint').classList.add('reveal');
+  document.getElementById('reveal-hint').setAttribute('disabled', '');
+  document.getElementById('hint').removeAttribute('inert');
+  if (usedHint)
+    return;
+  usedHint = true;
+  saveProgress();
 }
 
 function updateHighContrast() {
@@ -841,6 +855,7 @@ async function tryGuess() {
 const WORD_DESC = ['Horizontal', 'Vertical'];
 let hardMode = false;
 let orangeClues = false;
+let usedHint = false;
 let settings = {};
 let gameGuesses = [];
 let clues = {
@@ -998,11 +1013,15 @@ async function guess() {
   }
   let str = guesses.join(' ');
   gameGuesses.push(str);
+  saveProgress();
+  await addGuess(str, true);
+}
+
+function saveProgress() {
   if (puzzle.day !== undefined) {
     localStorage.setItem('crosswordle-daily', JSON.stringify({
-        day: puzzle.day, lang: LANG, guesses: gameGuesses, hardMode, orangeClues}));
+        day: puzzle.day, lang: LANG, guesses: gameGuesses, hardMode, orangeClues, usedHint}));
   }
-  await addGuess(str, true);
 }
 
 function setGuess(guess) {
@@ -1241,6 +1260,8 @@ async function addGuess(guess, interactive) {
     let indicator = '';
     if (orangeClues)
       indicator += '🔸';
+    if (usedHint)
+      indicator += '🔍️';
     document.getElementById('guesses').textContent = guesses;
     document.getElementById('answer').textContent = puzzle.words.join(' ');
     document.getElementById('share').onclick = function() {
