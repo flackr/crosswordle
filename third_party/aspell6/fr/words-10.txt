@@ -285,6 +285,7 @@ abstinence
 abstinente
 abstinents
 abstinrent
+abstinsses
 abstraient
 abstrairai
 abstrairas
@@ -303,6 +304,9 @@ abyssinien
 academique
 academisme
 acadiennes
+acagnardai
+acagnardas
+acagnardat
 acagnardee
 acagnarder
 acagnardes
@@ -651,6 +655,7 @@ acheveriez
 acheverons
 acheveront
 achoppames
+achoppasse
 achoppates
 achopperai
 achopperas
@@ -692,7 +697,12 @@ aciselerez
 aciselions
 acliniques
 aconitines
+acoquinais
+acoquinait
+acoquinant
 acoquinees
+acoquinent
+acoquinera
 acoquiniez
 acoquinons
 acouphenes
@@ -878,7 +888,10 @@ admonestez
 admonition
 adolescent
 adonisames
+adonisasse
 adonisates
+adoniserai
+adoniseras
 adoniserez
 adonisions
 adonnaient
@@ -1420,7 +1433,10 @@ agricheras
 agricherez
 agrichions
 agriffames
+agriffasse
 agriffates
+agrifferai
+agrifferas
 agrifferez
 agriffions
 agripaumes
@@ -1456,7 +1472,10 @@ ahanassent
 ahanassiez
 ahanerions
 aheurtames
+aheurtasse
 aheurtates
+aheurterai
+aheurteras
 aheurterez
 aheurtions
 ahuririons
@@ -1649,6 +1668,8 @@ alevinerez
 aleviniere
 aleviniers
 alevinions
+alexandria
+alexandrie
 alexandrin
 alfatieres
 algazelles
@@ -1781,6 +1802,7 @@ allumerent
 allumeriez
 allumerons
 allumeront
+allumetier
 allumettes
 allumeuses
 alluviales
@@ -2055,6 +2077,9 @@ amodierons
 amodieront
 amoindries
 amoindrira
+amolissait
+amolissant
+amolissent
 amollirais
 amollirait
 amollirent
@@ -2099,6 +2124,9 @@ amotissait
 amotissant
 amotissiez
 amotissons
+amourachai
+amourachas
+amourachat
 amourachee
 amouracher
 amouraches
@@ -2136,6 +2164,7 @@ amputerent
 amputeriez
 amputerons
 amputeront
+amuiraient
 amuissions
 amurassent
 amurassiez
@@ -2184,6 +2213,7 @@ anarchiste
 anarthries
 anasarques
 anastigmat
+anastomosa
 anastomose
 anastrophe
 anatocisme
@@ -2249,6 +2279,7 @@ anglaisera
 anglaisiez
 anglaisons
 angledozer
+angleterre
 anglicanes
 anglicisai
 anglicisas
@@ -2316,6 +2347,8 @@ anisassent
 anisassiez
 aniserions
 anisotrope
+ankilosait
+ankilosant
 ankylosais
 ankylosait
 ankylosant
@@ -2417,6 +2450,7 @@ anorexique
 anormalite
 antalgique
 antecedent
+antechrist
 antenaises
 anteposais
 anteposait
@@ -2608,6 +2642,9 @@ apparaitre
 appareilla
 appareille
 apparences
+apparentai
+apparentas
+apparentat
 apparentee
 apparenter
 apparentes
@@ -2723,6 +2760,7 @@ apprehenda
 apprehende
 apprenante
 apprenants
+apprendent
 apprendrai
 apprendras
 apprendrez
@@ -2770,6 +2808,7 @@ approuviez
 approuvons
 appuierais
 appuierait
+appuierent
 appuieriez
 appuierons
 appuieront
@@ -2954,6 +2993,8 @@ arnaquerai
 arnaqueras
 arnaquerez
 arnaquions
+arnarquent
+arnarquera
 aromatique
 aromatisai
 aromatisas
@@ -3094,6 +3135,9 @@ arseniates
 arsenicale
 arsenicaux
 arseniures
+arsouillai
+arsouillas
+arsouillat
 arsouillee
 arsouiller
 arsouilles
@@ -3754,6 +3798,9 @@ autodromes
 autogamies
 autogerees
 autographe
+autoguidai
+autoguidas
+autoguidat
 autoguidee
 autoguider
 autoguides
@@ -4628,6 +4675,7 @@ belassions
 belemnites
 beleraient
 belgicisme
+bellemarre
 bellicisme
 belliciste
 belliqueux
@@ -6475,6 +6523,7 @@ calibrerez
 calibreurs
 calibreuse
 calibrions
+californie
 calinaient
 calinantes
 calinasses
@@ -10915,6 +10964,7 @@ critiquent
 critiquera
 critiquiez
 critiquons
+crivassier
 croassames
 croassasse
 croassates
@@ -15381,6 +15431,7 @@ desisterai
 desisteras
 desisterez
 desistions
+desjardins
 desobeimes
 desobeirai
 desobeiras
@@ -17227,6 +17278,7 @@ ebarberont
 ebarbeuses
 ebattaient
 ebattirent
+ebattisses
 ebattrions
 ebaubirais
 ebaubirait
@@ -17699,6 +17751,7 @@ ecoeurerez
 ecoeurions
 ecologique
 ecologiste
+ecomonisat
 econduirai
 econduiras
 econduirez
@@ -18118,7 +18171,10 @@ efourceaux
 egaiements
 egaierions
 egaillames
+egaillasse
 egaillates
+egaillerai
+egailleras
 egaillerez
 egaillions
 egalassent
@@ -18401,9 +18457,15 @@ eludassiez
 eluderions
 elyseennes
 elzevirien
+emaciaient
+emaciasses
 emaciation
+emacierais
+emacierait
+emacierent
 emacieriez
 emacierons
+emacieront
 emaillages
 emaillames
 emaillasse
@@ -18522,6 +18584,9 @@ embecquent
 embecquera
 embecquiez
 embecquons
+embeguinai
+embeguinas
+embeguinat
 embeguinee
 embeguiner
 embeguines
@@ -18761,6 +18826,7 @@ embusquera
 embusquiez
 embusquons
 embussions
+embuvaient
 emechaient
 emechasses
 emecherais
@@ -18915,6 +18981,8 @@ emmurerent
 emmureriez
 emmurerons
 emmureront
+emnourbait
+emnourbant
 emolliente
 emollients
 emoluments
@@ -19166,7 +19234,12 @@ empieterai
 empieteras
 empieterez
 empietions
+empiffrais
+empiffrait
+empiffrant
 empiffrees
+empiffrent
+empiffrera
 empiffriez
 empiffrons
 empilaient
@@ -19196,6 +19269,7 @@ emplatrait
 emplatrant
 emplatrees
 emplatrent
+emplatrera
 emplatriez
 emplatrons
 emplirions
@@ -19917,6 +19991,7 @@ enfreindra
 enfreindre
 enfreintes
 enfuirions
+enfuissent
 enfuissiez
 enfumaient
 enfumasses
@@ -20052,9 +20127,15 @@ engorgerai
 engorgeras
 engorgerez
 engorgions
+engouaient
+engouasses
 engouement
+engouerais
+engouerait
+engouerent
 engoueriez
 engouerons
+engoueront
 engouffrai
 engouffras
 engouffrat
@@ -20242,7 +20323,10 @@ enjuponner
 enjuponnes
 enjuponnez
 enkystames
+enkystasse
 enkystates
+enkysterai
+enkysteras
 enkysterez
 enkystions
 enlacaient
@@ -20330,6 +20414,7 @@ ennuagerez
 ennuagions
 ennuierais
 ennuierait
+ennuierent
 ennuieriez
 ennuierons
 ennuieront
@@ -20369,6 +20454,7 @@ enquetrice
 enquierent
 enquiquina
 enquiquine
+enquissent
 enquissiez
 enracinais
 enracinait
@@ -20392,6 +20478,7 @@ enrageront
 enraiement
 enraierais
 enraierait
+enraierent
 enraieriez
 enraierons
 enraieront
@@ -20529,7 +20616,10 @@ ensaisines
 ensaisinez
 ensauvager
 ensauvames
+ensauvasse
 ensauvates
+ensauverai
+ensauveras
 ensauverez
 ensauvions
 enseignais
@@ -20695,7 +20785,10 @@ enteteront
 enthalpies
 enthymemes
 entichames
+entichasse
 entichates
+enticherai
+enticheras
 enticherez
 entichions
 entieretes
@@ -20735,7 +20828,9 @@ entoureras
 entourerez
 entourions
 entournure
+entraccusa
 entraccuse
+entradmira
 entradmire
 entraidais
 entraidait
@@ -20764,6 +20859,7 @@ entraverai
 entraveras
 entraverez
 entravions
+entrebatte
 entrebattu
 entrechats
 entrecotes
@@ -20931,11 +21027,18 @@ envisagees
 envisagent
 envisagera
 envisagiez
+envoierait
+envoierent
+envoieront
 envoilames
+envoilasse
 envoilates
+envoilerai
+envoileras
 envoilerez
 envoilions
 envolaient
+envolasses
 envolerais
 envolerait
 envolerent
@@ -21054,6 +21157,7 @@ epelassiez
 epellation
 epellerais
 epellerait
+epellerent
 epelleriez
 epellerons
 epelleront
@@ -21065,7 +21169,9 @@ epepinerai
 epepineras
 epepinerez
 epepinions
+eperdaient
 eperdirent
+eperdisses
 eperdrions
 eperdument
 eperonnais
@@ -21193,6 +21299,7 @@ epithelium
 epizooties
 eploierais
 eploierait
+eploierent
 eploieriez
 eploierons
 eploieront
@@ -21471,6 +21578,7 @@ erigeaient
 erigeasses
 erigerions
 eristiques
+erivulairs
 erodassent
 erodassiez
 eroderions
@@ -21503,10 +21611,16 @@ erugineuse
 erysipeles
 erythrines
 esbaudimes
+esbaudirai
+esbaudiras
 esbaudirez
+esbaudisse
 esbaudites
 esbignames
+esbignasse
 esbignates
+esbignerai
+esbigneras
 esbignerez
 esbignions
 esbroufais
@@ -21528,6 +21642,7 @@ escaladent
 escaladera
 escaladiez
 escaladons
+escalators
 escamotage
 escamotais
 escamotait
@@ -21546,7 +21661,12 @@ escarrifie
 eschassent
 eschassiez
 escherions
+esclaffais
+esclaffait
+esclaffant
 esclaffees
+esclaffent
+esclaffera
 esclaffiez
 esclaffons
 esclandres
@@ -21577,7 +21697,10 @@ escorteurs
 escortions
 escourgeon
 escrimames
+escrimasse
 escrimates
+escrimerai
+escrimeras
 escrimerez
 escrimeurs
 escrimeuse
@@ -21670,6 +21793,7 @@ esquiverez
 esquivions
 essaierais
 essaierait
+essaierent
 essaieriez
 essaierons
 essaieront
@@ -21743,6 +21867,7 @@ essouffles
 essoufflez
 essuierais
 essuierait
+essuierent
 essuieriez
 essuierons
 essuieront
@@ -22637,8 +22762,14 @@ existerent
 existeriez
 existerons
 existeront
+exondaient
+exondasses
+exonderais
+exonderait
+exonderent
 exonderiez
 exonderons
+exonderont
 exonerames
 exonerasse
 exonerates
@@ -22811,6 +22942,7 @@ expurgerai
 expurgeras
 expurgerez
 expurgions
+exsegregee
 exstrophie
 exsudaient
 exsudasses
@@ -22909,6 +23041,7 @@ extrayions
 extremisme
 extremiste
 extremites
+extriglyph
 extrudames
 extrudasse
 extrudates
@@ -24399,6 +24532,7 @@ framboisee
 framboiser
 framboises
 framboisez
+framemaker
 francaises
 franchimes
 franchirai
@@ -25093,6 +25227,7 @@ gauchismes
 gauchisses
 gauchissez
 gauchistes
+gaudreault
 gaudrioles
 gaufraient
 gaufrasses
@@ -26788,6 +26923,7 @@ hocherions
 hockeyeurs
 hockeyeuse
 hollandais
+hollerbach
 holocauste
 hologramme
 holographe
@@ -27076,6 +27212,7 @@ hydrophobe
 hydropique
 hydropisie
 hydroxydes
+hygiaphone
 hygienique
 hygieniste
 hygrometre
@@ -27143,6 +27280,7 @@ idealisant
 idealisees
 idealisent
 idealisera
+idealiseur
 idealisiez
 idealismes
 idealisons
@@ -28384,6 +28522,7 @@ instruises
 instruisez
 instruisis
 instruisit
+instruisse
 instruites
 instrument
 insufflais
@@ -28731,7 +28870,12 @@ investiras
 investirez
 investisse
 investites
+inveterais
+inveterait
+inveterant
 inveterees
+inveterent
+inveterera
 inveteriez
 inveterons
 invincible
@@ -29294,6 +29438,7 @@ lacererent
 lacereriez
 lacererons
 lacereront
+lachapelle
 lachassent
 lachassiez
 lacherions
@@ -29307,6 +29452,8 @@ lactometre
 lactoserum
 lacunaires
 lacuneuses
+laferriere
+lafontaine
 lagotriche
 lagunaires
 laicisames
@@ -29520,6 +29667,7 @@ latterions
 laudateurs
 laudatives
 laudatrice
+laurendeau
 lavalliere
 lavandiere
 lavassions
@@ -29530,6 +29678,7 @@ layassions
 layeraient
 lazaristes
 leadership
+lecavalier
 lechassent
 lechassiez
 lechefrite
@@ -32191,6 +32340,7 @@ morigenent
 morigenera
 morigeniez
 morigenons
+morissette
 mormonisme
 morphogene
 mortadelle
@@ -32817,6 +32967,7 @@ nevritique
 nevroglies
 nevropathe
 nevrotique
+nformaient
 niaisaient
 niaisasses
 niaisement
@@ -33500,6 +33651,9 @@ opiaceront
 opinassent
 opinassiez
 opinerions
+opiniatrai
+opiniatras
+opiniatrat
 opiniatree
 opiniatrer
 opiniatres
@@ -36549,6 +36703,7 @@ postposent
 postposera
 postposiez
 postposons
+postscript
 postulames
 postulante
 postulants
@@ -37887,6 +38042,7 @@ quarteront
 quartettes
 quartzeuse
 quartzites
+quasimodos
 quatriemes
 quebecisme
 quebecoise
@@ -40853,6 +41009,7 @@ remaillera
 remailliez
 remaillons
 remanences
+remanentes
 remangeais
 remangeait
 remangeant
@@ -41047,6 +41204,7 @@ remiseront
 remissible
 remissions
 remittence
+remittente
 remittents
 remmaillai
 remmaillas
@@ -43784,6 +43942,7 @@ sacralisee
 sacraliser
 sacralises
 sacralisez
+sacramento
 sacrassent
 sacrassiez
 sacrements
@@ -44728,6 +44887,8 @@ shampooing
 shampouina
 shampouine
 shantoungs
+shawinigan
+sherbrooke
 shintoisme
 shootaient
 shootasses
@@ -45799,6 +45960,7 @@ stranguler
 strangules
 strangulez
 strapontin
+strasbourg
 stratageme
 strategies
 stratifiai
@@ -47145,6 +47307,7 @@ tarlatanes
 tarmacadam
 tarsiennes
 tartelette
+tartempion
 tartinames
 tartinasse
 tartinates
@@ -47212,6 +47375,7 @@ taxeraient
 taxidermie
 taximetres
 taxinomies
+taxiphones
 taxonomies
 taylorisai
 taylorisas

@@ -13,6 +13,11 @@ function parse(str) {
   return argMap;
 }
 
+function parseDate(dateStr, offsetDays = 0) {
+  const parts = dateStr.split('-').map(s => parseInt(s));
+  return new Date(parts[0], parts[1] - 1, parts[2] + offsetDays, 0, 0, 0, 0);
+}
+
 // A simple 16-bit PRNG.
 // Using only 16-bit numbers avoids numerical precision limits with plain Javascript numbers.
 function prng16(seed) {
@@ -37,6 +42,7 @@ if (!ARGS.puzzle) {
 }
 const LANG = ARGS.l || AUTO_LANG;
 
+let AVAILABLE_COUNT;
 let PUZZLE_COUNT;
 let PUZZLE;
 let STRINGS = [];
@@ -93,6 +99,8 @@ function loadWordLength(length) {
 }
 
 const CHUNK_SIZE = 100;
+const MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000;
+
 async function loadPuzzle(index) {
   const chunk = Math.floor(index / CHUNK_SIZE);
   const chunkIndex = index % CHUNK_SIZE;
@@ -200,7 +208,9 @@ function animateChange(elems, callback, options) {
   }
 }
 
-let START_MONTH = null;
+let BASE_DATE = null;
+let BASE_INDEX = 0;
+let TODAY_INDEX;
 let FIRST_PUZZLE = null;
 let LAST_PUZZLE = null;
 let puzzle = null;
@@ -209,10 +219,12 @@ async function init() {
   let data = await (await fetch(`./src/lang/${LANG}.json`)).json();
   STRINGS = data.strings;
   PUZZLE_COUNT = data.puzzle_count;
-  const dateParts = data.base_date.split('-').map(s => parseInt(s));
-  FIRST_PUZZLE = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], 0, 0, 0, 0);
-  START_MONTH = new Date(dateParts[0], dateParts[1] - 1, 1, 0, 0, 0, 0);
-  LAST_PUZZLE = new Date(dateParts[0], dateParts[1] - 1, dateParts[2] + data.puzzle_count, 0, 0, 0, 0)
+  BASE_DATE = data.base_date;
+  BASE_INDEX = data.base_index || 0;
+  FIRST_PUZZLE = parseDate(BASE_DATE, -BASE_INDEX);
+  LAST_PUZZLE = parseDate(BASE_DATE, PUZZLE_COUNT - BASE_INDEX);
+  TODAY_INDEX = Math.floor((Date.now() - FIRST_PUZZLE) / MILLISECONDS_PER_DAY);
+  AVAILABLE_COUNT = TODAY_INDEX < BASE_INDEX ? BASE_INDEX : Math.min(TODAY_INDEX + 1, PUZZLE_COUNT);
   // Insert translated element strings
   let elems = document.querySelectorAll('[data-str]');
   for (let elem of elems) {
@@ -254,75 +266,13 @@ async function init() {
     document.querySelector('.menu .contents').classList.remove('hidden');
     document.body.addEventListener('click', menuListener, {capture: true});
   });
-  let archive = null;
+  let archiveLoaded = false;
   document.getElementById('show-archive').addEventListener('click', () => {
     document.querySelector('.archive').classList.remove('hidden');
-    if (archive)
+    if (archiveLoaded)
       return;
-    archive = (function(container) {
-      const weekDays = [];
-      var d = new Date();
-      while(d.getDay() > 0) {
-          d.setDate(d.getDate() + 1);
-      }
-      while(weekDays.length < 7) {
-          weekDays.push(d.toLocaleDateString(window.navigator.language, {weekday: 'short'}).match(/\w+/)[0]);
-          d.setDate(d.getDate() + 1);
-      }
-      d = new Date();
-      let cur = START_MONTH;
-      let index = -FIRST_PUZZLE.getDate();
-      let curMonth = -1;
-      let count = 0;
-      while (cur.getTime() < LAST_PUZZLE.getTime() && cur.getTime() < d.getTime()) {
-        if (cur.getMonth() != curMonth) {
-          curMonth = cur.getMonth();
-          const month = document.createElement('div');
-          container.appendChild(month);
-          const title = document.createElement('div');
-          title.className = 'title';
-          title.style.gridArea = '1 / 1 / 1 / 7';
-          title.textContent = cur.toLocaleDateString('en-us', { year: 'numeric', month: 'short' });
-          month.appendChild(title);
-          month.className = 'month';
-          let col = 1;
-          let row = 2;
-          for (const day of weekDays) {
-            const headerDay = document.createElement('div');
-            headerDay.className = 'header';
-            headerDay.textContent = day;
-            headerDay.style.gridArea = `${row} / ${col++}`;
-            month.appendChild(headerDay);
-          }
-          let day = cur;
-          while (day.getMonth() == curMonth) {
-            const dayDiv = document.createElement('a');
-            const newCol = day.getDay() + 1;
-            if (newCol < col)
-              ++row;
-            col = newCol;
-            dayDiv.style.gridArea = `${row} / ${col}`;
-            dayDiv.textContent = day.getDate();
-            if (++index >= 0 && day.getTime() <= d.getTime() && day.getTime() <= LAST_PUZZLE.getTime()) {
-              const score = getScore(index);
-              if (score !== undefined) {
-                dayDiv.classList.add('complete');
-              }
-              let url = '?'
-              if (ARGS.l)
-                url += `l=${ARGS.l}&`;
-              dayDiv.setAttribute('href', url + `day=${index}`);
-            }
-            month.appendChild(dayDiv);
-            day.setDate(day.getDate() + 1);
-          }
-          cur = day;
-        }
-      }
-
-      // Exposed functions
-      return {};
-    })(document.querySelector('.archive > .message .months'));
+    archiveLoaded = true;
+    updateArchive();
   });
   document.getElementById('close-archive').addEventListener('click', () => {
     document.querySelector('.archive').classList.add('hidden');
@@ -372,7 +322,7 @@ async function init() {
     localStorage.setItem('crosswordle-help', FEATURE_VERSION);
   }
   let playRandom = function() {
-    const puzzles = Math.min(PUZZLE_COUNT, Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000)));
+    const puzzles = Math.min(AVAILABLE_COUNT);
     if (puzzles < 2)
       return;
     const complete = [];
@@ -434,13 +384,13 @@ async function init() {
     title = STRINGS['custom-crosswordle'];
     PUZZLE = {puzzle: decode(args.puzzle), hint: args.hint ? decodeURIComponent(args.hint) : ''};
   } else {
-    day = Math.floor((Date.now() - FIRST_PUZZLE) / (60 * 60 * 24 * 1000));
+    day = TODAY_INDEX;
     if (args.day !== undefined) {
       day = Math.max(0, Math.min(day, parseInt(args.day)));
     }
-    // Select a seeded random puzzle if there are no more available.
-    if (PUZZLE_COUNT <= day) {
-      day = prng16(day)() % PUZZLE_COUNT;
+    // Select a seeded random puzzle if there are no more available yet.
+    if (PUZZLE_COUNT <= day || day < BASE_INDEX) {
+      day = prng16(Math.abs(Math.floor((Date.now() - parseDate("2022-01-01")) / MILLISECONDS_PER_DAY)))() % AVAILABLE_COUNT;
     }
     title = `Crosswordle ${day} (${LANG})`;
     PUZZLE = await loadPuzzle(day);
@@ -449,11 +399,14 @@ async function init() {
   if (PUZZLE.date) {
     const dateParts = PUZZLE.date.split('-').map(s => parseInt(s));
     const date = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], 0, 0, 0, 0);
-    dateText = date.toDateString();
+    dateText = date.toLocaleDateString(LANG, {
+        year: "numeric",
+        month: "long",
+        day: "numeric"});
   }
   setComponent('.date', '#date', dateText, !!dateText);
   setComponent('.author', '#author', PUZZLE.author, !!PUZZLE.author);
-  document.querySelector('.info').textContent = PUZZLE.info || '';
+  document.querySelector('.info').innerHTML = PUZZLE.info || '';
   words = PUZZLE.puzzle.split(/[+ ]/);
   document.title = document.querySelector('.title h1').textContent = title;
 
@@ -590,6 +543,132 @@ function updateHighContrast() {
     document.documentElement.classList.add('high-contrast');
   } else {
     document.documentElement.classList.remove('high-contrast');
+  }
+}
+
+/**
+ * Update the archive view based on the given puzzle index and date.
+ * @param {Number?} index
+ * @param {String?} puzzleDate
+ */
+async function updateArchive(index, indexDate) {
+  const container = document.querySelector('.archive .months');
+  const nextButton = document.querySelector('.archive .next-year');
+  const prevButton = document.querySelector('.archive .prev-year');
+  let iDate = null;
+  if (index === undefined) {
+    if (puzzle.day !== undefined) {
+      index = puzzle.day;
+      iDate = parseDate(PUZZLE.date);
+    } else {
+      index = AVAILABLE_COUNT - 1;
+      iDate = parseDate((await loadPuzzle(index)).date);
+    }
+  } else {
+    iDate = parseDate(indexDate);
+  }
+  const year = iDate.getFullYear();
+  const firstDate = new Date(iDate.getFullYear(), 0, 0);
+  const lastDate = new Date(iDate.getFullYear() + 1, 0, 1);
+  const neededBefore = Math.ceil((iDate - firstDate) / MILLISECONDS_PER_DAY);
+  const neededAfter = Math.ceil((lastDate - iDate) / MILLISECONDS_PER_DAY);
+  let prevYearIndex = Math.max(0, index - neededBefore);
+  const maxIndex = AVAILABLE_COUNT - 1;
+  let nextYearIndex = Math.min(maxIndex, index + neededAfter);
+  const start = Math.floor(prevYearIndex / CHUNK_SIZE) * CHUNK_SIZE;
+  const fetches = [];
+  for (let chunk = Math.floor(prevYearIndex / CHUNK_SIZE); chunk <= Math.floor(nextYearIndex / CHUNK_SIZE); ++chunk) {
+    fetches.push(fetch(`./src/puzzles/${LANG}/${(chunk * CHUNK_SIZE).toString().padStart(6, '0')}.json`).then(r => r.json()));
+  }
+  const chunks = await Promise.all(fetches);
+  let getPuzzle = (i) => chunks[Math.floor((i - start) / CHUNK_SIZE)].puzzles[i % CHUNK_SIZE];
+  for (;prevYearIndex < index && parseDate(getPuzzle(prevYearIndex + 1).date).getFullYear() < year; ++prevYearIndex);
+  for (;nextYearIndex > index && parseDate(getPuzzle(nextYearIndex - 1).date).getFullYear() > year; --nextYearIndex);
+  container.innerHTML = '';
+  document.querySelector('.archive .cur-year').textContent = year;
+  let startIndex = prevYearIndex;
+  let endIndex = nextYearIndex;
+  const prevYearPuzzle = getPuzzle(prevYearIndex);
+  if (parseDate(prevYearPuzzle.date).getFullYear() < year) {
+    startIndex++;
+    prevButton.removeAttribute('disabled');
+    prevButton.onclick = () => {
+      prevButton.setAttribute('disabled', '');
+      nextButton.setAttribute('disabled', '');
+      updateArchive(prevYearIndex, prevYearPuzzle.date);
+    };
+  }
+  const nextYearPuzzle = getPuzzle(nextYearIndex);
+  if (parseDate(nextYearPuzzle.date).getFullYear() > year) {
+    endIndex--;
+    nextButton.removeAttribute('disabled');
+    nextButton.onclick = () => {
+      prevButton.setAttribute('disabled', '');
+      nextButton.setAttribute('disabled', '');
+      updateArchive(nextYearIndex, nextYearPuzzle.date);
+    };
+  }
+
+  const weekDays = [];
+  var d = new Date();
+  while(d.getDay() > 0) {
+      d.setDate(d.getDate() + 1);
+  }
+  while(weekDays.length < 7) {
+      weekDays.push(d.toLocaleDateString(LANG, {weekday: 'short'}).match(/\w+/)[0]);
+      d.setDate(d.getDate() + 1);
+  }
+  d = new Date();
+  let cur = new Date(year, parseDate(getPuzzle(startIndex).date).getMonth(), 1, 0, 0, 0, 0);
+  let nextIndex = startIndex;
+  let nextPuzzle = getPuzzle(nextIndex);
+  let curMonth = -1;
+  while (nextIndex <= endIndex) {
+    if (cur.getMonth() != curMonth) {
+      curMonth = cur.getMonth();
+      const month = document.createElement('div');
+      container.appendChild(month);
+      const title = document.createElement('div');
+      title.className = 'title';
+      title.style.gridArea = '1 / 1 / 1 / 7';
+      title.textContent = cur.toLocaleDateString(LANG, { year: 'numeric', month: 'short' });
+      month.appendChild(title);
+      month.className = 'month';
+      let col = 1;
+      let row = 2;
+      for (const day of weekDays) {
+        const headerDay = document.createElement('div');
+        headerDay.className = 'header';
+        headerDay.textContent = day;
+        headerDay.style.gridArea = `${row} / ${col++}`;
+        month.appendChild(headerDay);
+      }
+      let day = cur;
+      while (day.getMonth() == curMonth) {
+        const dayDiv = document.createElement('a');
+        const newCol = day.getDay() + 1;
+        if (newCol < col)
+          ++row;
+        col = newCol;
+        dayDiv.style.gridArea = `${row} / ${col}`;
+        dayDiv.textContent = day.getDate();
+        if (nextPuzzle && day.toISOString().substring(0,10) == nextPuzzle.date) {
+          const score = getScore(nextIndex);
+          if (score !== undefined) {
+            dayDiv.classList.add('complete');
+          }
+          let url = '?'
+          if (ARGS.l)
+            url += `l=${ARGS.l}&`;
+          dayDiv.setAttribute('href', url + `day=${nextIndex}`);
+          ++nextIndex;
+          nextPuzzle = nextIndex <= endIndex ? getPuzzle(nextIndex) : null;
+        }
+        month.appendChild(dayDiv);
+        day.setDate(day.getDate() + 1);
+      }
+      cur = day;
+    }
   }
 }
 

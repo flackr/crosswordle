@@ -13,6 +13,8 @@
     "hint": "Tip",
     "by": "By",
     "archive": "Archive",
+    "prev-year": "Previous year",
+    "next-year": "Next year",
     "settings": "Opties",
     "high-contrast": "Hoog kleurcontrast",
     "skip-filled": "Sla gevulde vakjes over",
@@ -43,6 +45,7 @@
     "french": "Frans",
     "spanish": "Spaans"
   },
+  "base_index": 0,
   "base_date": "2024-07-28",
   "puzzle_count": 0
 }

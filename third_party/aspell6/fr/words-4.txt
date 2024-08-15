@@ -1,3 +1,4 @@
+aaai
 abat
 abbe
 aboi
@@ -65,6 +66,7 @@ ange
 anis
 anon
 anse
+ansi
 ante
 anus
 aout
@@ -88,6 +90,7 @@ asse
 asti
 atre
 aube
+audy
 auge
 aune
 aura
@@ -115,6 +118,7 @@ baie
 bail
 bain
 bais
+bale
 bals
 banc
 bang
@@ -268,6 +272,7 @@ cent
 cepe
 ceps
 cerf
+cern
 ceux
 chah
 chai
@@ -325,6 +330,7 @@ coni
 cons
 cool
 coqs
+corp
 cors
 cosy
 cota
@@ -372,6 +378,7 @@ dans
 dard
 data
 date
+daze
 deca
 deci
 decu
@@ -382,8 +389,10 @@ deme
 demi
 deni
 dent
+dery
 deux
 deys
+dick
 dico
 dieu
 dime
@@ -485,6 +494,7 @@ epie
 epis
 eres
 ergs
+eric
 eros
 erra
 erre
@@ -670,6 +680,7 @@ grau
 grea
 grec
 gree
+greg
 gres
 gril
 gris
@@ -694,6 +705,7 @@ hala
 hale
 hall
 halo
+hara
 haro
 hart
 hase
@@ -708,6 +720,7 @@ hein
 hela
 hele
 here
+hetu
 heur
 hier
 hies
@@ -721,6 +734,7 @@ houa
 houe
 houp
 houx
+html
 huai
 huas
 huat
@@ -739,12 +753,14 @@ ibis
 idee
 idem
 ides
+ieee
 igne
 igue
 iles
 ilot
 imam
 imbu
+imsl
 inca
 inde
 indu
@@ -761,6 +777,7 @@ iras
 ires
 irez
 iris
+irmx
 isba
 issu
 item
@@ -789,7 +806,9 @@ jete
 jets
 jeun
 jeux
+jill
 jobs
+john
 joie
 joli
 jonc
@@ -800,6 +819,7 @@ joug
 joui
 jour
 jube
+jude
 judo
 juge
 juif
@@ -817,6 +837,7 @@ kans
 kart
 kava
 kawa
+kent
 kepi
 khan
 khat
@@ -828,6 +849,7 @@ kiki
 kilo
 kils
 kilt
+king
 kirs
 kits
 kiwi
@@ -888,6 +910,7 @@ lion
 lira
 lire
 lise
+lisp
 lita
 lite
 lits
@@ -990,6 +1013,7 @@ midi
 miel
 mien
 mies
+mike
 mile
 mils
 mima
@@ -1064,6 +1088,7 @@ naja
 nana
 naos
 nard
+nasa
 nase
 nazi
 neck
@@ -1106,6 +1131,7 @@ nova
 nove
 noya
 noye
+ntsc
 nuai
 nuas
 nuat
@@ -1180,6 +1206,7 @@ oust
 oves
 ovin
 ovni
+owen
 oyat
 pack
 page
@@ -1212,6 +1239,7 @@ paru
 pata
 pate
 pati
+paul
 pava
 pave
 paya
@@ -1228,6 +1256,7 @@ pepe
 perd
 pere
 peri
+perl
 pers
 pesa
 pese
@@ -1241,6 +1270,7 @@ peut
 peux
 peze
 pfft
+phil
 piaf
 pian
 pica
@@ -1506,6 +1536,7 @@ sirs
 sise
 site
 sium
+skai
 skia
 skie
 skif
@@ -1542,6 +1573,7 @@ souk
 soul
 sous
 soya
+spie
 spot
 star
 stem
@@ -1624,6 +1656,7 @@ tisa
 tise
 titi
 tocs
+todd
 toge
 toit
 tole
@@ -1683,6 +1716,7 @@ type
 typo
 tzar
 ubac
+ucla
 ulve
 unau
 unes
@@ -1690,6 +1724,7 @@ unie
 unir
 unis
 unit
+unix
 upas
 uree
 ures
@@ -1703,6 +1738,8 @@ usee
 user
 uses
 usez
+utah
+uucp
 uval
 uvee
 vagi
@@ -1720,6 +1757,7 @@ vaut
 vaux
 veau
 vecu
+veda
 vela
 veld
 vele
@@ -1759,6 +1797,7 @@ vise
 vite
 vive
 vlan
+vlsi
 voeu
 voie
 voir
@@ -1790,6 +1829,8 @@ yeux
 yoga
 yogi
 yole
+yvan
+yves
 zain
 zani
 zebu

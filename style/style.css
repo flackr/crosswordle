@@ -401,6 +401,8 @@ html, body, .main {
 button:not(.ui) {
   margin: 4px 10px;
   font-size: 1.2em;
+}
+button:not(.ui):not([disabled]) {
   border: 1px solid buttontext;
 }
 

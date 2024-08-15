@@ -1,0 +1,404 @@
+{
+  "puzzles": [
+    {
+      "date": "2026-09-26",
+      "puzzle": "country club"
+    },
+    {
+      "date": "2026-09-27",
+      "puzzle": "catchy beat"
+    },
+    {
+      "date": "2026-09-28",
+      "puzzle": "flower petals"
+    },
+    {
+      "date": "2026-09-29",
+      "puzzle": "morning sunrise"
+    },
+    {
+      "date": "2026-09-30",
+      "puzzle": "rounding error"
+    },
+    {
+      "date": "2026-10-01",
+      "puzzle": "launch pad"
+    },
+    {
+      "date": "2026-10-02",
+      "puzzle": "cat litter"
+    },
+    {
+      "date": "2026-10-03",
+      "puzzle": "coffee cup"
+    },
+    {
+      "date": "2026-10-04",
+      "puzzle": "parking sign"
+    },
+    {
+      "date": "2026-10-05",
+      "puzzle": "autumn leaves"
+    },
+    {
+      "date": "2026-10-06",
+      "puzzle": "world history"
+    },
+    {
+      "date": "2026-10-07",
+      "puzzle": "hard hat"
+    },
+    {
+      "date": "2026-10-08",
+      "puzzle": "traffic cone"
+    },
+    {
+      "date": "2026-10-09",
+      "puzzle": "bus shelter"
+    },
+    {
+      "date": "2026-10-10",
+      "puzzle": "shady trail"
+    },
+    {
+      "date": "2026-10-11",
+      "puzzle": "enter password"
+    },
+    {
+      "date": "2026-10-12",
+      "puzzle": "giblet gravy"
+    },
+    {
+      "date": "2026-10-13",
+      "puzzle": "river barge"
+    },
+    {
+      "date": "2026-10-14",
+      "puzzle": "already sold"
+    },
+    {
+      "date": "2026-10-15",
+      "puzzle": "galley kitchen"
+    },
+    {
+      "date": "2026-10-16",
+      "puzzle": "celestial bodies"
+    },
+    {
+      "date": "2026-10-17",
+      "puzzle": "common loon"
+    },
+    {
+      "date": "2026-10-18",
+      "puzzle": "book club"
+    },
+    {
+      "date": "2026-10-19",
+      "puzzle": "smoked ham"
+    },
+    {
+      "date": "2026-10-20",
+      "puzzle": "inflatable dinghy"
+    },
+    {
+      "date": "2026-10-21",
+      "puzzle": "tea sandwich"
+    },
+    {
+      "date": "2026-10-22",
+      "puzzle": "mountain climb"
+    },
+    {
+      "date": "2026-10-23",
+      "puzzle": "twin cylinder"
+    },
+    {
+      "date": "2026-10-24",
+      "puzzle": "monster house"
+    },
+    {
+      "date": "2026-10-25",
+      "puzzle": "the witches"
+    },
+    {
+      "date": "2026-10-26",
+      "puzzle": "addams family"
+    },
+    {
+      "date": "2026-10-27",
+      "puzzle": "little monsters"
+    },
+    {
+      "date": "2026-10-28",
+      "puzzle": "hotel transylvania"
+    },
+    {
+      "date": "2026-10-29",
+      "puzzle": "haunted mansion"
+    },
+    {
+      "date": "2026-10-30",
+      "puzzle": "corpse bride"
+    },
+    {
+      "date": "2026-10-31",
+      "puzzle": "hocus pocus"
+    },
+    {
+      "date": "2026-11-01",
+      "puzzle": "shelf cloud"
+    },
+    {
+      "date": "2026-11-02",
+      "puzzle": "walnut wood"
+    },
+    {
+      "date": "2026-11-03",
+      "puzzle": "canned salmon"
+    },
+    {
+      "date": "2026-11-04",
+      "puzzle": "lucky break"
+    },
+    {
+      "date": "2026-11-05",
+      "puzzle": "last post"
+    },
+    {
+      "date": "2026-11-06",
+      "puzzle": "military parade"
+    },
+    {
+      "date": "2026-11-07",
+      "puzzle": "war veterans"
+    },
+    {
+      "date": "2026-11-08",
+      "puzzle": "diwali festival"
+    },
+    {
+      "date": "2026-11-09",
+      "puzzle": "silent minutes"
+    },
+    {
+      "date": "2026-11-10",
+      "puzzle": "wreath laying"
+    },
+    {
+      "date": "2026-11-11",
+      "puzzle": "poppy pin"
+    },
+    {
+      "date": "2026-11-12",
+      "puzzle": "challah bread"
+    },
+    {
+      "date": "2026-11-13",
+      "puzzle": "plastic straw"
+    },
+    {
+      "date": "2026-11-14",
+      "puzzle": "cold drink"
+    },
+    {
+      "date": "2026-11-15",
+      "puzzle": "sapphire ring"
+    },
+    {
+      "date": "2026-11-16",
+      "puzzle": "volcanic vent"
+    },
+    {
+      "date": "2026-11-17",
+      "puzzle": "light drizzle"
+    },
+    {
+      "date": "2026-11-18",
+      "puzzle": "grumpy mood"
+    },
+    {
+      "date": "2026-11-19",
+      "puzzle": "lap pool"
+    },
+    {
+      "date": "2026-11-20",
+      "puzzle": "chocolate cake"
+    },
+    {
+      "date": "2026-11-21",
+      "puzzle": "patio set"
+    },
+    {
+      "date": "2026-11-22",
+      "puzzle": "vegetable oil"
+    },
+    {
+      "date": "2026-11-23",
+      "puzzle": "scented soap"
+    },
+    {
+      "date": "2026-11-24",
+      "puzzle": "fire pit"
+    },
+    {
+      "date": "2026-11-25",
+      "puzzle": "furnace filter"
+    },
+    {
+      "date": "2026-11-26",
+      "puzzle": "early bird"
+    },
+    {
+      "date": "2026-11-27",
+      "puzzle": "reserved seat"
+    },
+    {
+      "date": "2026-11-28",
+      "puzzle": "pop concert"
+    },
+    {
+      "date": "2026-11-29",
+      "puzzle": "apple jelly"
+    },
+    {
+      "date": "2026-11-30",
+      "puzzle": "hot mustard"
+    },
+    {
+      "date": "2026-12-01",
+      "puzzle": "cocker spaniel"
+    },
+    {
+      "date": "2026-12-02",
+      "puzzle": "audio file"
+    },
+    {
+      "date": "2026-12-03",
+      "puzzle": "concrete brick"
+    },
+    {
+      "date": "2026-12-04",
+      "puzzle": "dreidel game"
+    },
+    {
+      "date": "2026-12-05",
+      "puzzle": "sesame seeds"
+    },
+    {
+      "date": "2026-12-06",
+      "puzzle": "plain bagel"
+    },
+    {
+      "date": "2026-12-07",
+      "puzzle": "bell bottoms"
+    },
+    {
+      "date": "2026-12-08",
+      "puzzle": "avocado oil"
+    },
+    {
+      "date": "2026-12-09",
+      "puzzle": "icy drizzle"
+    },
+    {
+      "date": "2026-12-10",
+      "puzzle": "rollerball pen"
+    },
+    {
+      "date": "2026-12-11",
+      "puzzle": "credit check"
+    },
+    {
+      "date": "2026-12-12",
+      "puzzle": "prepaid card"
+    },
+    {
+      "date": "2026-12-13",
+      "puzzle": "the nutcracker"
+    },
+    {
+      "date": "2026-12-14",
+      "puzzle": "ballet slippers"
+    },
+    {
+      "date": "2026-12-15",
+      "puzzle": "christmas story"
+    },
+    {
+      "date": "2026-12-16",
+      "puzzle": "two brothers"
+    },
+    {
+      "date": "2026-12-17",
+      "puzzle": "christmas carol"
+    },
+    {
+      "date": "2026-12-18",
+      "puzzle": "tiny tim"
+    },
+    {
+      "date": "2026-12-19",
+      "puzzle": "snow queen"
+    },
+    {
+      "date": "2026-12-20",
+      "puzzle": "frozen palace"
+    },
+    {
+      "date": "2026-12-21",
+      "puzzle": "the grinch"
+    },
+    {
+      "date": "2026-12-22",
+      "puzzle": "mount crumpit"
+    },
+    {
+      "date": "2026-12-23",
+      "puzzle": "narnia chronicles"
+    },
+    {
+      "date": "2026-12-24",
+      "puzzle": "magic wardrobe"
+    },
+    {
+      "date": "2026-12-25",
+      "puzzle": "seasons greetings"
+    },
+    {
+      "date": "2026-12-26",
+      "puzzle": "reduced price"
+    },
+    {
+      "date": "2026-12-27",
+      "puzzle": "crinkly paper"
+    },
+    {
+      "date": "2026-12-28",
+      "puzzle": "drive home"
+    },
+    {
+      "date": "2026-12-29",
+      "puzzle": "hybrid car"
+    },
+    {
+      "date": "2026-12-30",
+      "puzzle": "fruit spread"
+    },
+    {
+      "date": "2026-12-31",
+      "puzzle": "dance party"
+    },
+    {
+      "date": "2027-01-01",
+      "puzzle": "the future"
+    },
+    {
+      "date": "2027-01-02",
+      "puzzle": "take notice"
+    },
+    {
+      "date": "2027-01-03",
+      "puzzle": "coarse hair"
+    }
+  ]
+}

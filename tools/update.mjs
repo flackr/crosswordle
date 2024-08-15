@@ -32,7 +32,8 @@ const HELP = [
   ['--shuffle', 'Shuffle words', false],
   ['--allow-misspell', 'Allow misspelled words', false],
   ['--allow-duplicate', 'Allow repeated words', false],
-  ['--dry-run', `Run without modifying files`, false]
+  ['--dry-run', `Run without modifying files`, false],
+  ['--list', `Export word list`, false],
 ];
 const HELP_MAP = {};
 for (let entry of HELP) {
@@ -66,17 +67,31 @@ function parse(args) {
   return result;
 }
 
-const args = parse(process.argv);
-if (args === undefined || args.help) {
-  console.log('Arguments:');
-  for (let entry of HELP) {
-    console.log(`${entry[0]}\t${entry[1]}${entry[2] ? ` (default ${entry[2]})`: ''}`);
+async function main(argv) {
+
+  const args = parse(argv);
+  if (args === undefined || args.help) {
+    console.log('Arguments:');
+    for (let entry of HELP) {
+      console.log(`${entry[0]}\t${entry[1]}${entry[2] ? ` (default ${entry[2]})`: ''}`);
+    }
+    return;
   }
-} else {
   const dataFile = `./src/lang/${args.lang}.json`;
   const data = JSON.parse(fs.readFileSync(dataFile));
   let index = data.puzzle_count;
   let filename = (idx) => `./src/puzzles/${args.lang}/${(idx * CHUNK_SIZE).toString().padStart(6, '0')}.json`
+
+  if (args['list']) {
+    for (let i = 0; i < Math.ceil(data.puzzle_count / CHUNK_SIZE); ++i) {
+      const data = JSON.parse(fs.readFileSync(filename(i)));
+      for (const puzzle of data.puzzles) {
+        console.log(`${puzzle.puzzle}\t${puzzle.hint || ''}\t${puzzle.info || ''}`);
+      }
+    }
+    return;
+  }
+
   let previousPuzzles = new Set();
   let dict = new Set();
   if (!args['allow-misspell']) {
@@ -103,6 +118,7 @@ if (args === undefined || args.help) {
   let chunks = Math.floor(index / CHUNK_SIZE);
   let chunk_index = index % CHUNK_SIZE;
   const baseDate = data.base_date.split('-').map(n => parseInt(n));
+  const baseIndex = data.base_index || 0;
 
   let loadChunk = (idx) => {
     if (idx > chunks)
@@ -164,7 +180,7 @@ if (args === undefined || args.help) {
   }
   let lastDate = null;
   for (const puzzle of toadd) {
-    puzzle.date = (new Date(baseDate[0], baseDate[1] - 1, baseDate[2] + index)).toISOString().substring(0,10);
+    puzzle.date = (new Date(baseDate[0], baseDate[1] - 1, baseDate[2] - baseIndex + index)).toISOString().substring(0,10);
     lastDate = puzzle.date;
     chunk.puzzles.push(puzzle);
     ++index;
@@ -182,3 +198,5 @@ if (args === undefined || args.help) {
   if (!args['dry-run'])
     fs.writeFileSync(dataFile, JSON.stringify(data, undefined, 2));
 }
+
+await main(process.argv);

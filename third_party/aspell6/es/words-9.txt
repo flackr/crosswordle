@@ -7311,6 +7311,7 @@ alejadnos
 alejamela
 alejamele
 alejamelo
+alejandro
 alejaosla
 alejaoslo
 alejarais
@@ -16660,6 +16661,7 @@ auspicien
 auspicies
 auspicios
 australes
+australia
 austriaca
 austriaco
 autarquia
@@ -18143,6 +18145,7 @@ barbullon
 barbusana
 barbusano
 barcarola
+barcelona
 barchilla
 barchilon
 barcinaba
@@ -18802,6 +18805,7 @@ bendijera
 bendijere
 bendijese
 benditera
+benedicto
 beneficas
 beneficia
 beneficie
@@ -20889,6 +20893,7 @@ calafatin
 calafetea
 calafetee
 calafeteo
+calahorra
 calamares
 calambres
 calamidad
@@ -20918,6 +20923,7 @@ calaremos
 calariais
 calasemos
 calasteis
+calatrava
 calaveras
 calaverea
 calaveree
@@ -21318,6 +21324,7 @@ cambistas
 cambochos
 camboyana
 camboyano
+cambridge
 cambrones
 camelaban
 camelabas
@@ -28457,6 +28464,7 @@ cristales
 cristiana
 cristiane
 cristiano
+cristobal
 criterios
 criticaba
 criticada
@@ -51307,6 +51315,7 @@ europeice
 europeiza
 europeizo
 eusqueras
+eustaquio
 eutanasia
 evacuaban
 evacuabas
@@ -54835,6 +54844,7 @@ florecias
 florecida
 florecido
 floreemos
+florencia
 florestas
 floretead
 floretean
@@ -55452,6 +55462,8 @@ frambueso
 francesas
 franceses
 franchute
+francisca
+francisco
 francotas
 francotes
 frangolla
@@ -56227,6 +56239,7 @@ fustigues
 futbolera
 futbolero
 futilidad
+futurebus
 futurible
 futurismo
 futurista
@@ -58060,6 +58073,7 @@ guedejuda
 guedejudo
 guepardos
 guermeces
+guernesey
 guerreaba
 guerreada
 guerreado
@@ -58112,6 +58126,7 @@ guillasen
 guillases
 guillaste
 guillemos
+guillermo
 guillines
 guillotes
 guinabais
@@ -64144,6 +64159,7 @@ jeringazo
 jeringuen
 jeringues
 jerricote
+jerusalen
 jesuitica
 jesuitico
 jesuseaba
@@ -72886,6 +72902,7 @@ neviscare
 neviscase
 nevisquen
 nevisques
+nicaragua
 nicociana
 nicoticas
 nicoticos
@@ -75669,6 +75686,7 @@ panaticas
 pancarpia
 pancartas
 pancillas
+pancracio
 pandaneas
 pandaneos
 pandeaban
@@ -76880,6 +76898,7 @@ penalizan
 penalizar
 penalizas
 penaramos
+penaranda
 penaremos
 penariais
 penascaro
@@ -92231,6 +92250,7 @@ saladoras
 saladores
 saladuras
 salagones
+salamanca
 salamunda
 salandola
 salandole
@@ -92787,6 +92807,7 @@ sanjacato
 sanscrita
 sanscrito
 sansirole
+santander
 santerias
 santiagos
 santiamen
@@ -102954,6 +102975,7 @@ veneremos
 venerenla
 venerenle
 venerenlo
+venezuela
 vengabais
 vengables
 vengadlas

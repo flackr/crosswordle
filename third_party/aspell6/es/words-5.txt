@@ -348,6 +348,7 @@ alfiz
 alfoz
 algar
 algas
+algol
 algun
 aliad
 alian
@@ -387,6 +388,7 @@ alota
 alote
 aloto
 aloya
+alpes
 altar
 altas
 altea
@@ -671,6 +673,7 @@ arene
 areno
 arese
 arete
+argel
 argon
 argos
 argot
@@ -680,6 +683,7 @@ arica
 arico
 arida
 arido
+aries
 arios
 armad
 arman
@@ -728,6 +732,7 @@ asara
 asare
 asase
 asate
+ascii
 ascos
 ascua
 asead
@@ -967,6 +972,7 @@ babea
 babee
 babel
 babeo
+babia
 bable
 babor
 bacas
@@ -1031,6 +1037,7 @@ banda
 bando
 banen
 banes
+banon
 banos
 bantu
 banzo
@@ -1551,6 +1558,7 @@ cazar
 cazas
 cazon
 cazuz
+ccitt
 cebad
 ceban
 cebar
@@ -1751,6 +1759,7 @@ clora
 clore
 cloro
 cobas
+cobol
 cobra
 cobre
 cobro
@@ -1822,6 +1831,7 @@ conac
 conas
 conde
 conga
+congo
 conos
 conte
 conto
@@ -1842,6 +1852,7 @@ copon
 copos
 coque
 coral
+coran
 corda
 corea
 coree
@@ -1901,6 +1912,7 @@ creer
 crees
 creia
 crema
+creta
 creyo
 criad
 crian
@@ -2055,6 +2067,7 @@ dando
 danen
 danes
 danos
+dante
 danza
 danzo
 daran
@@ -2076,6 +2089,7 @@ daten
 dates
 datil
 datos
+david
 deban
 debas
 debed
@@ -2104,6 +2118,7 @@ dejes
 delas
 deles
 delga
+delia
 delos
 delta
 demas
@@ -2145,6 +2160,7 @@ dicho
 dicta
 dicte
 dicto
+diego
 diera
 diere
 diese
@@ -2410,6 +2426,7 @@ epica
 epico
 epoca
 epoxi
+eprom
 equis
 eraba
 erada
@@ -2569,6 +2586,7 @@ fecal
 fecha
 feche
 fecho
+felix
 feliz
 felon
 felpa
@@ -2582,6 +2600,7 @@ feraz
 feria
 ferie
 ferio
+feroe
 feroz
 ferra
 ferre
@@ -2859,6 +2878,7 @@ ganir
 ganon
 gansa
 ganso
+gante
 garba
 garbo
 garfa
@@ -2888,6 +2908,7 @@ gavia
 gayas
 gayos
 gazas
+gbyte
 geles
 gemas
 gemia
@@ -2901,6 +2922,8 @@ gente
 gesta
 geste
 gesto
+gflop
+ghces
 gibad
 giban
 gibar
@@ -3459,12 +3482,14 @@ iones
 iotas
 irani
 ireis
+irene
 irian
 irias
 irisa
 irise
 iriso
 irnos
+isaac
 isbas
 islam
 islas
@@ -3506,6 +3531,7 @@ jaeza
 jaezo
 jaiba
 jaima
+jaime
 jalad
 jalan
 jalar
@@ -3577,6 +3603,7 @@ jerbo
 jerez
 jerga
 jerpa
+jesus
 jetad
 jetan
 jetar
@@ -3644,8 +3671,10 @@ jubas
 jubon
 jubos
 judas
+judea
 judia
 judio
+judit
 juega
 juego
 juera
@@ -3655,6 +3684,7 @@ jugar
 jugos
 jugue
 jujeo
+julia
 julio
 julos
 jumas
@@ -3685,7 +3715,10 @@ kanes
 kappa
 karma
 karst
+kbits
+kbyte
 kefir
+khces
 kilos
 kirie
 kivis
@@ -3800,6 +3833,7 @@ lauda
 laude
 laudo
 launa
+laura
 lauro
 lavad
 lavan
@@ -3994,6 +4028,7 @@ linfa
 linio
 linon
 linos
+linux
 liosa
 lioso
 lipes
@@ -4092,6 +4127,7 @@ lomos
 lonas
 lonja
 loras
+lores
 loros
 lorza
 losad
@@ -4136,6 +4172,7 @@ luida
 luido
 luira
 luire
+luisa
 lujos
 lumas
 lumia
@@ -4271,6 +4308,7 @@ mareo
 mares
 marga
 margo
+mario
 maron
 maros
 marra
@@ -4279,6 +4317,7 @@ marro
 marsa
 marso
 marta
+marte
 marzo
 masad
 masan
@@ -4325,6 +4364,8 @@ mazna
 mazne
 mazno
 mazos
+mbits
+mbyte
 meaba
 meada
 meado
@@ -4444,6 +4485,8 @@ metra
 metro
 mezan
 mezas
+mflop
+mhces
 miaba
 miada
 miado
@@ -4485,6 +4528,7 @@ migre
 migro
 migue
 mijos
+milan
 miles
 milla
 millo
@@ -4508,6 +4552,7 @@ mingo
 minia
 minie
 minio
+minix
 minon
 minos
 minue
@@ -4668,6 +4713,7 @@ motee
 motel
 moteo
 motes
+motif
 motin
 moton
 motor
@@ -5001,6 +5047,7 @@ numen
 numos
 nunca
 nunos
+nuria
 nutra
 nutre
 nutri
@@ -5193,6 +5240,7 @@ oribe
 orina
 orine
 orino
+orion
 orive
 orlad
 orlan
@@ -5292,6 +5340,7 @@ oyese
 oyete
 ozona
 ozono
+pablo
 paced
 pacen
 pacer
@@ -5456,6 +5505,7 @@ pedid
 pedir
 pedis
 pedos
+pedro
 peeis
 peeos
 peera
@@ -5559,6 +5609,7 @@ pican
 picar
 picas
 pichi
+picio
 picon
 picor
 picos
@@ -6488,6 +6539,7 @@ ruque
 rural
 rusas
 rusco
+rusia
 rusos
 rusta
 ruste
@@ -6833,6 +6885,7 @@ sonda
 sonde
 sondo
 sones
+sonia
 sonso
 sopad
 sopan
@@ -7085,6 +7138,7 @@ tazan
 tazar
 tazas
 tazon
+tbyte
 teame
 tebeo
 tecas
@@ -7180,6 +7234,7 @@ teten
 tetes
 teton
 tetra
+texas
 texto
 teyas
 teyos
@@ -7462,6 +7517,7 @@ troto
 trova
 trove
 trovo
+troya
 troza
 trozo
 truca
@@ -7508,6 +7564,7 @@ tunel
 tunen
 tuneo
 tunes
+tunez
 tunos
 tupan
 tupas
@@ -7611,6 +7668,7 @@ untes
 untos
 unzan
 unzas
+urano
 urape
 urato
 urbes
@@ -7651,6 +7709,7 @@ usame
 usaos
 usara
 usare
+usart
 usase
 usate
 useis
@@ -7925,6 +7984,7 @@ viuda
 viudo
 vivac
 vivan
+vivar
 vivas
 vivaz
 viven
@@ -8028,6 +8088,7 @@ zafes
 zafia
 zafio
 zafos
+zafra
 zagal
 zagas
 zahon
@@ -8070,6 +8131,7 @@ zenda
 zendo
 zenit
 zetas
+zilog
 zocas
 zocos
 zofra
