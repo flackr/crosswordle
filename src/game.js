@@ -691,6 +691,8 @@ async function postScore(puzzle, score) {
   stats.innerHTML = "";
   let variant = '';
   let gamemode = orangeClues ? 'normal' : 'hard';
+  if (usedHint)
+    gamemode += '+hint';
   if (orangeClues)
     variant = '-orange';
   let response = await fetch(`https://serializer.ca/stats/crosswordle-${puzzle}${variant}`, {
