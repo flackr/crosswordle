@@ -215,6 +215,30 @@ html, body, .main {
   grid-area: hint;
   text-align: center;
   padding: 0 8px;
+  position: relative;
+}
+
+@keyframes unblur {
+  0% { filter: blur(8px); }
+}
+#hint {
+  animation: unblur 1s paused;
+}
+.reveal #hint {
+  animation-play-state: running;
+}
+#reveal-hint {
+  position: absolute;
+  bottom: 0;
+  transition: opacity 300ms, transform 300ms;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 1;
+}
+.reveal #reveal-hint {
+  opacity: 0;
+  transform: translateX(-50%) translateY(1rem);
+  pointer-events: none;
 }
 
 .date {

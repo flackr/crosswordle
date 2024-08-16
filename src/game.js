@@ -208,6 +208,11 @@ function animateChange(elems, callback, options) {
   }
 }
 
+function getToday() {
+  const today = new Date();
+  return parseDate(today.toISOString().substring(0, 10));
+}
+
 let BASE_DATE = null;
 let BASE_INDEX = 0;
 let TODAY_INDEX;
@@ -223,7 +228,7 @@ async function init() {
   BASE_INDEX = data.base_index || 0;
   FIRST_PUZZLE = parseDate(BASE_DATE, -BASE_INDEX);
   LAST_PUZZLE = parseDate(BASE_DATE, PUZZLE_COUNT - BASE_INDEX);
-  TODAY_INDEX = Math.floor((Date.now() - FIRST_PUZZLE) / MILLISECONDS_PER_DAY);
+  TODAY_INDEX = Math.round((getToday() - FIRST_PUZZLE) / MILLISECONDS_PER_DAY);
   AVAILABLE_COUNT = TODAY_INDEX < BASE_INDEX ? BASE_INDEX : Math.min(TODAY_INDEX + 1, PUZZLE_COUNT);
   // Insert translated element strings
   let elems = document.querySelectorAll('[data-str]');
@@ -248,6 +253,10 @@ async function init() {
     } else {
       window.location.href = window.location.href.split('?')[0];
     }
+  });
+  document.getElementById('reveal-hint').addEventListener('click', () => {
+    revealHint();
+    document.getElementById('reveal-hint').blur();
   });
   document.getElementById('show-settings').addEventListener('click', () => {
     document.querySelector('.settings').classList.remove('hidden');
@@ -390,7 +399,7 @@ async function init() {
     }
     // Select a seeded random puzzle if there are no more available yet.
     if (PUZZLE_COUNT <= day || day < BASE_INDEX) {
-      day = prng16(Math.abs(Math.floor((Date.now() - parseDate("2022-01-01")) / MILLISECONDS_PER_DAY)))() % AVAILABLE_COUNT;
+      day = prng16(Math.abs(Math.round((getToday() - parseDate("2022-01-01")) / MILLISECONDS_PER_DAY)))() % AVAILABLE_COUNT;
     }
     title = `Crosswordle ${day} (${LANG})`;
     PUZZLE = await loadPuzzle(day);
@@ -512,11 +521,7 @@ async function init() {
 
   SOLVED = localStorage.getItem(`crosswordle-scores-${LANG}`) || '';
 
-  // Note, setting this before hardMode is set means that the user can see the hint,
-  // and then switch to hard mode. However, we don't want to lock the user into
-  // easy mode if they just haven't set the hard mode setting yet.
-  // TODO: Consider delaying showing the hint until the user interacts with the puzzle.
-  setComponent('.hint', '#hint', PUZZLE.hint, !settings.hardMode && !!PUZZLE.hint);
+  setComponent('.hint', '#hint', PUZZLE.hint, !!PUZZLE.hint);
 
   // Restore progress
   let progress = localStorage.getItem('crosswordle-daily');
@@ -530,12 +535,26 @@ async function init() {
     return;
   hardMode = parsed.hardMode || false;
   orangeClues = parsed.orangeClues || false;
-  setComponent('.hint', '#hint', PUZZLE.hint, !hardMode && !!PUZZLE.hint);
+  usedHint = parsed.usedHint || false;
+  if (usedHint) {
+    revealHint();
+  }
+  // TODO: Reveal hint if it was already revealed */
   gameGuesses = parsed.guesses;
   for (let guess of gameGuesses) {
     setGuess(guess.toUpperCase());
     addGuess(guess, false);
   }
+}
+
+function revealHint() {
+  document.querySelector('.hint').classList.add('reveal');
+  document.getElementById('reveal-hint').setAttribute('disabled', '');
+  document.getElementById('hint').removeAttribute('inert');
+  if (usedHint)
+    return;
+  usedHint = true;
+  saveProgress();
 }
 
 function updateHighContrast() {
@@ -677,6 +696,9 @@ async function postScore(puzzle, score) {
   let stats = document.getElementById('stats');
   stats.innerHTML = "";
   let variant = '';
+  let gamemode = orangeClues ? 'normal' : 'hard';
+  if (usedHint)
+    gamemode += '+hint';
   if (orangeClues)
     variant = '-orange';
   let response = await fetch(`https://serializer.ca/stats/crosswordle-${puzzle}${variant}`, {
@@ -687,30 +709,34 @@ async function postScore(puzzle, score) {
     headers: score ? {
       'Content-Type': 'application/json',
     } : undefined,
-    body: score ? JSON.stringify({score}) : undefined
+    body: score ? JSON.stringify({score, variant: gamemode}) : undefined
   });
   let json = await response.json();
   let maxIndex = 1;
   let count = 0;
   let overflow = 0;
-  for (let i in json.scores) {
+  const scores = json.scores[gamemode] || json.scores;
+  for (let i in scores) {
+    // TODO: Remove once we reliably use json.scores[mode].
+    if (isNaN(parseInt(i)))
+      continue;
     if (parseInt(i) >= OVERFLOW) {
-      overflow += json.scores[i];
+      overflow += scores[i];
       maxIndex = OVERFLOW;
     } else {
       maxIndex = Math.max(parseInt(i), maxIndex);
     }
-    count += json.scores[i];
+    count += scores[i];
   }
   let maxValue = Math.max(1, overflow);
   for (let i = 1; i < OVERFLOW; ++i) {
-    maxValue = Math.max(maxValue, json.scores[i] || 0);
+    maxValue = Math.max(maxValue, scores[i] || 0);
   }
   if (count < 5)
     return;
   let html = `<p>${STRINGS['daily-scores']}</p><table>`;
   for (let i = 1; i <= maxIndex; ++i) {
-    let score = i == OVERFLOW ? overflow : (json.scores[i] || 0);
+    let score = i == OVERFLOW ? overflow : (scores[i] || 0);
     html += `<tr><td>${i}${i<OVERFLOW?'':'+'}</td><td><div class="bar" style="width: ${Math.round(score / maxValue * 100)}%"></div></td></tr>`;
   }
   html += '</table';
@@ -842,6 +868,7 @@ async function tryGuess() {
 const WORD_DESC = ['Horizontal', 'Vertical'];
 let hardMode = false;
 let orangeClues = false;
+let usedHint = false;
 let settings = {};
 let gameGuesses = [];
 let clues = {
@@ -999,11 +1026,15 @@ async function guess() {
   }
   let str = guesses.join(' ');
   gameGuesses.push(str);
+  saveProgress();
+  await addGuess(str, true);
+}
+
+function saveProgress() {
   if (puzzle.day !== undefined) {
     localStorage.setItem('crosswordle-daily', JSON.stringify({
-        day: puzzle.day, lang: LANG, guesses: gameGuesses, hardMode, orangeClues}));
+        day: puzzle.day, lang: LANG, guesses: gameGuesses, hardMode, orangeClues, usedHint}));
   }
-  await addGuess(str, true);
 }
 
 function setGuess(guess) {
@@ -1242,6 +1273,8 @@ async function addGuess(guess, interactive) {
     let indicator = '';
     if (orangeClues)
       indicator += '🔸';
+    if (usedHint)
+      indicator += '🔍️';
     document.getElementById('guesses').textContent = guesses;
     document.getElementById('answer').textContent = puzzle.words.join(' ');
     document.getElementById('share').onclick = function() {
