@@ -207,6 +207,11 @@ function animateChange(elems, callback, options) {
   }
 }
 
+function getToday() {
+  const today = new Date();
+  return parseDate(today.toISOString().substring(0, 10));
+}
+
 let BASE_DATE = null;
 let BASE_INDEX = 0;
 let TODAY_INDEX;
@@ -222,7 +227,7 @@ async function init() {
   BASE_INDEX = data.base_index || 0;
   FIRST_PUZZLE = parseDate(BASE_DATE, -BASE_INDEX);
   LAST_PUZZLE = parseDate(BASE_DATE, PUZZLE_COUNT - BASE_INDEX);
-  TODAY_INDEX = Math.floor((Date.now() - FIRST_PUZZLE) / MILLISECONDS_PER_DAY);
+  TODAY_INDEX = Math.round((getToday() - FIRST_PUZZLE) / MILLISECONDS_PER_DAY);
   AVAILABLE_COUNT = TODAY_INDEX < BASE_INDEX ? BASE_INDEX : Math.min(TODAY_INDEX + 1, PUZZLE_COUNT);
   // Insert translated element strings
   let elems = document.querySelectorAll('[data-str]');
@@ -393,7 +398,7 @@ async function init() {
     }
     // Select a seeded random puzzle if there are no more available yet.
     if (PUZZLE_COUNT <= day || day < BASE_INDEX) {
-      day = prng16(Math.abs(Math.floor((Date.now() - parseDate("2022-01-01")) / MILLISECONDS_PER_DAY)))() % AVAILABLE_COUNT;
+      day = prng16(Math.abs(Math.round((getToday() - parseDate("2022-01-01")) / MILLISECONDS_PER_DAY)))() % AVAILABLE_COUNT;
     }
     title = `Crosswordle ${day} (${LANG})`;
     PUZZLE = await loadPuzzle(day);
