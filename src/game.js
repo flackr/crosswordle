@@ -676,6 +676,7 @@ async function postScore(puzzle, score) {
   let stats = document.getElementById('stats');
   stats.innerHTML = "";
   let variant = '';
+  let gamemode = orangeClues ? 'normal' : 'hard';
   if (orangeClues)
     variant = '-orange';
   let response = await fetch(`https://serializer.ca/stats/crosswordle-${puzzle}${variant}`, {
@@ -686,30 +687,34 @@ async function postScore(puzzle, score) {
     headers: score ? {
       'Content-Type': 'application/json',
     } : undefined,
-    body: score ? JSON.stringify({score}) : undefined
+    body: score ? JSON.stringify({score, variant: gamemode}) : undefined
   });
   let json = await response.json();
   let maxIndex = 1;
   let count = 0;
   let overflow = 0;
-  for (let i in json.scores) {
+  const scores = json.scores[gamemode] || json.scores;
+  for (let i in scores) {
+    // TODO: Remove once we reliably use json.scores[mode].
+    if (isNaN(parseInt(i)))
+      continue;
     if (parseInt(i) >= OVERFLOW) {
-      overflow += json.scores[i];
+      overflow += scores[i];
       maxIndex = OVERFLOW;
     } else {
       maxIndex = Math.max(parseInt(i), maxIndex);
     }
-    count += json.scores[i];
+    count += scores[i];
   }
   let maxValue = Math.max(1, overflow);
   for (let i = 1; i < OVERFLOW; ++i) {
-    maxValue = Math.max(maxValue, json.scores[i] || 0);
+    maxValue = Math.max(maxValue, scores[i] || 0);
   }
   if (count < 5)
     return;
   let html = `<p>${STRINGS['daily-scores']}</p><table>`;
   for (let i = 1; i <= maxIndex; ++i) {
-    let score = i == OVERFLOW ? overflow : (json.scores[i] || 0);
+    let score = i == OVERFLOW ? overflow : (scores[i] || 0);
     html += `<tr><td>${i}${i<OVERFLOW?'':'+'}</td><td><div class="bar" style="width: ${Math.round(score / maxValue * 100)}%"></div></td></tr>`;
   }
   html += '</table';
