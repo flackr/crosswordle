@@ -115,13 +115,14 @@ async function main(argv) {
     }
     console.log(`Loaded ${previousPuzzles.size} previous puzzles`);
   }
+  const chunkCount = Math.ceil(data.puzzle_count / CHUNK_SIZE);
   let chunks = Math.floor(index / CHUNK_SIZE);
   let chunk_index = index % CHUNK_SIZE;
   const baseDate = data.base_date.split('-').map(n => parseInt(n));
   const baseIndex = data.base_index || 0;
 
   let loadChunk = (idx) => {
-    if (idx > chunks)
+    if (idx >= chunkCount)
       return {puzzles: []};
     return JSON.parse(fs.readFileSync(filename(idx)));
   }
