@@ -222,6 +222,7 @@ html, body, .main {
   0% { filter: blur(8px); }
 }
 #hint {
+  min-height: 26px;
   animation: unblur 1s paused;
 }
 .reveal #hint {
