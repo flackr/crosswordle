@@ -21,7 +21,7 @@
     "skip-filled": "Sla gevulde vakjes over",
     "hard-mode": "Hard mode (zonder oranje hints)",
     "hard-mode-next-game": "Hard mode zal toegepast worden vanaf het volgende spel. Dit kan niet mid-spel veranderd worden.",
-    "create-custom": "Maak je eigen Crosswordle!:",
+    "create-custom": "Maak je eigen Crosswordle!",
     "credit": "Gecreëerd door Robert Flack, source hier beschikbaar <a href=\"https://github.com/flackr/crosswordle\">github</a>. Geïnspireerd door het populaire <a href=\"https://www.powerlanguage.co.uk/wordle/\">Wordle</a> spel. Woordenboek komt van aspell6. Bekijk hier de <a href=\"https://github.com/flackr/crosswordle/blob/main/third_party/aspell6/nl/Copyright\">Copyright</a> details.",
     "victory": "Winnaar!",
     "defeat": "Helaas, volgende keer beter!",
@@ -48,5 +48,5 @@
   },
   "base_index": 0,
   "base_date": "2024-08-19",
-  "puzzle_count": 0
+  "puzzle_count": 136
 }

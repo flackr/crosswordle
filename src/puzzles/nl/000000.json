@@ -1,0 +1,504 @@
+{
+  "puzzles": [
+    {
+      "date": "2024-08-19",
+      "puzzle": "water damp",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-08-20",
+      "puzzle": "school boek",
+      "hint": "Voorwerpen"
+    },
+    {
+      "date": "2024-08-21",
+      "puzzle": "markt kraam",
+      "hint": "Bedrijf & Economie"
+    },
+    {
+      "date": "2024-08-22",
+      "puzzle": "warme bakker",
+      "hint": "Hobby & Beroep"
+    },
+    {
+      "date": "2024-08-23",
+      "puzzle": "afwas machine",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-08-24",
+      "puzzle": "seconde wijzer",
+      "hint": "Voorwerpen"
+    },
+    {
+      "date": "2024-08-25",
+      "puzzle": "geheugen steun",
+      "hint": "Uitdrukkingen"
+    },
+    {
+      "date": "2024-08-26",
+      "puzzle": "vis sticks",
+      "hint": "Eten & Drinken"
+    },
+    {
+      "date": "2024-08-27",
+      "puzzle": "grond water",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-08-28",
+      "puzzle": "reis schema",
+      "hint": "Voertuig & Vervoer"
+    },
+    {
+      "date": "2024-08-29",
+      "puzzle": "tuin meubel",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-08-30",
+      "puzzle": "kroon juwelen",
+      "hint": "Voorwerpen"
+    },
+    {
+      "date": "2024-08-31",
+      "puzzle": "toilet papier",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-09-01",
+      "puzzle": "afweer systeem",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-09-02",
+      "puzzle": "vlees vork",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-09-03",
+      "puzzle": "lucht haven",
+      "hint": "Voertuig & Vervoer"
+    },
+    {
+      "date": "2024-09-04",
+      "puzzle": "ratel slang",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-09-05",
+      "puzzle": "radio stilte",
+      "hint": "Uitdrukkingen"
+    },
+    {
+      "date": "2024-09-06",
+      "puzzle": "citrus vrucht",
+      "hint": "Eten & Drinken"
+    },
+    {
+      "date": "2024-09-07",
+      "puzzle": "sterren hemel",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-09-08",
+      "puzzle": "politie agent",
+      "hint": "Hobby & Beroep"
+    },
+    {
+      "date": "2024-09-09",
+      "puzzle": "pop podium",
+      "hint": "Plaatsen & Gelegenheden"
+    },
+    {
+      "date": "2024-09-10",
+      "puzzle": "deeg roller",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-09-11",
+      "puzzle": "ekster nest",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-09-12",
+      "puzzle": "soep stengel",
+      "hint": "Eten & Drinken"
+    },
+    {
+      "date": "2024-09-13",
+      "puzzle": "post bezorger",
+      "hint": "Hobby & Beroep"
+    },
+    {
+      "date": "2024-09-14",
+      "puzzle": "goochel truc",
+      "hint": "Hobby & Beroep"
+    },
+    {
+      "date": "2024-09-15",
+      "puzzle": "evacuatie plan",
+      "hint": "Plaatsen & Gelegenheden"
+    },
+    {
+      "date": "2024-09-16",
+      "puzzle": "lucht druk",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-09-17",
+      "puzzle": "post pakket",
+      "hint": "Voorwerpen"
+    },
+    {
+      "date": "2024-09-18",
+      "puzzle": "strooi zout",
+      "hint": "Voertuig & Vervoer"
+    },
+    {
+      "date": "2024-09-19",
+      "puzzle": "slinger klok",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-09-20",
+      "puzzle": "machine kamer",
+      "hint": "Techniek"
+    },
+    {
+      "date": "2024-09-21",
+      "puzzle": "bureau stoel",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-09-22",
+      "puzzle": "chocolade melk",
+      "hint": "Eten & Drinken"
+    },
+    {
+      "date": "2024-09-23",
+      "puzzle": "trein wagon",
+      "hint": "Voertuig & Vervoer"
+    },
+    {
+      "date": "2024-09-24",
+      "puzzle": "werk paard",
+      "hint": "Uitdrukkingen"
+    },
+    {
+      "date": "2024-09-25",
+      "puzzle": "tarwe bloem",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-09-26",
+      "puzzle": "brood rooster",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-09-27",
+      "puzzle": "leiding water",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-09-28",
+      "puzzle": "marine blauw",
+      "hint": "Uitdrukkingen"
+    },
+    {
+      "date": "2024-09-29",
+      "puzzle": "lucht ballon",
+      "hint": "Voertuig & Vervoer"
+    },
+    {
+      "date": "2024-09-30",
+      "puzzle": "dak pannen",
+      "hint": "Voorwerpen"
+    },
+    {
+      "date": "2024-10-01",
+      "puzzle": "buidel dier",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-10-02",
+      "puzzle": "wand tapijt",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-10-03",
+      "puzzle": "smaak makers",
+      "hint": "Eten & Drinken"
+    },
+    {
+      "date": "2024-10-04",
+      "puzzle": "middel eeuwen",
+      "hint": "Tijdperk"
+    },
+    {
+      "date": "2024-10-05",
+      "puzzle": "haven gebied",
+      "hint": "Plaatsen & Gelegenheden"
+    },
+    {
+      "date": "2024-10-06",
+      "puzzle": "vreugde vuur",
+      "hint": "Feestdagen & Vieringen"
+    },
+    {
+      "date": "2024-10-07",
+      "puzzle": "noord pool",
+      "hint": "Plaatsen & Gelegenheden"
+    },
+    {
+      "date": "2024-10-08",
+      "puzzle": "koop kracht",
+      "hint": "Bedrijf & Economie"
+    },
+    {
+      "date": "2024-10-09",
+      "puzzle": "plein vrees",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-10-10",
+      "puzzle": "tomaten saus",
+      "hint": "Eten & Drinken"
+    },
+    {
+      "date": "2024-10-11",
+      "puzzle": "nagel knipper",
+      "hint": "Voorwerpen"
+    },
+    {
+      "date": "2024-10-12",
+      "puzzle": "chocolade mousse",
+      "hint": "Eten & Drinken"
+    },
+    {
+      "date": "2024-10-13",
+      "puzzle": "snoep trommel",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-10-14",
+      "puzzle": "auto band",
+      "hint": "Voertuig & Vervoer"
+    },
+    {
+      "date": "2024-10-15",
+      "puzzle": "boter bloem",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-10-16",
+      "puzzle": "lengte maat",
+      "hint": "Uitdrukkingen"
+    },
+    {
+      "date": "2024-10-17",
+      "puzzle": "boom stronk",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-10-18",
+      "puzzle": "knuffel beer",
+      "hint": "Voorwerpen"
+    },
+    {
+      "date": "2024-10-19",
+      "puzzle": "kanarie geel",
+      "hint": "Uitdrukkingen"
+    },
+    {
+      "date": "2024-10-20",
+      "puzzle": "genees middel",
+      "hint": "Gezondheid"
+    },
+    {
+      "date": "2024-10-21",
+      "puzzle": "boter koek",
+      "hint": "Eten & Drinken"
+    },
+    {
+      "date": "2024-10-22",
+      "puzzle": "nacht wacht",
+      "hint": "Kunst & Cultuur"
+    },
+    {
+      "date": "2024-10-23",
+      "puzzle": "kaas schaaf",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-10-24",
+      "puzzle": "parkeer kaart",
+      "hint": "Voorwerpen"
+    },
+    {
+      "date": "2024-10-25",
+      "puzzle": "radio zender",
+      "hint": "Techniek"
+    },
+    {
+      "date": "2024-10-26",
+      "puzzle": "operatie kamer",
+      "hint": "Plaatsen & Gelegenheden"
+    },
+    {
+      "date": "2024-10-27",
+      "puzzle": "toilet borstel",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-10-28",
+      "puzzle": "pioen roos",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-10-29",
+      "puzzle": "puzzel boek",
+      "hint": "Voorwerpen"
+    },
+    {
+      "date": "2024-10-30",
+      "puzzle": "soep lepel",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-10-31",
+      "puzzle": "melk koeien",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-11-01",
+      "puzzle": "natuur azijn",
+      "hint": "Eten & Drinken"
+    },
+    {
+      "date": "2024-11-02",
+      "puzzle": "boetseer klei",
+      "hint": "Hobby & Beroep"
+    },
+    {
+      "date": "2024-11-03",
+      "puzzle": "insecten spray",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-11-04",
+      "puzzle": "haar salon",
+      "hint": "Plaatsen & Gelegenheden"
+    },
+    {
+      "date": "2024-11-05",
+      "puzzle": "peper molen",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-11-06",
+      "puzzle": "wond vocht",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-11-07",
+      "puzzle": "winkel haak",
+      "hint": "Voorwerpen"
+    },
+    {
+      "date": "2024-11-08",
+      "puzzle": "tafel kleed",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-11-09",
+      "puzzle": "stille ocean",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-11-10",
+      "puzzle": "zout kristallen",
+      "hint": "Eten & Drinken"
+    },
+    {
+      "date": "2024-11-11",
+      "puzzle": "bloed type",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-11-12",
+      "puzzle": "suiker spin",
+      "hint": "Eten & Drinken"
+    },
+    {
+      "date": "2024-11-13",
+      "puzzle": "bagage band",
+      "hint": "Voertuig & Vervoer"
+    },
+    {
+      "date": "2024-11-14",
+      "puzzle": "hemel lichaam",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-11-15",
+      "puzzle": "bank automaat",
+      "hint": "Bedrijf & Economie"
+    },
+    {
+      "date": "2024-11-16",
+      "puzzle": "aquarium plant",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-11-17",
+      "puzzle": "water druppel",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-11-18",
+      "puzzle": "tand pasta",
+      "hint": "Inboedel & Huishouden"
+    },
+    {
+      "date": "2024-11-19",
+      "puzzle": "klok toren",
+      "hint": "Gebouw"
+    },
+    {
+      "date": "2024-11-20",
+      "puzzle": "zeep houder",
+      "hint": "Voorwerpen"
+    },
+    {
+      "date": "2024-11-21",
+      "puzzle": "stoof vlees",
+      "hint": "Eten & Drinken"
+    },
+    {
+      "date": "2024-11-22",
+      "puzzle": "wind richting",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-11-23",
+      "puzzle": "klap schaats",
+      "hint": "Hobby & Beroep"
+    },
+    {
+      "date": "2024-11-24",
+      "puzzle": "maatjes haring",
+      "hint": "Eten & Drinken"
+    },
+    {
+      "date": "2024-11-25",
+      "puzzle": "halve maan",
+      "hint": "Mens & Natuur"
+    },
+    {
+      "date": "2024-11-26",
+      "puzzle": "vlucht route",
+      "hint": "Voertuig & Vervoer"
+    }
+  ]
+}
