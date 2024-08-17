@@ -145,6 +145,8 @@ async function main(argv) {
       data.hint = fields[1];
     if (fields[2])
       data.info = fields[2];
+    if (fields[3])
+      data.author = fields[3];
     const words = data.puzzle.split(' ');
 
     let errors = 0;

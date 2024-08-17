@@ -66,13 +66,6 @@ html.high-contrast {
   margin: 8px 0;
 }
 
-@media only screen and (max-width: 600px) {
-  .title {
-    /* Left align the title to avoid the menu buttons. */
-    justify-self: left;
-  }
-}
-
 .keyboard {
   grid-area: keyboard;
   width: 100%;
@@ -178,6 +171,25 @@ html, body, .main {
   white-space: nowrap;
   animation: slide-in-left 200ms;
 }
+.date {
+  text-align: center;
+}
+.clues {
+  justify-self: center;
+  grid-area: clues;
+}
+
+.hint {
+  grid-area: hint;
+  text-align: center;
+  padding: 0 8px;
+  position: relative;
+}
+.author {
+  grid-area: author;
+  text-align: center;
+  padding: 0 8px;
+}
 
 /* On wide screen devices, put the clues to the right of the grid. */
 @media only screen and (min-width: 768px) {
@@ -206,18 +218,6 @@ html, body, .main {
   }
 }
 
-.clues {
-  justify-self: center;
-  grid-area: clues;
-}
-
-.hint {
-  grid-area: hint;
-  text-align: center;
-  padding: 0 8px;
-  position: relative;
-}
-
 @keyframes unblur {
   0% { filter: blur(8px); }
 }
@@ -238,16 +238,6 @@ html, body, .main {
   opacity: 0;
   transform: translateX(-50%) translateY(1rem);
   pointer-events: none;
-}
-
-.date {
-  text-align: center;
-}
-
-.author {
-  grid-area: author;
-  text-align: right;
-  padding: 0 8px;
 }
 
 .grid-container {
