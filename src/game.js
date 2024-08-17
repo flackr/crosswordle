@@ -38,6 +38,7 @@ let AUTO_LANG = 'en';
 if (!ARGS.puzzle) {
   if (navigator.language.startsWith('fr')) AUTO_LANG = 'fr';
   else if (navigator.language.startsWith('es')) AUTO_LANG = 'es';
+  else if (navigator.language.startsWith('nl')) AUTO_LANG = 'nl';
 }
 const LANG = ARGS.l || AUTO_LANG;
 
@@ -228,6 +229,8 @@ async function init() {
   FIRST_PUZZLE = parseDate(BASE_DATE, -BASE_INDEX);
   LAST_PUZZLE = parseDate(BASE_DATE, PUZZLE_COUNT - BASE_INDEX);
   TODAY_INDEX = Math.round((getToday() - FIRST_PUZZLE) / MILLISECONDS_PER_DAY);
+  if (TODAY_INDEX < 0 && BASE_INDEX == 0)
+    TODAY_INDEX = 0;
   AVAILABLE_COUNT = TODAY_INDEX < BASE_INDEX ? BASE_INDEX : Math.min(TODAY_INDEX + 1, PUZZLE_COUNT);
   // Insert translated element strings
   let elems = document.querySelectorAll('[data-str]');
