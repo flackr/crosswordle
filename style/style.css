@@ -233,7 +233,6 @@ html, body, .main {
   transition: opacity 300ms, transform 300ms;
   transform: translateX(-50%);
   cursor: pointer;
-  z-index: 1;
 }
 .reveal #reveal-hint {
   opacity: 0;
