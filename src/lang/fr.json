@@ -27,6 +27,7 @@
     "defeat": "Plus de chance la prochaine fois!",
     "victory-message": "Vous avez trouvé la solution en <span id=\"guesses\"></span> essais",
     "defeat-message": "La réponse était <span id=\"answer\"></span>",
+    "next-puzzle": "Prochain puzzle dans",
     "click-share": "Partager",
     "play-random": "Jouez encore",
     "copied-clipboard": "Résultats copiés dans le presse-papier!",

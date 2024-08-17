@@ -27,6 +27,7 @@
     "defeat": "Helaas, volgende keer beter!",
     "victory-message": "Gewonnen in <span id=\"guesses\"></span> pogingen",
     "defeat-message": "Het antwoord was <span id=\"answer\"></span>",
+    "next-puzzle": "Volgende puzzel in",
     "click-share": "Deel",
     "play-random": "Willekeurige puzzel",
     "copied-clipboard": "Gekopieerd naar clipboard.",

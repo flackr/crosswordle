@@ -389,6 +389,10 @@ html, body, .main {
   outline: 4px groove #88f;
 }
 
+/* Victory screen */
+#eta, #guesses {
+  color: var(--green-fg);
+}
 #stats table {
   width: 100%;
 }

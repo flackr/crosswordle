@@ -1290,6 +1290,31 @@ async function addGuess(guess, interactive) {
 }
 
 function showVictory() {
+  const nextPuzzle = document.getElementById('next-puzzle');
+  if (puzzle.day === AVAILABLE_COUNT - 1 && AVAILABLE_COUNT < PUZZLE_COUNT) {
+    nextPuzzle.classList.remove('hidden');
+    const eta = document.getElementById('eta');
+    const nextDate = parseDate(PUZZLE.date, 1);
+    let updateEta = () => {
+      let remain = (nextDate.getTime() - Date.now()) / 1000;
+      if (remain < 0) {
+        clearInterval(interval);
+        nextPuzzle.classList.add('hidden');
+        return;
+      }
+      const hours = Math.floor(remain / 60 / 60);
+      let minutes = Math.floor(remain % (60 * 60) / 60).toString().padStart(2, '0');
+      let seconds = Math.floor(remain % 60).toString().padStart(2, '0');
+      eta.textContent = `${hours}:${minutes}:${seconds}`;
+    };
+    const interval = setInterval(updateEta, 1000);
+    updateEta();
+    document.querySelector('.victory button.close').addEventListener('click', () => {
+      clearInterval(interval);
+    }, {once: true});
+  } else {
+    nextPuzzle.classList.add('hidden');
+  }
   document.querySelector('.victory').classList.remove('hidden');
 }
 

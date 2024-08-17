@@ -27,6 +27,7 @@
     "defeat": "Better luck next time!",
     "victory-message": "You got it in <span id=\"guesses\"></span> guesses",
     "defeat-message": "The answer was <span id=\"answer\"></span>",
+    "next-puzzle": "Next puzzle in",
     "click-share": "Share",
     "play-random": "Random puzzle",
     "copied-clipboard": "Copied results to clipboard!",
