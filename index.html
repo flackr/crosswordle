@@ -143,7 +143,19 @@
           <p class="info"></p>
           <p class="won" data-str="victory-message"></p>
           <p class="lost" data-str="defeat-message"></p>
-          <div id="stats"></div>
+          <div id="stats">
+            <div class="table"></div>
+            <div class="legend">
+              <div class="group" data-group="normal">
+                <div data-mode="normal" data-str="normal" class="bar normal"></div>
+                <div data-mode="normal+hint" data-str="hint" class="bar normal used-hint"></div>
+              </div>
+              <div class="group" data-group="hard">
+                <div data-mode="hard" data-str="hard" class="bar hard"></div>
+                <div data-mode="hard+hint" data-str="hint" class="bar hard used-hint"></div>
+              </div>
+            </div>
+          </div>
           <p id="next-puzzle"><span data-str="next-puzzle"></span> <span id="eta"></span></p>
           <div class="center">
             <button id="share" data-str="click-share"></button>

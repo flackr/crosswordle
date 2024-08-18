@@ -19,6 +19,8 @@
     "settings": "Settings",
     "high-contrast": "High contrast colours",
     "skip-filled": "Skip filled positions",
+    "normal": "Normal",
+    "hard": "Hard",
     "hard-mode": "Hard mode (no orange clues)",
     "hard-mode-next-game": "Hard mode will take effect on your next game. It cannot be changed mid-game.",
     "create-custom": "Create your own crosswordle:",

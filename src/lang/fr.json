@@ -19,6 +19,8 @@
     "settings": "Paramètres",
     "high-contrast": "Couleurs à contraste élevé",
     "skip-filled": "Ignorer les carreaux déjà remplis",
+    "normal": "Normale",
+    "hard": "Difficile",
     "hard-mode": "Mode difficile (sans indices jaunes)",
     "hard-mode-next-game": "Le mode difficile prendra effet lors de votre prochaine partie. Il ne peut pas être activé en cours de partie.",
     "create-custom": "Créez vos propres Crosswordle:",

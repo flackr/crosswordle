@@ -695,15 +695,16 @@ async function updateArchive(index, indexDate) {
 
 const OVERFLOW = 10;
 async function postScore(puzzle, score) {
-  let stats = document.getElementById('stats');
+  let container = document.getElementById('stats');
+  container.classList.add('hidden');
+  if (puzzle === undefined)
+    return;
+  let stats = container.querySelector('.table');
   stats.innerHTML = "";
-  let variant = '';
-  let gamemode = orangeClues ? 'normal' : 'hard';
+  let variant = orangeClues ? 'normal' : 'hard';
   if (usedHint)
-    gamemode += '+hint';
-  if (orangeClues)
-    variant = '-orange';
-  let response = await fetch(`https://serializer.ca/stats/crosswordle-${puzzle}${variant}`, {
+    variant += '+hint';
+  let response = await fetch(`https://serializer.ca/stats/crosswordle-${puzzle}`, {
     method: score ? 'POST' : 'GET',
     mode: 'cors',
     cache: 'no-cache',
@@ -711,35 +712,75 @@ async function postScore(puzzle, score) {
     headers: score ? {
       'Content-Type': 'application/json',
     } : undefined,
-    body: score ? JSON.stringify({score, variant: gamemode}) : undefined
+    body: score ? JSON.stringify({score, variant}) : undefined
   });
   let json = await response.json();
+  container.classList.remove('hidden');
   let maxIndex = 1;
   let count = 0;
-  let overflow = 0;
-  const scores = json.scores[gamemode] || json.scores;
-  for (let i in scores) {
-    // TODO: Remove once we reliably use json.scores[mode].
-    if (isNaN(parseInt(i)))
-      continue;
-    if (parseInt(i) >= OVERFLOW) {
-      overflow += scores[i];
-      maxIndex = OVERFLOW;
-    } else {
-      maxIndex = Math.max(parseInt(i), maxIndex);
+  const legend = container.querySelector('.legend');
+  const styleClass = {};
+  const groups = legend.querySelectorAll('.group');
+
+  const groupData = {};
+  const modeData = {};
+  for (const group of groups) {
+    const gData = groupData[group.getAttribute('data-group')] = {count: 0, max: 0};
+    const modes = group.querySelectorAll('[data-mode]');
+    for (const modeEl of modes) {
+      modeEl.classList.remove('hidden');
+      const mode = modeEl.getAttribute('data-mode');
+      const mData = modeData[mode] = {max: 0, overflow: 0}
+      styleClass[mode] = modeEl.className;
+      const scores = json.scores[mode];
+      if (!scores) {
+        if (modeEl.classList.contains('used-hint'))
+          modeEl.classList.add('hidden');
+        continue;
+      }
+      for (let i in scores) {
+        if (parseInt(i) >= OVERFLOW) {
+          mData.overflow += scores[i];
+          maxIndex = OVERFLOW;
+        } else {
+          maxIndex = Math.max(parseInt(i), maxIndex);
+        }
+        count += scores[i];
+        gData.count += scores[i];
+        mData.max = Math.max(mData.max, scores[i]);
+      }
+      mData.max = Math.max(mData.max, mData.overflow);
+      // The maximum group value is the sum of the max values contributing to it.
+      gData.max += mData.max;
     }
-    count += scores[i];
-  }
-  let maxValue = Math.max(1, overflow);
-  for (let i = 1; i < OVERFLOW; ++i) {
-    maxValue = Math.max(maxValue, scores[i] || 0);
+    if (gData.count == 0) {
+      group.classList.add('hidden');
+    } else {
+      group.classList.remove('hidden');
+    }
   }
   if (count < 5)
     return;
   let html = `<p>${STRINGS['daily-scores']}</p><table>`;
   for (let i = 1; i <= maxIndex; ++i) {
-    let score = i == OVERFLOW ? overflow : (scores[i] || 0);
-    html += `<tr><td>${i}${i<OVERFLOW?'':'+'}</td><td><div class="bar" style="width: ${Math.round(score / maxValue * 100)}%"></div></td></tr>`;
+    html += `<tr><td>${i}${i<OVERFLOW?'':'+'}</td><td>`;
+    for (const group of groups) {
+      html += `<div class="group">`;
+      const gData = groupData[group.getAttribute('data-group')];
+      const modes = group.querySelectorAll('[data-mode]');
+      for (const modeEl of modes) {
+        const mode = modeEl.getAttribute('data-mode');
+        const scores = json.scores[mode];
+        if (!scores)
+          continue;
+        const mData = modeData[mode];
+        const score = i == OVERFLOW ? mData.overflow : (scores[i] || 0);
+        if (score > 0)
+          html += `<div class="${modeEl.className}" style="width: ${Math.round(score / gData.max * 100)}%"></div>`;
+      }
+      html += `</div>`;
+    }
+    html += `</td></tr>`;
   }
   html += '</table';
   stats.innerHTML = html;
@@ -1253,6 +1294,8 @@ async function addGuess(guess, interactive) {
     const prevScore = getScore(puzzle.day);
     setScore(puzzle.day, Math.min(10, score));
     postScore(`${LANG}-${puzzle.day}`, prevScore === undefined && interactive ? score : undefined);
+  } else {
+    postScore();
   }
   if (animationPromises.length > 0) {
     await Promise.all(animationPromises);

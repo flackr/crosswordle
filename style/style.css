@@ -403,8 +403,43 @@ html, body, .main {
 }
 
 .bar {
+  box-sizing: border-box;
+  color: var(--background);
+}
+
+.bar + .bar {
+  border-left: 1px solid var(--background);
+}
+
+.table .group {
+  position: relative;
+  display: flex;
+  height: 5px;
+}
+
+.table .bar {
+  height: 5px;
+}
+
+/* Difficulty styles */
+.legend {
+  display: flex;
+}
+.legend .group {
+  display: flex;
+  margin: 0 8px;
+}
+.legend .bar {
+  padding: 0 8px;
+}
+.normal {
+  background: var(--orange);
+}
+.hard {
   background: var(--green-fg);
-  height: 10px;
+}
+.used-hint {
+  filter: saturate(0.3);
 }
 
 [result=won] .lost,

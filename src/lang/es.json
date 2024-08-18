@@ -19,6 +19,8 @@
     "settings": "Ajustes",
     "high-contrast": "Colores de alto contraste",
     "skip-filled": "Saltar posiciones ocupadas",
+    "normal": "Normal",
+    "hard": "Difícil",
     "hard-mode": "Modo difícil (no hay pistas naranjas)",
     "hard-mode-next-game": "El modo difícil tendrá efecto en tu próximo juego. No se puede activar a mitad del juego.",
     "create-custom": "Crea tu propio crucigrama:",

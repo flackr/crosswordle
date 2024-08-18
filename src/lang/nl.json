@@ -19,6 +19,8 @@
     "settings": "Opties",
     "high-contrast": "Hoog kleurcontrast",
     "skip-filled": "Sla gevulde vakjes over",
+    "normal": "Normaal",
+    "hard": "Hard",
     "hard-mode": "Hard mode (zonder oranje hints)",
     "hard-mode-next-game": "Hard mode zal toegepast worden vanaf het volgende spel. Dit kan niet mid-spel veranderd worden.",
     "create-custom": "Maak je eigen Crosswordle!",
