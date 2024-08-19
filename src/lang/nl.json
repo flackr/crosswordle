@@ -2,7 +2,7 @@
   "strings": {
     "help1": "Het doel is om de twee kruisende woorden in zo min mogelijk pogingen te raden. Bij iedere poging vul je beide woorden in, let op: dit moeten wel geldige woorden zijn. Na het invullen krijg je hints, bv.",
     "help2": "Om het beknopt te houden ziet dit er zo uit:",
-    "help3": "Groen betekent dat zowel de letter als de locatie correct zijn. Geel betekent dat de letter correct is maar niet op de juiste plaats staat. Oranje betekent dat de letter correct is maar niet in het juiste woord staat. Iedere hint komt overeen met een van de letters. In dit geval heeft het antwoord bijvoorbeeld maar één S, dus alleen de eerste S word geel.",
+    "help3": "Groen betekent dat zowel de letter als de locatie correct zijn. Geel betekent dat de letter correct is maar niet op de juiste plaats staat. Oranje betekent dat de letter correct is maar niet in het juiste woord staat. Iedere hint komt overeen met één van de letters. In dit geval heeft het antwoord bijvoorbeeld maar één S, dus alleen de eerste S word geel.",
     "help4": "Verder kun je van het bovenstaande voorbeeld de volgende aanwijzingen afleiden:",
     "help5": "Tip: De woorden hebben altijd iets met elkaar te maken.",
     "help-clue1": "Het eerste woord begint met de letter C.",
@@ -11,7 +11,7 @@
     "help-clue4": "De letters W en R komen niet voor in het antwoord.",
     "help-clue5": "De letter D staat in het eerste woord.",
     "hint": "Tip",
-    "reveal-hint": "Hint onthullen",
+    "reveal-hint": "Toon hint",
     "puzzle-credit": "Puzzel van:",
     "archive": "Archief",
     "prev-year": "Vorig jaar",

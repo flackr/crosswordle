@@ -79,7 +79,7 @@ html.high-contrast {
       'q q w w e e r r t t y y u u i i o o p p'
       '. a a s s d d f f g g h h j j k k l l .'
       'R R R z z x x c c v v b b n n m m B B B';
-  margin: 15px auto;
+  margin: 0 auto 15px auto;
 }
 
 #templates {
@@ -187,6 +187,7 @@ html, body, .main {
   grid-area: hint;
   text-align: center;
   padding: 0 8px;
+  margin: 4px 0;
   position: relative;
 }
 .author {
@@ -249,6 +250,10 @@ html, body, .main {
   grid-area: grid;
   justify-self: center;
   justify-content: center;
+}
+
+.word {
+  display: inline-block;
 }
 
 .clues .tile,
@@ -458,6 +463,9 @@ html, body, .main {
 button:not(.ui) {
   margin: 4px 10px;
   font-size: 1.2em;
+}
+.hint > button {
+  margin: 0;
 }
 button:not(.ui):not([disabled]) {
   border: 1px solid buttontext;
