@@ -66,6 +66,10 @@ html.high-contrast {
   justify-self: center;
 }
 
+h1 {
+  text-align: center;
+}
+
 .title h1, .title h3 {
   margin: 8px 0;
 }
