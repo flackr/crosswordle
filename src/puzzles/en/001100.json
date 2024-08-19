@@ -30,11 +30,13 @@
     },
     {
       "date": "2025-02-10",
-      "puzzle": "curling bonspiel"
+      "puzzle": "curling bonspiel",
+      "hint": "Hobbies and Sports."
     },
     {
       "date": "2025-02-11",
-      "puzzle": "horse paddock"
+      "puzzle": "horse paddock",
+      "hint": "Hobbies and Sports."
     },
     {
       "date": "2025-02-12",
@@ -230,7 +232,8 @@
     },
     {
       "date": "2025-04-01",
-      "puzzle": "april fish"
+      "puzzle": "april fish",
+      "info": "A possible origin to April Fool's day in France."
     },
     {
       "date": "2025-04-02",
@@ -298,8 +301,7 @@
     },
     {
       "date": "2025-04-18",
-      "puzzle": "remote work",
-      "hint": "Zoom"
+      "puzzle": "remote work"
     },
     {
       "date": "2025-04-19",

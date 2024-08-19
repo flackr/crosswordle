@@ -67,6 +67,7 @@
     {
       "date": "2024-11-11",
       "puzzle": "remember them",
+      "hint": "For the fallen.",
       "info": "<a href=\"https://en.wikipedia.org/wiki/For_the_Fallen\">For the Fallen</a> is a poem by Laurence Binyon often recited on this day."
     },
     {
@@ -188,7 +189,8 @@
     },
     {
       "date": "2024-12-11",
-      "puzzle": "atomic mass"
+      "puzzle": "atomic mass",
+      "hint": "Science and Technology."
     },
     {
       "date": "2024-12-12",
@@ -308,7 +310,8 @@
     },
     {
       "date": "2025-01-09",
-      "puzzle": "cloud computing"
+      "puzzle": "cloud computing",
+      "hint": "Science and Technology."
     },
     {
       "date": "2025-01-10",
