@@ -210,7 +210,10 @@ function animateChange(elems, callback, options) {
 
 function getToday() {
   const today = new Date();
-  return parseDate(today.toISOString().substring(0, 10));
+  today.setHours(0);
+  today.setMinutes(0);
+  today.setSeconds(0);
+  return today;
 }
 
 let BASE_DATE = null;
