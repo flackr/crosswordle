@@ -12,11 +12,13 @@
     },
     {
       "date": "2024-07-20",
-      "puzzle": "paris olympics"
+      "puzzle": "paris olympics",
+      "hint": "Event."
     },
     {
       "date": "2024-07-21",
-      "puzzle": "olympic rings"
+      "puzzle": "olympic rings",
+      "hint": "Logo."
     },
     {
       "date": "2024-07-22",
@@ -28,11 +30,13 @@
     },
     {
       "date": "2024-07-24",
-      "puzzle": "football match"
+      "puzzle": "football match",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-07-25",
-      "puzzle": "penalty line"
+      "puzzle": "penalty line",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-07-26",
@@ -40,19 +44,23 @@
     },
     {
       "date": "2024-07-27",
-      "puzzle": "rugby try"
+      "puzzle": "rugby try",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-07-28",
-      "puzzle": "skate board"
+      "puzzle": "skate board",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-07-29",
-      "puzzle": "set sail"
+      "puzzle": "set sail",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-07-30",
-      "puzzle": "cycle tricks"
+      "puzzle": "cycle tricks",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-07-31",
@@ -60,43 +68,53 @@
     },
     {
       "date": "2024-08-01",
-      "puzzle": "hole one"
+      "puzzle": "hole one",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-08-02",
-      "puzzle": "spring board"
+      "puzzle": "spring board",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-08-03",
-      "puzzle": "parry riposte"
+      "puzzle": "parry riposte",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-08-04",
-      "puzzle": "quiver belt"
+      "puzzle": "quiver belt",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-08-05",
-      "puzzle": "canoe launch"
+      "puzzle": "canoe launch",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-08-06",
-      "puzzle": "rein control"
+      "puzzle": "rein control",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-08-07",
-      "puzzle": "ollie kickflip"
+      "puzzle": "ollie kickflip",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-08-08",
-      "puzzle": "side kick"
+      "puzzle": "side kick",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-08-09",
-      "puzzle": "block shot"
+      "puzzle": "block shot",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-08-10",
-      "puzzle": "diving board"
+      "puzzle": "diving board",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-08-11",
@@ -168,20 +186,24 @@
     },
     {
       "date": "2024-08-28",
-      "puzzle": "paralympic games"
+      "puzzle": "paralympic games",
+      "hint": "Event."
     },
     {
       "date": "2024-08-29",
-      "puzzle": "starting line"
+      "puzzle": "starting line",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-08-30",
-      "puzzle": "sporting heroes"
+      "puzzle": "sporting heroes",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-08-31",
       "puzzle": "spirits motion",
-      "hint": "Motto."
+      "hint": "Motto.",
+      "info": "Spirit in motion is the <a href=\"https://www.paralympic.org/feature/what-are-elements-building-paralympic-symbol\">paralympic motto</a> representing the strong will of every Paralympian."
     },
     {
       "date": "2024-09-01",
@@ -190,15 +212,18 @@
     },
     {
       "date": "2024-09-02",
-      "puzzle": "canoe paddle"
+      "puzzle": "canoe paddle",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-09-03",
-      "puzzle": "boccia ball"
+      "puzzle": "boccia ball",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-09-04",
-      "puzzle": "freestyle swimming"
+      "puzzle": "freestyle swimming",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-09-05",
@@ -206,15 +231,18 @@
     },
     {
       "date": "2024-09-06",
-      "puzzle": "horse canter"
+      "puzzle": "horse canter",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-09-07",
-      "puzzle": "rowing race"
+      "puzzle": "rowing race",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-09-08",
-      "puzzle": "wheelchair rugby"
+      "puzzle": "wheelchair rugby",
+      "hint": "Hobbies and Sports"
     },
     {
       "date": "2024-09-09",
@@ -334,7 +362,8 @@
     },
     {
       "date": "2024-10-08",
-      "puzzle": "artificial intelligence"
+      "puzzle": "artificial intelligence",
+      "hint": "Technology"
     },
     {
       "date": "2024-10-09",
@@ -354,7 +383,8 @@
     },
     {
       "date": "2024-10-13",
-      "puzzle": "calico cat"
+      "puzzle": "calico cat",
+      "hint": "Multi-coloured."
     },
     {
       "date": "2024-10-14",
