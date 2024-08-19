@@ -6,6 +6,7 @@ html {
   --black: #999;
   --possible: #ddd;
   --orange: orange;
+  --orange-fg: #b60;
   --yellow: yellow;
   --green: #0f0;
   --red-fg: #900;
@@ -15,7 +16,8 @@ html {
 }
 
 html.high-contrast {
-  --orange: #D81B60;
+  --orange: #d81b60;
+  --orange-fg: #b14;
   --yellow: #0bf;
   --green: #f80;
   --red-fg: #509;
@@ -42,6 +44,7 @@ html.high-contrast {
     --black: #333;
     --possible: #888;
     --orange: #b60;
+    --orange-fg: orange;
     --yellow: #a94;
     --green: green;
     --red-fg: #f77;
@@ -50,6 +53,7 @@ html.high-contrast {
 
   html.high-contrast {
     --orange: #D81B60;
+    --orange-fg: #f38;
     --yellow: #07b;
     --green: #940;
     --red-fg: #a6f;
@@ -433,7 +437,7 @@ html, body, .main {
   padding: 0 8px;
 }
 .normal {
-  background: var(--orange);
+  background: var(--orange-fg);
 }
 .hard {
   background: var(--green-fg);
