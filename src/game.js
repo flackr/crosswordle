@@ -995,6 +995,7 @@ async function updateHints() {
   }
 
   const curWord = selected[0];
+  const curCrossing = selected[1] == puzzle.offsets[curWord];
   for (let i = 0; i < alphabet.length; ++i) {
     let c = alphabet[i];
     let key = document.querySelector(`.key[code=${c}]`);
@@ -1021,7 +1022,7 @@ async function updateHints() {
         maxLetters = clues.letters[c].min[0] + clues.letters[c].min[1];
     }
 
-    if (minLetters > letterCount) {
+    if (minLetters > letterCount || (curCrossing && totalNeeded > totalLetters)) {
       key.classList.add('yellow');
       key.classList.remove('orange');
     } else if (orangeClues && totalNeeded > totalLetters) {
