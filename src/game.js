@@ -950,6 +950,11 @@ async function updateHints() {
   let count = 0;
   let guesses = [];
   for (let i = 0; i < puzzle.words.length; ++i) {
+    for (let j = 0; j < puzzle.words[i].length; ++j) {
+      tile([i, j]).classList.remove('error');
+    }
+  }
+  for (let i = 0; i < puzzle.words.length; ++i) {
     guesses.push('');
     for (let j = 0; j < puzzle.words[i].length; ++j) {
       let index = count++;
@@ -968,8 +973,6 @@ async function updateHints() {
       if (!c || alphabet.indexOf(c) == -1)
         continue;
       guesses[i] += c;
-      if (i == 1 && j == puzzle.offsets[1])
-        continue;
       // If the chosen letter can't go in this position or there are too many
       // in the guess, highlight them.
       let maxLetters = Infinity;
@@ -979,15 +982,14 @@ async function updateHints() {
         if (clues.letters[c]?.max[i])
           maxLetters = clues.letters[c].min[i];
       } else {
-        letterCount = letters[c][0] + letters[c][1];
+        const crossing = j == puzzle.offsets[i] ? 1 : 0;
+        letterCount = letters[c][0] + letters[c][1] - crossing;
         if (clues.letters[c]?.max[0] && clues.letters[c]?.max[1])
           maxLetters = clues.letters[c].min[0] + clues.letters[c].min[1];
       }
       if (c && (clues.letters[c]?.not.has(index) ||
                 letterCount > maxLetters)) {
         t.classList.add('error');
-      } else {
-        t.classList.remove('error');
       }
     }
   }
