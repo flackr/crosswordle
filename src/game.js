@@ -700,13 +700,17 @@ const OVERFLOW = 10;
 async function postScore(puzzle, score) {
   let container = document.getElementById('stats');
   container.classList.add('hidden');
+  let variant = orangeClues ? 'normal' : 'hard';
+  let styleClass = variant;
+  if (usedHint) {
+    variant += '+hint';
+    styleClass += ' used-hint';
+  }
+  document.getElementById('guesses').className = styleClass;
   if (puzzle === undefined)
     return;
   let stats = container.querySelector('.table');
   stats.innerHTML = "";
-  let variant = orangeClues ? 'normal' : 'hard';
-  if (usedHint)
-    variant += '+hint';
   let response = await fetch(`https://serializer.ca/stats/crosswordle-${puzzle}`, {
     method: score ? 'POST' : 'GET',
     mode: 'cors',
@@ -722,7 +726,6 @@ async function postScore(puzzle, score) {
   let maxIndex = 1;
   let count = 0;
   const legend = container.querySelector('.legend');
-  const styleClass = {};
   const groups = legend.querySelectorAll('.group');
 
   const groupData = {};
@@ -734,7 +737,6 @@ async function postScore(puzzle, score) {
       modeEl.classList.remove('hidden');
       const mode = modeEl.getAttribute('data-mode');
       const mData = modeData[mode] = {max: 0, overflow: 0}
-      styleClass[mode] = modeEl.className;
       const scores = json.scores[mode];
       if (!scores) {
         if (modeEl.classList.contains('used-hint'))

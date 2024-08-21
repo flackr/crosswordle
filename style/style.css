@@ -403,8 +403,12 @@ html, body, .main {
 }
 
 /* Victory screen */
-#eta, #guesses {
+#eta {
   color: var(--green-fg);
+}
+#guesses {
+  font-weight: bold;
+  color: var(--difficulty-color);
 }
 #stats table {
   width: 100%;
@@ -418,6 +422,7 @@ html, body, .main {
 .bar {
   box-sizing: border-box;
   color: var(--background);
+  background: var(--difficulty-color);
 }
 
 .bar + .bar {
@@ -446,10 +451,10 @@ html, body, .main {
   padding: 0 8px;
 }
 .normal {
-  background: var(--orange-fg);
+  --difficulty-color: var(--orange-fg);
 }
 .hard {
-  background: var(--green-fg);
+  --difficulty-color: var(--green-fg);
 }
 .used-hint {
   filter: saturate(0.3);
