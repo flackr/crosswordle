@@ -2,6 +2,7 @@ html {
   --large-size: calc(max(20px, ((min(100vw, 100vh - 20em) - 16px) / var(--size)) - 4px));
   --small-size: calc(max(16px, ((min(100vw, 100vh - 20em) - 16px) / (2 * var(--size) + 1)) - 4px));
   --background: white;
+  --background-alpha: rgba(255, 255, 255, 0.5);
   --foreground: black;
   --black: #999;
   --possible: #ddd;
@@ -40,6 +41,7 @@ html.high-contrast {
 @media (prefers-color-scheme: dark) {
   html {
     --background: black;
+    --background-alpha: rgba(0, 0, 0, 0.5);
     --foreground: white;
     --black: #333;
     --possible: #888;
@@ -74,16 +76,28 @@ h1 {
   margin: 8px 0;
 }
 
-.keyboard {
+.keyboard-container {
   grid-area: keyboard;
+  position: sticky;
+  bottom: 0;
+}
+
+.keyboard {
+  border-radius: 10px;
+  background-color: var(--background-alpha);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
   width: 100%;
+  box-sizing: border-box;
   display: grid;
   max-width: 700px;
   grid-template-areas:
       'q q w w e e r r t t y y u u i i o o p p'
       '. a a s s d d f f g g h h j j k k l l .'
       'R R R z z x x c c v v b b n n m m B B B';
-  margin: 0 auto 15px auto;
+  margin: 0 auto;
+  padding: 4px;
+  padding-bottom: 8px;
 }
 
 #templates {
@@ -91,7 +105,7 @@ h1 {
 }
 
 .menu {
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
 }
@@ -163,8 +177,6 @@ html, body, .main {
       'title'
       'clues'
       'grid'
-      'hint'
-      'author'
       'keyboard';
   grid-template-rows: min-content min-content 1fr min-content;
 }
@@ -188,14 +200,12 @@ html, body, .main {
 }
 
 .hint {
-  grid-area: hint;
   text-align: center;
   padding: 0 8px;
   margin: 4px 0;
   position: relative;
 }
 .author {
-  grid-area: author;
   text-align: center;
   padding: 0 8px;
 }
@@ -216,14 +226,12 @@ html, body, .main {
     grid-template-areas:
         'title    title'
         'grid     clues'
-        'hint     hint'
-        'author   author'
         'keyboard keyboard';
     grid-template-rows: min-content 1fr min-content;
   }
   html {
-    --large-size: calc(max(20px, ((min(100vw / 2, 100vh - 20em) - 16px) / var(--size)) - 4px));
-    --small-size: calc(max(16px, ((min(100vw / 2, 100vh) - 16px) / (2 * var(--size) + 1)) - 4px));
+    --large-size: calc(max(24px, ((min(100vw / 2, 100vh - 21em) - 16px) / var(--size)) - 4px));
+    --small-size: calc(max(20px, ((min(100vw / 2, 100vh - 21em) - 16px) / (2 * var(--size) + 1)) - 4px));
   }
 }
 

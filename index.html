@@ -168,24 +168,26 @@
         </div>
       </div>
     </div>
+    <div class="menu">
+      <div class="contents hidden">
+        <button class="ui" id="show-help">❓</button>
+        <button class="ui" id="show-archive">🗓️</button>
+        <button class="ui" id="show-settings">⚙️</button>
+      </div>
+      <button class="ui" id="expand-button">&lt;</button>
+    </div>
     <div class="main">
       <div class="title">
-        <div class="menu">
-          <div class="contents hidden">
-            <button class="ui" id="show-help">❓</button>
-            <button class="ui" id="show-archive">🗓️</button>
-            <button class="ui" id="show-settings">⚙️</button>
-          </div>
-          <button class="ui" id="expand-button">&lt;</button>
-        </div>
         <h1>Crosswordle</h1>
         <h3 class="date hidden" id="date"></h3>
       </div>
       <div class="clues"></div>
       <div class="grid"></div>
-      <div class="hint hidden"><div id="hint" inert></div><button id="reveal-hint" data-str="reveal-hint"></button></div>
-      <div class="author hidden"><span data-str="puzzle-credit"></span> <span id="author"></span></div>
-      <div class="keyboard"></div>
+      <div class="keyboard-container">
+        <div class="hint hidden"><div id="hint" inert></div><button id="reveal-hint" data-str="reveal-hint"></button></div>
+        <div class="author hidden"><span data-str="puzzle-credit"></span> <span id="author"></span></div>
+        <div class="keyboard"></div>
+      </div>
     </div>
     <div class="modal screen hidden">
       <div class="message"></div>
