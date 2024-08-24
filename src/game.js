@@ -2,6 +2,7 @@
 
 const FEATURE_VERSION = 8;
 const MAX_GUESSES = 10;
+const SUPPORTED_ARGS = ['l', 'day', 'puzzle', 'hint'];
 
 function parse(str) {
   let args = str.split('&');
@@ -31,7 +32,21 @@ function prng16(seed) {
   };
 }
 
-const ARGS = parse(window.location.search.substr(1));
+function getShareUrl() {
+  let shareUrl = window.location.origin + window.location.pathname;
+  let args = [];
+  for (let argName of SUPPORTED_ARGS) {
+    if (ARGS[argName] !== undefined) {
+      args.push(`${argName}=${encodeURIComponent(ARGS[argName])}`);
+    }
+  }
+  if (args.length > 0) {
+    shareUrl += `?${args.join('&')}`;
+  }
+  return shareUrl;
+}
+
+const ARGS = parse(window.location.search.substring(1));
 // Custom puzzles from before other languages were supported are english. Newer custom
 // puzzles include the language in the URL.
 let AUTO_LANG = 'en';
@@ -403,7 +418,7 @@ async function init() {
       day = Math.max(0, Math.min(day, parseInt(args.day)));
     }
     // Select a seeded random puzzle if there are no more available yet.
-    if (PUZZLE_COUNT <= day || day < BASE_INDEX) {
+    if (AVAILABLE_COUNT <= day) {
       day = prng16(Math.abs(Math.round((getToday() - parseDate("2022-01-01")) / MILLISECONDS_PER_DAY)))() % AVAILABLE_COUNT;
     }
     title = `Crosswordle ${day} (${LANG})`;
@@ -1331,7 +1346,7 @@ async function addGuess(guess, interactive) {
     document.getElementById('guesses').textContent = guesses;
     document.getElementById('answer').textContent = puzzle.words.join(' ');
     document.getElementById('share').onclick = function() {
-      navigator.clipboard.writeText(`${puzzle.title} ${guesses}/${MAX_GUESSES}${indicator}${summary}\n${window.location.href}`);
+      navigator.clipboard.writeText(`${puzzle.title} ${guesses}/${MAX_GUESSES}${indicator}${summary}\n${getShareUrl()}`);
       showMessage(STRINGS['copied-clipboard']);
     };
     finished = true;
