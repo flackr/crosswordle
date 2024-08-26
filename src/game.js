@@ -661,6 +661,7 @@ async function updateArchive(index, indexDate) {
   let cur = new Date(year, parseDate(getPuzzle(startIndex).date).getMonth(), 1, 0, 0, 0, 0);
   let nextIndex = startIndex;
   let nextPuzzle = getPuzzle(nextIndex);
+  let nextDate = nextPuzzle ? parseDate(nextPuzzle.date) : null;
   let curMonth = -1;
   while (nextIndex <= endIndex) {
     if (cur.getMonth() != curMonth) {
@@ -691,7 +692,7 @@ async function updateArchive(index, indexDate) {
         col = newCol;
         dayDiv.style.gridArea = `${row} / ${col}`;
         dayDiv.textContent = day.getDate();
-        if (nextPuzzle && day.toISOString().substring(0,10) == nextPuzzle.date) {
+        if (nextPuzzle && day - nextDate > -0.5 * MILLISECONDS_PER_DAY) {
           const score = getScore(nextIndex);
           if (score !== undefined) {
             dayDiv.classList.add('complete');
@@ -702,6 +703,7 @@ async function updateArchive(index, indexDate) {
           dayDiv.setAttribute('href', url + `day=${nextIndex}`);
           ++nextIndex;
           nextPuzzle = nextIndex <= endIndex ? getPuzzle(nextIndex) : null;
+          nextDate = nextPuzzle ? parseDate(nextPuzzle.date) : null;
         }
         month.appendChild(dayDiv);
         day.setDate(day.getDate() + 1);
