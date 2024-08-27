@@ -966,6 +966,7 @@ function letterCount() {
 async function updateHints() {
   let greenLetters = {};
   let letters = letterCount();
+  const crossingLetter = tile([0, puzzle.offsets[0]]).children[0].textContent.toLowerCase();
   let count = 0;
   let guesses = [];
   for (let i = 0; i < puzzle.words.length; ++i) {
@@ -996,13 +997,17 @@ async function updateHints() {
       // in the guess, highlight them.
       let maxLetters = Infinity;
       let letterCount = 0;
+      const crossing = j == puzzle.offsets[i];
       if (orangeClues) {
         letterCount = letters[c][i];
-        if (clues.letters[c]?.max[i])
+        if (!crossing && clues.letters[c]?.max[i])
           maxLetters = clues.letters[c].min[i];
+        else if (clues.letters[c]?.max[0] && clues.letters[c]?.max[1])
+          maxLetters = clues.letters[c].min[0] + clues.letters[c].min[1];
       } else {
-        const crossing = j == puzzle.offsets[i] ? 1 : 0;
-        letterCount = letters[c][0] + letters[c][1] - crossing;
+        // If this is the crossing letter, then it will be double counted when counting both words.
+        const overcounted = c == crossingLetter ? 1 : 0;
+        letterCount = letters[c][0] + letters[c][1] - overcounted;
         if (clues.letters[c]?.max[0] && clues.letters[c]?.max[1])
           maxLetters = clues.letters[c].min[0] + clues.letters[c].min[1];
       }
