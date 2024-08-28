@@ -1,0 +1,380 @@
+{
+  "puzzles": [
+    {
+      "date": "2024-10-20",
+      "puzzle": "boite reception"
+    },
+    {
+      "date": "2024-10-21",
+      "puzzle": "serviette bain"
+    },
+    {
+      "date": "2024-10-22",
+      "puzzle": "agenda professeur"
+    },
+    {
+      "date": "2024-10-23",
+      "puzzle": "ciel orageux"
+    },
+    {
+      "date": "2024-10-24",
+      "puzzle": "boite biscuits"
+    },
+    {
+      "date": "2024-10-25",
+      "puzzle": "maison hantee"
+    },
+    {
+      "date": "2024-10-26",
+      "puzzle": "corbeau noir"
+    },
+    {
+      "date": "2024-10-27",
+      "puzzle": "gobelin effrayant"
+    },
+    {
+      "date": "2024-10-28",
+      "puzzle": "citrouille orange"
+    },
+    {
+      "date": "2024-10-29",
+      "puzzle": "bonbons sucres"
+    },
+    {
+      "date": "2024-10-30",
+      "puzzle": "porte fermee"
+    },
+    {
+      "date": "2024-10-31",
+      "puzzle": "joyeux halloween"
+    },
+    {
+      "date": "2024-11-01",
+      "puzzle": "festival lumieres"
+    },
+    {
+      "date": "2024-11-02",
+      "puzzle": "bande annonce"
+    },
+    {
+      "date": "2024-11-03",
+      "puzzle": "souvenir enfance"
+    },
+    {
+      "date": "2024-11-04",
+      "puzzle": "chat compagnie"
+    },
+    {
+      "date": "2024-11-05",
+      "puzzle": "chien exposition"
+    },
+    {
+      "date": "2024-11-06",
+      "puzzle": "station ski"
+    },
+    {
+      "date": "2024-11-07",
+      "puzzle": "roti mais"
+    },
+    {
+      "date": "2024-11-08",
+      "puzzle": "journee venteuse"
+    },
+    {
+      "date": "2024-11-09",
+      "puzzle": "fait froid"
+    },
+    {
+      "date": "2024-11-10",
+      "puzzle": "auto assistance"
+    },
+    {
+      "date": "2024-11-11",
+      "puzzle": "nous souvenons"
+    },
+    {
+      "date": "2024-11-12",
+      "puzzle": "gants laine"
+    },
+    {
+      "date": "2024-11-13",
+      "puzzle": "chaine velo"
+    },
+    {
+      "date": "2024-11-14",
+      "puzzle": "pluie minuit"
+    },
+    {
+      "date": "2024-11-15",
+      "puzzle": "commencer encore"
+    },
+    {
+      "date": "2024-11-16",
+      "puzzle": "yeux ouverts"
+    },
+    {
+      "date": "2024-11-17",
+      "puzzle": "arrivee tardive"
+    },
+    {
+      "date": "2024-11-18",
+      "puzzle": "histoire courte"
+    },
+    {
+      "date": "2024-11-19",
+      "puzzle": "biome forestier"
+    },
+    {
+      "date": "2024-11-20",
+      "puzzle": "gateau anniversaire"
+    },
+    {
+      "date": "2024-11-21",
+      "puzzle": "frappe differemment"
+    },
+    {
+      "date": "2024-11-22",
+      "puzzle": "terre sacree"
+    },
+    {
+      "date": "2024-11-23",
+      "puzzle": "notre chanson"
+    },
+    {
+      "date": "2024-11-24",
+      "puzzle": "tourelle chateau"
+    },
+    {
+      "date": "2024-11-25",
+      "puzzle": "carton rouge"
+    },
+    {
+      "date": "2024-11-26",
+      "puzzle": "reste heureux"
+    },
+    {
+      "date": "2024-11-27",
+      "puzzle": "mont rushmore"
+    },
+    {
+      "date": "2024-11-28",
+      "puzzle": "pardon dinde"
+    },
+    {
+      "date": "2024-11-29",
+      "puzzle": "matinee enneigee"
+    },
+    {
+      "date": "2024-11-30",
+      "puzzle": "receveur large"
+    },
+    {
+      "date": "2024-12-01",
+      "puzzle": "pelle neige"
+    },
+    {
+      "date": "2024-12-02",
+      "puzzle": "blaireau miel"
+    },
+    {
+      "date": "2024-12-03",
+      "puzzle": "poulet roti"
+    },
+    {
+      "date": "2024-12-04",
+      "puzzle": "titre clickbait"
+    },
+    {
+      "date": "2024-12-05",
+      "puzzle": "cuisine fantome"
+    },
+    {
+      "date": "2024-12-06",
+      "puzzle": "poeme acrostiche"
+    },
+    {
+      "date": "2024-12-07",
+      "puzzle": "assemblee scolaire"
+    },
+    {
+      "date": "2024-12-08",
+      "puzzle": "feux detresse"
+    },
+    {
+      "date": "2024-12-09",
+      "puzzle": "rose blanche"
+    },
+    {
+      "date": "2024-12-10",
+      "puzzle": "train vite"
+    },
+    {
+      "date": "2024-12-11",
+      "puzzle": "masse atomique"
+    },
+    {
+      "date": "2024-12-12",
+      "puzzle": "croque monsieur"
+    },
+    {
+      "date": "2024-12-13",
+      "puzzle": "meilleurs copains"
+    },
+    {
+      "date": "2024-12-14",
+      "puzzle": "virus grippe"
+    },
+    {
+      "date": "2024-12-15",
+      "puzzle": "bah humbug"
+    },
+    {
+      "date": "2024-12-16",
+      "puzzle": "biscuits glaciere"
+    },
+    {
+      "date": "2024-12-17",
+      "puzzle": "jouets inadaptes"
+    },
+    {
+      "date": "2024-12-18",
+      "puzzle": "bandits mouilles"
+    },
+    {
+      "date": "2024-12-19",
+      "puzzle": "atelier noel"
+    },
+    {
+      "date": "2024-12-20",
+      "puzzle": "fee dragee"
+    },
+    {
+      "date": "2024-12-21",
+      "puzzle": "joyeux elfes"
+    },
+    {
+      "date": "2024-12-22",
+      "puzzle": "emporte piece"
+    },
+    {
+      "date": "2024-12-23",
+      "puzzle": "houx joyeux"
+    },
+    {
+      "date": "2024-12-24",
+      "puzzle": "vie merveilleuse"
+    },
+    {
+      "date": "2024-12-25",
+      "puzzle": "bienvenue noel"
+    },
+    {
+      "date": "2024-12-26",
+      "puzzle": "ticket caisse"
+    },
+    {
+      "date": "2024-12-27",
+      "puzzle": "coin lecture"
+    },
+    {
+      "date": "2024-12-28",
+      "puzzle": "panier linge"
+    },
+    {
+      "date": "2024-12-29",
+      "puzzle": "cuillere bois"
+    },
+    {
+      "date": "2024-12-30",
+      "puzzle": "respire juste"
+    },
+    {
+      "date": "2024-12-31",
+      "puzzle": "compte minuit"
+    },
+    {
+      "date": "2025-01-01",
+      "puzzle": "nouveau depart"
+    },
+    {
+      "date": "2025-01-02",
+      "puzzle": "bonjour jeudi"
+    },
+    {
+      "date": "2025-01-03",
+      "puzzle": "orchidee violette"
+    },
+    {
+      "date": "2025-01-04",
+      "puzzle": "prenom bebe"
+    },
+    {
+      "date": "2025-01-05",
+      "puzzle": "voix active"
+    },
+    {
+      "date": "2025-01-06",
+      "puzzle": "journal universitaire"
+    },
+    {
+      "date": "2025-01-07",
+      "puzzle": "faux ami"
+    },
+    {
+      "date": "2025-01-08",
+      "puzzle": "beau frere"
+    },
+    {
+      "date": "2025-01-09",
+      "puzzle": "lumiere jaune"
+    },
+    {
+      "date": "2025-01-10",
+      "puzzle": "foret tropicale"
+    },
+    {
+      "date": "2025-01-11",
+      "puzzle": "art numerique"
+    },
+    {
+      "date": "2025-01-12",
+      "puzzle": "ver terre"
+    },
+    {
+      "date": "2025-01-13",
+      "puzzle": "message secret"
+    },
+    {
+      "date": "2025-01-14",
+      "puzzle": "chat persan"
+    },
+    {
+      "date": "2025-01-15",
+      "puzzle": "lait riz"
+    },
+    {
+      "date": "2025-01-16",
+      "puzzle": "dents saines"
+    },
+    {
+      "date": "2025-01-17",
+      "puzzle": "chapeau seau"
+    },
+    {
+      "date": "2025-01-18",
+      "puzzle": "video ligne"
+    },
+    {
+      "date": "2025-01-19",
+      "puzzle": "garde robe"
+    },
+    {
+      "date": "2025-01-20",
+      "puzzle": "epices cajun"
+    },
+    {
+      "date": "2025-01-21",
+      "puzzle": "bateau croisiere"
+    }
+  ]
+}
