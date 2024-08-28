@@ -323,6 +323,12 @@ async function init() {
     settings.hardMode = hardModeCheckbox.checked;
     localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
   });
+  let hideHintsCheckbox = document.getElementById('hide-hints');
+  hideHintsCheckbox.addEventListener('change', () => {
+    settings.hideHints = hideHintsCheckbox.checked;
+    localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
+    updateHideHints();
+  });
   let highContrastCheckbox = document.getElementById('high-contrast');
   highContrastCheckbox.addEventListener('change', () => {
     settings.highContrast = highContrastCheckbox.checked;
@@ -524,6 +530,10 @@ async function init() {
     settings = JSON.parse(storedSettings);
     if (settings.hardMode)
       document.getElementById('hard-mode').checked = true;
+    if (settings.hideHints) {
+      document.getElementById('hide-hints').checked = true;
+      updateHideHints();
+    }
     if (settings.skipFilled)
       document.getElementById('skip-filled').checked = true;
     if (settings.highContrast) {
@@ -575,6 +585,14 @@ function revealHint() {
     return;
   usedHint = true;
   saveProgress();
+}
+
+function updateHideHints() {
+  if (settings.hideHints) {
+    document.documentElement.classList.add('hide-hints');
+  } else {
+    document.documentElement.classList.remove('hide-hints');
+  }
 }
 
 function updateHighContrast() {

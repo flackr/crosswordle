@@ -481,6 +481,9 @@ button:not(.ui) {
   margin: 4px 10px;
   font-size: 1.2em;
 }
+.hide-hints .hint {
+  display: none;
+}
 .hint > button {
   margin: 0;
 }

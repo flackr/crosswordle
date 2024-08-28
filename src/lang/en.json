@@ -23,6 +23,7 @@
     "hard": "Hard",
     "hard-mode": "Hard mode (no orange clues)",
     "hard-mode-next-game": "Hard mode will take effect on your next game. It cannot be changed mid-game.",
+    "hide-hints": "Hide hints",
     "create-custom": "Create your own crosswordle:",
     "credit": "Created by Robert Flack, source available at <a href=\"https://github.com/flackr/crosswordle\">github</a>. Inspired by the popular <a href=\"https://www.powerlanguage.co.uk/wordle/\">Wordle</a> game. Dictionary file from aspell6 package. See <a href=\"https://github.com/flackr/crosswordle/blob/main/third_party/aspell6/en/Copyright\">Copyright</a> for details.",
     "victory": "Victory!",

@@ -23,6 +23,7 @@
     "hard": "Hard",
     "hard-mode": "Hard mode (zonder oranje hints)",
     "hard-mode-next-game": "Hard mode zal toegepast worden vanaf het volgende spel. Dit kan niet mid-spel veranderd worden.",
+    "hide-hints": "Verberg hints",
     "create-custom": "Maak je eigen Crosswordle!",
     "credit": "Gecreëerd door Robert Flack, source hier beschikbaar <a href=\"https://github.com/flackr/crosswordle\">github</a>. Geïnspireerd door het populaire <a href=\"https://www.powerlanguage.co.uk/wordle/\">Wordle</a> spel. Woordenboek komt van aspell6. Bekijk hier de <a href=\"https://github.com/flackr/crosswordle/blob/main/third_party/aspell6/nl/Copyright\">Copyright</a> details.",
     "victory": "Winnaar!",

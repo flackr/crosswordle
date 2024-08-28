@@ -23,6 +23,7 @@
     "hard": "Difícil",
     "hard-mode": "Modo difícil (no hay pistas naranjas)",
     "hard-mode-next-game": "El modo difícil tendrá efecto en tu próximo juego. No se puede activar a mitad del juego.",
+    "hide-hints": "Ocultar pistas",
     "create-custom": "Crea tu propio crucigrama:",
     "credit": "Creado por Robert Flack, fuente disponible en <a href=\"https://github.com/flackr/crosswordle\">github</a>. Inspirado en el popular juego <a href=\"https://www.powerlanguage.co.uk/wordle/\">Wordle</a>. Archivo de diccionario del paquete aspell6. Ver <a href=\"https://github.com/flackr/crosswordle/blob/main/third_party/aspell6/es/Copyright\">derechos de autor</a> para más detalles.",
     "victory": "La victoria!",
