@@ -1,0 +1,25 @@
+{
+  "name": "crosswordle",
+  "version": "1.0.0",
+  "description": "Wordle with a twist of crossing words.",
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc --project tsconfig.json",
+    "test": "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://localhost:26831/flackr/crosswordle"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.1.2",
+    "esbuild": "^0.28.1",
+    "typescript": "^7.0.2"
+  },
+  "private": true
+}
