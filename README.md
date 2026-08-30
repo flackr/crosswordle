@@ -10,7 +10,7 @@ Crosswordle presents you with two words that cross each other at exactly one sha
 
 ### Hints
 
-You can reveal a hidden hint line at any time by clicking the **Reveal Hint** button. This consumes your one allowed hint for the puzzle — once used, it cannot be retracted.
+Some puzzles include hints. You can reveal a hidden hint line at any time by clicking the **Reveal Hint** button. Once used, it cannot be retracted.
 
 ## Puzzle Schedule
 
@@ -19,6 +19,24 @@ New puzzles are released daily. Your progress (completed/remaining) is tracked v
 ### Custom Puzzles
 
 You can create custom crossword puzzles through the settings panel. Enter two crossing words separated by a space (e.g., `cross word`), and the game will generate a unique URL you can share with others. Custom puzzles are hosted on the same domain and encoded in the URL parameters.
+
+Markdown
+## Local Development
+
+The project is bundled using [Vite](https://vitejs.dev/). Node.js is required for local development.
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Run for local development:
+   ```bash
+   npm run dev
+   ```
+   Or, build for production (outputs to the dist/ directory):
+   ```bash
+   npm run build
+   ```
 
 ## Language Support
 
@@ -36,13 +54,17 @@ Language files are stored as JSON in `src/lang/`. Each file contains translated 
 ## File Structure
 
 ```
+├── package.json                # Project dependencies and build scripts
+├── vite.config.mts             # Vite bundler and static copy configuration
 ├── index.html                  # Main entry point
+├── sw.js                       # Service worker (copied to dist/ on build)
 ├── favicon.ico                 # Browser tab icon
+├── dist/                       # Compiled production build output (gitignored)
 ├── src/
 │   ├── game.js                 # Core game logic: grid rendering, input handling, validation, scoring
 │   ├── index.js                # Bootstrap / initialization script
-│   ├── lang/
-│   │   ├── en.json             # English language strings & metadata
+│   ├── lang/                   # Language strings & metadata
+│   │   ├── en.json             # English
 │   │   ├── nl.json             # Dutch
 │   │   ├── fr.json             # French
 │   │   └── es.json             # Spanish
@@ -55,7 +77,7 @@ Language files are stored as JSON in `src/lang/`. Each file contains translated 
 └── third_party/
     └── aspell6/
         └── {lang}/
-            └── words-{n}.txt   # Dictionary word lists by length (1–12 chars)
+            └── words-{n}.txt   # Dictionary word lists by length
 ```
 
 ## Puzzle Data Format
@@ -78,7 +100,8 @@ Word validation uses dictionaries from [aspell6](https://aspell.net/), organized
 
 ## Technical Notes
 
-- **Framework-free**: Built with vanilla JavaScript — no dependencies or build tools required.
+- **Build System**: Bundled using Vite. The codebase is currently transitioning from vanilla JavaScript to TypeScript.
+- **Framework-free**: Uses standard DOM APIs and CSS without heavy UI frameworks like React or Vue.
 - **Persistence**: Game state and settings are stored in `localStorage` under keys like `crosswordle-daily`, `crosswordle-scores-{lang}`, and `crosswordle-settings`.
 - **URL Parameters**: `?l=`, `?day=`, `?puzzle=`, `?hint=` for custom puzzle targeting. See `SUPPORTED_ARGS` in `game.js`.
 - **Versioning**: `FEATURE_VERSION` is incremented when new features are added; the help screen uses this to show only relevant updates.
