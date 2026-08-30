@@ -1,7 +1,7 @@
 "use strict";
 
 interface PuzzleData {
-  date: string;
+  date?: string;
   puzzle: string;
   hint?: string;
   info?: string;
@@ -30,12 +30,23 @@ const SUPPORTED_ARGS = ['l', 'day', 'puzzle', 'hint'];
 
 function parse(str: string): Record<string, string> {
   let args = str.split('&');
-  let argMap = {};
+  let argMap: {[key: string]: string} = {};
   for (let arg of args) {
     let split = arg.split('=');
     argMap[split[0]] = decodeURIComponent(split[1]);
   }
   return argMap;
+}
+
+function getRequiredElement<T extends HTMLElement = HTMLElement>(
+  selector: string,
+  parent: ParentNode = document
+): T {
+  const element = parent.querySelector<T>(selector);
+  if (!element) {
+    throw new Error(`Required DOM element not found: "${selector}"`);
+  }
+  return element;
 }
 
 function parseDate(dateStr: string, offsetDays = 0): Date {
@@ -87,7 +98,7 @@ let PUZZLE: PuzzleData;
 let STRINGS: Record<string, string> = {};
 
 const scoreChars = '1234567890';
-const scoreChar = {};
+const scoreChar: {[key: string]: number} = {};
 for (let i = 0; i < scoreChars.length; ++i) {
   scoreChar[scoreChars[i]] = i + 1;
 }
@@ -123,7 +134,7 @@ let dictionaryLengths: Array<Promise<void> | undefined> = [];
 const MAX_LENGTH = 12;
 
 function loadWordLength(length: number): Promise<void> | undefined {
-  let fetchWords = async function(length) {
+  let fetchWords = async function(length: number): Promise<void> {
     if (length > MAX_LENGTH)
       return;
     let result = await fetch(`third_party/aspell6/${LANG}/words-${length}.txt`);
