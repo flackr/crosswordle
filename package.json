@@ -4,7 +4,7 @@
   "description": "Wordle with a twist of crossing words",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "serve": "vite preview"
   },
   "keywords": [
@@ -13,6 +13,7 @@
   ],
   "license": "Apache-2.0",
   "devDependencies": {
+    "typescript": "^7.0.2",
     "vite": "^6.4.3",
     "vite-plugin-static-copy": "^4.1.1"
   }
