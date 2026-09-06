@@ -15,7 +15,7 @@ interface LangData {
   strings: Record<string, string>;
 }
 
-type TileSelection = [number, number] | null;
+type TileSelection = number[];
 
 type Settings = {
   hardMode?: boolean;
@@ -36,6 +36,16 @@ function parse(str: string): Record<string, string> {
     argMap[split[0]] = decodeURIComponent(split[1]);
   }
   return argMap;
+}
+
+function getElement<T extends HTMLElement = HTMLElement>(
+  id: string,
+): T {
+  const element = document.getElementById(id) as T | null;
+  if (!element) {
+    throw new Error(`Required DOM element not found: "${id}"`);
+  }
+  return element;
 }
 
 function getRequiredElement<T extends HTMLElement = HTMLElement>(
@@ -163,8 +173,8 @@ async function isWord(word: string): Promise<boolean> {
 }
 
 function initKeyboard(): void {
-  let keyboard = document.querySelector('.keyboard');
-  let addKey = function(gridArea, text, code) {
+  let keyboard = getRequiredElement('.keyboard');
+  let addKey = function(gridArea: string, text: string, code: string) {
     let key = document.createElement('div');
     key.classList.add('key');
     if (text.length > 1)
@@ -233,14 +243,14 @@ function hasCommonLetter(word1: string, word2: string): boolean {
 
 function setComponent(container: string, target: string, text: string, visible: boolean): void {
   if (visible) {
-    document.querySelector(container).classList.remove('hidden');
+    getRequiredElement(container).classList.remove('hidden');
   } else {
-    document.querySelector(container).classList.add('hidden');
+    getRequiredElement(container).classList.add('hidden');
   }
-  document.querySelector(target).textContent = text;
+  getRequiredElement(target).textContent = text;
 }
 
-function animateChange(elems: Element[], callback: () => void, options: KeyframeAnimationOptions | 0): void {
+function animateChange(elems: HTMLElement[], callback: () => void, options: KeyframeAnimationOptions | 0): void {
   if (options === 0 || options.duration === 0) {
     callback();
     return;
@@ -271,7 +281,8 @@ let BASE_INDEX = 0;
 let TODAY_INDEX: number;
 let FIRST_PUZZLE: Date | null = null;
 let LAST_PUZZLE: Date | null = null;
-let puzzle: { day?: number; title: string; score: number; words: string[]; offsets: [number, number]; } | null = null;
+type ActivePuzzle = { day?: number; title: string; score: number; words: string[]; offsets: [number, number]; } | null;
+let puzzle: ActivePuzzle = null;
 let summary = '';
 async function init(): Promise<void> {
   let data = await (await fetch(`./src/lang/${LANG}.json`)).json() as LangData;
@@ -281,17 +292,27 @@ async function init(): Promise<void> {
   BASE_INDEX = data.base_index || 0;
   FIRST_PUZZLE = parseDate(BASE_DATE, -BASE_INDEX);
   LAST_PUZZLE = parseDate(BASE_DATE, PUZZLE_COUNT - BASE_INDEX);
-  TODAY_INDEX = Math.round((getToday() - FIRST_PUZZLE) / MILLISECONDS_PER_DAY);
+  TODAY_INDEX = Math.round((getToday().getTime() - FIRST_PUZZLE.getTime()) / MILLISECONDS_PER_DAY);
   if (TODAY_INDEX < 0 && BASE_INDEX == 0)
     TODAY_INDEX = 0;
   AVAILABLE_COUNT = TODAY_INDEX < BASE_INDEX ? BASE_INDEX : Math.min(TODAY_INDEX + 1, PUZZLE_COUNT);
   // Insert translated element strings
-  let elems = document.querySelectorAll<HTMLElement>('[data-str]');
+  type ElementWithDataStr = HTMLElement & { dataset: { str: string } };
+  let elems = document.querySelectorAll<ElementWithDataStr>('[data-str]');
+  let missing = [];
   for (let elem of elems) {
-    elem.innerHTML = STRINGS[elem.getAttribute('data-str')];
+    const translation = STRINGS[elem.dataset.str];
+    if (!translation) {
+      missing.push(elem.dataset.str);
+    } else {
+    elem.innerHTML = translation;
+    }
+  }
+  if (missing.length > 0) {
+    console.warn(`Missing translations for strings: ${missing.join(', ')}`);
   }
 
-  let languageEl = document.getElementById('language') as HTMLSelectElement;
+  let languageEl = getElement<HTMLSelectElement>('language');
   let currentLang = ARGS.l || '';
   for (let i = 0; i < languageEl.options.length; ++i) {
     if (languageEl.options[i].getAttribute('value') == currentLang) {
@@ -309,48 +330,48 @@ async function init(): Promise<void> {
       window.location.href = window.location.href.split('?')[0];
     }
   });
-  document.getElementById('reveal-hint').addEventListener('click', () => {
+  getElement('reveal-hint').addEventListener('click', () => {
     revealHint();
-    document.getElementById('reveal-hint').blur();
+    getElement('reveal-hint').blur();
   });
-  document.getElementById('show-settings').addEventListener('click', () => {
-    document.querySelector('.settings').classList.remove('hidden');
+  getElement('show-settings').addEventListener('click', () => {
+    getRequiredElement('.settings').classList.remove('hidden');
   });
-  document.getElementById('close-settings').addEventListener('click', () => {
-    document.querySelector('.settings').classList.add('hidden');
+  getElement('close-settings').addEventListener('click', () => {
+    getRequiredElement('.settings').classList.add('hidden');
   });
-  document.getElementById('close-victory').addEventListener('click', () => {
-    document.querySelector('.victory').classList.add('hidden');
+  getElement('close-victory').addEventListener('click', () => {
+    getRequiredElement('.victory').classList.add('hidden');
   });
-  let menuListener = (evt) => {
-    document.querySelector('.menu .contents').classList.add('hidden');
+  let menuListener = (evt: Event) => {
+    getRequiredElement('.menu .contents').classList.add('hidden');
     document.body.removeEventListener('click', menuListener, {capture: true});
   };
-  document.getElementById('expand-button').addEventListener('click', () => {
-    document.querySelector('.menu .contents').classList.remove('hidden');
+  getElement('expand-button').addEventListener('click', () => {
+    getRequiredElement('.menu .contents').classList.remove('hidden');
     document.body.addEventListener('click', menuListener, {capture: true});
   });
   let archiveLoaded = false;
-  document.getElementById('show-archive').addEventListener('click', () => {
-    document.querySelector('.archive').classList.remove('hidden');
+  getElement('show-archive').addEventListener('click', () => {
+    getRequiredElement('.archive').classList.remove('hidden');
     if (archiveLoaded)
       return;
     archiveLoaded = true;
     updateArchive();
   });
-  document.getElementById('close-archive').addEventListener('click', () => {
-    document.querySelector('.archive').classList.add('hidden');
+  getElement('close-archive').addEventListener('click', () => {
+    getRequiredElement('.archive').classList.add('hidden');
   });
-  document.getElementById('show-help').addEventListener('click', () => {
-    document.querySelector('.help').classList.remove('hidden');
+  getElement('show-help').addEventListener('click', () => {
+    getRequiredElement('.help').classList.remove('hidden');
   });
-  document.getElementById('close-help').addEventListener('click', () => {
-    document.querySelector('.help').classList.add('hidden');
+  getElement('close-help').addEventListener('click', () => {
+    getRequiredElement('.help').classList.add('hidden');
   });
-  document.getElementById('close-news').addEventListener('click', () => {
-    document.querySelector('.news').classList.add('hidden');
+  getElement('close-news').addEventListener('click', () => {
+    getRequiredElement('.news').classList.add('hidden');
   });
-  let hardModeCheckbox = document.getElementById('hard-mode') as HTMLInputElement;
+  let hardModeCheckbox = getElement<HTMLInputElement>('hard-mode');
   hardModeCheckbox.addEventListener('change', () => {
     if (gameGuesses.length > 0) {
       showMessage(STRINGS['hard-mode-next-game']);
@@ -358,38 +379,39 @@ async function init(): Promise<void> {
     settings.hardMode = hardModeCheckbox.checked;
     localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
   });
-  let hideHintsCheckbox = document.getElementById('hide-hints') as HTMLInputElement;
+  let hideHintsCheckbox = getElement<HTMLInputElement>('hide-hints');
   hideHintsCheckbox.addEventListener('change', () => {
     settings.hideHints = hideHintsCheckbox.checked;
     localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
     updateHideHints();
   });
-  let highContrastCheckbox = document.getElementById('high-contrast') as HTMLInputElement;
+  let highContrastCheckbox = getElement<HTMLInputElement>('high-contrast');
   highContrastCheckbox.addEventListener('change', () => {
     settings.highContrast = highContrastCheckbox.checked;
     localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
     updateHighContrast();
   });
-  let skipFilledCheckbox = document.getElementById('skip-filled') as HTMLInputElement;
+  let skipFilledCheckbox = getElement<HTMLInputElement>('skip-filled');
   skipFilledCheckbox.addEventListener('change', () => {
     settings.skipFilled = skipFilledCheckbox.checked;
     localStorage.setItem('crosswordle-settings', JSON.stringify(settings));
   });
-  let seenHelp = localStorage.getItem('crosswordle-help');
-  if (seenHelp)
-    seenHelp = parseInt(seenHelp);
-  if (seenHelp === null) {
-    document.querySelector('.help').classList.remove('hidden');
-    localStorage.setItem('crosswordle-help', FEATURE_VERSION);
+  let seenHelp = parseInt(localStorage.getItem('crosswordle-help') || '0');
+  if (isNaN(seenHelp)) {
+    seenHelp = 0;
+  }
+  if (seenHelp === 0) {
+    getRequiredElement('.help').classList.remove('hidden');
+    localStorage.setItem('crosswordle-help', FEATURE_VERSION.toString());
   } else if (seenHelp < FEATURE_VERSION) {
     let features = document.querySelectorAll<HTMLElement>('.news .feature[version]');
     for (let i = 0; i < features.length; i++) {
-      if (parseInt(features[i].getAttribute('version')) <= seenHelp) {
+      if (parseInt(features[i].getAttribute('version') || '0') <= seenHelp) {
         features[i].style.display = 'none';
       }
     }
-    document.querySelector('.news').classList.remove('hidden');
-    localStorage.setItem('crosswordle-help', FEATURE_VERSION);
+    getRequiredElement('.news').classList.remove('hidden');
+    localStorage.setItem('crosswordle-help', FEATURE_VERSION.toString());
   }
   let playRandom = function() {
     const puzzles = Math.min(AVAILABLE_COUNT);
@@ -415,10 +437,10 @@ async function init(): Promise<void> {
   for (const randomBtn of document.querySelectorAll('.random')) {
     randomBtn.addEventListener('click', playRandom);
   }
-  document.getElementById('custom-crosswordle').setAttribute('placeholder', STRINGS['custom-crosswordle-example']);
-  document.getElementById('create').addEventListener('click', async () => {
+  getElement('custom-crosswordle').setAttribute('placeholder', STRINGS['custom-crosswordle-example']);
+  getElement('create').addEventListener('click', async () => {
     let errors = '';
-    let puzzle = (document.getElementById('custom-crosswordle') as HTMLInputElement).value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(' ', '+');
+    let puzzle = getElement<HTMLInputElement>('custom-crosswordle').value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(' ', '+');
     let words = puzzle.split('+');
     if (words.length != 2) {
       errors += STRINGS['two-words-required'] + '\n';
@@ -431,7 +453,7 @@ async function init(): Promise<void> {
         errors += `${templateStr(STRINGS['unrecognized-word'], [words[i]])}\n`;
       }
     }
-    let errorEl = document.getElementById('custom-error') as HTMLElement;
+    let errorEl = getElement('custom-error');
     errorEl.textContent = errors;
     if (errors) {
       errorEl.classList.remove('hidden');
@@ -439,7 +461,7 @@ async function init(): Promise<void> {
     }
     errorEl.style.display = 'none';
 
-    let link = document.getElementById('custom-link') as HTMLAnchorElement;
+    let link = getElement<HTMLAnchorElement>('custom-link');
     let href = `${window.location.origin}${window.location.pathname}?l=${LANG}&puzzle=${encode(puzzle)}`;
     link.textContent = href;
     link.href = href;
@@ -460,7 +482,7 @@ async function init(): Promise<void> {
     }
     // Select a seeded random puzzle if there are no more available yet.
     if (AVAILABLE_COUNT <= day) {
-      day = prng16(Math.abs(Math.round((getToday() - parseDate("2022-01-01")) / MILLISECONDS_PER_DAY)))() % AVAILABLE_COUNT;
+      day = prng16(Math.abs(Math.round((getToday().getTime() - parseDate("2022-01-01").getTime()) / MILLISECONDS_PER_DAY)))() % AVAILABLE_COUNT;
     }
     title = `Crosswordle ${day} (${LANG})`;
     PUZZLE = await loadPuzzle(day);
@@ -475,14 +497,14 @@ async function init(): Promise<void> {
         day: "numeric"});
   }
   setComponent('.date', '#date', dateText, !!dateText);
-  setComponent('.author', '#author', PUZZLE.author, !!PUZZLE.author);
-  document.querySelector('.info').innerHTML = PUZZLE.info || '';
+  setComponent('.author', '#author', PUZZLE.author || '', !!PUZZLE.author);
+  getRequiredElement('.info').innerHTML = PUZZLE.info || '';
   words = PUZZLE.puzzle.split(/[+ ]/);
-  document.title = document.querySelector('.title h1').textContent = title;
+  document.title = getRequiredElement('.title h1').textContent = title;
 
   // Find most central overlap between the two words.
-  let best = null;
-  let score = function(i, j) {
+  let best: ActivePuzzle = null;
+  let score = function(i: number, j: number): number {
     return Math.abs(Math.floor(words[0].length / 2) - i) + Math.abs(Math.floor(words[1].length / 2) - j);
   }
   let size = `fit-content(${100 / words[0].length}%)`;
@@ -511,10 +533,10 @@ async function init(): Promise<void> {
   puzzle = best;
   let grid = document.querySelector('.main .grid') as HTMLElement;
   grid.style.gridTemplateColumns = columns;
-  let addCell = function(word, char, x, y) {
+  let addCell = function(word: number, char: number, x: number, y: number) {
     let container = document.createElement('div');
-    container.style.gridRow = (y + 1);
-    container.style.gridColumn = (x + 1);
+    container.style.gridRow = (y + 1).toString();
+    container.style.gridColumn = (x + 1).toString();
     let cell = document.createElement('div');
     container.appendChild(cell);
     cell.classList.add('tile');
@@ -551,13 +573,13 @@ async function init(): Promise<void> {
     resultSpace.classList = 'spacer empty';
     resultSpacer.appendChild(resultSpace);
   }
-  document.querySelector('.main .clues').appendChild(resultSpacer);
+  getRequiredElement('.main .clues').appendChild(resultSpacer);
 
   updateSelection([0, 0]);
   for (let i = 0; i < words.length; ++i) {
     loadWordLength(words[i].length);
   }
-  document.documentElement.style.setProperty('--size', Math.max(words[0].length, words[1].length));
+  document.documentElement.style.setProperty('--size', Math.max(words[0].length, words[1].length).toString());
 
   // Restore settings
   let storedSettings = localStorage.getItem('crosswordle-settings');
@@ -588,7 +610,7 @@ async function init(): Promise<void> {
 
   SOLVED = localStorage.getItem(`crosswordle-scores-${LANG}`) || '';
 
-  setComponent('.hint', '#hint', PUZZLE.hint, !!PUZZLE.hint);
+  setComponent('.hint', '#hint', PUZZLE.hint || '', !!PUZZLE.hint);
 
   // Restore progress
   let progress = localStorage.getItem('crosswordle-daily');
@@ -615,9 +637,9 @@ async function init(): Promise<void> {
 }
 
 function revealHint(): void {
-  document.querySelector('.hint').classList.add('reveal');
-  document.getElementById('reveal-hint').setAttribute('disabled', '');
-  document.getElementById('hint').removeAttribute('inert');
+  getRequiredElement('.hint').classList.add('reveal');
+  getElement('reveal-hint').setAttribute('disabled', '');
+  getElement('hint').removeAttribute('inert');
   if (usedHint)
     return;
   usedHint = true;
@@ -645,7 +667,7 @@ function updateHighContrast(): void {
  * @param {Number?} index
  * @param {String?} puzzleDate
  */
-async function updateArchive(index?: number, indexDate?: Date) {
+async function updateArchive(index?: number, indexDate?: string) {
   const container = document.querySelector('.archive .months') as HTMLElement;
   const nextButton = document.querySelector('.archive .next-year') as HTMLButtonElement;
   const prevButton = document.querySelector('.archive .prev-year') as HTMLButtonElement;
@@ -664,8 +686,8 @@ async function updateArchive(index?: number, indexDate?: Date) {
   const year = iDate.getFullYear();
   const firstDate = new Date(iDate.getFullYear(), 0, 0);
   const lastDate = new Date(iDate.getFullYear() + 1, 0, 1);
-  const neededBefore = Math.ceil((iDate - firstDate) / MILLISECONDS_PER_DAY);
-  const neededAfter = Math.ceil((lastDate - iDate) / MILLISECONDS_PER_DAY);
+  const neededBefore = Math.ceil((iDate.getTime() - firstDate.getTime()) / MILLISECONDS_PER_DAY);
+  const neededAfter = Math.ceil((lastDate.getTime() - iDate.getTime()) / MILLISECONDS_PER_DAY);
   let prevYearIndex = Math.max(0, index - neededBefore);
   const maxIndex = AVAILABLE_COUNT - 1;
   let nextYearIndex = Math.min(maxIndex, index + neededAfter);
@@ -675,11 +697,11 @@ async function updateArchive(index?: number, indexDate?: Date) {
     fetches.push(fetch(`./src/puzzles/${LANG}/${(chunk * CHUNK_SIZE).toString().padStart(6, '0')}.json`).then(r => r.json()));
   }
   const chunks = await Promise.all(fetches);
-  let getPuzzle = (i) => chunks[Math.floor((i - start) / CHUNK_SIZE)].puzzles[i % CHUNK_SIZE];
+  let getPuzzle = (i: number) => chunks[Math.floor((i - start) / CHUNK_SIZE)].puzzles[i % CHUNK_SIZE];
   for (;prevYearIndex < index && parseDate(getPuzzle(prevYearIndex + 1).date).getFullYear() < year; ++prevYearIndex);
   for (;nextYearIndex > index && parseDate(getPuzzle(nextYearIndex - 1).date).getFullYear() > year; --nextYearIndex);
   container.innerHTML = '';
-  document.querySelector('.archive .cur-year').textContent = year;
+  getRequiredElement('.archive .cur-year').textContent = year.toString();
   let startIndex = prevYearIndex;
   let endIndex = nextYearIndex;
   const prevYearPuzzle = getPuzzle(prevYearIndex);
@@ -746,8 +768,8 @@ async function updateArchive(index?: number, indexDate?: Date) {
           ++row;
         col = newCol;
         dayDiv.style.gridArea = `${row} / ${col}`;
-        dayDiv.textContent = day.getDate();
-        if (nextPuzzle && day - nextDate > -0.5 * MILLISECONDS_PER_DAY) {
+        dayDiv.textContent = day.getDate().toString();
+        if (nextPuzzle && nextDate && day.getTime() - nextDate.getTime() > -0.5 * MILLISECONDS_PER_DAY) {
           const score = getScore(nextIndex);
           if (score !== undefined) {
             dayDiv.classList.add('complete');
@@ -769,8 +791,8 @@ async function updateArchive(index?: number, indexDate?: Date) {
 }
 
 const OVERFLOW = 10;
-async function postScore(puzzle, score) {
-  let container = document.getElementById('stats');
+async function postScore(puzzle?: string, score?: number) {
+  let container = getElement('stats');
   container.classList.add('hidden');
   let variant = orangeClues ? 'normal' : 'hard';
   let styleClass = variant;
@@ -781,7 +803,7 @@ async function postScore(puzzle, score) {
   (document.getElementById('guesses') as HTMLElement).className = styleClass;
   if (puzzle === undefined)
     return;
-  let stats = container.querySelector('.table');
+  let stats = getRequiredElement('.table', container);
   stats.innerHTML = "";
   let response = await fetch(`https://serializer.ca/stats/crosswordle-${puzzle}`, {
     method: score ? 'POST' : 'GET',
@@ -797,17 +819,19 @@ async function postScore(puzzle, score) {
   container.classList.remove('hidden');
   let maxIndex = 1;
   let count = 0;
-  const legend = container.querySelector('.legend');
-  const groups = legend.querySelectorAll('.group');
+  const legend = getRequiredElement('.legend', container);
+  type ElementWithDataGroup = HTMLElement & { dataset: { group: string } };
+  type ElementWithDataMode = HTMLElement & { dataset: { mode: string } };
+  const groups = legend.querySelectorAll<ElementWithDataGroup>('[data-group]');
 
-  const groupData = {};
-  const modeData = {};
+  const groupData: {[key: string]: {count: number, max: number}} = {};
+  const modeData: {[key: string]: {max: number, overflow: number}}  = {};
   for (const group of groups) {
-    const gData = groupData[group.getAttribute('data-group')] = {count: 0, max: 0};
-    const modes = group.querySelectorAll('[data-mode]');
+    const gData = groupData[group.dataset.group] = {count: 0, max: 0};
+    const modes = group.querySelectorAll<ElementWithDataMode>('[data-mode]');
     for (const modeEl of modes) {
       modeEl.classList.remove('hidden');
-      const mode = modeEl.getAttribute('data-mode');
+      const mode = modeEl.dataset.mode;
       const mData = modeData[mode] = {max: 0, overflow: 0}
       const scores = json.scores[mode];
       if (!scores) {
@@ -843,10 +867,10 @@ async function postScore(puzzle, score) {
     html += `<tr><td>${i}${i<OVERFLOW?'':'+'}</td><td>`;
     for (const group of groups) {
       html += `<div class="group">`;
-      const gData = groupData[group.getAttribute('data-group')];
-      const modes = group.querySelectorAll('[data-mode]');
+      const gData = groupData[group.dataset.group];
+      const modes = group.querySelectorAll<ElementWithDataMode>('[data-mode]');
       for (const modeEl of modes) {
-        const mode = modeEl.getAttribute('data-mode');
+        const mode = modeEl.dataset.mode;
         const scores = json.scores[mode];
         if (!scores)
           continue;
@@ -864,14 +888,12 @@ async function postScore(puzzle, score) {
 }
 
 // Returns the tile for a given word, index
-function tile(selection: TileSelection): Element | null {
-  if (!selection)
-    return null;
-  return document.querySelector(`.word_${selection[0]}_${selection[1]}`);
+function tile(selection: TileSelection): HTMLElement {
+  return getRequiredElement(`.word_${selection[0]}_${selection[1]}`);
 }
 
-let selected: TileSelection = null;
-function updateSelection(newSelection: [number, number]): void {
+let selected: TileSelection = [0, 0];
+function updateSelection(newSelection: TileSelection): void {
   let oldTile = tile(selected)
   if (oldTile) oldTile.classList.remove('selected');
   selected = newSelection;
@@ -990,8 +1012,15 @@ let hardMode = false;
 let orangeClues = false;
 let usedHint = false;
 let settings: Settings = {};
-let gameGuesses = [];
-let clues = {
+let gameGuesses: string[] = [];
+type CluedGreen = string[][];
+type LetterClues = {[key: string]: {
+  min: [number, number],
+  max: [boolean, boolean],
+  not: Set<number>
+}};
+type Clues = {green: CluedGreen, letters: LetterClues};
+let clues: Clues = {
   green: [],
   // 'a': {min: N, max: true/false, not: Set([indices])}
   letters: {},
@@ -1000,8 +1029,9 @@ for (let i = 0; i < alphabet.length; ++i) {
   clues.letters[alphabet[i]] = {min: [0, 0], max: [false, false], not: new Set()};
 }
 
-function letterCount() {
-  let letters = {};
+type LetterCounts = {[key: string]: [number, number]};
+function letterCount(): LetterCounts {
+  let letters: LetterCounts = {};
   for (let i = 0; i < alphabet.length; ++i) {
     letters[alphabet[i]] = [0, 0];
   }
@@ -1019,7 +1049,7 @@ function letterCount() {
 }
 
 async function updateHints() {
-  let greenLetters = {};
+  let greenLetters: {[key: string]: boolean} = {};
   let letters = letterCount();
   const crossingLetter = tile([0, puzzle.offsets[0]]).children[0].textContent.toLowerCase();
   let count = 0;
@@ -1077,7 +1107,7 @@ async function updateHints() {
   const curCrossing = selected[1] == puzzle.offsets[curWord];
   for (let i = 0; i < alphabet.length; ++i) {
     let c = alphabet[i];
-    let key = document.querySelector(`.key[code=${c}]`);
+    let key = getRequiredElement(`.key[code=${c}]`);
     if (greenLetters[c]) {
       key.classList.add('green');
     } else {
@@ -1165,7 +1195,7 @@ function saveProgress() {
   }
 }
 
-function setGuess(guess) {
+function setGuess(guess: string) {
   let guesses = guess.split(' ');
   for (let i = 0; i < guesses.length; i++) {
     for (let j = 0; j < guesses[i].length; j++) {
@@ -1174,11 +1204,11 @@ function setGuess(guess) {
   }
 }
 
-async function addGuess(guess, interactive) {
+async function addGuess(guess: string, interactive: boolean) {
   let guesses = guess.split(' ');
-  let answerLetters = [{}, {}];
-  let both = puzzle.words[0][puzzle.offsets[0]];
-  let clued = [[], []];
+  let answerLetters: {[key: string]: number}[] = [{}, {}];
+  let both: string | null = puzzle.words[0][puzzle.offsets[0]];
+  let clued: boolean[][] = [[], []];
   for (let i = 0; i < puzzle.words.length; i++) {
     for (let j = 0; j < puzzle.words[i].length; j++) {
       let c = puzzle.words[i][j];
@@ -1187,7 +1217,7 @@ async function addGuess(guess, interactive) {
     }
   }
 
-  let decrement = (word, letter, index = -1) => {
+  let decrement = (word: number, letter: string, index = -1) => {
     answerLetters[word][letter]--;
     // If the crossing letter is used, remove from the other word.
     if ((answerLetters[word][letter] == 0 || index === puzzle.offsets[word]) && letter === both) {
@@ -1201,7 +1231,7 @@ async function addGuess(guess, interactive) {
   }
 
   let result = document.createElement('div');
-  let resultTiles = [];
+  let resultTiles: HTMLElement[][] = [];
   for (let i = 0; i < guesses.length; i++) {
     resultTiles.push([]);
     for (let j = 0; j < guesses[i].length; j++) {
@@ -1225,7 +1255,7 @@ async function addGuess(guess, interactive) {
 
   // Mark green first.
   let wrong = 0;
-  let letters = {};
+  let letters: {[key: string]: {min: [number, number], max: [boolean, boolean]}} = {};
   for (let i = 0; i < alphabet.length; ++i) {
     letters[alphabet[i]] = {min: [0, 0], max: [false, false]};
   }
@@ -1297,9 +1327,8 @@ async function addGuess(guess, interactive) {
         clues.letters[c].max[j] = true;
     }
   }
-
   // Then do a reveal, and add to the clues row.
-  let animationPromises = [];
+  let animationPromises: Promise<Animation>[] = [];
   let startDelay = 0;
   summary += '\n';
   for (let i = 0; i < guesses.length; i++) {
@@ -1326,7 +1355,7 @@ async function addGuess(guess, interactive) {
     for (let j = 0; j < guesses[i].length; j++) {
       let t = tile([i, j]);
       async function animate() {
-        let fill = wrong == 0 ? 'forwards' : 'none';
+        let fill: FillMode = wrong == 0 ? 'forwards' : 'none';
         let a1;
         if (interactive || wrong == 0) {
           a1 = t.animate([
@@ -1378,7 +1407,7 @@ async function addGuess(guess, interactive) {
     const score = !wrong ? gameGuesses.length : 100;
     const prevScore = getScore(puzzle.day);
     setScore(puzzle.day, Math.min(10, score));
-    postScore(`${LANG}-${puzzle.day}`, prevScore === undefined && interactive ? score : undefined);
+    postScore(`${LANG}-${puzzle.day.toString()}`, prevScore === undefined && interactive ? score : undefined);
   } else {
     postScore();
   }
@@ -1392,11 +1421,11 @@ async function addGuess(guess, interactive) {
       duration: interactive ? 300 : 0,
       easing: 'ease'
     };
-    animateChange([document.querySelector('.main .grid')], () => {
-      document.querySelector('.main .clues').appendChild(result);
+    animateChange([getRequiredElement('.main .grid')], () => {
+      getRequiredElement('.main .clues').appendChild(result);
     }, animationOptions);
     result.animate([{opacity: 0, transform: 'translateY(-100%)', offset: 0}], animationOptions);
-    document.querySelector('.keyboard').scrollIntoView();
+    getRequiredElement('.keyboard').scrollIntoView();
   } else {
     // Show victory screen after clues are revealed.
     let guesses = gameGuesses.length;
@@ -1407,12 +1436,12 @@ async function addGuess(guess, interactive) {
       indicator += '🔍️';
     document.getElementById('guesses')!.textContent = String(guesses);
     document.getElementById('answer')!.textContent = puzzle.words.join(' ');
-    document.getElementById('share').onclick = function() {
+    getElement('share').onclick = function() {
       navigator.clipboard.writeText(`${puzzle.title} ${guesses}/${MAX_GUESSES}${indicator}${summary}\n${getShareUrl()}`);
       showMessage(STRINGS['copied-clipboard']);
     };
     finished = true;
-    document.querySelector('.victory').setAttribute('result', wrong ? 'lost' : 'won');
+    getRequiredElement('.victory').setAttribute('result', wrong ? 'lost' : 'won');
     showVictory();
   }
 }
@@ -1437,18 +1466,18 @@ function showVictory() {
     };
     const interval = setInterval(updateEta, 1000);
     updateEta();
-    document.querySelector('.victory button.close').addEventListener('click', () => {
+    getRequiredElement('.victory button.close').addEventListener('click', () => {
       clearInterval(interval);
     }, {once: true});
   } else {
     nextPuzzle.classList.add('hidden');
   }
-  document.querySelector('.victory').classList.remove('hidden');
+  getRequiredElement('.victory').classList.remove('hidden');
 }
 
-async function showMessage(text) {
-  let div = document.querySelector('.modal');
-  div.querySelector('.message').textContent = text;
+async function showMessage(text: string) {
+  let div = getRequiredElement('.modal');
+  getRequiredElement('.message', div).textContent = text;
   div.classList.remove('hidden');
   await div.animate([
       {opacity: 0},
