@@ -2,13 +2,11 @@ import { defineConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
-  // Ensures asset paths are generated relative to the index.html,
-  // which is often safer for static deployments unless you use custom routing.
+  // Ensures asset paths are generated relative to the index.html
   base: './',
 
   build: {
-    // 'dist' is the default output directory, but making it explicit
-    // here ensures clarity for your Cloudflare Pages configuration.
+    sourcemap: true,
     outDir: 'dist',
   },
 
